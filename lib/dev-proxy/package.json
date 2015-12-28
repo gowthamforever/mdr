@@ -1,0 +1,9 @@
+{
+  "name": "dev-proxy",
+  "keywords": [
+    "ember-addon"
+  ],
+  "ember-addon": {
+    "before": "proxy-server-middleware"
+  }
+}

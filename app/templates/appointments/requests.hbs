@@ -1,0 +1,50 @@
+<section class="appointments-request-block">
+  <table class="request-table table table-striped table-hover">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Doctor Name</th>
+        <th>Patient Name</th>
+				<th>Appointment Date</th>
+				<th>Sent on</th>
+				<th>Status
+          {{input-select
+            options=model.statuses
+            labelPath="name"
+            valuePath="id"
+            selected=model.status
+          }}
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+      {{#each model.appointments as |appointment index|}}
+  			<tr>
+  				<td>{{increment index}}</td>
+  				<td>
+            <a href="#" {{action "doctor" appointment}}>
+              {{appointment.doctor.first_name}} {{appointment.doctor.last_name}}
+            </a>
+          </td>
+          <td>
+            <a href="#" {{action "client" appointment}}>
+              {{appointment.customer.first_name}} {{appointment.customer.last_name}}
+            </a>
+          </td>
+  				<td>
+            {{date-format appointment.ts_request "MM-DD-YYYY HH:mm" "dddd MMM DD YYYY hh:mm A"}}
+          </td>
+  				<td>{{date-format appointment.ts_added "MM-DD-YYYY HH:mm" "dddd MMM DD YYYY hh:mm A"}}</td>
+  				<td>
+  					<span class="label {{if appointment.accepted 'label-success'}}
+            {{if appointment.pending 'label-warning'}}
+            {{if appointment.rejected 'label-danger'}}" >
+              {{appointment.display_status}}
+            </span>
+            <a href="#" class="view-details">View</a>
+  				</td>
+  			</tr>
+			{{/each}}
+		</tbody>
+	</table>
+</section>

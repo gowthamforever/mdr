@@ -1,0 +1,20 @@
+section.signup-block {
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  section.signup-container {
+    border: 1px solid #ddd;
+
+    h2.section-header {
+      background-color: #DEDEDE;
+      margin: 0;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      padding: 10px;
+    }
+
+    button.btn-signup {
+      width: 150px;
+    }
+  }
+}

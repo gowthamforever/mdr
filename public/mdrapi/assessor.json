@@ -1,0 +1,30 @@
+{
+   "assessors":[
+      {
+         "assessor_id":"c3760fda04b0612d4bff317da0941429",
+         "first_name":"Ted",
+         "last_name":"Collin",
+         "rater_id":"101",
+         "employee_number":"201",
+         "email_id":"ted@tekintelligence.com",
+         "gender":"Male",
+         "dob":"1980-03-01",
+         "graduation_year":0,
+         "photo":"default-avatar-male-doctor.png",
+         "active":0
+      },
+      {
+         "assessor_id":"eec549fb5017435c0274df15eeff85c3",
+         "first_name":"Ed",
+         "last_name":"Sharon",
+         "rater_id":"2321736128",
+         "employee_number":"2312371232",
+         "email_id":"sed@tekintelligence.com",
+         "gender":"Male",
+         "dob":"1980-03-03",
+         "graduation_year":0,
+         "photo":"default-avatar-male-doctor.png",
+         "active":0
+      }
+   ]
+}

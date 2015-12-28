@@ -1,0 +1,52 @@
+{
+   "doctors":[
+      {
+         "doctor_id":"81ecb455cbb58f027d4c68bf3cfd96f3",
+         "first_name":"Adam",
+         "last_name":"Becker",
+         "npi":"1982871562",
+         "email_id":"arun.athi@tekintelligence.com",
+         "gender":"Male",
+         "dob":"1987-12-31",
+         "speciality":{
+            "speciality":"Family Medicine",
+            "board":"American Board of Family Medicine"
+         },
+         "primary_speciality":"6",
+         "practice_type":"single",
+         "practice_years":7,
+         "surgeon":0,
+         "graduation_institution":"Harvard Medical School,Children's Hospital",
+         "graduation_year":"2000",
+         "photo":"default-avatar-male-doctor.png",
+         "customer_rating":5,
+         "service_charge":250.0,
+         "active":1
+      },
+      {
+         "doctor_id":"430a15891ae43a7a1435d7dd4db6dcd9",
+         "first_name":"Keith",
+         "last_name":"Roberts",
+         "npi":"1114963188",
+         "email_id":"jorge.abad@tekintelligence.com",
+         "gender":"Male",
+         "dob":"1975-10-15",
+         "speciality":{
+            "speciality":"Family Medicine",
+            "board":"American Board of Family Medicine"
+         },
+         "primary_speciality":"6",
+         "practice_type":"single",
+         "practice_years":0,
+         "surgeon":0,
+         "graduation_institution":"College of Central Florida",
+         "graduation_year":"1999",
+         "photo":"default-avatar-male-doctor.png",
+         "customer_rating":0,
+         "service_charge":110.0,
+         "medicare_number":"11111111111",
+         "medicaid_number":"1111111111111",
+         "active":0
+      }
+   ]
+}

@@ -1,0 +1,25 @@
+section.signin-block {
+  padding-top: 30px;
+
+  section.signin-container {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 1px solid #ddd;
+  }
+
+  @media (min-width: 992px) {
+    section.info-seperator {
+      border-right: 1px solid #ddd
+    }
+  }
+
+  div.form-group {
+    &.form-group-height {
+      height: 65px;
+    }
+  }
+
+  button.btn-signin {
+    width: 150px;
+  }
+}

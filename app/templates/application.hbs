@@ -1,0 +1,18 @@
+{{mdr-header}}
+<section class="wrapper-main">
+  {{liquid-outlet}}
+</section>
+
+
+{{#if (and dialog.show dialog.name)}}
+  {{#modal-dialog
+    close=dialog.hideAction
+    targetAttachment="none"
+    overlay-class="modal"
+    translucentOverlay=true
+    clickOutsideToClose=true
+    container-class="modal-dialog"}}
+
+    {{component dialog.name model=dialog.model close=(action dialog.hideAction)}}
+  {{/modal-dialog}}
+{{/if}}

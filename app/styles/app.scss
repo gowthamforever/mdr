@@ -1,0 +1,16 @@
+@import "layout/main.scss";
+@import "layout/common.scss";
+
+@import "vendor/traits.scss";
+@import "layout/welcome.scss";
+@import "layout/account.scss";
+@import "layout/signin.scss";
+@import "layout/signup.scss";
+@import "layout/authenticated.scss";
+
+@import "layout/clients-list.scss";
+@import "layout/clients-add.scss";
+@import "layout/assessors-list.scss";
+@import "layout/doctors-list.scss";
+@import "layout/doctors-add.scss";
+@import "layout/appointments.scss";

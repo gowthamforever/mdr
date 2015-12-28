@@ -1,0 +1,60 @@
+<div class="modal-content">
+	<div class="modal-header">
+		<button type="button" class="close" {{action "hideDialog"}}>×</button>
+		<h4 class="modal-title">
+      {{model.first_name}} {{model.last_name}}
+    </h4>
+	</div>
+	<div class="modal-body">
+		<section class="row">
+			<section class="col-md-3 col-sm-3 col-xs-3 text-center">
+				<img class="img-responsive" src="./assets/img/default_avatar_customer_male_120x.png">
+			</section>
+			<section class="col-md-9 col-sm-9 col-xs-9">
+				<section>
+					<h4>Personal Information</h4>
+				</section>
+				<section>
+					<table>
+						<tbody>
+              <tr>
+  							<td class="value">{{model.age}} years, {{model.gender}}</td>
+  						</tr>
+  						<tr>
+  							<td class="value">
+                  <a href="#" target="_blank">
+                    {{model.insurance.name}}
+                  </a>
+                </td>
+  						</tr>
+            </tbody>
+          </table>
+				</section>
+				<section>
+					<h4>Contact Information</h4>
+				</section>
+				<section>
+					<table>
+						<tbody>
+              <tr>
+							  <td class="value"><i class="icon-map-marker text-info"></i> placeholder</td>
+  						</tr>
+  						<tr>
+  							<td class="value">placeholder</td>
+  						</tr>
+							<tr>
+								<td class="value"><i class="icon-phone text-info"></i> placeholder</td>
+  						</tr>
+              <tr>
+								<td class="value"><i class="icon-phone text-info"></i> placeholder</td>
+  						</tr>
+            </tbody>
+          </table>
+				</section>
+			</section>
+		</section>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default" {{action "hideDialog"}}>Close</button>
+	</div>
+</div>

@@ -1,0 +1,10 @@
+{{#if prompt}}
+  <option>{{prompt}}</option>
+{{/if}}
+{{#each options key="@index" as |option|}}
+  {{input-select-option
+    option=option
+    labelPath=labelPath
+    valuePath=valuePath
+    selected=(is-equal option selected)}}
+{{/each}}

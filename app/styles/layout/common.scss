@@ -1,0 +1,88 @@
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.hide-visible {
+  visibility: hidden;
+}
+
+.ember-modal-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+}
+
+.modal-dialog {
+  z-index: 1000000;
+}
+
+.bs-callout {
+  margin: 0 0;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-left: 3px solid #eee;
+
+  &.bs-callout-danger {
+    background-color: #fdf7f7;
+    border-color: #d9534f;
+  }
+}
+
+@keyframes loadingBar { /* CSS3 */
+	0%   { width: 0% }
+  25%  { width: 25% }
+	50%  { width: 50% }
+  100% { width: 75% }
+	100% { width: 100% }
+}
+
+@-moz-keyframes loadingBar { /* Firefox */
+  0%   { width: 0% }
+  25%  { width: 25% }
+	50%  { width: 50% }
+  100% { width: 75% }
+	100% { width: 100% }
+}
+
+@-o-keyframes loadingBar { /* Firefox */
+  0%   { width: 0% }
+  25%  { width: 25% }
+	50%  { width: 50% }
+  100% { width: 75% }
+	100% { width: 100% }
+}
+
+@-webkit-keyframes loadingBar { /* Webkit */
+  0%   { width: 0% }
+  25%  { width: 25% }
+	50%  { width: 50% }
+  100% { width: 75% }
+	100% { width: 100% }
+}
+
+.loading-bar {
+  background-color: red;
+  height: 5px;
+	animation:         loadingBar 20s linear infinite; /* CSS3 */
+	-moz-animation:    loadingBar 20s linear infinite; /* Firefox */
+  -o-animation:    loadingBar 20s linear infinite; /* Firefox */
+	-webkit-animation: loadingBar 20s linear infinite; /* Webkit */
+}
+
+.help-block {
+  &.prevent-error {
+    color: #737373!important;
+  }
+}

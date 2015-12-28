@@ -1,0 +1,44 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="logo" href="#"><img src="./assets/img/brand2.png"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        {{#if header.showLoginBlock}}
+          <li class="hide"><a href="#" class="navbar-link">Login / Signup</a></li>
+        {{else}}
+          <li class="hidden-xs">
+            <a href="#">
+              <i class="fa fa-bell fa-2"></i>
+              <span class="badge notify-badge">7</span>
+            </a>
+          </li>
+          <li class="dropdown hidden-xs">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <img class="profile-header-avatar" src="./assets/img/default_avatar_30x.jpg">
+              <span class="hidden-sm hidden-xs">{{header.session.firstName}} {{header.session.lastName}}</span>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              {{#link-to "home" tagName="li"}}
+                <a href="{{view.href}}">Home</a>
+              {{/link-to}}
+              {{#link-to "profile" tagName="li"}}
+                <a href="{{view.href}}">Profile</a>
+              {{/link-to}}
+              {{#link-to "settings" tagName="li"}}
+                <a href="{{view.href}}">Settings</a>
+              {{/link-to}}
+              <li role="separator" class="divider"></li>
+              {{#link-to "logout" tagName="li"}}
+                <a href="{{view.href}}">Logout</a>
+              {{/link-to}}
+            </ul>
+          </li>
+          <li><p class="navbar-text">{{clock.tick}}</p></li>
+        {{/if}}
+      </ul>
+    </div>
+  </div>
+</nav>

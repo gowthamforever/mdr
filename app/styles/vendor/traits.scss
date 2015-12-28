@@ -1,0 +1,396 @@
+
+.traits {
+    position: absolute;
+    left: 50%;
+    bottom: -125px;
+    margin-left: -489px;
+    height: 520px;
+    *zoom:1;z-index: 10
+}
+
+.traits:after {
+    content: "";
+    display: table;
+    clear: both
+}
+
+.traits .trait-box {
+    position: absolute;
+    bottom: 0;
+    width: 326px
+}
+
+.traits .trait-box.mind {
+    left: -2px
+}
+
+.traits .trait-box.body {
+    left: 326px
+}
+
+.traits .trait-box.soul {
+    left: 654px
+}
+
+.trait-emblem {
+    text-indent: -119988px;
+    overflow: hidden;
+    text-align: left;
+    background-image: url("./img/for-icons.png");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    position: relative;
+    overflow: visible;
+    display: block
+}
+
+.trait-emblem.large {
+    width: 68px;
+    height: 74px
+}
+
+.trait-emblem.large.mind {
+    background-position: -14px -11px
+}
+
+.trait-emblem.large.body {
+    background-position: -110px -11px
+}
+
+.trait-emblem.large.soul {
+    background-position: -206px -11px
+}
+
+.trait-emblem.medium {
+    width: 44px;
+    height: 50px
+}
+
+.trait-emblem.medium.mind {
+    background-position: -26px -119px
+}
+
+.trait-emblem.medium.body {
+    background-position: -122px -119px
+}
+
+.trait-emblem.medium.soul {
+    background-position: -218px -119px
+}
+
+.trait-emblem.small {
+    width: 30px;
+    height: 34px
+}
+
+.trait-emblem.small.mind {
+    background-position: -33px -223px
+}
+
+.trait-emblem.small.body {
+    background-position: -129px -223px
+}
+
+.trait-emblem.small.soul {
+    background-position: -225px -223px
+}
+
+.trait-emblem span {
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    margin-left: -18px;
+    margin-top: -15px;
+    width: 30px;
+    padding: 2px 4px;
+    display: block;
+    background-color: #e8554e;
+    font-family: brandon-grotesque,Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 11px;
+    color: #fff;
+    letter-spacing: 1px;
+    text-indent: 0;
+    text-align: center;
+    text-transform: uppercase;
+    -webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,.4);
+    -moz-box-shadow: 0 1px 4px 0 rgba(0,0,0,.4);
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.4)
+}
+
+.trait-emblem span:after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -8px;
+    margin-bottom: -6px;
+    width: 16px;
+    height: 6px;
+    text-indent: -119988px;
+    overflow: hidden;
+    text-align: left;
+    background-image: url("./img/icons.png?1381413743");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-position: -408px -93px
+}
+
+.ie .trait-emblem span {
+    display: none
+}
+
+.ie .trait-emblem:hover span {
+    display: block
+}
+
+.trait-emblem span {
+    -webkit-transition: none 125ms ease-out;
+    -webkit-transition-delay: 150ms;
+    -moz-transition: none 125ms ease-out 150ms;
+    -o-transition: none 125ms ease-out 150ms;
+    transition: none 125ms ease-out 150ms;
+    -webkit-transition-property: opacity,top;
+    -moz-transition-property: opacity,top;
+    -o-transition-property: opacity,top;
+    transition-property: opacity,top;
+    opacity: 0;
+    top: 3px
+}
+
+.trait-emblem:hover span {
+    opacity: 1;
+    top: -2px
+}
+
+.trait-bar {
+    display: block;
+    overflow: hidden;
+    text-indent: -999em;
+    font-size: 0;
+    line-height: 0;
+    white-space: nowrap
+}
+
+.trait-bar span {
+    display: -moz-inline-stack;
+    display: inline-block;
+    vertical-align: middle;
+    *vertical-align: auto;
+    zoom:1;*display: inline;
+    height: 100%
+}
+
+.trait-bar.tb-1 span {
+    width: 100%
+}
+
+.trait-bar.tb-2 span {
+    width: 50%
+}
+
+.trait-bar.tb-3 span {
+    width: 33.5%
+}
+
+.trait-bar .mind {
+    background-color: #71c5d3
+}
+
+.trait-bar .body {
+    background-color: #f5c53d
+}
+
+.trait-bar .soul {
+    background-color: #7eb66f
+}
+
+.trait-box {
+    margin-top: 395px;
+    display: block;
+    text-align: center;
+    height: 126px;
+    position: relative;
+    color: #4e4e4d;
+    text-decoration: none!important
+}
+
+.trait-box h4 {
+    position: absolute;
+    bottom: 45px;
+    width: 100%;
+    font-family: museo-slab,Georgia,serif;
+    font-weight: 300;
+    font-style: italic;
+    color: #787876
+}
+
+.trait-box h4:before {
+    content: 'For';
+    display: inline-block;
+    margin-left: -20px
+}
+
+.trait-box h4 span {
+    color: #4e4e4d;
+    display: inline-block;
+    margin-left: 10px;
+    font-family: brandon-grotesque,Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 1px;
+    font-style: normal;
+    text-transform: uppercase;
+    line-height: 26px
+}
+
+.trait-box figure {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 0;
+    opacity: 0
+}
+
+.trait-box figure img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block
+}
+
+.trait-box .trait-emblem {
+    margin: -40px auto 22px
+}
+
+.trait-box .trait-emblem span {
+    display: none!important
+}
+
+.trait-box dl {
+    border-top: 4px solid #000
+}
+
+.trait-box.mind dl {
+    border-color: #71c5d3;
+}
+
+.trait-box.body dl {
+    border-color: #f5c53d
+}
+
+.trait-box.soul dl {
+    border-color: #7eb66f
+}
+
+.trait-box dd {
+    font-size: 16px;
+    line-height: 26px;
+    padding: 0 30px;
+    overflow: visible;
+    height: 0;
+    opacity: 0
+}
+
+.trait-box dd span {
+    white-space: nowrap;
+    display: block;
+    width: 210px;
+    padding: 3px 0;
+    margin: 20px auto 40px;
+    color: #fff;
+    background: #e8554e;
+    font-size: 12px;
+    letter-spacing: 1px;
+    font-family: brandon-grotesque,Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    opacity: 0
+}
+
+.trait-box,.trait-box figure,.trait-box h4 span,.trait-box dd,.trait-box dd span {
+    -webkit-transition: all 300ms cubic-bezier(0.32,.22,.35,.98);
+    -webkit-transition-delay: 0;
+    -moz-transition: all 300ms cubic-bezier(0.32,.22,.35,.98) 0;
+    -o-transition: all 300ms cubic-bezier(0.32,.22,.35,.98) 0;
+    transition: all 300ms cubic-bezier(0.32,.22,.35,.98) 0
+}
+
+.trait-box:hover,.trait-box.expanded {
+    margin-top: 0;
+    padding-top: 184px;
+    height: 510px;
+    -webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,.4);
+    -moz-box-shadow: 0 1px 4px 0 rgba(0,0,0,.4);
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.4);
+    background: #fff
+}
+
+.trait-box:hover figure,.trait-box.expanded figure {
+    height: 184px;
+    opacity: 1
+}
+
+.trait-box:hover h4 span,.trait-box.expanded h4 span {
+    color: #e8554e
+}
+
+.trait-box:hover dd,.trait-box.expanded dd {
+    height: 148px;
+    opacity: 1
+}
+
+.trait-box:hover dd span,.trait-box.expanded dd span {
+    opacity: 1
+}
+
+.trait-box:hover dd span:hover,.trait-box.expanded dd span:hover {
+    background-color: #fa5c54
+}
+
+.trait-box:hover,.trait-box:hover h4 span,.trait-box.expanded,.trait-box.expanded h4 span {
+    -webkit-transition-duration: 225ms;
+    -moz-transition-duration: 225ms;
+    -o-transition-duration: 225ms;
+    transition-duration: 225ms;
+    -webkit-transition-delay: 100ms;
+    -moz-transition-delay: 100ms;
+    -o-transition-delay: 100ms;
+    transition-delay: 100ms
+}
+
+.trait-box:hover figure,.trait-box.expanded figure {
+    -webkit-transition-duration: 225ms;
+    -moz-transition-duration: 225ms;
+    -o-transition-duration: 225ms;
+    transition-duration: 225ms;
+    -webkit-transition-delay: 100ms;
+    -moz-transition-delay: 100ms;
+    -o-transition-delay: 100ms;
+    transition-delay: 100ms
+}
+
+.trait-box:hover dd,.trait-box.expanded dd {
+    -webkit-transition-duration: 540ms;
+    -moz-transition-duration: 540ms;
+    -o-transition-duration: 540ms;
+    transition-duration: 540ms;
+    -webkit-transition-delay: 500ms;
+    -moz-transition-delay: 500ms;
+    -o-transition-delay: 500ms;
+    transition-delay: 500ms
+}
+
+.trait-box:hover dd span,.trait-box.expanded dd span {
+    -webkit-transition-duration: 540ms;
+    -moz-transition-duration: 540ms;
+    -o-transition-duration: 540ms;
+    transition-duration: 540ms;
+    -webkit-transition-delay: 1100ms;
+    -moz-transition-delay: 1100ms;
+    -o-transition-delay: 1100ms;
+    transition-delay: 1100ms
+}

@@ -1,0 +1,24 @@
+section.clients-list-block {
+  section.search-header {
+    background: #bdc3c7;
+    padding: 10px;
+  }
+
+  li.client-list-item {
+    padding: 10px;
+
+    .client-wrapper {
+      background: #fff;
+      border: 1px solid #c4c4c4;
+      -webkit-box-shadow: 2px 2px 2px rgba(0,0,0,.2);
+      -moz-box-shadow: 2px 2px 2px rgba(0,0,0,.2);
+      box-shadow: 2px 2px 2px rgba(0,0,0,.2);
+      position: relative;
+
+      &:hover {
+        background: #D9EDF7;
+      }
+    }
+
+  }
+}
