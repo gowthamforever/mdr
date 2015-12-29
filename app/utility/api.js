@@ -16,7 +16,7 @@ export default {
     method: 'GET'
   },
 
-  add-client: {
+  addclient: {
     path: 'client',
     method: 'POST'
   },

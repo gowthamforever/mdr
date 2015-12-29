@@ -30,12 +30,12 @@
 						<div>
 							<div class="radio-inline">
 								<label>
-									{{input-radio name="gender" group=model.gender value="Male"}} Male
+									{{input-radio name="gender" group=model.gender value="MALE"}} Male
 								</label>
 							</div>
 							<div class="radio-inline">
 								<label>
-									{{input-radio name="gender" group=model.gender value="Female"}} Female
+									{{input-radio name="gender" group=model.gender value="FEMALE"}} Female
 								</label>
 							</div>
 						</div>
@@ -75,19 +75,6 @@
 							prompt="Select"
 						}}
 						{{mdr-field-error client=model.validationResult.selected_language}}
-					</div>
-					<div class="form-group col-md-6  {{if model.validationResult.selected_timezone.hasError 'has-error'}}">
-						<label class="control-label" for="timezone">Timezone</label>
-						{{input-select
-							class="form-control"
-							name="timezone"
-							options=model.timezones
-							labelPath="name"
-							valuePath="id"
-							selected=model.selected_timezone
-							prompt="Select"
-						}}
-						{{mdr-field-error client=model.validationResult.selected_timezone}}
 					</div>
 				</div>
 
@@ -399,7 +386,7 @@
 					</div>
 					<div class="form-group col-md-2  {{if model.validationResult.cvv.hasError 'has-error'}}">
 						<label class="control-label" for="cvv">CVV</label>
-						{{input type="text" class="form-control" name="cvv" value=model.cvv maxlength=4 autocomplete="off"}}
+						{{input type="password" class="form-control" name="cvv" value=model.cvv maxlength=4 autocomplete="off"}}
 						{{mdr-field-error client=model.validationResult.cvv}}
 					</div>
 					<div class="form-group col-md-4  {{if model.validationResult.selected_expiry_month.hasError 'has-error'}}">

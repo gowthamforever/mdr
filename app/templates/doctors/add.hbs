@@ -8,22 +8,6 @@
 				</div>
 
         <div class="row">
-          <div class="form-group col-md-6  {{if model.validationResult.selected_profession.hasError 'has-error'}}">
-            <label class="control-label" for="profession">Profession</label>
-            {{input-select
-              class="form-control"
-              name="profession"
-              options=model.professions
-              labelPath="name"
-              valuePath="id"
-              selected=model.selected_profession
-              prompt="Select"
-            }}
-            {{mdr-field-error client=model.validationResult.selected_profession}}
-          </div>
-        </div>
-
-        <div class="row">
           <div class="form-group col-md-6 {{if model.validationResult.medicare_number.hasError 'has-error'}}">
             <label class="control-label" for="medicare_number">Medicare Number</label>
             {{input type="text" class="form-control" name="medicare_number" value=model.medicare_number maxlength=11 autocomplete="off"}}
@@ -78,15 +62,6 @@
 						{{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=model.dob}}
 						{{mdr-field-error client=model.validationResult.dob}}
 					</div>
-					<div class="form-group col-md-6 {{if model.validationResult.npi.hasError 'has-error'}}">
-						<label class="control-label" for="npi">NPI number</label>
-						{{input type="text" class="form-control" name="npi" value=model.npi}}
-            {{mdr-field-error client=model.validationResult.npi}}
-            <p class="help-block">Currently active NPI number (?)</p>
-					</div>
-				</div>
-
-				<div class="row">
 					<div class="form-group col-md-6  {{if model.validationResult.selected_timezone.hasError 'has-error'}}">
 						<label class="control-label" for="timezone">Timezone</label>
 						{{input-select
@@ -99,6 +74,93 @@
 							prompt="Select"
 						}}
 						{{mdr-field-error client=model.validationResult.selected_timezone}}
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-6  {{if model.validationResult.selected_profession.hasError 'has-error'}}">
+						<label class="control-label" for="profession">Profession</label>
+						{{input-select
+							class="form-control"
+							name="profession"
+							options=model.professions
+							labelPath="name"
+							valuePath="id"
+							selected=model.selected_profession
+							prompt="Select"
+						}}
+						{{mdr-field-error client=model.validationResult.selected_profession}}
+					</div>
+
+					<div class="form-group col-md-6 {{if model.validationResult.npi.hasError 'has-error'}}">
+						<label class="control-label" for="npi">NPI number</label>
+						{{input type="text" class="form-control" name="npi" value=model.npi}}
+						{{mdr-field-error client=model.validationResult.npi}}
+						<p class="help-block">Currently active NPI number</p>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-6 {{if model.validationResult.ein.hasError 'has-error'}}">
+						<label class="control-label" for="ein-no">EIN number <small>(optional)</small></label>
+						{{input type="text" class="form-control" name="ein-no" value=model.ein}}
+					</div>
+					<div class="form-group col-md-6 {{if model.validationResult.dea.hasError 'has-error'}}">
+						<label class="control-label" for="dea-no">DEA number <small>(optional)</small></label>
+						{{input type="text" class="form-control" name="dea-no" value=model.dea}}
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-6  {{if model.validationResult.selected_speciality.hasError 'has-error'}}">
+						<label class="control-label" for="speciality">Primary speciality</label>
+						{{input-select
+							class="form-control"
+							name="speciality"
+							options=model.specialities
+							labelPath="name"
+							valuePath="id"
+							selected=model.selected_speciality
+							prompt="Select"
+						}}
+						{{mdr-field-error client=model.validationResult.selected_speciality}}
+					</div>
+
+					<div class="form-group col-md-6">
+						<label class="control-label" for="surgeon">Surgeon</label>
+						<div>
+							<div class="radio-inline">
+								<label>
+									{{input-radio name="surgeon" group=model.surgeon value=1}} Yes
+								</label>
+							</div>
+							<div class="radio-inline">
+								<label>
+									{{input-radio name="surgeon" group=model.surgeon value=0}} No
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-6 {{if model.validationResult.selected_practice_type.hasError 'has-error'}}">
+						<label class="control-label" for="practice-type">Practice type</label>
+						{{input-select
+							class="form-control"
+							name="practice-type"
+							options=model.practice_types
+							labelPath="name"
+							valuePath="id"
+							selected=model.selected_practice_type
+							prompt="Select"
+						}}
+						{{mdr-field-error client=model.validationResult.selected_practice_type}}
+					</div>
+					<div class="form-group col-md-6 {{if model.validationResult.practice_years.hasError 'has-error'}}">
+						<label class="control-label" for="practice-years">Years in Practice <small>(optional)</small></label>
+						{{input type="text" class="form-control" name="practice-years" value=model.practice_years}}
+						{{mdr-field-error client=model.validationResult.practice_years}}
 					</div>
 				</div>
 

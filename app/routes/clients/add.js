@@ -2,6 +2,7 @@ import Ember from 'ember';
 import EmberValidator from 'ember-validator';
 import Client from 'mdr/models/client';
 import FamilyMemeber from 'mdr/models/family-member';
+import Api from 'mdr/mixins/api';
 import { animateTo } from 'mdr/utility/utils';
 
 const {
@@ -12,7 +13,7 @@ const {
 
 const { Promise } = RSVP;
 
-export default Route.extend(EmberValidator, {
+export default Route.extend(EmberValidator, Api, {
   model() {
     return Client.create();
   },
@@ -39,7 +40,6 @@ export default Route.extend(EmberValidator, {
       },
 
       email_id: {
-        required: 'Email id is required.',
         length: {
           maximum: 50,
           message: 'Must be 50 characters or less.'
@@ -53,10 +53,6 @@ export default Route.extend(EmberValidator, {
 
       selected_language: {
         required: 'Language is required.',
-      },
-
-      selected_timezone: {
-        required: 'Timezone is required.'
       },
 
       phone1: {
@@ -151,10 +147,6 @@ export default Route.extend(EmberValidator, {
         length: {
           maximum: 16,
           message: 'Must be 16 characters or less.'
-        },
-        numeric: {
-          integer: true,
-          message: 'Card no is not valid.'
         }
       },
 
@@ -302,39 +294,44 @@ export default Route.extend(EmberValidator, {
         data = _.pick(model, [
           'last_name',
           'first_name',
-          'dob',
           'gender',
           'phone1',
           'phone2',
           'address1',
           'zip1',
-          'country1',
           'memebership_name'
         ]);
 
-        data.state1 = model.get('selected_state_1');
+        data.dob = moment(model.get('dob'), 'MMM DD YYYY').format('MM-DD-YYYY');
+        data.state1 = model.get('selected_state_1.id');
         data.city1 = model.get('selected_city_1.name');
+        data.country1 = 'US';
+        data.insurance_plan = model.get('selected_insurance_plan.id');
 
         if (model.get('selected_race')) {
           data.race = model.get('selected_race.id');
         }
 
         if (model.get('selected_language')) {
-          data.race = model.get('selected_language.id');
+          data.language = model.get('selected_language.id');
         }
 
-        if (model.get('selected_timezone')) {
-          data.race = model.get('selected_timezone.id');
+        if (model.get('pcd_name')) {
+          data.pcd_name = model.get('pcd_name');
+        }
+
+        if (model.get('pcd_phone')) {
+          data.pcd_phone = model.get('pcd_phone');
         }
 
         if (model.get('is_secondary_address')) {
           data = _.extend(data, _.pick(model, [
             'address2',
-            'zip2',
-            'country2'
+            'zip2'
           ]));
 
-          data.state2 = model.get('selected_state_2');
+          data.country2 = 'US';
+          data.state2 = model.get('selected_state_2.id');
           data.city2 = model.get('selected_city_2.name');
         }
 
@@ -350,11 +347,11 @@ export default Route.extend(EmberValidator, {
 
         data = _.extend(data, _.pick(model, [
           'card_address',
-          'card_zip',
-          'card_country'
+          'card_zip'
         ]));
 
-        data.card_state = model.get('selected_card_state');
+        data.card_country = 'US';
+        data.card_state = model.get('selected_card_state.id');
         data.card_city = model.get('selected_card_city.name');
 
         if (model.get('billing_is_primary')) {
@@ -366,7 +363,7 @@ export default Route.extend(EmberValidator, {
         }
 
         self.ajax({
-          id: 'add-client',
+          id: 'addclient',
           data
         }).then(() => {
           self.transitionTo('clients.list');

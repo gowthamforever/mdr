@@ -4,6 +4,7 @@ const { Component } = Ember;
 
 export default Component.extend({
   tagName: 'button',
+  attributeBindings: ['type'],
   processingText: 'Processing',
   processing: false
 });

@@ -179,5 +179,13 @@ export default {
     'Husband',
     'Son',
     'Daughter'
+  ],
+
+  DOCTOR_PRACTICE_TYPES: [
+    { id: 'single', name: 'Single Practice' },
+    { id: 'group', name: 'Group Practice' },
+    { id: 'hospital', name: 'Hospital Practice' },
+    { id: 'hmo', name: 'HMO' },
+    { id: 'other', name: 'Other' },
   ]
 };

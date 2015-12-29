@@ -17,7 +17,7 @@ export default Ember.Object.extend({
   }),
   email_id: null,
   first_name: null,
-  gender: 'Male',
+  gender: 'MALE',
   insurance_plan: null,
   language: null,
   last_name: null,

@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import Client from 'mdr/models/client';
+import Doctor from 'mdr/models/doctor';
 
 const {
   Route
@@ -7,6 +7,6 @@ const {
 
 export default Route.extend({
   model() {
-    return Client.create();
+    return Doctor.create();
   }
 });
