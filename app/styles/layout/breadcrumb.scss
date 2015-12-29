@@ -1,0 +1,130 @@
+$linkColorHover: #00b0ec;
+$gray: #2980b9;
+$gray2: #F8F8F8;
+$gray3: #F0F0F0;
+$gray4: #aaa;
+$selectedColor: #16a085;
+$selectedHoverColor: #47C3AB;
+
+.bread-crumb {
+    margin-bottom: 20px;
+    line-height: 30px;
+    color: $gray2;
+    padding: 1px;
+
+    a {
+        display: block;
+        float: left;
+        background: $gray;
+        padding-right: 10px;
+        margin-right: 31px;
+        position: relative;
+        text-decoration: none;
+        color: #fff;
+
+        &.selected {
+          background: $selectedColor;
+
+          &:before {
+              border-color: $selectedColor;
+              border-left-color: transparent;
+          }
+
+          &:after {
+              border-left-color: $selectedColor;
+          }
+
+          &:hover {
+            background: $selectedHoverColor;
+
+            &:before {
+              border-color: $selectedHoverColor;
+              border-left-color: transparent;
+            }
+
+            &:after {
+              border-left-color: $selectedHoverColor;
+            }
+          }
+
+        }
+
+        &.disabled {
+          background: $gray3;
+          color: $gray4;
+
+          &:before {
+            border-color: $gray3;
+            border-left-color: transparent;
+          }
+
+          &:after {
+            border-left-color: $gray3;
+          }
+
+          &:hover {
+            background: $gray3;
+            color: $gray4;
+
+            &:before {
+              border-color: $gray3;
+              border-left-color: transparent;
+            }
+
+            &:after {
+              border-left-color: $gray3;
+            }
+          }
+        }
+
+        &:last-of-type {
+            margin-right: 25px;
+        }
+
+        &:before {
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            position: absolute;
+            top: 0;
+            left: -30px;
+            border: 15px solid transparent;
+            border-color: $gray;
+            border-left-color: transparent;
+        }
+
+        &:after {
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            position: absolute;
+            top: 0;
+            right: -30px;
+            border: 15px solid transparent;
+            border-left-color: $gray;
+        }
+
+        &:first-of-type {
+            padding-left: 15px;
+
+            &:before {
+                display: none;
+            }
+        }
+
+        &:hover {
+            background: $linkColorHover;
+
+            &:before {
+                border-color: $linkColorHover;
+                border-left-color: transparent;
+            }
+
+            &:after {
+                border-left-color: $linkColorHover;
+            }
+        }
+    }
+}
