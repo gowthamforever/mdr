@@ -7,12 +7,12 @@ export default {
   },
 
   doctors: {
-    path: 'doctor.json',
+    path: 'doctor',
     method: 'GET'
   },
 
   clients: {
-    path: 'client.json',
+    path: 'client',
     method: 'GET'
   },
 
@@ -22,12 +22,12 @@ export default {
   },
 
   assessors: {
-    path: 'assessor.json',
+    path: 'assessor',
     method: 'GET'
   },
 
   appointments: {
-    path: 'appointment.json',
+    path: 'appointment',
     method: 'GET'
   }
 };
