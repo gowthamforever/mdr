@@ -9,7 +9,7 @@ export default Ember.Object.extend({
   customer_rating: null,
   dob: null,
   age: computed('dob', function() {
-    return moment(this.get('dob'), 'YYYY-MM-DD').month(0).from(moment().month(0)).split(' ')[0]
+    return moment(this.get('dob'), 'YYYY-MM-DD').month(0).from(moment().month(0)).split(' ')[0];
   }),
   doctor_id: null,
   email_id: null,

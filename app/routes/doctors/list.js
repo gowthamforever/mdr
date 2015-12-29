@@ -51,7 +51,7 @@ export default Route.extend(Api, {
       }
     },
 
-    toggleStatus(assessor, currentStatus) {
+    toggleStatus() {
       // TODO: Implement Toggle status API
     }
   }

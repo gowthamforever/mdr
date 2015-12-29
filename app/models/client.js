@@ -13,7 +13,7 @@ export default Ember.Object.extend({
   customer_id: null,
   dob: null,
   age: computed('dob', function() {
-    return moment(this.get('dob'), 'YYYY-MM-DD').month(0).from(moment().month(0)).split(' ')[0]
+    return moment(this.get('dob'), 'YYYY-MM-DD').month(0).from(moment().month(0)).split(' ')[0];
   }),
   email_id: null,
   first_name: null,
@@ -100,8 +100,6 @@ export default Ember.Object.extend({
   }),
 
   on_is_secondary_address: computed('is_secondary_address', function() {
-    const is_secondary_address = this.get('is_secondary_address');
-
     if (this.get('is_secondary_address') && this.get('validationResult')) {
       this.get('validationResult').setProperties({
         address2: null,

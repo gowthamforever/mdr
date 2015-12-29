@@ -7,6 +7,7 @@ const {
   RSVP,
   isEmpty,
   get,
+  set,
   inject
 } = Ember;
 
@@ -44,7 +45,7 @@ export default Route.extend(Api, {
       const clients   = model.get('clients');
 
       if (!isEmpty(clients)) {
-        set(model, 'clients', doctors.filter((client) =>
+        set(model, 'clients', clients.filter((client) =>
           get(client, 'first_name').indexOf(firstName) !== -1 ||
           get(client, 'last_name').indexOf(lastName) !== -1));
       }

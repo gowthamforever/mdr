@@ -7,7 +7,8 @@ const {
   RSVP,
   get,
   set,
-  inject
+  inject,
+  isEmpty
 } = Ember;
 
 const {
@@ -44,13 +45,13 @@ export default Route.extend(Api, {
       const assessors = model.get('clients');
 
       if (!isEmpty(assessors)) {
-        set(model, 'clients', clients.filter((assessors) =>
-          get(client, 'firstName').indexOf(firstName) !== -1 ||
-          get(client, 'lastName').indexOf(lastName) !== -1));
+        set(model, 'assessors', assessors.filter((assessor) =>
+          get(assessor, 'firstName').indexOf(firstName) !== -1 ||
+          get(assessor, 'lastName').indexOf(lastName) !== -1));
       }
     },
 
-    toggleStatus(assessor, currentStatus) {
+    toggleStatus() {
       // TODO: Implement Toggle status API
     }
   }
