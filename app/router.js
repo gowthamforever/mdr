@@ -32,15 +32,19 @@ Router.map(function() {
     this.resource('assessors', function() {
       this.route('list', { path: '/' });
       this.route('add');
-      this.route('profile', { path: '/:assessor_id/profile'});
-      this.route('appointment', { path: '/:assessor_id/appointment'});
+      this.route('assessor', { path: '/:assessor_id' }, function() {
+        this.route('profile');
+        this.route('appointment');
+      });
     });
 
     this.resource('doctors', function() {
       this.route('list', { path: '/' });
       this.route('add');
-      this.route('profile', { path: '/:doctor_id/profile'});
-      this.route('appointment', { path: '/:doctor_id/appointment'});
+      this.route('doctor', { path: '/:doctor_id' }, function() {
+        this.route('profile');
+        this.route('appointment');
+      });
     });
 
     this.resource('appointments', function() {

@@ -6,7 +6,6 @@ const {
 } = Ember;
 
 export default Route.extend({
-
   afterModel(model) {
     let bread_crumbs;
 
