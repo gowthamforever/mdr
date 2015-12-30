@@ -1,0 +1,56 @@
+{{#unless (or hideSearch selected)}}
+  <section class="search-header">
+    <form class="clearfix" id="clients-search-form" name="search-form" role="form" novalidate {{action "filter" on="submit"}}>
+      <div class="form-group col-md-2 col-sm-2">
+        <label class="control-label" for="first-name">First Name</label>
+        {{input type="text" class="form-control" name="first-name" placeholder="Click to change" value=model.firstName}}
+      </div>
+      <div class="form-group col-md-2 col-sm-2">
+        <label class="control-label" for="last-name">Last Name</label>
+        {{input type="text" class="form-control" name="last-name" placeholder="Click to change" value=model.lastName}}
+      </div>
+      <div class="form-group col-md-2 col-sm-12">
+        <label class="control-label hide-visible" for="clients-search-btn">search</label>
+        <button class="btn btn-primary btn-block" type="submit">Search</button>
+      </div>
+    </form>
+  </section>
+
+  {{#if filtered}}
+  <div class="alert alert-info">
+    <strong>Patients Found!</strong> Listing {{filtered.length}} patients.
+  </div>
+  {{else}}
+    <div class="alert alert-danger" style="display: block;">
+      <strong>No Patients available!</strong> Try changing search criteria.
+    </div>
+  {{/if}}
+{{/unless}}
+
+<ul class="list-unstyled clearfix">
+  {{#each filtered as |client|}}
+    <li class="client-list-item col-md-6">
+      <section class="client-wrapper clearfix">
+        <img class="pull-left img-responsive" src={{if client.male "./assets/img/default_avatar_customer_male_120x.png" "./assets/img/default_avatar_customer_female_120x.png"}}>
+        <div>
+          <h4>
+            {{#link-to 'clients.client.profile' client}}
+              <strong>{{client.first_name}} {{client.last_name}}</strong>
+            {{/link-to}}
+          </h4>
+
+          {{#unless hideBtns}}
+            {{#link-to 'clients.client.appointment' client class="btn btn-warning"}}<i class="fa fa-calendar"></i> Appointment{{/link-to}}
+          {{/unless}}
+          {{#if showSelect}}
+            {{#if (eq selected client)}}
+              <a class="btn btn-success" href="#" {{action "select" client}}><i class="fa fa-check"></i> Selected</a>
+            {{else}}
+              <a class="btn btn-danger" href="#" {{action "select" client}}><i class="fa fa-danger"></i> Select</a>
+            {{/if}}
+          {{/if}}
+        </div>
+      </section>
+    </li>
+  {{/each}}
+</ul>

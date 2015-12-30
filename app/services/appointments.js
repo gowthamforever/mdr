@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import Appointment from 'mdr/models/appointment';
+import Api from 'mdr/mixins/api';
 
 const {
   Service,
@@ -9,21 +10,44 @@ const {
 
 const { service } = inject;
 
-export default Service.extend({
+export default Service.extend(Api, {
   clients: service(),
   doctors: service(),
+  appointments: null,
+  cache: false,
 
-  appointments(response) {
+  callAppointments() {
+    const self = this;
+    return new Promise((resolve) => {
+      if (self.get('cache')) {
+        resolve(self.get('appointments'));
+      } else {
+        self.ajax({
+          id: 'appointments'
+        }).then((response) => {
+          self.setProperties({
+            appointments: self.createAppointments(response),
+            cache: true
+          });
+          resolve(self.get('appointments'));
+        }).catch(() => {
+          resolve();
+        });
+      }
+    });
+  },
+
+  createAppointments(response) {
     const result = Ember.A();
 
     if (!isEmpty(response)) {
-      result.addObjects(_.map(response, (item) => this.appointment(item)));
+      result.addObjects(_.map(response, (item) => this.createAppointment(item)));
     }
 
     return result;
   },
 
-  appointment(response) {
+  createAppointment(response) {
     const data = [
       'alt_info',
       'customer_id',
@@ -40,11 +64,11 @@ export default Service.extend({
     let result = Appointment.create(_.pick(response, data));
 
     if (response.customer) {
-      result.set('customer', this.get('clients').client(response.customer));
+      result.set('customer', this.get('clients').createClient(response.customer));
     }
 
     if (response.doctor) {
-      result.set('doctor', this.get('doctors').doctor(response.doctor));
+      result.set('doctor', this.get('doctors').createDoctor(response.doctor));
     }
 
     return result;

@@ -1,37 +1,43 @@
 import Ember from 'ember';
-import Constants from 'mdr/utility/constants';
+import BreadCrumb from 'mdr/mixins/bread-crumbs';
 
-const { computed } = Ember;
+const {
+  computed
+} = Ember;
 
-const { equal } = computed;
-
-export default Ember.Object.extend({
-  alt_info: null,
-  customer: null,
-  customer_id: null,
-  doctor: null,
-  doctor_id: null,
-  id: null,
-  insurance_plan: null,
-  reason: null,
-  service_charge: null,
-  status: null,
-  ts_added: null,
-  ts_modified: null,
-  ts_request: null,
-  display_status: computed('status', function() {
-    return Constants.REQUEST_STATUSES.findBy('id', this.get('status')).name;
-  }),
-  accepted: equal('status', Constants.REQUEST_STATUS.ACCEPTED),
-  rejected: equal('status', Constants.REQUEST_STATUS.REJECTED),
-  pending: equal('status', Constants.REQUEST_STATUS.PENDING),
-
+export default Ember.Object.extend(BreadCrumb, {
+  selectedClient: null,
+  selectedDoctor: null,
+  selectedAssessor: null,
   bread_crumbs: null,
-  current_bread_crumb: computed('bread_crumbs.[]', 'bread_crumbs.@each.current', function() {
-    return this.get('bread_crumbs').findBy('current', true);
+  max_date: null,
+  min_date: new Date(),
+  start_date: null,
+  start_time: null,
+  end_date: null,
+  end_time: null,
+  reason: null,
+  other_information: null,
+  start_date_time: computed('start_date', 'start_time', function() {
+    const start_date  = this.get('start_date');
+    const start_time  = this.get('start_time');
+    let start_date_time;
+    if (start_date && start_time) {
+      start_date_time = `${start_date} ${start_time}`;
+      if (moment(start_date_time, 'MMM DD YYYY hh:ss A', true).isValid()) {
+        return start_date_time;
+      }
+    }
   }),
-  last_bread_crumb: computed('bread_crumbs.[]', 'current_bread_crumb', function() {
-    return this.get('current_bread_crumb.id') === this.get('bread_crumbs.length');
-  }),
-  first_bread_crumb: equal('current_bread_crumb.id', 1)
+  end_date_time: computed('end_date', 'end_time', function() {
+    const end_date  = this.get('end_date');
+    const end_time  = this.get('end_time');
+    let end_date_time;
+    if (end_date && end_time) {
+      end_date_time = `${end_date} ${end_time}`;
+      if (moment(end_date_time, 'MMM DD YYYY hh:ss A', true).isValid()) {
+        return end_date_time;
+      }
+    }
+  })
 });

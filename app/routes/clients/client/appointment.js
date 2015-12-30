@@ -1,121 +1,71 @@
 import Ember from 'ember';
+import Appointment from 'mdr/models/appointment';
 import BreadCrumb from 'mdr/models/bread-crumb';
+import Clients from 'mdr/models/clients';
+import Client from 'mdr/models/client';
+import Doctors from 'mdr/models/doctors';
+import Api from 'mdr/mixins/api';
 
 const {
-  Route
+  Route,
+  RSVP,
+  inject
 } = Ember;
 
-export default Route.extend({
+const {
+  Promise
+} = RSVP;
+
+const {
+  service
+} = inject;
+
+export default Route.extend(Api, {
+  doctors: service(),
+
   afterModel(model) {
+    const self        = this;
+    const appointment = Appointment.create();
+    const client      = Client.create();
+    const clients     = Clients.create();
+    const doctors     = Doctors.create();
     let bread_crumbs;
+
+    client.setProperties(_.pick(model, [
+      'customer_id',
+      'first_name',
+      'last_name'
+    ]));
+
+    clients.set('clients', Ember.A([client]));
+    doctors.set('doctors', self.get('doctors.doctors'));
 
     bread_crumbs = Ember.A([
       BreadCrumb.create({
         id: 1,
         name: 'Select Patient',
         disabled: false,
-        current: true
+        current: true,
+        model: clients
       }),
       BreadCrumb.create({
         id: 2,
-        name: 'Select Doctor'
+        name: 'Select Doctor',
+        model: doctors
       }),
       BreadCrumb.create({
         id: 3,
-        name: 'Reason for Appointment/Appointment Time'
+        name: 'Reason for Appointment/Appointment Time',
+        model: appointment
       }),
       BreadCrumb.create({
         id: 4,
-        name: 'Upload Report'
+        name: 'Upload Report',
+        model: appointment
       })
     ]);
 
-    model.set('bread_crumbs', bread_crumbs);
-  },
-
-  nextBreadCrump(current) {
-    const model         = this.get('controller.model');
-    const bread_crumbs  = model.get('bread_crumbs');
-    let next            = current;
-
-    if (!model.get('last_bread_crumb')) {
-      next = bread_crumbs.findBy('id', current.get('id') + 1);
-    }
-
-    current.setProperties({
-      current: false,
-      selected: true,
-      disabled: false
-    });
-
-    next.setProperties({
-      disabled: false,
-      current: true
-    });
-  },
-
-  previousBreadCrump(current) {
-    const model         = this.get('controller.model');
-    const bread_crumbs  = model.get('bread_crumbs');
-    let previous        = current;
-
-    if (!model.get('first_bread_crumb')) {
-      previous = bread_crumbs.findBy('id', current.get('id') - 1);
-    }
-
-    current.set('current', false);
-    previous.set('current', true);
-  },
-
-  selectPatient(current) {
-    this.nextBreadCrump(current);
-  },
-
-  selectDoctor() {
-
-  },
-
-  selectReasonTime() {
-
-  },
-
-  selectUpload() {
-
-  },
-
-  actions: {
-    onCrumb(bread_crumb) {
-      const model   = this.get('controller.model');
-      const current = model.get('current_bread_crumb');
-
-      if (bread_crumb.get('disabled') ||
-        bread_crumb.get('id') === current.get('id')) {
-        return;
-      } else {
-        current.set('current', false);
-        bread_crumb.set('current', true);
-      }
-    },
-
-    next() {
-      const model    = this.get('controller.model');
-      const current  = model.get('current_bread_crumb');
-
-      switch(current.get('id')) {
-        case 1:
-          this.selectPatient(current);
-          break;
-        case 2:
-          this.selectDoctor(current);
-          break;
-      }
-    },
-
-    previous() {
-      const model    = this.get('controller.model');
-      const current  = model.get('current_bread_crumb');
-
-      this.previousBreadCrump(current);
-    }
+    appointment.set('bread_crumbs', bread_crumbs);
+    model.set('appointment', appointment);
   }
 });

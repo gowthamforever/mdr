@@ -1,4 +1,9 @@
 section.appointment-block {
+  .panel-heading {
+    &.clickable {
+      cursor: pointer;
+    }
+  }
   li.list-item {
     padding: 10px;
 

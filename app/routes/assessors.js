@@ -1,6 +1,5 @@
 import Ember from 'ember';
-import Assessors from 'mdr/models/assessors';
-import Api from 'mdr/mixins/api';
+import Assessors from 'mdr/models/clients';
 
 const {
   Route,
@@ -16,20 +15,16 @@ const {
   service
 } = inject;
 
-export default Route.extend(Api, {
+export default Route.extend({
   assessors: service(),
 
   model() {
     const self = this;
     return new Promise((resolve) => {
-      self.ajax({
-        id: 'assessors'
-      }).then((response) => {
+      self.get('assessors').callAssessors().then((assessors) => {
         resolve(Assessors.create({
-          assessors: self.get('assessors').assessors(response.assessors)
+          assessors
         }));
-      }).catch(() => {
-        resolve(Assessors.create());
       });
     });
   }

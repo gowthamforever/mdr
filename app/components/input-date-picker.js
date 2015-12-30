@@ -15,9 +15,10 @@ export default TextField.extend({
     const self = this;
     const max  = self.get('max');
     const min  = self.get('min');
-    
+
     let props  = {
       format: self.get('format'),
+      clear: '',
       selectMonths: true,
       selectYears: true
     };

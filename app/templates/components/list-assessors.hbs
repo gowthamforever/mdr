@@ -1,0 +1,60 @@
+{{#unless (or hideSearch selected)}}
+  <section class="search-header">
+    <form class="clearfix" id="assessors-search-form" name="search-form" role="form" novalidate {{action "filter" on="submit"}}>
+      <div class="form-group col-md-2 col-sm-2">
+        <label class="control-label" for="assessors-first-name">First Name</label>
+        {{input type="text" class="form-control" id="assessors-first-name" name="first-name" placeholder="Click to change" value=model.firstName}}
+      </div>
+      <div class="form-group col-md-2 col-sm-2">
+        <label class="control-label" for="assessors-last-name">Last Name</label>
+        {{input type="text" class="form-control" id="assessors-last-name" name="last-name" placeholder="Click to change" value=model.lastName}}
+      </div>
+      <div class="form-group col-md-2 col-sm-12">
+        <label class="control-label hide-visible" for="assessors-search-btn">search</label>
+        <button class="btn btn-primary btn-block" id="assessors-search-btn" type="submit">Search</button>
+      </div>
+    </form>
+  </section>
+
+  {{#if filtered}}
+    <div class="alert alert-info">
+      <strong>Assessors Found!</strong> Listing {{filtered.length}} patients.
+    </div>
+  {{else}}
+    <div class="alert alert-danger" style="display: block;">
+      <strong>No Assessors available!</strong> Try changing search criteria.
+    </div>
+  {{/if}}
+{{/unless}}
+
+<ul class="list-unstyled clearfix">
+  {{#each filtered as |assessor|}}
+    <li class="assessor-list-item col-md-6">
+      <section class="assessor-wrapper clearfix">
+        <img class="pull-left img-responsive" src={{if assessor.male "./assets/img/default_avatar_assessors_male_120x.png" "./assets/img/default_avatar_assessors_female_120x.png"}}>
+        <div>
+          <h4 class="assessor-name">
+            {{#link-to 'assessors.assessor.profile' assessor}}
+              <strong>{{assessor.first_name}} {{assessor.last_name}}</strong>
+            {{/link-to}}
+          </h4>
+          {{#unless hideBtns}}
+            {{#if assessor.isActive}}
+              <a class="btn btn-success" href="#" {{action "toggleStats" assessor true}}><i class="fa fa-check"></i> Active</a>
+            {{else}}
+              <a class="btn btn-danger" href="#" {{action "toggleStats" assessor false}}><i class="fa fa-warning"></i> Inactive</a>
+            {{/if}}
+            {{#link-to 'assessors.assessor.appointment' assessor class="btn btn-warning"}}<i class="fa fa-calendar"></i> Appointment{{/link-to}}
+          {{/unless}}
+          {{#if showSelect}}
+            {{#if (eq selected assessor)}}
+              <a class="btn btn-success" href="#" {{action "select" assessor}}><i class="fa fa-check"></i> Selected</a>
+            {{else}}
+              <a class="btn btn-danger" href="#" {{action "select" assessor}}><i class="fa fa-danger"></i> Select</a>
+            {{/if}}
+          {{/if}}
+        </div>
+      </section>
+    </li>
+  {{/each}}
+</ul>

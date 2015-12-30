@@ -1,39 +1,44 @@
 <section class="appointment-block">
-  <div class="col-md-12">
-    <div class="row  bread-crumb">
-      {{#each model.bread_crumbs as |bread_crumb|}}
-        <a href="#" class="{{if bread_crumb.selected (unless bread_crumb.current 'selected')}} {{if bread_crumb.disabled 'disabled'}}" role="button" {{action "onCrumb" bread_crumb}}>
-          <span>{{bread_crumb.id}}</span>
-          <span class="visible-lg-inline">{{bread_crumb.name}}</span>
-        </a>
-      {{/each}}
-    </div>
-    <div class="row">
-      <button class="btn btn-primary" {{action "previous"}} disabled={{or model.first_bread_crumb model.last_bread_crumb}}>&lt;&lt; Previous</button>
-      <button class="btn btn-primary" {{action "next"}} type="submit">
-        {{if model.last_bread_crumb "Submit" "Next >>"}}
-      </button>
-    </div>
-    <div class="row">
-      <h2>{{model.current_bread_crumb.name}}</h2>
-    </div>
-  </div>
+  <div class="panel-group">
+    {{#each model.appointment.bread_crumbs as |bread_crumb|}}
+      <div class="panel {{if bread_crumb.current 'panel-primary' (if bread_crumb.selected 'panel-success' (if bread_crumb.disabled 'panel-default' 'panel-primary'))}}">
+        <div class="panel-heading clickable" {{action "onCrumb" bread_crumb}}>
+          {{bread_crumb.id}} {{bread_crumb.name}}
+          {{#if (and bread_crumb.selected (not bread_crumb.current))}}
+            <span class="pull-right">
+              <i class="fa fa-chevron-down"></i>
+            </span>
+          {{/if}}
+        </div>
+        {{#liquid-if bread_crumb.current use="crossFade"}}
+          <div class="panel-body">
+            <section class="col-md-12">
+              {{#if (eq bread_crumb.id 1)}}
+                {{list-clients class="clients-list-block" model=bread_crumb.model hideBtns=true hideSearch=true}}
+                <div class="row">
+                  <div class="form-group col-md-2">
+                    <button class="btn btn-primary btn-block" {{action "next"}}>Next &gt;&gt;</button>
+                  </div>
+                </div>
+              {{else if (eq bread_crumb.id 2)}}
+                {{list-doctors class="doctors-list-block" model=bread_crumb.model hideBtns=true showSelect=true selected=model.appointment.selectedDoctor}}
 
-  {{#if (eq model.current_bread_crumb.id 1)}}
-    <ul class="list-unstyled clearfix">
-      <li class="list-item col-md-6">
-        <section class="list-wrapper clearfix">
-          <img class="pull-left img-responsive" src={{if model.client.male "./assets/img/default_avatar_customer_male_120x.png" "./assets/img/default_avatar_customer_female_120x.png"}}>
-          <div class="right-content">
-            <h4>
-              <a href="#"><strong>{{model.client.first_name}} {{model.client.last_name}}</strong></a>
-            </h4>
-            <div>{{model.client.phone1}}</div>
-            <div>{{model.client.address1}}</div>
-            <div>{{model.client.city1}}, {{model.client.state1}} ({{model.client.zip1}})</div>
+                {{#if model.appointment.selectedDoctor}}
+                  <div class="row">
+                    <div class="form-group col-md-2">
+                      <button class="btn btn-primary btn-block" {{action "next"}}>Next &gt;&gt;</button>
+                    </div>
+                  </div>
+                {{/if}}
+              {{else if (eq bread_crumb.id 3)}}
+                {{appointment-time nextAction=(action "next") model=model.appointment}}
+              {{else if (eq bread_crumb.id 4)}}
+                {{appointment-submit model=model.appointment submit=(action "submit")}}
+              {{/if}}
+            </section>
           </div>
-        </section>
-      </li>
-    </ul>
-  {{/if}}
+        {{/liquid-if}}
+      </div>
+    {{/each}}
+  </div>
 </section>

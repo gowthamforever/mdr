@@ -1,23 +1,48 @@
 import Ember from 'ember';
 import Client from 'mdr/models/client';
+import Api from 'mdr/mixins/api';
 
 const {
   Service,
   isEmpty
 } = Ember;
 
-export default Service.extend({
-  clients(response) {
+export default Service.extend(Api, {
+  clients: null,
+  cache: false,
+
+  callClients() {
+    const self = this;
+    return new Promise((resolve) => {
+      if (self.get('cache')) {
+        resolve(self.get('clients'));
+      } else {
+        self.ajax({
+          id: 'clients'
+        }).then((response) => {
+          self.setProperties({
+            clients: self.createClients(response.clients),
+            cache: true
+          });
+          resolve(self.get('clients'));
+        }).catch(() => {
+          resolve();
+        });
+      }
+    });
+  },
+
+  createClients(response) {
     const result = Ember.A();
 
     if (!isEmpty(response)) {
-      result.addObjects(_.map(response, (item) => this.client(item)));
+      result.addObjects(_.map(response, (item) => this.createClient(item)));
     }
 
     return result;
   },
 
-  client(response) {
+  createClient(response) {
     const data = [
       'agency_id',
       'customer_id',

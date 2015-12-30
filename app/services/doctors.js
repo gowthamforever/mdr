@@ -1,23 +1,48 @@
 import Ember from 'ember';
 import Doctor from 'mdr/models/doctor';
+import Api from 'mdr/mixins/api';
 
 const {
   Service,
   isEmpty
 } = Ember;
 
-export default Service.extend({
-  doctors(response) {
+export default Service.extend(Api, {
+  doctors: null,
+  cache: false,
+
+  callDoctors() {
+    const self = this;
+    return new Promise((resolve) => {
+      if (self.get('cache')) {
+        resolve(self.get('doctors'));
+      } else {
+        self.ajax({
+          id: 'doctors'
+        }).then((response) => {
+          self.setProperties({
+            doctors: self.createDoctors(response.doctors),
+            cache: true
+          });
+          resolve(self.get('doctors'));
+        }).catch(() => {
+          resolve();
+        });
+      }
+    });
+  },
+
+  createDoctors(response) {
     const result = Ember.A();
 
     if (!isEmpty(response)) {
-      result.addObjects(_.map(response, (item) => this.doctor(item)));
+      result.addObjects(_.map(response, (item) => this.createDoctor(item)));
     }
 
     return result;
   },
 
-  doctor(response) {
+  createDoctor(response) {
     const data = [
       'active',
       'customer_rating',

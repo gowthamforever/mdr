@@ -30,12 +30,14 @@ module.exports = function(defaults) {
   app.import('bower_components/bootstrap/dist/js/bootstrap.js');
   app.import('bower_components/pickadate/lib/picker.js');
   app.import('bower_components/pickadate/lib/picker.date.js');
+  app.import('bower_components/pickadate/lib/picker.time.js');
 
   app.import('bower_components/bootstrap/dist/css/bootstrap.css');
   //app.import('bower_components/bootstrap/dist/css/bootstrap-theme.css');
   app.import('bower_components/font-awesome/css/font-awesome.css');
   app.import('bower_components/pickadate/lib/themes/classic.css');
   app.import('bower_components/pickadate/lib/themes/classic.date.css');
+  app.import('bower_components/pickadate/lib/themes/classic.time.css');
 
   var fontTree = pickFiles('bower_components/font-awesome/fonts', {
     srcDir: '/',
