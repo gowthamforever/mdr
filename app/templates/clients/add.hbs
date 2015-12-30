@@ -1,4 +1,6 @@
 <section class="clients-add-block">
+	{{mdr-page-error validationResult=model.validationResult message="Please fix the errors to continue"}}
+
 	<form role="form" novalidate {{action "add" on="submit"}} autocomplete="off">
 		<div class="panel-group">
 		  <div class="panel panel-primary">
@@ -21,6 +23,11 @@
 						</div>
 
 						<div class="row">
+							<div class="form-group col-md-6  {{if model.validationResult.dob.hasError 'has-error'}}">
+								<label class="control-label" for="dob">Date of birth</label>
+								{{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=model.dob}}
+								{{mdr-field-error client=model.validationResult.dob}}
+							</div>
 							<div class="form-group col-md-6">
 								<label class="control-label" for="gender">Gender</label>
 								<div>
@@ -35,11 +42,6 @@
 										</label>
 									</div>
 								</div>
-							</div>
-							<div class="form-group col-md-6  {{if model.validationResult.dob.hasError 'has-error'}}">
-								<label class="control-label" for="dob">Date of birth</label>
-								{{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=model.dob}}
-								{{mdr-field-error client=model.validationResult.dob}}
 							</div>
 						</div>
 
@@ -83,6 +85,30 @@
 								{{mdr-field-error client=model.validationResult.pcd_phone}}
 							</div>
 						</div>
+
+
+						<div class="row">
+							<div class="form-group col-md-6 {{if model.validationResult.email_id.hasError 'has-error'}}">
+								<label class="control-label" for="email-id">Email address</label>
+								{{input type="text" class="form-control" name="email-id" value=model.email_id maxlength=50 autocomplete="off"}}
+								{{mdr-field-error client=model.validationResult.email_id}}
+							</div>
+
+							<div class="form-group col-md-6  {{if model.validationResult.selected_insurance_plan.hasError 'has-error'}}">
+								<label class="control-label" for="insurance-plan">Select Insurance plan</label>
+								{{input-select
+									class="form-control"
+									name="insurance-plan"
+									options=model.insurance_plans
+									labelPath="name"
+									valuePath="id"
+									selected=model.selected_insurance_plan
+									prompt="Select"
+								}}
+								{{mdr-field-error client=model.validationResult.selected_insurance_plan}}
+								<p class="help-block prevent-error">Your current insured plan, important to search doctors</p>
+							</div>
+						</div>
 					</section>
 				</div>
 			</div>
@@ -103,14 +129,6 @@
 								<label class="control-label" for="phone2">Alternate phone number <small>(optional)</small></label>
 								{{input type="text" class="form-control" name="phone2" value=model.phone2 maxlength=10 autocomplete="off"}}
 								{{mdr-field-error client=model.validationResult.phone2}}
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="form-group col-md-6 {{if model.validationResult.email_id.hasError 'has-error'}}">
-								<label class="control-label" for="email-id">Email address</label>
-								{{input type="text" class="form-control" name="email-id" value=model.email_id maxlength=50 autocomplete="off"}}
-								{{mdr-field-error client=model.validationResult.email_id}}
 							</div>
 						</div>
 
@@ -253,23 +271,6 @@
 							</div>
 						</div>
 
-						<div class="row">
-							<div class="form-group col-md-6  {{if model.validationResult.selected_insurance_plan.hasError 'has-error'}}">
-								<label class="control-label" for="insurance-plan">Select Insurance plan</label>
-								{{input-select
-									class="form-control"
-									name="insurance-plan"
-									options=model.insurance_plans
-									labelPath="name"
-									valuePath="id"
-									selected=model.selected_insurance_plan
-									prompt="Select"
-								}}
-								{{mdr-field-error client=model.validationResult.selected_insurance_plan}}
-								<p class="help-block prevent-error">Your current insured plan, important to search doctors</p>
-							</div>
-						</div>
-
 						{{#liquid-if model.is_family use="crossFade"}}
 							<div class="row">
 								<div class="form-group col-md-2">
@@ -391,7 +392,7 @@
 								<label class="control-label" for="full-name">Full Name</label>
 								{{input type="text" class="form-control" name="full-name" value=model.card_full_name maxlength=100 autocomplete="off"}}
 								{{mdr-field-error client=model.validationResult.card_full_name}}
-								<p class="help-block">Full name as mentioned on your card</p>
+								<p class="help-block prevent-error">Full name as mentioned on your card</p>
 							</div>
 						</div>
 

@@ -1,331 +1,357 @@
 <section class="doctors-add-block">
+	{{mdr-page-error validationResult=model.validationResult message="Please fix the errors to continue"}}
+
 	<form role="form" novalidate {{action "add" on="submit"}} autocomplete="off">
-		<section class="col-md-12 add-doctor-container">
-			{{mdr-page-error validationResult=model.validationResult message="Please fix the errors to continue"}}
-			<section class="col-md-12">
-				<div class="row">
-					<h3 class="container-title">Account Information</h3>
+		<div class="panel-group">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					Personal Informtion
 				</div>
-
-        <div class="row">
-          <div class="form-group col-md-6 {{if model.validationResult.medicare_number.hasError 'has-error'}}">
-            <label class="control-label" for="medicare_number">Medicare Number</label>
-            {{input type="text" class="form-control" name="medicare_number" value=model.medicare_number maxlength=11 autocomplete="off"}}
-            {{mdr-field-error client=model.validationResult.medicare_number}}
-          </div>
-          <div class="form-group col-md-6 {{if model.validationResult.medicaid_number.hasError 'has-error'}}">
-            <label class="control-label" for="medicaid_number">Medicaid Number</label>
-            {{input type="text" class="form-control" name="medicaid_number" value=model.medicaid_number maxlength=13 autocomplete="off"}}
-            {{mdr-field-error client=model.validationResult.medicaid_number}}
-          </div>
-        </div>
-
-				<div class="row">
-					<div class="form-group col-md-6 {{if model.validationResult.last_name.hasError 'has-error'}}">
-						<label class="control-label" for="first-name">Last name</label>
-						{{input type="text" class="form-control" name="last-name" value=model.last_name maxlength=50 autocomplete="off"}}
-						{{mdr-field-error client=model.validationResult.last_name}}
-					</div>
-					<div class="form-group col-md-6 {{if model.validationResult.first_name.hasError 'has-error'}}">
-						<label class="control-label" for="first-name">First name</label>
-						{{input type="text" class="form-control" name="first-name" value=model.first_name maxlength=50 autocomplete="off"}}
-						{{mdr-field-error client=model.validationResult.first_name}}
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="form-group col-md-6 {{if model.validationResult.email_id.hasError 'has-error'}}">
-						<label class="control-label" for="email-id">Email address</label>
-						{{input type="text" class="form-control" name="email-id" value=model.email_id maxlength=50 autocomplete="off"}}
-						{{mdr-field-error client=model.validationResult.email_id}}
-					</div>
-					<div class="form-group col-md-6">
-						<label class="control-label" for="gender">Gender</label>
-						<div>
-							<div class="radio-inline">
-								<label>
-									{{input-radio name="gender" group=model.gender value="Male"}} Male
-								</label>
+				<div class="panel-body">
+					<section class="col-md-12">
+						<div class="row">
+							<div class="form-group col-md-6 {{if model.validationResult.last_name.hasError 'has-error'}}">
+								<label class="control-label" for="first-name">Last name</label>
+								{{input type="text" class="form-control" name="last-name" value=model.last_name maxlength=50 autocomplete="off"}}
+								{{mdr-field-error client=model.validationResult.last_name}}
 							</div>
-							<div class="radio-inline">
+							<div class="form-group col-md-6 {{if model.validationResult.first_name.hasError 'has-error'}}">
+								<label class="control-label" for="first-name">First name</label>
+								{{input type="text" class="form-control" name="first-name" value=model.first_name maxlength=50 autocomplete="off"}}
+								{{mdr-field-error client=model.validationResult.first_name}}
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group col-md-6  {{if model.validationResult.dob.hasError 'has-error'}}">
+								<label class="control-label" for="dob">Date of birth</label>
+								{{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=model.dob}}
+								{{mdr-field-error client=model.validationResult.dob}}
+							</div>
+
+							<div class="form-group col-md-6">
+								<label class="control-label" for="gender">Gender</label>
+								<div>
+									<div class="radio-inline">
+										<label>
+											{{input-radio name="gender" group=model.gender value="Male"}} Male
+										</label>
+									</div>
+									<div class="radio-inline">
+										<label>
+											{{input-radio name="gender" group=model.gender value="Female"}} Female
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group col-md-6 {{if model.validationResult.email_id.hasError 'has-error'}}">
+								<label class="control-label" for="email-id">Email address</label>
+								{{input type="text" class="form-control" name="email-id" value=model.email_id maxlength=50 autocomplete="off"}}
+								{{mdr-field-error client=model.validationResult.email_id}}
+							</div>
+
+							<div class="form-group col-md-6  {{if model.validationResult.selected_timezone.hasError 'has-error'}}">
+								<label class="control-label" for="timezone">Timezone</label>
+								{{input-select
+									class="form-control"
+									name="timezone"
+									options=model.timezones
+									labelPath="name"
+									valuePath="id"
+									selected=model.selected_timezone
+									prompt="Select"
+								}}
+								{{mdr-field-error client=model.validationResult.selected_timezone}}
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group col-md-6 {{if model.validationResult.medicare_number.hasError 'has-error'}}">
+								<label class="control-label" for="medicare_number">Medicare Number</label>
+								{{input type="text" class="form-control" name="medicare_number" value=model.medicare_number maxlength=11 autocomplete="off"}}
+								{{mdr-field-error client=model.validationResult.medicare_number}}
+							</div>
+							<div class="form-group col-md-6 {{if model.validationResult.medicaid_number.hasError 'has-error'}}">
+								<label class="control-label" for="medicaid_number">Medicaid Number</label>
+								{{input type="text" class="form-control" name="medicaid_number" value=model.medicaid_number maxlength=13 autocomplete="off"}}
+								{{mdr-field-error client=model.validationResult.medicaid_number}}
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group col-md-6  {{if model.validationResult.selected_profession.hasError 'has-error'}}">
+								<label class="control-label" for="profession">Profession</label>
+								{{input-select
+									class="form-control"
+									name="profession"
+									options=model.professions
+									labelPath="name"
+									valuePath="id"
+									selected=model.selected_profession
+									prompt="Select"
+								}}
+								{{mdr-field-error client=model.validationResult.selected_profession}}
+							</div>
+
+							<div class="form-group col-md-6 {{if model.validationResult.npi.hasError 'has-error'}}">
+								<label class="control-label" for="npi">NPI number</label>
+								{{input type="text" class="form-control" name="npi" value=model.npi}}
+								{{mdr-field-error client=model.validationResult.npi}}
+								<p class="help-block">Currently active NPI number</p>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group col-md-6 {{if model.validationResult.ein.hasError 'has-error'}}">
+								<label class="control-label" for="ein-no">EIN number <small>(optional)</small></label>
+								{{input type="text" class="form-control" name="ein-no" value=model.ein}}
+							</div>
+							<div class="form-group col-md-6 {{if model.validationResult.dea.hasError 'has-error'}}">
+								<label class="control-label" for="dea-no">DEA number <small>(optional)</small></label>
+								{{input type="text" class="form-control" name="dea-no" value=model.dea}}
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group col-md-6  {{if model.validationResult.selected_speciality.hasError 'has-error'}}">
+								<label class="control-label" for="speciality">Primary speciality</label>
+								{{input-select
+									class="form-control"
+									name="speciality"
+									options=model.specialities
+									labelPath="name"
+									valuePath="id"
+									selected=model.selected_speciality
+									prompt="Select"
+								}}
+								{{mdr-field-error client=model.validationResult.selected_speciality}}
+							</div>
+
+							<div class="form-group col-md-6">
+								<label class="control-label" for="surgeon">Surgeon</label>
+								<div>
+									<div class="radio-inline">
+										<label>
+											{{input-radio name="surgeon" group=model.surgeon value=1}} Yes
+										</label>
+									</div>
+									<div class="radio-inline">
+										<label>
+											{{input-radio name="surgeon" group=model.surgeon value=0}} No
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group col-md-6 {{if model.validationResult.selected_practice_type.hasError 'has-error'}}">
+								<label class="control-label" for="practice-type">Practice type</label>
+								{{input-select
+									class="form-control"
+									name="practice-type"
+									options=model.practice_types
+									labelPath="name"
+									valuePath="id"
+									selected=model.selected_practice_type
+									prompt="Select"
+								}}
+								{{mdr-field-error client=model.validationResult.selected_practice_type}}
+							</div>
+							<div class="form-group col-md-6 {{if model.validationResult.practice_years.hasError 'has-error'}}">
+								<label class="control-label" for="practice-years">Years in Practice <small>(optional)</small></label>
+								{{input type="text" class="form-control" name="practice-years" value=model.practice_years}}
+								{{mdr-field-error client=model.validationResult.practice_years}}
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group col-md-6 {{if model.validationResult.graduation_institution.hasError 'has-error'}}">
+								<label class="control-label" for="graduation_institution">Graduation Institution</label>
+								{{input type="text" class="form-control" name="graduation_institution" value=model.graduation_institution}}
+							</div>
+							<div class="form-group col-md-6 {{if model.validationResult.graduation_year.hasError 'has-error'}}">
+								<label class="control-label" for="graduation_year">Graduation year</label>
+								{{input-select
+									class="form-control"
+									name="graduation_year"
+									options=model.graduation_years
+									selected=model.graduation_year
+									prompt="Select"
+								}}
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group col-md-6 {{if model.validationResult.password.hasError 'has-error'}}">
+								<label class="control-label" for="password">Password</label>
+								{{input type="text" class="form-control" name="password" value=model.password maxlength=50 autocomplete="off"}}
+								{{mdr-field-error client=model.validationResult.password}}
+							</div>
+							<div class="form-group col-md-6 {{if model.validationResult.verify_password.hasError 'has-error'}}">
+								<label class="control-label" for="verify_password">Verify Password</label>
+								{{input type="text" class="form-control" name="verify_password" value=model.verify_password maxlength=50 autocomplete="off"}}
+								{{mdr-field-error client=model.validationResult.verify_password}}
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					Contact Informtion
+				</div>
+				<div class="panel-body">
+					<section class="col-md-12">
+						<div class="row">
+							<div class="form-group col-md-8  {{if model.validationResult.clinic_name.hasError 'has-error'}}">
+								<label class="control-label" for="clinic_name">Clinic Name</label>
+								{{input type="text" class="form-control" name="clinic_name" value=model.clinic_name maxlength=100 autocomplete="off"}}
+								{{mdr-field-error client=model.validationResult.clinic_name}}
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group col-md-6  {{if model.validationResult.phone1.hasError 'has-error'}}">
+								<label class="control-label" for="phone1">Phone number</label>
+								{{input type="text" class="form-control" name="phone1" value=model.phone1 maxlength=10 autocomplete="off"}}
+								{{mdr-field-error client=model.validationResult.phone1}}
+							</div>
+							<div class="form-group col-md-6  {{if model.validationResult.phone2.hasError 'has-error'}}">
+								<label class="control-label" for="phone2">Alternate phone number <small>(optional)</small></label>
+								{{input type="text" class="form-control" name="phone2" value=model.phone2 maxlength=10 autocomplete="off"}}
+								{{mdr-field-error client=model.validationResult.phone2}}
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group col-md-8  {{if model.validationResult.address1.hasError 'has-error'}}">
+								<label class="control-label" for="address1">Primary address</label>
+								{{input type="text" class="form-control" name="address1" value=model.address1 maxlength=250 autocomplete="off"}}
+								{{mdr-field-error client=model.validationResult.address1}}
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group col-md-6  {{if model.validationResult.selected_state_1.hasError 'has-error'}}">
+								<label class="control-label" for="state1">State</label>
+								{{input-select
+									class="form-control"
+									name="state1"
+									options=model.states
+									labelPath="name"
+									valuePath="id"
+									selected=model.selected_state_1
+									prompt="Select"
+								}}
+								{{mdr-field-error client=model.validationResult.selected_state_1}}
+							</div>
+							<div class="form-group col-md-6  {{if model.validationResult.selected_city_1.hasError 'has-error'}}">
+								<label class="control-label" for="city1">City</label>
+								{{input-select
+									class="form-control"
+									name="city1"
+									options=model.cities1
+									labelPath="name"
+									valuePath="id"
+									selected=model.selected_city_1
+									prompt="Select"
+								}}
+								{{mdr-field-error client=model.validationResult.selected_city_1}}
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group col-md-6  {{if model.validationResult.zip1.hasError 'has-error'}}">
+								<label class="control-label" for="zip1">Zip code</label>
+								{{input type="text" class="form-control" name="zip1" value=model.zip1 autocomplete="off"}}
+								{{mdr-field-error client=model.validationResult.zip1}}
+							</div>
+							<div class="form-group col-md-6">
+								<label class="control-label" for="country1">Country</label>
+								{{input type="text" class="form-control" name="country1" value=model.country1 disabled=true}}
+								<p class="help-block">Currently available for US regions only</p>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6 checkbox">
 								<label>
-									{{input-radio name="gender" group=model.gender value="Female"}} Female
+									{{input type="checkbox" name="secondary-address" checked=model.is_secondary_address}} Add Secondary Address
+									<span class="hide">{{model.on_is_secondary_address}}</span>
 								</label>
 							</div>
 						</div>
-					</div>
-				</div>
 
-				<div class="row">
-					<div class="form-group col-md-6  {{if model.validationResult.dob.hasError 'has-error'}}">
-						<label class="control-label" for="dob">Date of birth</label>
-						{{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=model.dob}}
-						{{mdr-field-error client=model.validationResult.dob}}
-					</div>
-					<div class="form-group col-md-6  {{if model.validationResult.selected_timezone.hasError 'has-error'}}">
-						<label class="control-label" for="timezone">Timezone</label>
-						{{input-select
-							class="form-control"
-							name="timezone"
-							options=model.timezones
-							labelPath="name"
-							valuePath="id"
-							selected=model.selected_timezone
-							prompt="Select"
-						}}
-						{{mdr-field-error client=model.validationResult.selected_timezone}}
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="form-group col-md-6  {{if model.validationResult.selected_profession.hasError 'has-error'}}">
-						<label class="control-label" for="profession">Profession</label>
-						{{input-select
-							class="form-control"
-							name="profession"
-							options=model.professions
-							labelPath="name"
-							valuePath="id"
-							selected=model.selected_profession
-							prompt="Select"
-						}}
-						{{mdr-field-error client=model.validationResult.selected_profession}}
-					</div>
-
-					<div class="form-group col-md-6 {{if model.validationResult.npi.hasError 'has-error'}}">
-						<label class="control-label" for="npi">NPI number</label>
-						{{input type="text" class="form-control" name="npi" value=model.npi}}
-						{{mdr-field-error client=model.validationResult.npi}}
-						<p class="help-block">Currently active NPI number</p>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="form-group col-md-6 {{if model.validationResult.ein.hasError 'has-error'}}">
-						<label class="control-label" for="ein-no">EIN number <small>(optional)</small></label>
-						{{input type="text" class="form-control" name="ein-no" value=model.ein}}
-					</div>
-					<div class="form-group col-md-6 {{if model.validationResult.dea.hasError 'has-error'}}">
-						<label class="control-label" for="dea-no">DEA number <small>(optional)</small></label>
-						{{input type="text" class="form-control" name="dea-no" value=model.dea}}
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="form-group col-md-6  {{if model.validationResult.selected_speciality.hasError 'has-error'}}">
-						<label class="control-label" for="speciality">Primary speciality</label>
-						{{input-select
-							class="form-control"
-							name="speciality"
-							options=model.specialities
-							labelPath="name"
-							valuePath="id"
-							selected=model.selected_speciality
-							prompt="Select"
-						}}
-						{{mdr-field-error client=model.validationResult.selected_speciality}}
-					</div>
-
-					<div class="form-group col-md-6">
-						<label class="control-label" for="surgeon">Surgeon</label>
-						<div>
-							<div class="radio-inline">
-								<label>
-									{{input-radio name="surgeon" group=model.surgeon value=1}} Yes
-								</label>
+						{{#liquid-if model.is_secondary_address use="crossFade"}}
+							<div class="row">
+								<div class="form-group col-md-8  {{if model.validationResult.address2.hasError 'has-error'}}">
+									<label class="control-label" for="address2">Secondary address</label>
+									{{input type="text" class="form-control" name="address2" value=model.address2 maxlength=250 autocomplete="off"}}
+									{{mdr-field-error client=model.validationResult.address2}}
+								</div>
 							</div>
-							<div class="radio-inline">
-								<label>
-									{{input-radio name="surgeon" group=model.surgeon value=0}} No
-								</label>
+							<div class="row">
+								<div class="form-group col-md-6  {{if model.validationResult.selected_state_2.hasError 'has-error'}}">
+									<label class="control-label" for="state2">State</label>
+									{{input-select
+										class="form-control"
+										name="state2"
+										options=model.states
+										labelPath="name"
+										valuePath="id"
+										selected=model.selected_state_2
+										prompt="Select"
+									}}
+									{{mdr-field-error client=model.validationResult.selected_state_2}}
+								</div>
+								<div class="form-group col-md-6  {{if model.validationResult.selected_city_2.hasError 'has-error'}}">
+									<label class="control-label" for="city2">City</label>
+									{{input-select
+										class="form-control"
+										name="city1"
+										options=model.cities2
+										labelPath="name"
+										valuePath="id"
+										selected=model.selected_city_2
+										prompt="Select"
+									}}
+									{{mdr-field-error client=model.validationResult.selected_city_2}}
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-6  {{if model.validationResult.zip2.hasError 'has-error'}}">
+									<label class="control-label" for="zip2">Zip code</label>
+									{{input type="text" class="form-control" name="zip2" value=model.zip2 maxlength=10 autocomplete="off"}}
+									{{mdr-field-error client=model.validationResult.zip2}}
+								</div>
+								<div class="form-group col-md-6">
+									<label class="control-label" for="country2">Country</label>
+									{{input type="text" class="form-control" name="country2" value=model.country2 disabled="disabled"}}
+									<p class="help-block">Currently available for US regions only</p>
+								</div>
+							</div>
+						{{/liquid-if}}
+					</section>
+				</div>
+			</div>
+			<div class="panel panel-success">
+				<div class="panel-heading">
+					By clicking Save, you agree to our <a href="http://mddevsh.mobilehealthstudio.com/legal/terms" target="_blank">Terms and Conditions</a> and that you have read our <a href="http://mddevsh.mobilehealthstudio.com/legal/datapolicy" target="_blank">Data Use Policy</a>
+				</div>
+				<div class="panel-body">
+					<section class="col-md-12">
+						<div class="row">
+							<div class="form-group col-md-2">
+								<button class="btn btn-primary btn-block" type="submit" autocomplete="off">Save</button>
 							</div>
 						</div>
-					</div>
+					</section>
 				</div>
-
-				<div class="row">
-					<div class="form-group col-md-6 {{if model.validationResult.selected_practice_type.hasError 'has-error'}}">
-						<label class="control-label" for="practice-type">Practice type</label>
-						{{input-select
-							class="form-control"
-							name="practice-type"
-							options=model.practice_types
-							labelPath="name"
-							valuePath="id"
-							selected=model.selected_practice_type
-							prompt="Select"
-						}}
-						{{mdr-field-error client=model.validationResult.selected_practice_type}}
-					</div>
-					<div class="form-group col-md-6 {{if model.validationResult.practice_years.hasError 'has-error'}}">
-						<label class="control-label" for="practice-years">Years in Practice <small>(optional)</small></label>
-						{{input type="text" class="form-control" name="practice-years" value=model.practice_years}}
-						{{mdr-field-error client=model.validationResult.practice_years}}
-					</div>
-				</div>
-
-        <div class="row">
-          <div class="form-group col-md-6 {{if model.validationResult.password.hasError 'has-error'}}">
-            <label class="control-label" for="password">Password</label>
-            {{input type="text" class="form-control" name="password" value=model.password maxlength=50 autocomplete="off"}}
-            {{mdr-field-error client=model.validationResult.password}}
-          </div>
-          <div class="form-group col-md-6 {{if model.validationResult.verify_password.hasError 'has-error'}}">
-            <label class="control-label" for="verify_password">Verify Password</label>
-            {{input type="text" class="form-control" name="verify_password" value=model.verify_password maxlength=50 autocomplete="off"}}
-            {{mdr-field-error client=model.validationResult.verify_password}}
-          </div>
-        </div>
-			</section>
-
-			<section class="col-md-12 clearfix">
-				<div class="row">
-					<h3 class="container-title">Contact Information</h3>
-				</div>
-
-        <div class="row">
-          <div class="form-group col-md-8  {{if model.validationResult.clinic_name.hasError 'has-error'}}">
-            <label class="control-label" for="clinic_name">Clinic Name</label>
-            {{input type="text" class="form-control" name="clinic_name" value=model.clinic_name maxlength=100 autocomplete="off"}}
-            {{mdr-field-error client=model.validationResult.clinic_name}}
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="form-group col-md-6  {{if model.validationResult.phone1.hasError 'has-error'}}">
-            <label class="control-label" for="phone1">Phone number</label>
-            {{input type="text" class="form-control" name="phone1" value=model.phone1 maxlength=10 autocomplete="off"}}
-            {{mdr-field-error client=model.validationResult.phone1}}
-          </div>
-          <div class="form-group col-md-6  {{if model.validationResult.phone2.hasError 'has-error'}}">
-            <label class="control-label" for="phone2">Alternate phone number <small>(optional)</small></label>
-            {{input type="text" class="form-control" name="phone2" value=model.phone2 maxlength=10 autocomplete="off"}}
-            {{mdr-field-error client=model.validationResult.phone2}}
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="form-group col-md-8  {{if model.validationResult.address1.hasError 'has-error'}}">
-            <label class="control-label" for="address1">Primary address</label>
-            {{input type="text" class="form-control" name="address1" value=model.address1 maxlength=250 autocomplete="off"}}
-            {{mdr-field-error client=model.validationResult.address1}}
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="form-group col-md-6  {{if model.validationResult.selected_state_1.hasError 'has-error'}}">
-            <label class="control-label" for="state1">State</label>
-            {{input-select
-              class="form-control"
-              name="state1"
-              options=model.states
-              labelPath="name"
-              valuePath="id"
-              selected=model.selected_state_1
-              prompt="Select"
-            }}
-            {{mdr-field-error client=model.validationResult.selected_state_1}}
-          </div>
-          <div class="form-group col-md-6  {{if model.validationResult.selected_city_1.hasError 'has-error'}}">
-            <label class="control-label" for="city1">City</label>
-            {{input-select
-              class="form-control"
-              name="city1"
-              options=model.cities1
-              labelPath="name"
-              valuePath="id"
-              selected=model.selected_city_1
-              prompt="Select"
-            }}
-            {{mdr-field-error client=model.validationResult.selected_city_1}}
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="form-group col-md-6  {{if model.validationResult.zip1.hasError 'has-error'}}">
-            <label class="control-label" for="zip1">Zip code</label>
-            {{input type="text" class="form-control" name="zip1" value=model.zip1 autocomplete="off"}}
-            {{mdr-field-error client=model.validationResult.zip1}}
-          </div>
-          <div class="form-group col-md-6">
-            <label class="control-label" for="country1">Country</label>
-            {{input type="text" class="form-control" name="country1" value=model.country1 disabled=true}}
-            <p class="help-block">Currently available for US regions only</p>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-6 checkbox">
-            <label>
-              {{input type="checkbox" name="secondary-address" checked=model.is_secondary_address}} Add Secondary Address
-              <span class="hide">{{model.on_is_secondary_address}}</span>
-            </label>
-          </div>
-        </div>
-
-        {{#liquid-if model.is_secondary_address use="crossFade"}}
-          <div class="row">
-            <div class="form-group col-md-8  {{if model.validationResult.address2.hasError 'has-error'}}">
-              <label class="control-label" for="address2">Secondary address</label>
-              {{input type="text" class="form-control" name="address2" value=model.address2 maxlength=250 autocomplete="off"}}
-              {{mdr-field-error client=model.validationResult.address2}}
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group col-md-6  {{if model.validationResult.selected_state_2.hasError 'has-error'}}">
-              <label class="control-label" for="state2">State</label>
-              {{input-select
-                class="form-control"
-                name="state2"
-                options=model.states
-                labelPath="name"
-                valuePath="id"
-                selected=model.selected_state_2
-                prompt="Select"
-              }}
-              {{mdr-field-error client=model.validationResult.selected_state_2}}
-            </div>
-            <div class="form-group col-md-6  {{if model.validationResult.selected_city_2.hasError 'has-error'}}">
-              <label class="control-label" for="city2">City</label>
-              {{input-select
-                class="form-control"
-                name="city1"
-                options=model.cities2
-                labelPath="name"
-                valuePath="id"
-                selected=model.selected_city_2
-                prompt="Select"
-              }}
-              {{mdr-field-error client=model.validationResult.selected_city_2}}
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group col-md-6  {{if model.validationResult.zip2.hasError 'has-error'}}">
-              <label class="control-label" for="zip2">Zip code</label>
-              {{input type="text" class="form-control" name="zip2" value=model.zip2 maxlength=10 autocomplete="off"}}
-              {{mdr-field-error client=model.validationResult.zip2}}
-            </div>
-            <div class="form-group col-md-6">
-              <label class="control-label" for="country2">Country</label>
-              {{input type="text" class="form-control" name="country2" value=model.country2 disabled="disabled"}}
-              <p class="help-block">Currently available for US regions only</p>
-            </div>
-          </div>
-        {{/liquid-if}}
-			</section>
-
-      <section class="col-md-12 clearfix terms-section">
-        <div class="row">
-  				<div class="form-group col-md-12">
-  					<p>By clicking Sign up, you agree to our <a href="http://mddevsh.mobilehealthstudio.com/legal/terms" target="_blank">Terms and Conditions</a> and that you have read our <a href="http://mddevsh.mobilehealthstudio.com/legal/datapolicy" target="_blank">Data Use Policy</a></p>
-  				</div>
-        </div>
-        <div class="row">
-          <div class="form-group col-md-2">
-            <button class="btn btn-primary btn-block" type="submit" autocomplete="off">Save</button>
-          </div>
-        </div>
-			</section>
-		</section>
+			</div>
+		</div>
 	</form>
 </section>

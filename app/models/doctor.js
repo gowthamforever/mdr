@@ -5,6 +5,11 @@ const { computed } = Ember;
 const { equal } = computed;
 
 export default Ember.Object.extend({
+  current_year: moment().year(),
+  graduation_years: computed('current_year', function() {
+    const current_year = this.get('current_year');
+    return _.range(1921, current_year + 1).reverse();
+  }),
   active: null,
   customer_rating: null,
   dob: null,
