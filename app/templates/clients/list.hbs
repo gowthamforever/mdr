@@ -33,14 +33,14 @@
           <img class="pull-left img-responsive" src={{if client.male "./assets/img/default_avatar_customer_male_120x.png" "./assets/img/default_avatar_customer_female_120x.png"}}>
           <div>
             <h4>
-              {{#link-to 'clients.profile' client}}
+              {{#link-to 'clients.client.profile' client}}
                 <strong>{{client.first_name}} {{client.last_name}}</strong>
               {{/link-to}}
             </h4>
 
-            {{#link-to 'clients.profile' client class="btn btn-info"}}<i class="fa fa-user"></i> View{{/link-to}}
-            {{#link-to 'clients.profile' client class="btn btn-warning"}}<i class="fa fa-user"></i> Update{{/link-to}}
-            {{#link-to 'clients.appointment' client class="btn btn-success"}}<i class="fa fa-calendar"></i> Appointment{{/link-to}}
+            {{#link-to 'clients.client.profile' client class="btn btn-info"}}<i class="fa fa-user"></i> View{{/link-to}}
+            {{#link-to 'clients.client.profile' client class="btn btn-warning"}}<i class="fa fa-user"></i> Update{{/link-to}}
+            <a href="#" {{action "appointment" client}} class="btn btn-success"><i class="fa fa-calendar"></i> Appointment</a>
           </div>
         </section>
       </li>

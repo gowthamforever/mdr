@@ -23,8 +23,10 @@ Router.map(function() {
     this.resource('clients', function() {
       this.route('list', { path: '/' });
       this.route('add');
-      this.route('profile', { path: '/:customer_id/profile'});
-      this.route('appointment', { path: '/:customer_id/appointment'});
+      this.route('client', { path: '/:customer_id' }, function() {
+        this.route('profile');
+        this.route('appointment');
+      });
     });
 
     this.resource('assessors', function() {

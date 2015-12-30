@@ -9,7 +9,7 @@
 
 				<div class="row">
 					<div class="form-group col-md-6 {{if model.validationResult.last_name.hasError 'has-error'}}">
-						<label class="control-label" for="first-name">Last name</label>
+						<label class="control-label" for="last-name">Last name</label>
 						{{input type="text" class="form-control" name="last-name" value=model.last_name maxlength=50 autocomplete="off"}}
 						{{mdr-field-error client=model.validationResult.last_name}}
 					</div>

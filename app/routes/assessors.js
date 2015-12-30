@@ -1,13 +1,36 @@
 import Ember from 'ember';
+import Assessors from 'mdr/models/assessors';
+import Api from 'mdr/mixins/api';
 
 const {
-  Route
+  Route,
+  RSVP,
+  inject
 } = Ember;
 
-export default Route.extend({
-  actions: {
-    addAssessor() {
-      this.transitionTo('assessors.add');
-    }
+const {
+  Promise
+} = RSVP;
+
+const {
+  service
+} = inject;
+
+export default Route.extend(Api, {
+  assessors: service(),
+
+  model() {
+    const self = this;
+    return new Promise((resolve) => {
+      self.ajax({
+        id: 'assessors'
+      }).then((response) => {
+        resolve(Assessors.create({
+          assessors: self.get('assessors').assessors(response.assessors)
+        }));
+      }).catch(() => {
+        resolve(Assessors.create());
+      });
+    });
   }
 });

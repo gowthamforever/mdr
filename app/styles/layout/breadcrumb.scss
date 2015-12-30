@@ -52,6 +52,7 @@ $selectedHoverColor: #47C3AB;
         &.disabled {
           background: $gray3;
           color: $gray4;
+          cursor: not-allowed;
 
           &:before {
             border-color: $gray3;

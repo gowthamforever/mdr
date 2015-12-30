@@ -19,6 +19,10 @@ export default Ember.Object.extend({
   first_name: null,
   gender: 'MALE',
   insurance_plan: null,
+  insurance_plan_obj: computed('insurance_plan', function() {
+    const insurance_plan = this.get('insurance_plan');
+    return Constants.INSURANCE_PLANS.findBy('id', insurance_plan);
+  }),
   language: null,
   last_name: null,
   pcd_name: null,

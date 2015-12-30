@@ -1,0 +1,39 @@
+<section class="appointment-block">
+  <div class="col-md-12">
+    <div class="row  bread-crumb">
+      {{#each model.bread_crumbs as |bread_crumb|}}
+        <a href="#" class="{{if bread_crumb.selected (unless bread_crumb.current 'selected')}} {{if bread_crumb.disabled 'disabled'}}" role="button" {{action "onCrumb" bread_crumb}}>
+          <span>{{bread_crumb.id}}</span>
+          <span class="visible-lg-inline">{{bread_crumb.name}}</span>
+        </a>
+      {{/each}}
+    </div>
+    <div class="row">
+      <button class="btn btn-primary" {{action "previous"}} disabled={{or model.first_bread_crumb model.last_bread_crumb}}>&lt;&lt; Previous</button>
+      <button class="btn btn-primary" {{action "next"}} type="submit">
+        {{if model.last_bread_crumb "Submit" "Next >>"}}
+      </button>
+    </div>
+    <div class="row">
+      <h2>{{model.current_bread_crumb.name}}</h2>
+    </div>
+  </div>
+
+  {{#if (eq model.current_bread_crumb.id 1)}}
+    <ul class="list-unstyled clearfix">
+      <li class="list-item col-md-6">
+        <section class="list-wrapper clearfix">
+          <img class="pull-left img-responsive" src={{if model.client.male "./assets/img/default_avatar_customer_male_120x.png" "./assets/img/default_avatar_customer_female_120x.png"}}>
+          <div class="right-content">
+            <h4>
+              <a href="#"><strong>{{model.client.first_name}} {{model.client.last_name}}</strong></a>
+            </h4>
+            <div>{{model.client.phone1}}</div>
+            <div>{{model.client.address1}}</div>
+            <div>{{model.client.city1}}, {{model.client.state1}} ({{model.client.zip1}})</div>
+          </div>
+        </section>
+      </li>
+    </ul>
+  {{/if}}
+</section>
