@@ -4,23 +4,17 @@ import BreadCrumb from 'mdr/models/bread-crumb';
 import Clients from 'mdr/models/clients';
 import Assessor from 'mdr/models/assessor';
 import Assessors from 'mdr/models/assessors';
-import Api from 'mdr/mixins/api';
 
 const {
   Route,
-  RSVP,
   inject
 } = Ember;
-
-const {
-  Promise
-} = RSVP;
 
 const {
   service
 } = inject;
 
-export default Route.extend(Api, {
+export default Route.extend({
   clients: service(),
 
   afterModel(model) {

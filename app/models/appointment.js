@@ -6,9 +6,9 @@ const {
 } = Ember;
 
 export default Ember.Object.extend(BreadCrumb, {
-  selectedClient: null,
-  selectedDoctor: null,
-  selectedAssessor: null,
+  selected_client: null,
+  selected_doctor: null,
+  selected_assessor: null,
   bread_crumbs: null,
   max_date: null,
   min_date: new Date(),
@@ -17,7 +17,7 @@ export default Ember.Object.extend(BreadCrumb, {
   end_date: null,
   end_time: null,
   reason: null,
-  other_information: null,
+  alt_info: null,
   start_date_time: computed('start_date', 'start_time', function() {
     const start_date  = this.get('start_date');
     const start_time  = this.get('start_time');

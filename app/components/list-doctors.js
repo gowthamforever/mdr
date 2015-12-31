@@ -19,7 +19,6 @@ export default Component.extend({
   filtered: oneWay('model.doctors'),
 
   initFiltered: on('didInitAttrs', function() {
-    const model     = this.get('model');
     const selected = this.get('selected');
     if (selected) {
       set(this, 'filtered', Ember.A([selected]));

@@ -5,9 +5,12 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-        {{#if header.showLoginBlock}}
-          <li class="hide"><a href="#" class="navbar-link">Login / Signup</a></li>
-        {{else}}
+        {{#if (and header.showLoginBtn (not header.session.isAuthenticated))}}
+          <li>
+            {{#link-to "account.signin" class="navbar-link"}}Login / Signup{{/link-to}}
+          </li>
+        {{/if}}
+        {{#if header.session.isAuthenticated}}
           <li class="hidden-xs">
             <a href="#">
               <i class="fa fa-bell fa-2"></i>

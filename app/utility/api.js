@@ -29,5 +29,10 @@ export default {
   appointments: {
     path: 'appointment.json',
     method: 'GET'
+  },
+
+  addappointment: {
+    path: 'appointment',
+    method: 'POST'
   }
 };

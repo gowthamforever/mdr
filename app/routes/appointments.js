@@ -21,7 +21,7 @@ export default Route.extend({
   model() {
     const self = this;
     return new Promise((resolve) => {
-      self.get('appointments').callAppointments().then((appointments) => {
+      self.get('appointments').getAppointments().then((appointments) => {
         resolve(Appointments.create({
           appointments
         }));

@@ -21,9 +21,9 @@
                   </div>
                 </div>
               {{else if (eq bread_crumb.id 2)}}
-                {{list-clients class="clients-list-block" model=bread_crumb.model hideBtns=true showSelect=true selected=model.appointment.selectedClient}}
+                {{list-clients class="clients-list-block" model=bread_crumb.model hideBtns=true showSelect=true selected=model.appointment.selected_client}}
 
-                {{#if model.appointment.selectedClient}}
+                {{#if model.appointment.selected_client}}
                   <div class="row">
                     <div class="form-group col-md-2">
                       <button class="btn btn-primary btn-block" {{action "next"}}>Next &gt;&gt;</button>

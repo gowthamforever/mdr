@@ -33,10 +33,10 @@
     </div>
   </div>
   <div class="row">
-    <div class="form-group col-md-8  {{if model.validationResult.other_information.hasError 'has-error'}}">
-      <label class="control-label" for="other_information">Other Information</label>
-      {{textarea class="form-control" name="other_information" value=model.other_information rows="7" placeholder="Any information related to your reason of appointment" maxlength=500}}
-      {{mdr-field-error client=model.validationResult.other_information}}
+    <div class="form-group col-md-8  {{if model.validationResult.alt_info.hasError 'has-error'}}">
+      <label class="control-label" for="alt_info">Other Information</label>
+      {{textarea class="form-control" name="alt_info" value=model.alt_info rows="7" placeholder="Any information related to your reason of appointment" maxlength=500}}
+      {{mdr-field-error client=model.validationResult.alt_info}}
       <p class="help-block">Max 500 characters only</p>
     </div>
   </div>

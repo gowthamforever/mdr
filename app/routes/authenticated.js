@@ -8,8 +8,7 @@ const {
 } = Ember;
 
 const {
-  hash,
-  Promise
+  hash
 } = RSVP;
 
 const { service } = inject;
@@ -38,13 +37,13 @@ export default Route.extend(Api, {
     }
   },
 
-  afterModel(model) {
+  afterModel() {
     const self     = this;
     const promises = {
       clients: self.get('clients').callClients(),
       doctors: self.get('doctors').callDoctors(),
       assessors: self.get('assessors').callAssessors(),
-      appointments: self.get('appointments').callAppointments()
+      appointments: self.get('appointments').getAppointments()
     };
 
     return hash(promises);
