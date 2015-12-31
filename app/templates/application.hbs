@@ -16,3 +16,7 @@
     {{component dialog.name model=dialog.model close=(action dialog.hideAction)}}
   {{/modal-dialog}}
 {{/if}}
+
+{{#if session.progressbar}}
+  {{mdr-progress-bar}}
+{{/if}}

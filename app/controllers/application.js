@@ -10,6 +10,7 @@ const { service } = inject;
 export default Controller.extend({
   application: service(),
   dialog: service(),
+  session: service(),
 
   actions: {
     hideDialog() {

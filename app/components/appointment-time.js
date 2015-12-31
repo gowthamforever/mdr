@@ -29,7 +29,7 @@ export default Component.extend(EmberValidator, {
           message: 'Must be 50 characters or less.'
         }
       },
-      other_information: {
+      alt_info: {
         length: {
           maximum: 500,
           message: 'Must be 500 characters or less.'

@@ -5,8 +5,13 @@ import Api from 'mdr/mixins/api';
 const {
   Service,
   isEmpty,
-  inject
+  inject,
+  RSVP
 } = Ember;
+
+const {
+  Promise
+} = RSVP;
 
 const { service } = inject;
 
@@ -16,7 +21,7 @@ export default Service.extend(Api, {
   appointments: null,
   cache: false,
 
-  callAppointments() {
+  getAppointments() {
     const self = this;
     return new Promise((resolve) => {
       if (self.get('cache')) {
@@ -34,6 +39,19 @@ export default Service.extend(Api, {
           resolve();
         });
       }
+    });
+  },
+
+  postAppointment(data) {
+    const self = this;
+    return new Promise((resolve) => {
+      self.ajax({
+        id: 'addappointment',
+        data
+      }).then(() => {
+        resolve();
+      }).catch(() => {
+      });
     });
   },
 

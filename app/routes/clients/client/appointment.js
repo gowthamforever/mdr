@@ -4,23 +4,17 @@ import BreadCrumb from 'mdr/models/bread-crumb';
 import Clients from 'mdr/models/clients';
 import Client from 'mdr/models/client';
 import Doctors from 'mdr/models/doctors';
-import Api from 'mdr/mixins/api';
 
 const {
   Route,
-  RSVP,
   inject
 } = Ember;
-
-const {
-  Promise
-} = RSVP;
 
 const {
   service
 } = inject;
 
-export default Route.extend(Api, {
+export default Route.extend({
   doctors: service(),
 
   afterModel(model) {
@@ -34,7 +28,8 @@ export default Route.extend(Api, {
     client.setProperties(_.pick(model, [
       'customer_id',
       'first_name',
-      'last_name'
+      'last_name',
+      'insurance_plan'
     ]));
 
     clients.set('clients', Ember.A([client]));
@@ -64,6 +59,11 @@ export default Route.extend(Api, {
         model: appointment
       })
     ]);
+
+    appointment.setProperties({
+      selected_client: client,
+      bread_crumbs
+    });
 
     appointment.set('bread_crumbs', bread_crumbs);
     model.set('appointment', appointment);

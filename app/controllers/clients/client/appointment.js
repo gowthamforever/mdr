@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import { formatToServer } from 'mdr/utility/utils';
 
 const {
   Controller,
@@ -84,8 +85,26 @@ export default Controller.extend({
     },
 
     submit() {
-      this.get('appointments').set('cache', false);
-      this.transitionToRoute('appointments.requests');
+      const self    = this;
+      const model   = self.get('model.appointment');
+      const service = self.get('appointments');
+      const client  = model.get('selected_client');
+      const doctor  = model.get('selected_doctor');
+      const data    = {};
+
+      data.customer_id = client.get('customer_id');
+      data.insurance_plan = client.get('insurance_plan');
+      data.doctor_id = doctor.get('doctor_id');
+      data.service_charge = doctor.get('service_charge');
+      data.reason = model.get('reason');
+      data.alt_info = model.get('alt_info');
+      data.start_date_time = formatToServer(model.get('start_date_time'));
+      data.end_date_time = formatToServer(model.get('end_date_time'));
+
+      service.postAppointment(data).then(() => {
+        self.get('appointments').set('cache', false);
+        self.transitionToRoute('appointments.requests');
+      });
     }
   }
 });

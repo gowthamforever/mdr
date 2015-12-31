@@ -4,8 +4,13 @@ import Api from 'mdr/mixins/api';
 
 const {
   Service,
-  isEmpty
+  isEmpty,
+  RSVP
 } = Ember;
+
+const {
+  Promise
+} = RSVP;
 
 export default Service.extend(Api, {
   clients: null,
