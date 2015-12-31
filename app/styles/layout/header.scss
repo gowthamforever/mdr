@@ -41,6 +41,7 @@ span.sidenav-toggle {
   font-size: 1.3em;
   background-color: #333;
   color: #FFF;
+  cursor: pointer;
   &.active {
     background-color: #16A085;
   }
@@ -116,6 +117,3 @@ span.sidenav-toggle {
     }
   }
 }
-
-
-

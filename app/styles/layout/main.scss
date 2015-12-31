@@ -89,3 +89,14 @@
     margin-left: 42px;
   }
 }
+
+.animate-sidebar {
+  -webkit-transition: all .6s ease-out;
+  -moz-transition: all .6s ease-out;
+  -o-transition: all .6s ease-out;
+  transition: all .6s ease-out;
+}
+
+.sidebar-hidden {
+  margin-left: -350px;
+}

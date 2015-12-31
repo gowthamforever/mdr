@@ -14,7 +14,7 @@ export default Component.extend({
 
   hideScrollBar: on('didInsertElement', () => {
     toggleScrollBar(false);
-    blurActiveElement()
+    blurActiveElement();
   }),
 
   showScrollBar: on('willDestroyElement', () => {
