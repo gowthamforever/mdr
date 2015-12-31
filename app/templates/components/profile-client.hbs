@@ -1,0 +1,527 @@
+<div class="panel-group">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      Personal Information
+      {{#if edit_personal}}
+        <a href="#" class="pull-right btn btn-xs btn-default" {{action "togglePersonal"}}><i class="fa fa-ban"></i> Cancel</a>
+      {{else}}
+        <a href="#" class="pull-right btn btn-xs btn-default" {{action "togglePersonal"}}><i class="fa fa-pencil"></i> Edit</a>
+      {{/if}}
+    </div>
+    <div class="panel-body">
+      <form role="form" novalidate {{action "add" on="submit"}} autocomplete="off">
+        <section class="col-md-12">
+          <div class="row">
+            <div class="form-group col-md-6 {{if model.validationResult.last_name.hasError 'has-error'}}">
+              <label class="control-label" for="first-name">Last name</label>
+              {{#if edit_personal}}
+                {{input type="text" class="form-control" name="last-name" value=model.last_name maxlength=50 autocomplete="off"}}
+                {{mdr-field-error client=model.validationResult.last_name}}
+              {{else}}
+                <div class="form-control-static">{{model.last_name}}</div>
+              {{/if}}
+            </div>
+            <div class="form-group col-md-6 {{if model.validationResult.first_name.hasError 'has-error'}}">
+              <label class="control-label" for="first-name">First name</label>
+              {{#if edit_personal}}
+                {{input type="text" class="form-control" name="first-name" value=model.first_name maxlength=50 autocomplete="off"}}
+                {{mdr-field-error client=model.validationResult.first_name}}
+              {{else}}
+                <div class="form-control-static">{{model.first_name}}</div>
+              {{/if}}
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-md-6  {{if model.validationResult.dob.hasError 'has-error'}}">
+              <label class="control-label" for="dob">Date of birth</label>
+              {{#if edit_personal}}
+                {{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=(date-format model.dob "YYYY-MM-DD" "MMM DD YYYY")}}
+                {{mdr-field-error client=model.validationResult.dob}}
+              {{else}}
+                <div class="form-control-static">{{date-format model.dob "YYYY-MM-DD" "MMM DD YYYY"}}</div>
+              {{/if}}
+            </div>
+  					<div class="form-group col-md-6">
+  						<label class="control-label" for="gender">Gender</label>
+              {{#if edit_personal}}
+    						<div>
+    							<div class="radio-inline">
+    								<label>
+    									{{input-radio name="gender" group=model.gender value="MALE"}} Male
+    								</label>
+    							</div>
+    							<div class="radio-inline">
+    								<label>
+    									{{input-radio name="gender" group=model.gender value="FEMALE"}} Female
+    								</label>
+    							</div>
+    						</div>
+              {{else}}
+                <div class="form-control-static">{{model.gender}}</div>
+              {{/if}}
+  					</div>
+  				</div>
+
+          <div class="row">
+            <div class="form-group col-md-6 {{if model.validationResult.pcd_name.hasError 'has-error'}}">
+              <label class="control-label" for="pcd-name">Primary physician name <small>(optional)</small></label>
+              {{#if edit_personal}}
+                {{input type="text" class="form-control" name="pcd-name" value=model.pcd_name maxlength=100 autocomplete="off"}}
+                {{mdr-field-error client=model.validationResult.pcd_name}}
+              {{else}}
+                <div class="form-control-static">{{dash-for-empty model.pcd_name}}</div>
+              {{/if}}
+            </div>
+            <div class="form-group col-md-6 {{if model.validationResult.pcd_phone.hasError 'has-error'}}">
+              <label class="control-label" for="pcd-phone">Primary physician phone number <small>(optional)</small></label>
+              {{#if edit_personal}}
+                {{input type="text" class="form-control" name="pcd-phone" value=model.pcd_phone maxlength=10 autocomplete="off"}}
+                {{mdr-field-error client=model.validationResult.pcd_phone}}
+              {{else}}
+                <div class="form-control-static">{{dash-for-empty model.pcd_phone}}</div>
+              {{/if}}
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-md-6 {{if model.validationResult.email_id.hasError 'has-error'}}">
+              <label class="control-label" for="email-id">Email address</label>
+              {{#if edit_contact}}
+                {{input type="text" class="form-control" name="email-id" value=model.email_id maxlength=50 autocomplete="off"}}
+                {{mdr-field-error client=model.validationResult.email_id}}
+              {{else}}
+                <div class="form-control-static">{{dash-for-empty model.email_id}}</div>
+              {{/if}}
+            </div>
+            <div class="form-group col-md-6  {{if model.validationResult.selected_insurance_plan.hasError 'has-error'}}">
+              <label class="control-label" for="insurance-plan">Insurance plan</label>
+              {{#if edit_personal}}
+                {{input-select
+                  class="form-control"
+                  name="insurance-plan"
+                  options=model.insurance_plans
+                  labelPath="name"
+                  valuePath="id"
+                  selected=model.insurance_plan_obj
+                  prompt="Select"
+                }}
+                {{mdr-field-error client=model.validationResult.selected_insurance_plan}}
+                <p class="help-block prevent-error">Your current insured plan, important to search doctors</p>
+              {{else}}
+                <div class="form-control-static">{{dash-for-empty model.insurance_plan_obj.name}}</div>
+              {{/if}}
+            </div>
+          </div>
+
+          {{#if edit_personal}}
+            <div class="row">
+              <div class="form-group col-md-2">
+                <button class="btn btn-primary btn-block" type="submit" autocomplete="off">Save</button>
+              </div>
+            </div>
+          {{/if}}
+        </section>
+      </form>
+    </div>
+  </div>
+
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      Contact Information
+      {{#if edit_contact}}
+        <a href="#" class="pull-right btn btn-xs btn-default" {{action "toggleContact"}}><i class="fa fa-ban"></i> Cancel</a>
+      {{else}}
+        <a href="#" class="pull-right btn btn-xs btn-default" {{action "toggleContact"}}><i class="fa fa-pencil"></i> Edit</a>
+      {{/if}}
+    </div>
+    <div class="panel-body">
+      <form role="form" novalidate {{action "add" on="submit"}} autocomplete="off">
+        <section class="col-md-12">
+          <div class="row">
+            <div class="form-group col-md-6  {{if model.validationResult.phone1.hasError 'has-error'}}">
+              <label class="control-label" for="phone1">Phone number</label>
+              {{#if edit_contact}}
+                {{input type="text" class="form-control" name="phone1" value=model.phone1 maxlength=10 autocomplete="off"}}
+                {{mdr-field-error client=model.validationResult.phone1}}
+              {{else}}
+                <div class="form-control-static">{{dash-for-empty model.phone1}}</div>
+              {{/if}}
+            </div>
+            <div class="form-group col-md-6  {{if model.validationResult.phone2.hasError 'has-error'}}">
+              <label class="control-label" for="phone2">Alternate phone number <small>(optional)</small></label>
+              {{#if edit_contact}}
+                {{input type="text" class="form-control" name="phone2" value=model.phone2 maxlength=10 autocomplete="off"}}
+                {{mdr-field-error client=model.validationResult.phone2}}
+              {{else}}
+                <div class="form-control-static">{{dash-for-empty model.phone2}}</div>
+              {{/if}}
+            </div>
+          </div>
+
+          {{#if edit_contact}}
+            <div class="row">
+              <div class="form-group col-md-8  {{if model.validationResult.address1.hasError 'has-error'}}">
+                <label class="control-label" for="address1">Primary address</label>
+                {{input type="text" class="form-control" id="address1" name="address1" value=model.address1 maxlength=250 autocomplete="off"}}
+                {{mdr-field-error client=model.validationResult.address1}}
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group col-md-6  {{if model.validationResult.selected_state_1.hasError 'has-error'}}">
+                <label class="control-label" for="state1">State</label>
+                {{input-select
+                  class="form-control"
+                  name="state1"
+                  options=model.states
+                  labelPath="name"
+                  valuePath="id"
+                  selected=model.selected_state_1
+                  prompt="Select"
+                }}
+                {{mdr-field-error client=model.validationResult.selected_state_1}}
+              </div>
+              <div class="form-group col-md-6  {{if model.validationResult.selected_city_1.hasError 'has-error'}}">
+                <label class="control-label" for="city1">City</label>
+                {{input-select
+                  class="form-control"
+                  name="city1"
+                  options=model.cities1
+                  labelPath="name"
+                  valuePath="id"
+                  selected=model.selected_city_1
+                  prompt="Select"
+                }}
+                {{mdr-field-error client=model.validationResult.selected_city_1}}
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group col-md-6  {{if model.validationResult.zip1.hasError 'has-error'}}">
+                <label class="control-label" for="zip1">Zip code</label>
+                {{input type="text" class="form-control" name="zip1" value=model.zip1 autocomplete="off"}}
+                {{mdr-field-error client=model.validationResult.zip1}}
+              </div>
+              <div class="form-group col-md-6">
+                <label class="control-label" for="country1">Country</label>
+                {{input type="text" class="form-control" name="country1" value=model.country1 disabled=true}}
+                <p class="help-block">Currently available for US regions only</p>
+              </div>
+            </div>
+          {{else}}
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label class="control-label" for="address1">Primary address</label>
+                <div class="form-control-static">{{dash-for-empty model.address1}}</div>
+              </div>
+              <div class="form-group col-md-6">
+                <label class="control-label" for="address1">Primary location</label>
+                <div class="form-control-static">
+                  {{#if model.address1}}
+                    {{model.city1}}, {{model.state1}} ({{model.zip1}})
+                  {{else}}
+                    &ndash;
+                  {{/if}}
+                </div>
+              </div>
+            </div>
+          {{/if}}
+
+          {{#if edit_contact}}
+            <div class="row">
+              <div class="col-md-6 checkbox">
+                <label>
+                  {{input type="checkbox" name="secondary-address" checked=model.is_secondary_address}} Add Secondary Address
+                  <span class="hide">{{model.on_is_secondary_address}}</span>
+                </label>
+              </div>
+            </div>
+
+            {{#liquid-if model.is_secondary_address use="crossFade"}}
+              <div class="row">
+                <div class="form-group col-md-8  {{if model.validationResult.address2.hasError 'has-error'}}">
+                  <label class="control-label" for="address2">Secondary address</label>
+                  {{input type="text" class="form-control" name="address2" value=model.address2 maxlength=250 autocomplete="off"}}
+                  {{mdr-field-error client=model.validationResult.address2}}
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6  {{if model.validationResult.selected_state_2.hasError 'has-error'}}">
+                  <label class="control-label" for="state2">State</label>
+                  {{input-select
+                    class="form-control"
+                    name="state2"
+                    options=model.states
+                    labelPath="name"
+                    valuePath="id"
+                    selected=model.selected_state_2
+                    prompt="Select"
+                  }}
+                  {{mdr-field-error client=model.validationResult.selected_state_2}}
+                </div>
+                <div class="form-group col-md-6  {{if model.validationResult.selected_city_2.hasError 'has-error'}}">
+                  <label class="control-label" for="city2">City</label>
+                  {{input-select
+                    class="form-control"
+                    name="city1"
+                    options=model.cities2
+                    labelPath="name"
+                    valuePath="id"
+                    selected=model.selected_city_2
+                    prompt="Select"
+                  }}
+                  {{mdr-field-error client=model.validationResult.selected_city_2}}
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6  {{if model.validationResult.zip2.hasError 'has-error'}}">
+                  <label class="control-label" for="zip2">Zip code</label>
+                  {{input type="text" class="form-control" name="zip2" value=model.zip2 maxlength=10 autocomplete="off"}}
+                  {{mdr-field-error client=model.validationResult.zip2}}
+                </div>
+                <div class="form-group col-md-6">
+                  <label class="control-label" for="country2">Country</label>
+                  {{input type="text" class="form-control" name="country2" value=model.country2 disabled="disabled"}}
+                  <p class="help-block">Currently available for US regions only</p>
+                </div>
+              </div>
+            {{/liquid-if}}
+          {{else}}
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label class="control-label" for="address1">Secondary address</label>
+                <div class="form-control-static">{{dash-for-empty model.address2}}</div>
+              </div>
+              <div class="form-group col-md-6">
+                <label class="control-label" for="address1">Secondary location</label>
+                <div class="form-control-static">
+                  {{#if model.address2}}
+                    {{model.city2}}, {{model.state2}} ({{model.zip2}})
+                  {{else}}
+                    &ndash;
+                  {{/if}}
+                </div>
+              </div>
+            </div>
+          {{/if}}
+
+          {{#if edit_contact}}
+            <div class="row">
+              <div class="form-group col-md-2">
+                <button class="btn btn-primary btn-block" type="submit" autocomplete="off">Save</button>
+              </div>
+            </div>
+          {{/if}}
+        </section>
+      </form>
+    </div>
+  </div>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      Billing Information
+      {{#if edit_billing}}
+        <a href="#" class="pull-right btn btn-xs btn-default" {{action "toggleBilling"}}><i class="fa fa-ban"></i> Cancel</a>
+      {{else}}
+        <a href="#" class="pull-right btn btn-xs btn-default" {{action "toggleBilling"}}><i class="fa fa-pencil"></i> Edit</a>
+      {{/if}}
+    </div>
+    <div class="panel-body">
+      <form role="form" novalidate {{action "add" on="submit"}} autocomplete="off">
+        <section class="col-md-12">
+          <div class="row">
+            <div class="form-group col-md-12">
+              <label class="control-label" for="card-type">Type of card</label>
+              {{#if edit_billing}}
+                <div>
+                  <div class="radio-inline">
+                    <label>
+                      {{input-radio name="card-type" value="visa" group=model.card_type}}
+                      VISA
+                    </label>
+                  </div>
+                  <div class="radio-inline">
+                    <label>
+                      {{input-radio name="card-type" value="master" group=model.card_type}}
+                      Master
+                    </label>
+                  </div>
+                  <div class="radio-inline">
+                    <label>
+                      {{input-radio name="card-type" value="amex" group=model.card_type}}
+                      American Express
+                    </label>
+                  </div>
+                  <div class="radio-inline">
+                    <label>
+                      {{input-radio name="card-type" value="discover" group=model.card_type}}
+                      Discover
+                    </label>
+                  </div>
+                </div>
+              {{else}}
+                <div class="form-control-static">{{dash-for-empty model.card_type}}</div>
+              {{/if}}
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-md-8  {{if model.validationResult.card_full_name.hasError 'has-error'}}">
+              <label class="control-label" for="full-name">Full Name</label>
+              {{#if edit_billing}}
+                {{input type="text" class="form-control" name="full-name" value=model.card_full_name maxlength=100 autocomplete="off"}}
+                {{mdr-field-error client=model.validationResult.card_full_name}}
+                <p class="help-block">Full name as mentioned on your card</p>
+              {{else}}
+                <div class="form-control-static">{{dash-for-empty model.card_full_name}}</div>
+              {{/if}}
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-md-4  {{if model.validationResult.card_no.hasError 'has-error'}}">
+              <label class="control-label" for="card-no">Card number</label>
+              {{#if edit_billing}}
+                {{input type="text" class="form-control" name="card-no" value=model.card_no maxlength=16 autocomplete="off"}}
+                {{mdr-field-error client=model.validationResult.card_no}}
+              {{else}}
+                <div class="form-control-static">{{dash-for-empty model.card_no}}</div>
+              {{/if}}
+            </div>
+            <div class="form-group col-md-2  {{if model.validationResult.cvv.hasError 'has-error'}}">
+              <label class="control-label" for="cvv">CVV</label>
+              {{#if edit_billing}}
+                {{input type="password" class="form-control" name="cvv" value=model.cvv maxlength=4 autocomplete="off"}}
+                {{mdr-field-error client=model.validationResult.cvv}}
+              {{else}}
+                <div class="form-control-static text-danger">
+                  {{#if model.cvv}}
+                    Encrypted
+                  {{else}}
+                    &ndash;
+                  {{/if}}
+                </div>
+              {{/if}}
+            </div>
+            <div class="form-group col-md-4  {{if model.validationResult.selected_expiry_month.hasError 'has-error'}}">
+              <label class="control-label" for="expiry-month">Expires on</label>
+              {{#if edit_billing}}
+                {{input-select
+                  class="form-control"
+                  name="expiry-month"
+                  options=model.months
+                  labelPath="name"
+                  valuePath="id"
+                  selected=model.selected_expiry_month
+                  prompt="Month"
+                }}
+                {{mdr-field-error client=model.validationResult.selected_expiry_month}}
+              {{else}}
+                <div class="form-control-static">
+                  {{#if model.expiry_month}}
+                    {{model.expiry_month}} {{model.expiry_year}}
+                  {{else}}
+                    &ndash;
+                  {{/if}}
+                </div>
+              {{/if}}
+            </div>
+            <div class="form-group col-md-2  {{if model.validationResult.selected_expiry_year.hasError 'has-error'}}">
+              <label class="control-label" for="expiry-year">&nbsp;</label>
+              {{#if edit_billing}}
+                {{input-select
+                  class="form-control"
+                  name="expiry-year"
+                  options=model.expiry_years
+                  selected=model.selected_expiry_year
+                  prompt="Year"
+                }}
+                {{mdr-field-error client=model.validationResult.selected_expiry_year}}
+              {{/if}}
+            </div>
+          </div>
+
+          {{#if edit_billing}}
+            <div class="row">
+              <div class="form-group col-md-8  {{if model.validationResult.card_address.hasError 'has-error'}}">
+                <label class="control-label" for="billing-address">Address</label>
+                {{input type="text" class="form-control" name="billing-address" disabled=model.billing_is_primary value=model.card_address maxlength=250 autocomplete="off"}}
+                {{mdr-field-error client=model.validationResult.card_address}}
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group col-md-6  {{if model.validationResult.selected_card_state.hasError 'has-error'}}">
+                <label class="control-label" for="billing-state">State</label>
+                {{input-select
+                  class="form-control"
+                  name="billing-state"
+                  options=model.states
+                  labelPath="name"
+                  valuePath="id"
+                  disabled=model.billing_is_primary
+                  selected=model.selected_card_state
+                  prompt="Select"
+                }}
+                {{mdr-field-error client=model.validationResult.selected_card_state}}
+              </div>
+              <div class="form-group col-md-6  {{if model.validationResult.selected_card_city.hasError 'has-error'}}">
+                <label class="control-label" for="billing-city">City</label>
+                {{input-select
+                  class="form-control"
+                  name="city1"
+                  options=model.card_cities
+                  labelPath="name"
+                  valuePath="id"
+                  disabled=model.billing_is_primary
+                  selected=model.selected_card_city
+                  prompt="Select"
+                }}
+                {{mdr-field-error client=model.validationResult.selected_card_city}}
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group col-md-6  {{if model.validationResult.card_zip.hasError 'has-error'}}">
+                <label class="control-label" for="billing-zip">Zip code</label>
+                {{input type="text" class="form-control" name="billing-zip" disabled=model.billing_is_primary value=model.card_zip maxlength=10 autocomplete="off"}}
+                {{mdr-field-error client=model.validationResult.card_zip}}
+              </div>
+
+              <div class="form-group col-md-6">
+                <label class="control-label" for="billing-country">Country</label>
+                {{input type="text" class="form-control" name="billing-country" value=model.card_country disabled="disabled"}}
+                <p class="help-block">Currently available for US regions only</p>
+              </div>
+            </div>
+          {{else}}
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label class="control-label" for="address1">Billing address</label>
+                <div class="form-control-static">{{dash-for-empty model.card_address}}</div>
+              </div>
+              <div class="form-group col-md-6">
+                <label class="control-label" for="address1">Billing location</label>
+                <div class="form-control-static">
+                  {{#if model.card_address}}
+                    {{model.card_city}}, {{model.card_state}} ({{model.card_zip}})
+                  {{else}}
+                    &ndash;
+                  {{/if}}
+                </div>
+              </div>
+            </div>
+          {{/if}}
+
+          {{#if edit_billing}}
+            <div class="row">
+              <div class="form-group col-md-2">
+                <button class="btn btn-primary btn-block" type="submit" autocomplete="off">Save</button>
+              </div>
+            </div>
+          {{/if}}
+        </section>
+      </form>
+    </div>
+  </div>
+</div>

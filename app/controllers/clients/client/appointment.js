@@ -100,6 +100,7 @@ export default Controller.extend({
       data.alt_info = model.get('alt_info');
       data.start_date_time = formatToServer(model.get('start_date_time'));
       data.end_date_time = formatToServer(model.get('end_date_time'));
+      data.status = 'pending';
 
       service.postAppointment(data).then(() => {
         self.get('appointments').set('cache', false);

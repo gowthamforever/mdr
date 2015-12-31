@@ -48,8 +48,8 @@ Router.map(function() {
     });
 
     this.resource('appointments', function() {
-      this.route('calendar', { path: '/' });
-      this.route('requests');
+      this.route('calendar');
+      this.route('requests', { path: '/' });
     });
   });
 

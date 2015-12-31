@@ -6,6 +6,7 @@ const {
 } = Ember;
 
 const {
+  equal,
   not
 } = computed;
 
@@ -14,6 +15,8 @@ export default Service.extend({
   loading: false,
   isAuthenticated: true,
   role: null,
+  role_admin: true,//equal('role', 'admin'),
+  role_doctor: false,//equal('role', 'doctor'),
   emailId: null,
   firstName: null,
   lastName: null,

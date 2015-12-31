@@ -1,4 +1,8 @@
 import Ember from 'ember';
+import {
+  toggleScrollBar,
+  blurActiveElement
+} from 'mdr/utility/utils';
 
 const {
   Service
@@ -19,6 +23,8 @@ export default Service.extend({
     this.setProperties(_.extend({
       show: true
     }, props));
+    toggleScrollBar(false);
+    blurActiveElement();
   },
 
   hideDialog() {
@@ -28,5 +34,6 @@ export default Service.extend({
       model: null,
       hideAction: "hideDialog",
     });
+    toggleScrollBar(true);
   }
 });
