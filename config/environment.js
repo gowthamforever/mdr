@@ -15,8 +15,8 @@ const contentSecurityPolicy = {
 module.exports = function(environment) {
   const ENV = {
     modulePrefix: 'mdr',
-    contentSecurityPolicy,
-    environment,
+    contentSecurityPolicy: contentSecurityPolicy,
+    environment: environment,
     baseURL: '/',
     locationType: 'hash',
     EmberENV: {
