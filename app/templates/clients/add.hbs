@@ -420,16 +420,16 @@
 								}}
 								{{mdr-field-error client=model.validationResult.selected_expiry_month}}
 							</div>
-							<div class="form-group col-md-2  {{if model.validationResult.selected_expiry_year.hasError 'has-error'}}">
+							<div class="form-group col-md-2  {{if model.validationResult.expiry_year.hasError 'has-error'}}">
 								<label class="control-label" for="expiry-year">&nbsp;</label>
 								{{input-select
 									class="form-control"
 									name="expiry-year"
 									options=model.expiry_years
-									selected=model.selected_expiry_year
+									selected=model.expiry_year
 									prompt="Year"
 								}}
-								{{mdr-field-error client=model.validationResult.selected_expiry_year}}
+								{{mdr-field-error client=model.validationResult.expiry_year}}
 							</div>
 						</div>
 

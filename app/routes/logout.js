@@ -4,6 +4,6 @@ const { Route } = Ember;
 
 export default Route.extend({
   redirect() {
-    this.transitionTo('welcome');
+     window.location = document.location.href.replace(location.hash , "" );
   }
 });

@@ -9,7 +9,6 @@ const {
 export default TextField.extend({
   initPickADate: on('didInsertElement', function() {
     let props  = {
-      clear: '',
       format: 'hh:i A'
     };
 

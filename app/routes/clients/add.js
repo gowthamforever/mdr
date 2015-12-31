@@ -166,7 +166,7 @@ export default Route.extend(EmberValidator, Api, {
         required: 'Expiry month is required.'
       },
 
-      selected_expiry_year: {
+      expiry_year: {
         required: 'Expiry year is required.'
       },
 
@@ -343,7 +343,7 @@ export default Route.extend(EmberValidator, Api, {
         ]));
 
         data.expiry_month = model.get('selected_expiry_month.id');
-        data.expiry_year = model.get('selected_expiry_year');
+        data.expiry_year = model.get('expiry_year');
 
         data = _.extend(data, _.pick(model, [
           'card_address',

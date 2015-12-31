@@ -4,7 +4,12 @@ import Constants from 'mdr/utility/constants';
 const {
   computed
 } = Ember;
-const { equal } = computed;
+
+const {
+  equal,
+  none,
+  not
+} = computed;
 
 export default Ember.Object.extend({
   current_year: moment().year(),
@@ -47,15 +52,24 @@ export default Ember.Object.extend({
   phone1: null,
   phone2: null,
   address1: null,
-  selected_state_1: null,
+  state1: null,
+  selected_state_1: computed('state1', function() {
+    const state1 = this.get('state1');
+    return this.get('states').findBy('id', state1);
+  }),
   cities1: null,
   cities2: null,
   selected_city_1: null,
   zip1: null,
   country1: 'United States',
-  is_secondary_address: false,
+  is_no_secondary_address: none('address2'),
+  is_secondary_address: not('is_no_secondary_address'),
   address2: null,
-  selected_state_2: null,
+  state2: null,
+  selected_state_2: computed('state2', function() {
+    const state2 = this.get('state2');
+    return this.get('states').findBy('id', state2);
+  }),
   selected_city_2: null,
   zip2: null,
   country2: 'United States',
@@ -77,16 +91,37 @@ export default Ember.Object.extend({
   card_full_name: null,
   card_no: null,
   cvv: null,
-  selected_expiry_month: null,
+  expiry_month: null,
+  selected_expiry_month: computed('expiry_month', function() {
+    const expiry_month = this.get('expiry_month');
+    return this.get('months').findBy('id', expiry_month);
+  }),
   expiry_years: computed('current_year', function() {
     const current_year = this.get('current_year');
     return _.range(current_year, current_year + 20);
   }),
-  selected_expiry_year: null,
-  billing_is_primary: false,
+  expiry_year: null,
+  billing_is_primary: computed('address1', 'state1', 'city1', 'zip1', 'country1',
+    'card_address', 'card_state', 'card_city', 'card_zip', 'card_country',
+    'selected_state_1', 'selected_card_state', 'selected_city_1', 'selected_card_city', function() {
+    if (this.get('address1') && this.get('address2')) {
+      return this.get('address1') === this.get('card_address') &&
+        this.get('state1') === this.get('card_state') &&
+        this.get('city1') === this.get('card_city') &&
+        this.get('zip1') === this.get('card_zip') &&
+        this.get('country1') === this.get('card_country') &&
+        this.get('selected_state_1') === this.get('selected_card_state') &&
+        this.get('selected_city_1') === this.get('selected_card_city');
+    }
+    return false;
+  }),
   card_type: 'visa',
   card_address: null,
-  selected_card_state: null,
+  card_state: null,
+  selected_card_state: computed('card_state', function() {
+    const card_state = this.get('card_state');
+    return this.get('states').findBy('id', card_state);
+  }),
   card_cities: null,
   selected_card_city: null,
   card_zip: null,
