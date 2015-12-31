@@ -3,7 +3,7 @@
   margin: 0 auto;
   border-radius: 80px;
 }
-.dashboard-avatar a {
+.dashboard-avatar .avatar-name {
   padding: 15px 0;
   text-align: center;
   width: 100%;
@@ -17,6 +17,25 @@
   position: fixed;
   min-height: 100%;
   background-color: #34495E;
+}
+
+.img-overlay {
+  display: none;
+  position: absolute;
+  .overlay {
+    background-color: #000;
+    height: 162px;
+    width: 160px;
+    margin-left: 32px;
+    opacity: 0.5;
+    border-radius: 84px;
+  }
+  .change-photo-link {
+    top: 68px;
+    left: 68px;
+    color: #FFF;
+    position: absolute;
+  }
 }
 
 .body-container {
@@ -52,6 +71,11 @@
 .dashboard-avatar {
   padding: 20px 0;
   background-color: #FFF;
+  &:hover {
+    .img-overlay {
+      display: block;
+    }
+  }
 }
 
 .fa-2 {
