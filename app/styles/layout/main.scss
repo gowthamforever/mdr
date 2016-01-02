@@ -1,7 +1,12 @@
+.dashboard-avatar {
+  text-align: center;
+}
+
 .dashboard-avatar img {
   display: block;
   margin: 0 auto;
   border-radius: 80px;
+  display: inline-block;
 }
 .dashboard-avatar .avatar-name {
   padding: 15px 0;
