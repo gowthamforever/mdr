@@ -15,6 +15,7 @@ Router.map(function() {
 
   this.resource('authenticated', { path: '/' }, function() {
     this.resource('home');
+    this.resource('admin-tasks');
     this.resource('profile');
     this.resource('settings');
     this.resource('chat-room');

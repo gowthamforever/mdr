@@ -42,14 +42,17 @@ export default Route.extend(EmberValidator, Api, {
           id: 'session',
           data
         }).then((response) => {
-          self.get('session').setProperties({
-            isAuthenticated: true,
-            role: response.userRole,
-            emailId: response.email_id,
-            firstName: response.first_name,
-            middleName: response.middle_name,
-            lastName: response.last_name
-          });
+          let session = _.pick(response, [
+            'user_role',
+            'email_id',
+            'first_name',
+            'middle_name',
+            'last_name'
+          ]);
+
+          session.isAuthenticated = true;
+
+          self.get('session').setProperties(session);
 
           this.transitionTo('home');
         });

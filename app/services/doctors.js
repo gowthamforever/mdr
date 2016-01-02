@@ -16,7 +16,7 @@ export default Service.extend(Api, {
   doctors: null,
   cache: false,
 
-  callDoctors() {
+  getDoctors() {
     const self = this;
     return new Promise((resolve) => {
       if (self.get('cache')) {

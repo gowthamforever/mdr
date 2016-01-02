@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import { scrollTop } from 'mdr/utility/utils';
 
 const {
   Route,
@@ -19,6 +20,10 @@ export default Route.extend({
       transition.promise.finally(() => {
         session.hideLoadingBar();
       });
+    },
+
+    didTransition() {
+      scrollTop();
     }
   }
 });

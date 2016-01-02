@@ -2,7 +2,7 @@ export default {
   MDR_API: './mdrapi/',
 
   session: {
-    path: 'session',
+    path: 'session.json',
     method: 'POST'
   },
 

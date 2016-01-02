@@ -10,10 +10,15 @@
   {{#link-to "home" class="list-group-item"}}
     <i class="fa fa-home fa-2"></i><span class="visible-lg-inline visible-md-inline">Home</span>
   {{/link-to}}
-  {{#if session.role_admin}}
-    {{#link-to "clients" class="list-group-item"}}
-      <i class="fa fa-users fa-2"></i><span class="visible-lg-inline visible-md-inline">Clients</span>
+  {{#if (or session.role_admin session.role_super_admin session.role_regional_admin session.role_global_admin)}}
+    {{#link-to "admin-tasks" class="list-group-item"}}
+      <i class="fa fa-tasks fa-2"></i><span class="visible-lg-inline visible-md-inline">Admin Tasks</span>
     {{/link-to}}
+  {{/if}}
+  {{#link-to "clients" class="list-group-item"}}
+    <i class="fa fa-users fa-2"></i><span class="visible-lg-inline visible-md-inline">Clients</span>
+  {{/link-to}}
+  {{#if (or session.role_coordinator session.role_admin session.role_super_admin session.role_regional_admin session.role_global_admin)}}
     {{#link-to "assessors" class="list-group-item"}}
       <i class="fa fa-user fa-2"></i><span class="visible-lg-inline visible-md-inline">Assessors</span>
     {{/link-to}}
@@ -25,12 +30,9 @@
     <i class="fa fa-calendar fa-2"></i><span class="visible-lg-inline visible-md-inline">Appointments</span>
   {{/link-to}}
   {{#link-to "chat-room" class="list-group-item"}}
-    <i class="fa fa-weixin fa-2"></i><span class="visible-lg-inline visible-md-inline">Chat Room</span>
+    <i class="fa fa-weixin fa-2"></i><span class="visible-lg-inline visible-md-inline">Consulting Room</span>
   {{/link-to}}
   {{#link-to "profile" class="list-group-item"}}
     <i class="fa fa-user fa-2"></i><span class="visible-lg-inline visible-md-inline">My Profile</span>
-  {{/link-to}}
-  {{#link-to "settings" class="list-group-item"}}
-    <i class="fa fa-cog fa-2"></i><span class="visible-lg-inline visible-md-inline">Settings</span>
   {{/link-to}}
 </div>

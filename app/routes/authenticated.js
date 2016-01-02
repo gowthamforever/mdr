@@ -8,7 +8,8 @@ const {
 } = Ember;
 
 const {
-  hash
+  hash,
+  Promise
 } = RSVP;
 
 const { service } = inject;
@@ -39,13 +40,22 @@ export default Route.extend(Api, {
 
   afterModel() {
     const self     = this;
+    const session  = self.get('session');
     const promises = {
-      clients: self.get('clients').callClients(),
-      doctors: self.get('doctors').callDoctors(),
-      assessors: self.get('assessors').callAssessors(),
+      clients: self.get('clients').getClients(),
       appointments: self.get('appointments').getAppointments()
     };
 
-    return hash(promises);
+    if (session.get('role_admin') || session.get('role_super_admin') ||
+      session.get('role_regional_admin') || session.get('role_global_admin')) {
+        promises.doctors = self.get('doctors').getDoctors();
+        promises.assessors = self.get('assessors').getAssessors();    
+    }
+
+    return new Promise((resolve) => {
+      hash(promises).then(() => {
+        resolve();
+      });
+    });
   }
 });

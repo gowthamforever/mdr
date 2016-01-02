@@ -16,7 +16,7 @@ export default Service.extend(Api, {
   assessors: null,
   cache: false,
 
-  callAssessors() {
+  getAssessors() {
     const self = this;
     return new Promise((resolve) => {
       if (self.get('cache')) {

@@ -24,3 +24,7 @@ export function blurActiveElement() {
     }
   } catch(err) {}
 }
+
+export function scrollTop(val=0) {
+  window.scroll(0, val);
+}
