@@ -47,6 +47,11 @@ span.sidenav-toggle {
   }
 }
 
+.title-bar {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}
 .page-title {
   background-color: #34495E;
   color: #FFF;

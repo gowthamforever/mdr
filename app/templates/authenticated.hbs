@@ -4,7 +4,7 @@
       {{mdr-sidebar class="animate-sidebar" classNameBindings="showSideBar::sidebar-hidden"}}
 
       {{! remove all the below classes}}
-      <div class="animate-sidebar {{if showSideBar 'title-bar col-md-offset-2 col-xs-offset-1 col-sm-offset-1'}}">
+      <div class="animate-sidebar title-bar {{if showSideBar 'col-md-offset-2 col-xs-offset-1 col-sm-offset-1'}}">
         <span class="sidenav-toggle active" {{action "toggleSideBar"}}><i class="fa fa-bars"></i></span>
         <div class="page-title">XYZ Corporation</div>
       </div>

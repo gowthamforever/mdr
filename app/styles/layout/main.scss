@@ -93,8 +93,9 @@
 
 .main-content {
   min-height: 700px;
-  margin-top: 30px;
+  margin-top: 60px;
   padding-right: 30px;
+  z-index: 1;
 }
 
 @media (max-width: 991px) {
