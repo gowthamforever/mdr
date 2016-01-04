@@ -147,3 +147,11 @@
 .overflow-hidden {
   overflow: hidden;
 }
+
+.liquid-container {
+  position: relative;
+  overflow: hidden;
+  -webkit-transform: initial;
+  -moz-transform: initial;
+  transform: initial;
+}
