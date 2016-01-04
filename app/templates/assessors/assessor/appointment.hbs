@@ -33,7 +33,7 @@
               {{else if (eq bread_crumb.id 3)}}
                 {{appointment-time nextAction=(action "next") model=model.appointment}}
               {{else if (eq bread_crumb.id 4)}}
-                {{appointment-submit model=model.appointment submit=(action "submit")}}
+                {{appointment-submit model=model.appointment submit=(action "submit") assessor_appointment=true}}
               {{/if}}
             </section>
           </div>

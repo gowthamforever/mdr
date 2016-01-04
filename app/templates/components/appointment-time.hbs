@@ -42,6 +42,12 @@
   </div>
   <div class="row">
     <div class="form-group col-md-2">
+      <label class="control-label" for="report-files">Upload Report</label>
+      {{input-file-custom class="btn-info btn-block" name="report-files" files=model.files}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-2">
       <button class="btn btn-primary btn-block" type="submit">Next &gt;&gt;</button>
     </div>
   </div>

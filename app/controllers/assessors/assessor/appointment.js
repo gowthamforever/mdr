@@ -45,8 +45,8 @@ export default Controller.extend({
     this.nextBreadCrump(current);
   },
 
-  selectUpload() {
-
+  selectVerify(current) {
+    this.nextBreadCrump(current);
   },
 
   actions: {
@@ -60,6 +60,9 @@ export default Controller.extend({
       } else {
         current.set('current', false);
         bread_crumb.set('current', true);
+        if (current.get('id') === 4) {
+          current.set('disabled', true);
+        }
       }
     },
 
@@ -78,7 +81,7 @@ export default Controller.extend({
           this.selectReasonTime(current);
           break;
         case 4:
-          this.selectReasonTime(current);
+          this.selectVerify(current);
           break;
       }
     },

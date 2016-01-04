@@ -79,19 +79,10 @@
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              {{#link-to "home" tagName="li"}}
-                <a href="{{view.href}}">Home</a>
-              {{/link-to}}
-              {{#link-to "profile" tagName="li"}}
-                <a href="{{view.href}}">Profile</a>
-              {{/link-to}}
-              {{#link-to "settings" tagName="li"}}
-                <a href="{{view.href}}">Settings</a>
-              {{/link-to}}
+              <li>{{#link-to "home"}}Home{{/link-to}}</li>
+              <li>{{#link-to "profile"}}Profile{{/link-to}}</li>
               <li role="separator" class="divider"></li>
-              {{#link-to "logout" tagName="li"}}
-                <a href="{{view.href}}">Logout</a>
-              {{/link-to}}
+              <li>{{#link-to "logout"}}Logout{{/link-to}}</li>
             </ul>
           </li>
           <li><p class="navbar-text">{{clock.tick}}</p></li>

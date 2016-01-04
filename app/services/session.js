@@ -13,7 +13,7 @@ const {
 export default Service.extend({
   progressbar: false,
   loading: false,
-  isAuthenticated: true,
+  isAuthenticated: false,
   user_role: null,
   role_admin: equal('user_role', 'AAdmin'),
   role_super_admin: equal('user_role', 'ASuperAdmin'),

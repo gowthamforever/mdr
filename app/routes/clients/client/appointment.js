@@ -16,6 +16,7 @@ const {
 
 export default Route.extend({
   doctors: service(),
+  clients: service(),
 
   afterModel(model) {
     const self        = this;
@@ -25,14 +26,18 @@ export default Route.extend({
     const doctors     = Doctors.create();
     let bread_crumbs;
 
-    client.setProperties(_.pick(model, [
-      'customer_id',
-      'first_name',
-      'last_name',
-      'insurance_plan'
-    ]));
+    if (model.get('customer_id') === 'all') {
+      clients.set('clients', self.get('clients.clients'));
+    } else {
+      client.setProperties(_.pick(model, [
+        'customer_id',
+        'first_name',
+        'last_name',
+        'insurance_plan'
+      ]));
+      clients.set('clients', Ember.A([client]));
+    }
 
-    clients.set('clients', Ember.A([client]));
     doctors.set('doctors', self.get('doctors.doctors'));
 
     bread_crumbs = Ember.A([
@@ -55,7 +60,7 @@ export default Route.extend({
       }),
       BreadCrumb.create({
         id: 4,
-        name: 'Upload Report',
+        name: 'Verify & Submit',
         model: appointment
       })
     ]);

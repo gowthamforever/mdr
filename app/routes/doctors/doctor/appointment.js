@@ -16,6 +16,7 @@ const {
 
 export default Route.extend({
   clients: service(),
+  doctors: service(),
 
   afterModel(model) {
     const self        = this;
@@ -25,14 +26,17 @@ export default Route.extend({
     const doctors     = Doctors.create();
     let bread_crumbs;
 
-    doctor.setProperties(_.pick(model, [
-      'doctor_id',
-      'first_name',
-      'last_name',
-      'service_charge'
-    ]));
-
-    doctors.set('doctors', Ember.A([doctor]));
+    if (model.get('doctor_id') === 'all') {
+      doctors.set('doctors', self.get('doctors.doctors'));
+    } else {
+      doctor.setProperties(_.pick(model, [
+        'doctor_id',
+        'first_name',
+        'last_name',
+        'service_charge'
+      ]));
+      doctors.set('doctors', Ember.A([doctor]));
+    }
     clients.set('clients', self.get('clients.clients'));
 
     bread_crumbs = Ember.A([
