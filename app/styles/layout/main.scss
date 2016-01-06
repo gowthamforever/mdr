@@ -24,25 +24,6 @@
   background-color: #34495E;
 }
 
-.img-overlay {
-  display: none;
-  position: absolute;
-  .overlay {
-    background-color: #000;
-    height: 162px;
-    width: 160px;
-    margin-left: 32px;
-    opacity: 0.5;
-    border-radius: 84px;
-  }
-  .change-photo-link {
-    top: 68px;
-    left: 68px;
-    color: #FFF;
-    position: absolute;
-  }
-}
-
 .body-container {
   margin: 0;
   padding-left: 15px;
@@ -76,9 +57,43 @@
 .dashboard-avatar {
   padding: 20px 0;
   background-color: #FFF;
-  &:hover {
-    .img-overlay {
-      display: block;
+  text-align: center;
+
+  .image-container {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    display: inline-block;
+
+    img.image {
+      width: 160px;
+      height: 160px;
+      border-radius: 100px;
+    }
+
+    .after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 101%;
+      height: 101%;
+      display: none;
+      color: #fff;
+      border-radius: 100px;
+
+      .change-photo-link {
+        top: 45%;
+        left: 20%;
+        color: #FFF;
+        position: absolute;
+      }
+    }
+
+    &:hover {
+      .after {
+        display: block;
+        background: rgba(0, 0, 0, 0.6);
+      }
     }
   }
 }
