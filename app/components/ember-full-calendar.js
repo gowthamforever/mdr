@@ -15,7 +15,7 @@ export default Component.extend({
   header: {
     left: 'prev,next today',
     center: 'title',
-    right: 'month,agendaWeek,agendaDay'
+    right: 'month,basicDay'
   },
   theme: false,
   firstDay: 0,
@@ -111,11 +111,15 @@ export default Component.extend({
 
       // Clicking & Hovering
       // date, jsEvent, view
-      dayClick() {
+      dayClick(date) {
         const dayClick = self.attrs.dayClick;
         if (dayClick) {
           dayClick(...arguments);
         }
+
+        const toDate = new Date(date);
+        self.$().fullCalendar( 'changeView', 'basicDay' );
+        self.$().fullCalendar( 'gotoDate', toDate );
       },
 
       // calEvent, jsEvent, view

@@ -14,4 +14,9 @@ section.appointments-request-block {
 
 section.calendar-block {
   padding: 50px 20px;
+
+  .fc-day:hover{
+    cursor: pointer;
+    background: #D0D0D0;
+  }
 }
