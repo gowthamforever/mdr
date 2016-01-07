@@ -24,10 +24,12 @@ export default Route.extend(Api, {
   appointments: service(),
 
   activate() {
+    this._super(...arguments);
     this.set('header.showAuthenticatedBlock', true);
   },
 
   deactivate() {
+    this._super(...arguments);
     this.set('header.showAuthenticatedBlock', false);
   },
 
