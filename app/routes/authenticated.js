@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import Api from 'mdr/mixins/api';
+import AuthenticatedModel from 'mdr/models/authenticated';
 
 const {
   Route,
@@ -38,7 +39,7 @@ export default Route.extend(Api, {
     }
   },
 
-  afterModel() {
+  model() {
     const self     = this;
     const session  = self.get('session');
     const promises = {
@@ -49,12 +50,17 @@ export default Route.extend(Api, {
     if (session.get('role_admin') || session.get('role_super_admin') ||
       session.get('role_regional_admin') || session.get('role_global_admin')) {
         promises.doctors = self.get('doctors').getDoctors();
-        promises.assessors = self.get('assessors').getAssessors();    
+        promises.assessors = self.get('assessors').getAssessors();
     }
 
     return new Promise((resolve) => {
-      hash(promises).then(() => {
-        resolve();
+      hash(promises).then((promises) => {
+        resolve(AuthenticatedModel.create(_.pick(promises, [
+          'clients',
+          'appointments',
+          'doctors',
+          'assessors'
+        ])));
       });
     });
   }
