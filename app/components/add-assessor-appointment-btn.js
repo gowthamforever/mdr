@@ -14,7 +14,7 @@ export default Component.extend({
     if (!model) {
       model = Assessor.create({
         assessor_id: 'all'
-      })
+      });
     }
 
     return model;

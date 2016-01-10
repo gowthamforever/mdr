@@ -52,3 +52,6 @@
     {{/each}}
   </div>
 </section>
+{{#if model.created}}
+  {{modal-confirmation close=(action 'closeConfirmation')}}
+{{/if}}

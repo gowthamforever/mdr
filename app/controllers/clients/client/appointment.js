@@ -12,6 +12,7 @@ const {
 
 export default Controller.extend({
   appointments: service(),
+  dialog: service(),
 
   nextBreadCrump(current) {
     const appointment   = this.get('model.appointment');
@@ -101,14 +102,19 @@ export default Controller.extend({
       data.service_charge = doctor.get('service_charge');
       data.reason = model.get('reason');
       data.alt_info = model.get('alt_info');
-      data.start_date_time = formatToServer(model.get('start_date_time'));
-      data.end_date_time = formatToServer(model.get('end_date_time'));
+      data.ts_request = formatToServer(model.get('start_date_time'));
+      data.ts_request_endtime = formatToServer(model.get('end_date_time'));
       data.status = 'pending';
 
       service.postAppointment(data).then(() => {
         self.get('appointments').set('cache', false);
-        self.transitionToRoute('appointments.requests');
+        self.set('model.created', true);
       });
+    },
+
+    closeConfirmation() {
+      this.send('refresh');
+      this.set('model.created', false);
     }
   }
 });

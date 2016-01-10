@@ -14,7 +14,7 @@ export default Component.extend({
     if (!model) {
       model = Doctor.create({
         doctor_id: 'all'
-      })
+      });
     }
 
     return model;

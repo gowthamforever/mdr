@@ -14,7 +14,7 @@ export default Component.extend({
     if (!model) {
       model = Client.create({
         customer_id: 'all'
-      })
+      });
     }
 
     return model;

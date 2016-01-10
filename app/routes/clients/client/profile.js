@@ -6,10 +6,12 @@ const {
 
 export default Route.extend({
   activate() {
+    this._super(...arguments);
     this.get('titlebar').set('right_content', 'add-client-appointment-btn');
   },
 
   deactivate() {
+    this._super(...arguments);
     this.get('titlebar').setProperties({
       right_content: undefined,
       right_content_model: undefined

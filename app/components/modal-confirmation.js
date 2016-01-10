@@ -6,7 +6,7 @@ export default Component.extend({
   tagName: '',
   actions: {
     hideDialog() {
-      this.sendAction('close');
+      this.attrs.close();
     }
   }
 });

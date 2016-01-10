@@ -18,16 +18,38 @@ Ember.MODEL_FACTORY_INJECTIONS = true;
 
 Route.reopen({
   activate() {
-    const self    = this;
+    const self      = this;
+    const routeName = self.routeName;
+    let titles  = {
+      home: { title: 'Home' },
+      'clients.list': { title: 'Clients' },
+      'clients.add': { title: 'Add a Client' },
+      'clients.client.profile': { title: 'Client Profile' },
+      'clients.client.appointment': { title: 'Create Appointment' },
+      'doctors.list': { title: 'Doctors' },
+      'doctors.add': { title: 'Add a Doctor' },
+      'doctors.doctor.profile': { title: 'Doctor Profile' },
+      'doctors.doctor.appointment': { title: 'Create Appointment' },
+      'assessors.list': { title: 'Assessors' },
+      'assessors.add': { title: 'Add a Assessor' },
+      'assessors.assessor.profile': { title: 'Assessor Profile' },
+      'assessors.assessor.appointment': { title: 'Create Appointment' },
+      'appointments.calendar': {title: 'Appointments', subtitle: 'Calendar'},
+      'appointments.requests': {title: 'Appointments', subtitle: 'Requests'}
+    };
+    let title = titles[routeName] || 'MDRealtime';
+
+    if (title) {
+      this.set('titlebar.info', title);
+    }
+
     this._super(...arguments);
 
     schedule('afterRender', () => {
-      const routeName = self.routeName;
       let title       = 'MDR';
+      let mappings    = {};
       let mapping;
-      let mappings;
       let parts;
-      mappings = {};
 
       mapping = mappings[routeName];
       if (mapping) {

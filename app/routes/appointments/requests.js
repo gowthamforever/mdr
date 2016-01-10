@@ -11,6 +11,7 @@ export default Route.extend({
   dialog: service(),
 
   activate() {
+    this._super(...arguments);
     this.get('titlebar').setProperties({
       right_content: 'view-requests-btn',
       right_content_model: Ember.Object.create({ calendar: true })
@@ -18,6 +19,7 @@ export default Route.extend({
   },
 
   deactivate() {
+    this._super(...arguments);
     this.get('titlebar').setProperties({
       right_content: undefined,
       right_content_model: undefined

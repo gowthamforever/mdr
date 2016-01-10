@@ -83,5 +83,11 @@ export default Route.extend({
 
     appointment.set('bread_crumbs', bread_crumbs);
     model.set('appointment', appointment);
+  },
+
+  actions: {
+    refresh() {
+      this.refresh();
+    }
   }
 });
