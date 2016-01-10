@@ -135,7 +135,7 @@
 						<div class="row">
 							<div class="form-group col-md-8  {{if model.validationResult.address1.hasError 'has-error'}}">
 								<label class="control-label" for="address1">Primary address</label>
-								{{input type="text" class="form-control" id="address1" name="address1" value=model.address1 maxlength=250 autocomplete="off"}}
+								{{input type="text" class="form-control" name="address1" value=model.address1 maxlength=250 autocomplete="off"}}
 								{{mdr-field-error client=model.validationResult.address1}}
 							</div>
 						</div>

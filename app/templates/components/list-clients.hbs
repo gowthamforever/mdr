@@ -1,6 +1,6 @@
 {{#unless (or hideSearch selected)}}
   <section class="search-header">
-    <form class="clearfix" id="clients-search-form" name="search-form" role="form" novalidate {{action "filter" on="submit"}}>
+    <form class="clearfix" name="search-form" role="form" novalidate {{action "filter" on="submit"}}>
       <div class="form-group col-md-2 col-sm-2">
         <label class="control-label" for="first-name">First Name</label>
         {{input type="text" class="form-control" name="first-name" placeholder="Click to change" value=model.firstName}}
@@ -39,9 +39,6 @@
             {{/link-to}}
           </h4>
 
-          {{#unless hideBtns}}
-            {{#link-to 'clients.client.appointment' client class="btn btn-warning"}}<i class="fa fa-calendar"></i> Appointment{{/link-to}}
-          {{/unless}}
           {{#if showSelect}}
             {{#if (eq selected client)}}
               <a class="btn btn-success" href="#" {{action "select" client}}><i class="fa fa-check"></i> Change</a>

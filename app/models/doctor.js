@@ -1,10 +1,11 @@
 import Ember from 'ember';
+import AppointmentFlags from 'mdr/mixins/appointment-flags';
 import Constants from 'mdr/utility/constants';
 
 const { computed } = Ember;
 const { equal } = computed;
 
-export default Ember.Object.extend({
+export default Ember.Object.extend(AppointmentFlags, {
   current_year: moment().year(),
   graduation_years: computed('current_year', function() {
     const current_year = this.get('current_year');

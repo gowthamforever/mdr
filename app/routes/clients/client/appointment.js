@@ -26,8 +26,23 @@ export default Route.extend({
     const doctors     = Doctors.create();
     let bread_crumbs;
 
+    model.setProperties({
+      hide_btn_client: true,
+      hide_search_client: true,
+      show_select_client: false,
+
+      hide_btn_doctor: true,
+      hide_search_doctor: false,
+      show_select_doctor: true
+    });
+
     if (model.get('customer_id') === 'all') {
       clients.set('clients', self.get('clients.clients'));
+      model.setProperties({
+        hide_search_client: false,
+        show_select_client: true
+      });
+      appointment.set('selected_client', undefined);
     } else {
       client.setProperties(_.pick(model, [
         'customer_id',
@@ -36,6 +51,7 @@ export default Route.extend({
         'insurance_plan'
       ]));
       clients.set('clients', Ember.A([client]));
+      appointment.set('selected_client', client);
     }
 
     doctors.set('doctors', self.get('doctors.doctors'));
@@ -64,11 +80,6 @@ export default Route.extend({
         model: appointment
       })
     ]);
-
-    appointment.setProperties({
-      selected_client: client,
-      bread_crumbs
-    });
 
     appointment.set('bread_crumbs', bread_crumbs);
     model.set('appointment', appointment);

@@ -14,14 +14,24 @@
           <div class="panel-body">
             <section class="col-md-12">
               {{#if (eq bread_crumb.id 1)}}
-                {{list-clients class="clients-list-block" model=bread_crumb.model hideBtns=true hideSearch=true}}
+                {{list-clients class="clients-list-block"
+                  model=bread_crumb.model
+                  hideBtns=model.hide_btn_client
+                  hideSearch=model.hide_search_client
+                  showSelect=model.show_select_client
+                  selected=model.appointment.selected_client}}
                 <div class="row">
                   <div class="form-group col-md-2">
                     <button class="btn btn-primary btn-block" {{action "next"}}>Next &gt;&gt;</button>
                   </div>
                 </div>
               {{else if (eq bread_crumb.id 2)}}
-                {{list-doctors class="doctors-list-block" model=bread_crumb.model hideBtns=true showSelect=true selected=model.appointment.selected_doctor}}
+                {{list-doctors class="doctors-list-block"
+                  model=bread_crumb.model
+                  hideBtns=model.hide_btn_doctor
+                  hideSearch=model.hide_search_doctor
+                  showSelect=model.show_select_doctor
+                  selected=model.appointment.selected_doctor}}
 
                 {{#if model.appointment.selected_doctor}}
                   <div class="row">

@@ -1,10 +1,11 @@
 import Ember from 'ember';
+import AppointmentFlags from 'mdr/mixins/appointment-flags';
 import Constants from 'mdr/utility/constants';
 
 const { computed } = Ember;
 const { equal } = computed;
 
-export default Ember.Object.extend({
+export default Ember.Object.extend(AppointmentFlags, {
   active: null,
   assessor_id: null,
   dob: null,

@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import AppointmentFlags from 'mdr/mixins/appointment-flags';
 import Constants from 'mdr/utility/constants';
 
 const {
@@ -11,7 +12,7 @@ const {
   not
 } = computed;
 
-export default Ember.Object.extend({
+export default Ember.Object.extend(AppointmentFlags, {
   current_year: moment().year(),
 
   agency_id: null,

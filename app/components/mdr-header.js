@@ -12,6 +12,8 @@ const {
 export default Component.extend({
   header: service(),
   clock: service(),
+  sidebar: service(),
+
   tagName: 'header',
   classNames: ['mdr-header'],
   ariaRole: 'header',

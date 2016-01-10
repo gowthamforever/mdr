@@ -1,17 +1,17 @@
 {{#unless (or hideSearch selected)}}
   <section class="search-header">
-    <form class="clearfix" id="assessors-search-form" name="search-form" role="form" novalidate {{action "filter" on="submit"}}>
+    <form class="clearfix" name="search-form" role="form" novalidate {{action "filter" on="submit"}}>
       <div class="form-group col-md-2 col-sm-2">
         <label class="control-label" for="assessors-first-name">First Name</label>
-        {{input type="text" class="form-control" id="assessors-first-name" name="first-name" placeholder="Click to change" value=model.firstName}}
+        {{input type="text" class="form-control" name="assessors-first-name" placeholder="Click to change" value=model.firstName}}
       </div>
       <div class="form-group col-md-2 col-sm-2">
         <label class="control-label" for="assessors-last-name">Last Name</label>
-        {{input type="text" class="form-control" id="assessors-last-name" name="last-name" placeholder="Click to change" value=model.lastName}}
+        {{input type="text" class="form-control" name="assessors-last-name" placeholder="Click to change" value=model.lastName}}
       </div>
       <div class="form-group col-md-2 col-sm-12">
         <label class="control-label hide-visible" for="assessors-search-btn">search</label>
-        <button class="btn btn-primary btn-block" id="assessors-search-btn" type="submit">Search</button>
+        <button class="btn btn-primary btn-block" name="assessors-search-btn" type="submit">Search</button>
       </div>
     </form>
   </section>
