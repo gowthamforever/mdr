@@ -51,8 +51,7 @@ App = Ember.Application.extend({
   Resolver,
 
   ready() {
-    this.register('page:info', Ember.Object, { singleton: true });
-    this.inject('route', 'page', 'page:info');
+    this.inject('route', 'titlebar', 'service:titlebar');
   }
 });
 

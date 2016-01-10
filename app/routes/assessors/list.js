@@ -9,11 +9,11 @@ const {
 
 export default Route.extend({
   activate() {
-    this.modelFor('authenticated').set('right_content', 'add-assessor-btn');
+    this.get('titlebar').set('right_content', 'right-content-assessor');
   },
 
   deactivate() {
-    this.modelFor('authenticated').set('right_content', undefined);
+    this.get('titlebar').set('right_content', undefined);
   },
 
   actions: {

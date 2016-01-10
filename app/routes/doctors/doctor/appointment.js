@@ -51,7 +51,7 @@ export default Route.extend({
         'service_charge'
       ]));
       doctors.set('doctors', Ember.A([doctor]));
-      appointment.set('selected_client', doctor);
+      appointment.set('selected_doctor', doctor);
     }
     clients.set('clients', self.get('clients.clients'));
 

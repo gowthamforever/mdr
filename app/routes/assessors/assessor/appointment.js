@@ -26,8 +26,23 @@ export default Route.extend({
     const assessors     = Assessors.create();
     let bread_crumbs;
 
-    if (model.get('doctor_id') === 'all') {
+    model.setProperties({
+      hide_btn_assessor: true,
+      hide_search_assessor: true,
+      show_select_assessor: false,
+
+      hide_btn_client: true,
+      hide_search_client: false,
+      show_select_client: true
+    });
+
+    if (model.get('assessor_id') === 'all') {
       assessors.set('assessors', self.get('assessors.assessors'));
+      model.setProperties({
+        hide_search_assessor: false,
+        show_select_assessor: true
+      });
+      appointment.set('selected_assessor', undefined);
     } else {
       assessor.setProperties(_.pick(model, [
         'assessor_id',
@@ -36,6 +51,7 @@ export default Route.extend({
         'service_charge'
       ]));
       assessors.set('assessors', Ember.A([assessor]));
+      appointment.set('selected_assessor', assessor);
     }
 
     clients.set('clients', self.get('clients.clients'));

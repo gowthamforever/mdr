@@ -44,7 +44,6 @@
             {{else}}
               <a class="btn btn-danger" href="#" {{action "toggleStats" assessor false}}><i class="fa fa-warning"></i> Inactive</a>
             {{/if}}
-            {{#link-to 'assessors.assessor.appointment' assessor class="btn btn-warning"}}<i class="fa fa-calendar"></i> Appointment{{/link-to}}
           {{/unless}}
           {{#if showSelect}}
             {{#if (eq selected assessor)}}

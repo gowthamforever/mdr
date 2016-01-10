@@ -10,11 +10,5 @@ const {
 } = inject;
 
 export default Controller.extend({
-  sidebar: service(),
-
-  actions: {
-    toggleSideBar() {
-      this.get('sidebar').toggle();
-    }
-  }
+  sidebar: service()
 });

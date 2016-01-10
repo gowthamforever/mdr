@@ -6,17 +6,17 @@ const {
 
 export default Route.extend({
   activate() {
-    this.modelFor('authenticated').set('right_content', 'add-doctor-appointment-btn');
+    this.get('titlebar').set('right_content', 'add-doctor-appointment-btn');
   },
 
   deactivate() {
-    this.modelFor('authenticated').setProperties({
+    this.get('titlebar').setProperties({
       right_content: undefined,
       right_content_model: undefined
     });
   },
 
   afterModel(model) {
-    this.modelFor('authenticated').set('right_content_model', model);
+    this.get('titlebar').set('right_content_model', model);
   }
 });

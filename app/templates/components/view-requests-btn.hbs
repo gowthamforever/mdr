@@ -1,0 +1,9 @@
+{{#if model.calendar}}
+  {{#link-to 'appointments.calendar' class="btn btn-danger" ariaRole="button"}}
+    View Calendar
+  {{/link-to}}
+{{else}}
+  {{#link-to 'appointments.requests' class="btn btn-danger" ariaRole="button"}}
+    View Requests
+  {{/link-to}}
+{{/if}}
