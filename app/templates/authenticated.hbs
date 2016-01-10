@@ -6,7 +6,13 @@
       {{! remove all the below classes}}
       <div class="animate-sidebar title-bar {{if showSideBar 'col-md-offset-2 col-xs-offset-1 col-sm-offset-1'}}">
         <span class="sidenav-toggle active" {{action "toggleSideBar"}}><i class="fa fa-bars"></i></span>
-        <div class="page-title">XYZ Corporation</div>
+        <div class="page-title">
+          <span>XYZ Corporation</span>
+          <div class="btn-wrapper">
+            <button type="button" class="btn btn-danger">Danger</button>
+            <button type="button" class="btn btn-danger">Danger</button>
+          </div>
+        </div>
       </div>
       {{! remove all the classes and add only col-md-12 below}}
       <div class="main-content animate-sidebar {{if showSideBar 'col-md-10 col-md-offset-2 col-xs-offset-1 col-sm-offset-1' 'col-md-12'}}">
