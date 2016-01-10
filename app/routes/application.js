@@ -14,12 +14,15 @@ export default Route.extend({
   session: service(),
 
   actions: {
-    loading(transition) {
+    loading() {
+      const self    = this;
       const session = this.get('session');
-      session.showLoadingBar();
-      transition.promise.finally(() => {
-        session.hideLoadingBar();
-      });
+      try {
+        session.showLoadingBar();
+        self.router.one('didTransition', () => {
+          session.hideLoadingBar();
+        });
+      } catch(e) {}
     },
 
     didTransition() {

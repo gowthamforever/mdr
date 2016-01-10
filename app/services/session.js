@@ -12,6 +12,7 @@ const {
 
 export default Service.extend({
   progressbar: false,
+  ajaxCounter: 0,
   loading: false,
   isAuthenticated: false,
   user_role: null,
@@ -29,13 +30,15 @@ export default Service.extend({
   isNotAuthenticated: not('isAuthenticated'),
 
   showProgressBar() {
+    this.incrementProperty('ajaxCounter');
     if (!this.get('progressbar')) {
       this.set('progressbar', true);
     }
   },
 
   hideProgressBar() {
-    if (this.get('progressbar') && !this.get('loading')) {
+    this.decrementProperty('ajaxCounter');
+    if (this.get('progressbar') && !this.get('loading') && this.get('ajaxCounter') === 0) {
       this.set('progressbar', false);
     }
   },
