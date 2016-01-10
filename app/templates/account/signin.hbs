@@ -1,32 +1,40 @@
 <section class="signin-block">
 	<form role="form" novalidate {{action "signin" on="submit"}}>
 		<section class="col-md-12 signin-container">
-			{{mdr-page-error validationResult=model.validationResult message="Invalid user name or password"}}
 
-			<section class="col-md-6 info-seperator">
-			  <div class="form-group form-group-height">
-					<label for="user-name">User name (Email ID / NPI No)</label>
-					{{input type="text" class="form-control" name="user-name" value=model.userName}}
-			  </div>
-			  <div class="form-group form-group-height">
-					<label for="password">Password</label>
-					{{input type="password" class="form-control" name="password" value=model.password}}
-			  </div>
-			  <div class="checkbox form-group-height">
-			    <label>{{input type="checkbox" name="remeber-me" checked=model.rememberMe}} Remember me</label>
-			  </div>
-				<div class="text-center form-group-height">
-					{{#mdr-processing-button class="btn btn-primary btn-signin" type="submit"}}Sign in{{/mdr-processing-button}}
+			<div class="panel panel-default">
+				<div class="panel-body">
+					{{mdr-page-error validationResult=model.validationResult message="Invalid user name or password"}}
+
+					<div class="row">
+						<div class="form-group col-md-8">
+							<label for="user-name">User name (Email ID / NPI No)</label>
+							{{input type="text" class="form-control" name="user-name" value=model.userName}}
+							<p class="help-block">User name is your email id, doctors can also use their NPI number to sign in.</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-8">
+							<label for="password">Password</label>
+							{{input type="password" class="form-control" name="password" value=model.password}}
+							<p class="help-block">Can't access your account, <a href="#">Click here.</a></p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 checkbox">
+							<label>
+								{{input type="checkbox" name="remeber-me" checked=model.rememberMe}} Remember me<
+								<span class="hide">{{model.on_is_secondary_address}}</span>
+							</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-2">
+							{{#mdr-processing-button class="btn btn-primary btn-block" type="submit"}}Sign in{{/mdr-processing-button}}
+						</div>
+					</div>
 				</div>
-			</section>
-			<section class="col-md-6">
-				<div class="form-group form-group-height">
-					User name is your email id, doctors can also use their NPI number to sign in
-				</div>
-				<div class="form-group form-group-height">
-					Can't access your account, <a href="#">Click here</a>
-				</div>
-			</section>
+			</div>
 		</section>
 	</form>
 </section>
