@@ -1,5 +1,5 @@
 <section class="signin-block">
-	<form role="form" novalidate {{action "signin" on="submit"}}>
+	<form role="form" novalidate {{action "signin" on="submit"}} autocomplete="off">
 		<section class="col-md-12 signin-container">
 
 			<div class="panel panel-default">
@@ -9,14 +9,14 @@
 					<div class="row">
 						<div class="form-group col-md-8">
 							<label for="user-name">User name (Email ID / NPI No)</label>
-							{{input type="text" class="form-control" name="user-name" value=model.userName}}
+							{{input type="text" class="form-control" name="user-name" value=model.userName autocomplete="off"}}
 							<p class="help-block">User name is your email id, doctors can also use their NPI number to sign in.</p>
 						</div>
 					</div>
 					<div class="row">
 						<div class="form-group col-md-8">
 							<label for="password">Password</label>
-							{{input type="password" class="form-control" name="password" value=model.password}}
+							{{input type="password" class="form-control" name="password" value=model.password autocomplete="off"}}
 							<p class="help-block">Can't access your account, <a href="#">Click here.</a></p>
 						</div>
 					</div>
