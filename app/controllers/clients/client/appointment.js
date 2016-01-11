@@ -108,13 +108,9 @@ export default Controller.extend({
 
       service.postAppointment(data).then(() => {
         self.get('appointments').set('cache', false);
+        self.send('refresh');
         self.set('model.created', true);
       });
-    },
-
-    closeConfirmation() {
-      this.send('refresh');
-      this.set('model.created', false);
     }
   }
 });

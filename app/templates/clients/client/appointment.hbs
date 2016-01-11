@@ -1,4 +1,9 @@
 <section class="appointment-block">
+  {{#if model.created}}
+    <div class="alert alert-success">
+      <strong>Success!! </strong>Appointment created.
+    </div>
+  {{/if}}
   <div class="panel-group">
     {{#each model.appointment.bread_crumbs as |bread_crumb|}}
       <div class="panel {{if bread_crumb.current 'panel-primary' (if bread_crumb.selected 'panel-success' (if bread_crumb.disabled 'panel-default' 'panel-primary'))}}">
@@ -52,6 +57,3 @@
     {{/each}}
   </div>
 </section>
-{{#if model.created}}
-  {{modal-confirmation close=(action 'closeConfirmation')}}
-{{/if}}
