@@ -46,19 +46,20 @@
         <div class="pull-left left-content">
           <img class="pull-left img-responsive" src={{if doctor.male "./assets/img/default_avatar_doctor_male_120x.png" "./assets/img/default_avatar_doctor_female_120x.png"}}>
           <div>
-            <h4>
-              {{#link-to 'doctors.doctor.profile' doctor}}
-                <strong>{{doctor.first_name}} {{doctor.last_name}}</strong>
-              {{/link-to}}
-            </h4>
-            <p>{{doctor.graduation_institution}}</p>
-            {{#unless hideBtns}}
+            <div>
               {{#if doctor.isActive}}
-                <a class="btn btn-success" href="#" {{action "toggleStats" doctor true}}><i class="fa fa-check"></i> Active</a>
+                <span class="pull-left circle-badge success"><i class="fa fa-check"></i></span>
               {{else}}
-                <a class="btn btn-danger" href="#" {{action "toggleStats" doctor false}}><i class="fa fa-warning"></i> Inactive</a>
+                <span class="pull-left circle-badge danger"><i class="fa fa-warning"></i></span>
               {{/if}}
-            {{/unless}}
+              <h4>
+                {{#link-to 'doctors.doctor.profile' doctor}}
+                  <strong>{{doctor.first_name}} {{doctor.last_name}}</strong>
+                {{/link-to}}
+              </h4>
+            </div>
+            <p>{{doctor.graduation_institution}}</p>
+            <p>Service charge: ${{doctor.service_charge}}</p>
             {{#if showSelect}}
               {{#if (eq selected doctor)}}
                 <a class="btn btn-success" href="#" {{action "select" doctor}}><i class="fa fa-check"></i> Change</a>
@@ -68,7 +69,6 @@
             {{/if}}
           </div>
         </div>
-        <div class="right-content"><i class="fa fa-dollar"></i> {{doctor.service_charge}}</div>
       </section>
     </li>
   {{/each}}
