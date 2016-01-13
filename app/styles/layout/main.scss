@@ -109,9 +109,10 @@
 
 .main-content {
   min-height: 700px;
-  margin-top: 60px;
+  margin-top: 50px;
   padding-right: 30px;
-  z-index: 1;
+  background: #FFF;
+  z-index: 100;
   overflow-x: hidden;
 }
 
@@ -147,4 +148,79 @@
 
 .sidebar-hidden {
   margin-left: -350px;
+}
+
+.show-sidebar {
+  transform: translate(230px, 0);
+}
+
+.logo-wrap {
+  display: inline-block;
+  margin-left: 35%;
+}
+
+svg.inline-svg {
+    position: absolute;
+    display: inline-block;
+    margin-top: 4px;
+}
+.svg-menu-toggle {
+
+  fill:#000;
+  pointer-events:all; //needs to be there so the hover works
+  cursor:pointer;
+
+  .bar {
+
+    -webkit-transform:rotate(0) translateY(0) translateX(0);
+    transform:rotate(0) translateY(0) translateX(0);
+    opacity:1;
+
+
+    -webkit-transform-origin: 20px 10px;
+    transform-origin: 20px 10px;
+
+    -webkit-transition: -webkit-transform 0.4s ease-in-out, opacity 0.2s ease-in-out;
+      transition: transform 0.4s ease-in-out, opacity 0.2s ease-in-out;
+
+  }
+  .bar:nth-of-type(1) {
+    -webkit-transform-origin: 20px 10px;
+    transform-origin: 20px 10px;
+
+  }
+   .bar:nth-of-type(3) {
+    -webkit-transform-origin: 20px 20px;
+    transform-origin: 20px 20px;
+
+   }
+
+
+}
+
+
+.menu-active {
+
+
+    .bar:nth-of-type(1) {
+
+
+    -webkit-transform:rotate(-45deg) translateY(0) translateX(0);
+    transform:rotate(-45deg) translateY(0) translateX(0);
+
+    }
+
+    .bar:nth-of-type(2) {
+
+    opacity:0;
+
+    }
+
+    .bar:nth-of-type(3) {
+
+
+      -webkit-transform:rotate(45deg) translateY(0em) translateX(0em);
+    transform:rotate(45deg) translateY(0em) translateX(0em);
+
+    }
 }

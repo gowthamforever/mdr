@@ -18,6 +18,7 @@ export default Component.extend({
   classNames: ['mdr-header'],
   ariaRole: 'header',
   showTopBar: false,
+  isSidebarVisible: false,
 
   didInitAttrs() {
     this.get('clock').startTimer();
@@ -25,5 +26,11 @@ export default Component.extend({
 
   willDestroyElement() {
     this.get('clock').stopTimer();
+  },
+
+  actions: {
+    toggleMenu() {
+      this.toggleProperty('isSidebarVisible');
+    }
   }
 });

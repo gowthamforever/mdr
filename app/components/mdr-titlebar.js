@@ -14,9 +14,7 @@ export default Component.extend({
   titlebar: service(),
 
   classNameBindings: ['sidebar.showSideBar:title-bar',
-    'sidebar.showSideBar:col-md-offset-2',
-    'sidebar.showSideBar:col-xs-offset-1',
-    'sidebar.showSideBar:col-sm-offset-1'],
+    'sidebar.showSideBar:show-sidebar'],
 
   actions: {
     toggleSideBar() {
