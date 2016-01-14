@@ -1,13 +1,15 @@
+$header-color: #fff;
+
 .navbar {
   box-shadow: inset 0 1px #fff,0 1px 3px rgba(34,25,25,.4);
   -moz-box-shadow: inset 0 1px #fff,0 1px 3px rgba(34,25,25,.4);
   -webkit-box-shadow: inset 0 1px #fff,0 1px 3px rgba(34,25,25,.4);
-  background-image: -ms-linear-gradient(top left,#fff 0,#e0e0e0 100%);
-  background-image: -moz-linear-gradient(top left,#fff 0,#e0e0e0 100%);
-  background-image: -o-linear-gradient(top left,#fff 0,#e0e0e0 100%);
+  background-image: -ms-linear-gradient(top left,#fff 0,$header-color 100%);
+  background-image: -moz-linear-gradient(top left,#fff 0,$header-color 100%);
+  background-image: -o-linear-gradient(top left,#fff 0,$header-color 100%);
   background-image: -webkit-gradient(linear,left top,right bottom,color-stop(0,#fff),color-stop(1,#e0e0e0));
-  background-image: -webkit-linear-gradient(top left,#fff 0,#e0e0e0 100%);
-  background-image: linear-gradient(to bottom right,#fff 0,#e0e0e0 100%);
+  background-image: -webkit-linear-gradient(top left,#fff 0,$header-color 100%);
+  background-image: linear-gradient(to bottom right,#fff 0,$header-color 100%);
   .notify-menu {
     color: #2980B9;
     padding-top: 5px;
@@ -40,12 +42,7 @@ span.sidenav-toggle {
   padding: 13px;
   float: left;
   font-size: 1.3em;
-  background-color: #333;
-  color: #FFF;
   cursor: pointer;
-  &.active {
-    background-color: #16A085;
-  }
 }
 
 .fixed-title-bar {
@@ -54,8 +51,10 @@ span.sidenav-toggle {
   z-index: 100;
 }
 .page-title {
-  background-color: #34495E;
-  color: #FFF;
+  background: #ebebeb url("./img/title-bar-bg.png") repeat;
+  background-color: rgba(255,255,255,0.7);
+  border-bottom: 1px solid #c8c8c8;
+  color: #818486;
   padding: 7px;
   padding-left: 50px;
   height: 50px;

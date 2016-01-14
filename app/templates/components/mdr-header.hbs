@@ -5,11 +5,6 @@
     </div>
     <div id="navbar" class="pull-right">
       <ul class="nav navbar-nav navbar-right">
-        {{#if (and header.showLoginBtn (not header.session.isAuthenticated))}}
-          <li>
-            {{#link-to "account.signin" class="navbar-link"}}Login / Signup{{/link-to}}
-          </li>
-        {{/if}}
         {{#if header.session.isAuthenticated}}
           <li class="dropdown hidden-xs">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
