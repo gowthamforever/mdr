@@ -31,21 +31,18 @@
   {{#each filtered as |client|}}
     <li class="client-list-item col-md-6">
       <section class="client-wrapper clearfix">
-        <img class="pull-left img-responsive" src={{if client.male "./assets/img/default_avatar_customer_male_120x.png" "./assets/img/default_avatar_customer_female_120x.png"}}>
         <div>
+          {{#if showSelect}}
+            <span class="pull-left clickable toggle-select" {{action "select" client}}>
+              <i class="fa {{if (eq selected client) 'fa-check-circle' 'fa-circle-thin'}} fa-2"></i>
+            </span>
+          {{/if}}
           <h4>
-            {{#link-to 'clients.client.profile' client}}
-              <strong>{{client.first_name}} {{client.last_name}}</strong>
+            <i class="fa fa-user fa-2"></i>
+            {{#link-to 'clients.client.profile' client class="theme-color"}}
+              {{client.first_name}} {{client.last_name}}
             {{/link-to}}
           </h4>
-
-          {{#if showSelect}}
-            {{#if (eq selected client)}}
-              <a class="btn btn-success" href="#" {{action "select" client}}><i class="fa fa-check"></i> Change</a>
-            {{else}}
-              <a class="btn btn-danger" href="#" {{action "select" client}}><i class="fa fa-danger"></i> Select</a>
-            {{/if}}
-          {{/if}}
         </div>
       </section>
     </li>

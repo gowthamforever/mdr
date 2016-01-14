@@ -2,6 +2,15 @@ body {
   overflow-x: hidden;
 }
 
+a {
+  color: #337ab7;
+  text-decoration: none;
+}
+a:hover, a:focus {
+  color: inherit;
+  text-decoration: none;
+}
+
 .hide {
   display: none;
 }
@@ -164,20 +173,29 @@ body {
   cursor: pointer;
 }
 
-.circle-badge {
-  color: #fff;
-  text-align: center;
-  width: 20px;
-  border-radius: 10px;
-  margin: 0 3px;
+.success-color {
+  color: #5cb85c;
+}
 
-  &.success {
-    background-color: #5cb85c;
-    border-color: #4cae4c;
+.danger-color {
+  color: #d9534f;
+}
+
+.theme-color {
+  color: #787878;
+  text-shadow: 0px 0px 0px transparent;
+}
+
+.link-color {
+  color: #818486;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 700;
+
+  &.link-margin {
+    margin: 5px;
   }
-
-  &.danger {
-    background-color: #d9534f;
-    border-color: #d43f3a;
+  &:hover {
+    color: #535454;
   }
 }

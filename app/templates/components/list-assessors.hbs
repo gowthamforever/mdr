@@ -31,27 +31,18 @@
   {{#each filtered as |assessor|}}
     <li class="assessor-list-item col-md-6">
       <section class="assessor-wrapper clearfix">
-        <img class="pull-left img-responsive" src={{if assessor.male "./assets/img/default_avatar_assessors_male_120x.png" "./assets/img/default_avatar_assessors_female_120x.png"}}>
         <div>
-          <h4 class="assessor-name">
-            {{#link-to 'assessors.assessor.profile' assessor}}
-              <strong>{{assessor.first_name}} {{assessor.last_name}}</strong>
+          {{#if showSelect}}
+            <span class="pull-left clickable toggle-select" {{action "select" assessor}}>
+              <i class="fa {{if (eq selected assessor) 'fa-check-circle' 'fa-circle-thin'}} fa-2"></i>
+            </span>
+          {{/if}}
+          <h4>
+            <i class="fa fa-user fa-2 {{if assessor.isActive 'success-color' 'danger-color'}}"></i>
+            {{#link-to 'assessors.assessor.profile' assessor class="theme-color"}}
+              {{assessor.first_name}} {{assessor.last_name}}
             {{/link-to}}
           </h4>
-          {{#unless hideBtns}}
-            {{#if assessor.isActive}}
-              <a class="btn btn-success" href="#" {{action "toggleStats" assessor true}}><i class="fa fa-check"></i> Active</a>
-            {{else}}
-              <a class="btn btn-danger" href="#" {{action "toggleStats" assessor false}}><i class="fa fa-warning"></i> Inactive</a>
-            {{/if}}
-          {{/unless}}
-          {{#if showSelect}}
-            {{#if (eq selected assessor)}}
-              <a class="btn btn-success" href="#" {{action "select" assessor}}><i class="fa fa-check"></i> Change</a>
-            {{else}}
-              <a class="btn btn-danger" href="#" {{action "select" assessor}}><i class="fa fa-danger"></i> Select</a>
-            {{/if}}
-          {{/if}}
         </div>
       </section>
     </li>

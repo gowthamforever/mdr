@@ -44,29 +44,18 @@
     <li class="doctor-list-item col-md-6">
       <section class="doctor-wrapper clearfix">
         <div class="pull-left left-content">
-          <img class="pull-left img-responsive" src={{if doctor.male "./assets/img/default_avatar_doctor_male_120x.png" "./assets/img/default_avatar_doctor_female_120x.png"}}>
           <div>
-            <div>
-              {{#if doctor.isActive}}
-                <span class="pull-left circle-badge success"><i class="fa fa-check"></i></span>
-              {{else}}
-                <span class="pull-left circle-badge danger"><i class="fa fa-warning"></i></span>
-              {{/if}}
-              <h4>
-                {{#link-to 'doctors.doctor.profile' doctor}}
-                  <strong>{{doctor.first_name}} {{doctor.last_name}}</strong>
-                {{/link-to}}
-              </h4>
-            </div>
-            <p>{{doctor.graduation_institution}}</p>
-            <p>Service charge: ${{doctor.service_charge}}</p>
             {{#if showSelect}}
-              {{#if (eq selected doctor)}}
-                <a class="btn btn-success" href="#" {{action "select" doctor}}><i class="fa fa-check"></i> Change</a>
-              {{else}}
-                <a class="btn btn-danger" href="#" {{action "select" doctor}}><i class="fa fa-danger"></i> Select</a>
-              {{/if}}
+              <span class="pull-left clickable toggle-select" {{action "select" doctor}}>
+                <i class="fa {{if (eq selected doctor) 'fa-check-circle' 'fa-circle-thin'}} fa-2"></i>
+              </span>
             {{/if}}
+            <h4>
+              <i class="fa fa-user-md fa-2 {{if doctor.isActive 'success-color' 'danger-color'}}"></i>
+              {{#link-to 'doctors.doctor.profile' doctor class="theme-color"}}
+                {{doctor.first_name}} {{doctor.last_name}}
+              {{/link-to}}
+            </h4>
           </div>
         </div>
       </section>
