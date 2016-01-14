@@ -21,7 +21,7 @@
   min-width: 65px;
   position: fixed;
   min-height: 100%;
-  background-color: #34495E;
+  background-color: #a1a1a1;
   overflow-y: auto;
 }
 
@@ -37,16 +37,16 @@
   border-right: none;
   border-top: 1px solid rgba(33, 32, 32, 0.55) !important;
   border-bottom: 1px solid rgba(33, 32, 32, 0.55) !important;
-  background-color: #34495E;
+  background-color: #a1a1a1;
   padding-left: 20px;
-  color: #FFF;
+  color: #555555;
   &.active, &:hover {
-    background-color: #46627F;
+    background-color: #333;
     color: #FFF;
   }
   &.active {
     border-bottom: none;
-    border-left: 3px solid #16A085;
+    border-left: 3px solid #2980B9;
   }
 }
 
