@@ -70,8 +70,8 @@
           <li class="dropdown hidden-xs">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <img class="profile-header-avatar" src="./assets/img/default_avatar_30x.jpg">
-              <span class="hidden-sm hidden-xs">{{header.session.first_name}} {{header.session.last_name}}</span>
-              <span class="caret"></span>
+              <span class="profile-name hidden-sm hidden-xs">{{header.session.first_name}} {{header.session.last_name}}</span>
+              <span class="profile-name caret"></span>
             </a>
             <ul class="dropdown-menu">
               <li>{{#link-to "home"}}Home{{/link-to}}</li>
@@ -80,7 +80,6 @@
               <li>{{#link-to "logout"}}Logout{{/link-to}}</li>
             </ul>
           </li>
-          <li><p class="navbar-text">{{clock.tick}}</p></li>
         {{/if}}
       </ul>
     </div>

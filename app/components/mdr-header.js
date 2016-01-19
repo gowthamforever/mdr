@@ -11,19 +11,10 @@ const {
 
 export default Component.extend({
   header: service(),
-  clock: service(),
   sidebar: service(),
 
   tagName: 'header',
   classNames: ['mdr-header'],
   ariaRole: 'header',
-  showTopBar: false,
-
-  didInitAttrs() {
-    this.get('clock').startTimer();
-  },
-
-  willDestroyElement() {
-    this.get('clock').stopTimer();
-  }
+  showTopBar: false
 });
