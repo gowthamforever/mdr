@@ -5,7 +5,10 @@ section.signin-block {
   -moz-box-shadow: 2px 2px 2px rgba(0,0,0,.2);
   box-shadow: 2px 2px 2px rgba(0,0,0,.2);
   padding: 15px;
-  width: 35%;
+  width: 100%;
+  @media (min-width: 991px) {
+    width: 35%;
+  }
 
   form.signin-form {
     display: inline-block;

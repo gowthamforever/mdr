@@ -45,6 +45,8 @@ module.exports = function(defaults) {
   app.import('bower_components/pickadate/lib/themes/classic.time.css');
   app.import('bower_components/fullcalendar/dist/fullcalendar.css');
 
+  app.import('vendor/opentok.js');
+
   var fontTree = pickFiles('bower_components/font-awesome/fonts', {
     srcDir: '/',
     destDir: '/fonts'

@@ -18,7 +18,7 @@ Router.map(function() {
     this.resource('admin-tasks');
     this.resource('profile');
     this.resource('settings');
-    this.resource('chat-room');
+    this.resource('chat');
     this.resource('logout');
 
     this.resource('clients', function() {
