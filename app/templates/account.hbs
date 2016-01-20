@@ -1,23 +1,5 @@
 <section class="account-block">
-  <h2>Create an account or Sign In</h2>
-  <p>MDRealtime helps you get better faster, no matter where you are or what time of day</p>
-
-  <section class="col-md-8">
-    <!-- Nav tabs -->
-    <ul class="nav nav-tabs" role="tablist">
-      {{#link-to "account.signin" tagName="li" ariaRole="presentation"}}
-        <a href="{{view.href}}" role="tab" data-toggle="tab">Sing In</a>
-      {{/link-to}}
-      {{#link-to "account.signup" tagName="li" ariaRole="presentation"}}
-        <a href="{{view.href}}" role="tab" data-toggle="tab">Sing Up</a>
-      {{/link-to}}
-    </ul>
-
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <div role="tabpanel" class="tab-pane active">
-        {{liquid-outlet}}
-      </div>
-    </div>
+  <section>
+    {{outlet}}
   </section>
 </section>

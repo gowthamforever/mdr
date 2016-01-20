@@ -31,6 +31,10 @@ export default Ember.Object.extend(AppointmentFlags, {
   practice_type: null,
   practice_years: null,
   primary_speciality: null,
+  primary_speciality_obj: computed('primary_speciality', function() {
+    const primary_speciality = this.get('primary_speciality');
+    return Constants.DOCTOR_SPECAILITIES.findBy('id', primary_speciality);
+  }),
   service_charge: null,
   surgeon: 0,
   speciality: null,

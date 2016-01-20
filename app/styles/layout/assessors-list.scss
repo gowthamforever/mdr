@@ -1,14 +1,16 @@
 section.assessors-list-block {
   section.search-header {
     padding: 10px;
+    border: 1px solid #c4c4c4;
+
+    .input-elements {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
   }
 
   li.assessor-list-item {
     padding: 10px;
-
-    h4.assessor-name {
-      margin-bottom: 20px;
-    }
 
     .assessor-wrapper {
       background: #fff;
@@ -17,16 +19,19 @@ section.assessors-list-block {
       -moz-box-shadow: 2px 2px 2px rgba(0,0,0,.2);
       box-shadow: 2px 2px 2px rgba(0,0,0,.2);
       position: relative;
-      padding: 0px 20px;
 
-      .toggle-select {
-        margin: 5px;
-        margin-right: 13px;
-        color: #2980B9
+      .main {
+        background: whitesmoke;
+        padding: 5px 20px;
       }
 
-      &:hover {
-        background: #D9EDF7;
+      .options {
+        border-top: 1px solid #c4c4c4;
+      }
+
+      .toggle-select {
+        margin-right: 13px;
+        color: #2980B9
       }
     }
 

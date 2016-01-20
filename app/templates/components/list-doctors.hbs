@@ -1,61 +1,64 @@
 {{#unless (or hideSearch selected)}}
   <section class="search-header">
     <form class="clearfix" name="search-form" role="form" novalidate {{action "filter" on="submit"}}>
-      <div class="form-group col-md-2 col-sm-2">
-        <label class="control-label" for="doctors-speciality">Doctor Speciality</label>
-        {{input-select
-          class="form-control"
-          name="doctors-speciality"
-          options=model.specialities
-          labelPath="name"
-          valuePath="id"
-          selected=model.speciality
-          prompt="Select"
-        }}
-      </div>
-      <div class="form-group col-md-2 col-sm-2">
-        <label class="control-label" for="doctors-first-name">First Name</label>
-        {{input type="text" class="form-control" name="doctors-first-name" placeholder="Click to change" value=model.firstName}}
-      </div>
-      <div class="form-group col-md-2 col-sm-2">
-        <label class="control-label" for="doctors-last-name">Last Name</label>
-        {{input type="text" class="form-control" name="doctors-last-name" placeholder="Click to change" value=model.lastName}}
-      </div>
-      <div class="form-group col-md-2 col-sm-12">
-        <label class="control-label hide-visible" for="doctors-search-btn">search</label>
-        <button class="btn btn-primary btn-block" name="doctors-search-btn" type="submit">Search</button>
+      <div class="row">
+        <div class="col-md-3 input-elements">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-user-md"></i></span>
+            {{input-select
+              class="form-control"
+              name="doctors-speciality"
+              options=model.specialities
+              labelPath="name"
+              valuePath="id"
+              selected=model.speciality
+              prompt="Doctor Speciality"
+            }}
+          </div>
+        </div>
+        <div class="col-md-3 input-elements">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+            {{input type="text" class="form-control" name="first-name" placeholder="First name" value=model.firstName}}
+          </div>
+        </div>
+        <div class="col-md-3 input-elements">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+            {{input type="text" class="form-control" name="last-name" placeholder="Last name" value=model.lastName}}
+          </div>
+        </div>
+        <div class="col-md-3 input-elements">
+          <div class="input-group">
+            <button class="btn btn-primary btn-block" type="submit"><i class="fa fa-search"></i> Search</button>
+          </div>
+        </div>
       </div>
     </form>
   </section>
-
-  {{#if filtered}}
-  <div class="alert alert-info">
-    <strong>Doctors Found!</strong> Listing {{filtered.length}} patients.
-  </div>
-  {{else}}
-    <div class="alert alert-danger" style="display: block;">
-      <strong>No Doctors available!</strong> Try changing search criteria.
-    </div>
-  {{/if}}
 {{/unless}}
 
 <ul class="list-unstyled clearfix">
   {{#each filtered as |doctor|}}
-    <li class="doctor-list-item col-md-6">
+    <li class="doctor-list-item col-md-4">
       <section class="doctor-wrapper clearfix">
-        <div class="pull-left left-content">
+        <div class="main clearfix">
           <div>
-            {{#if showSelect}}
-              <span class="pull-left clickable toggle-select" {{action "select" doctor}}>
-                <i class="fa {{if (eq selected doctor) 'fa-check-circle' 'fa-circle-thin'}} fa-2"></i>
-              </span>
-            {{/if}}
             <h4>
+              {{#if showSelect}}
+                <span class="pull-left clickable toggle-select" {{action "select" doctor}}>
+                  <i class="fa {{if (eq selected doctor) 'fa-check-circle' 'fa-circle-thin'}} fa-2"></i>
+                </span>
+              {{/if}}
+              
               <i class="fa fa-user-md fa-2 {{if doctor.isActive 'success-color' 'danger-color'}}"></i>
-              {{#link-to 'doctors.doctor.profile' doctor class="theme-color"}}
+              {{#link-to 'doctors.doctor.profile' doctor}}
                 {{doctor.first_name}} {{doctor.last_name}}
               {{/link-to}}
             </h4>
+            <p>{{doctor.primary_speciality_obj.name}}</p>
+            <p>Service Charge: $ {{doctor.service_charge}}</p>
+            <p><i class="fa fa-envelope"></i> {{dash-for-empty doctor.email_id}}</p>
           </div>
         </div>
       </section>

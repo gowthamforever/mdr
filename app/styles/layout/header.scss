@@ -39,6 +39,10 @@ $header-color: #fff;
   }
 }
 
+.logo-wrap {
+  display: inline-block;
+}
+
 .logo {
   margin-top: 2px;
   display: inline-block;
@@ -68,8 +72,7 @@ span.sidenav-toggle {
   z-index: 100;
 }
 .page-title {
-  background: #ebebeb url("./img/title-bar-bg.png") repeat;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: #f3f5f6;
   border-bottom: 1px solid #c8c8c8;
   color: #818486;
   padding: 7px;
@@ -96,7 +99,7 @@ svg.inline-svg {
   display: inline-block;
 }
 .svg-menu-toggle {
-  fill:#000;
+  fill: #000;
   pointer-events:all; //needs to be there so the hover works
   cursor:pointer;
 

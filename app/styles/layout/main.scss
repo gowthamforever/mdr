@@ -21,7 +21,7 @@
   min-width: 65px;
   position: fixed;
   min-height: 100%;
-  background-color: #a1a1a1;
+  background-color: #fff;
   overflow-y: auto;
 }
 
@@ -33,20 +33,17 @@
 
 .dashboard-nav .list-group-item {
   border-radius: 0;
-  border-left: none;
-  border-right: none;
-  border-top: 1px solid rgba(33, 32, 32, 0.55) !important;
-  border-bottom: 1px solid rgba(33, 32, 32, 0.55) !important;
-  background-color: #a1a1a1;
+  border: none;
+  background-color: #fff;
   padding-left: 20px;
-  color: #555555;
+  color: #000;
   &.active, &:hover {
-    background-color: #333;
-    color: #FFF;
+    background-color: whitesmoke;
+    color: #03a9f4;
   }
   &.active {
     border-bottom: none;
-    border-left: 3px solid #2980B9;
+    border-left: 3px solid #03a9f4;
   }
 }
 

@@ -1,48 +1,48 @@
 {{#unless (or hideSearch selected)}}
   <section class="search-header">
     <form class="clearfix" name="search-form" role="form" novalidate {{action "filter" on="submit"}}>
-      <div class="form-group col-md-2 col-sm-2">
-        <label class="control-label" for="first-name">First Name</label>
-        {{input type="text" class="form-control" name="first-name" placeholder="Click to change" value=model.firstName}}
-      </div>
-      <div class="form-group col-md-2 col-sm-2">
-        <label class="control-label" for="last-name">Last Name</label>
-        {{input type="text" class="form-control" name="last-name" placeholder="Click to change" value=model.lastName}}
-      </div>
-      <div class="form-group col-md-2 col-sm-12">
-        <label class="control-label hide-visible" for="clients-search-btn">search</label>
-        <button class="btn btn-primary btn-block" type="submit">Search</button>
+      <div class="row">
+        <div class="col-md-4 input-elements">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+            {{input type="text" class="form-control" name="first-name" placeholder="First name" value=model.firstName}}
+          </div>
+        </div>
+        <div class="col-md-4 input-elements">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+            {{input type="text" class="form-control" name="last-name" placeholder="Last name" value=model.lastName}}
+          </div>
+        </div>
+        <div class="col-md-4 input-elements">
+          <div class="input-group">
+            <button class="btn btn-primary btn-block" type="submit"><i class="fa fa-search"></i> Search</button>
+          </div>
+        </div>
       </div>
     </form>
   </section>
-
-  {{#if filtered}}
-  <div class="alert alert-info">
-    <strong>Patients Found!</strong> Listing {{filtered.length}} patients.
-  </div>
-  {{else}}
-    <div class="alert alert-danger" style="display: block;">
-      <strong>No Patients available!</strong> Try changing search criteria.
-    </div>
-  {{/if}}
 {{/unless}}
 
 <ul class="list-unstyled clearfix">
   {{#each filtered as |client|}}
     <li class="client-list-item col-md-4">
       <section class="client-wrapper clearfix">
-        <div>
-          {{#if showSelect}}
-            <span class="pull-left clickable toggle-select" {{action "select" client}}>
-              <i class="fa {{if (eq selected client) 'fa-check-circle' 'fa-circle-thin'}} fa-2"></i>
-            </span>
-          {{/if}}
+        <div class="main clearfix">
           <h4>
-            <i class="fa fa-user fa-2"></i>
-            {{#link-to 'clients.client.profile' client class="theme-color"}}
+            {{#if showSelect}}
+              <span class="pull-left clickable toggle-select" {{action "select" client}}>
+                <i class="fa {{if (eq selected client) 'fa-check-circle' 'fa-circle-thin'}} fa-2"></i>
+              </span>
+            {{/if}}
+            
+            <i class="fa fa-user fa-2 primary-color"></i>
+            {{#link-to 'clients.client.profile' client}}
               {{client.first_name}} {{client.last_name}}
             {{/link-to}}
           </h4>
+          <p>{{client.insurance_plan_obj.name}}</p>
+          <p><i class="fa fa-envelope"></i> {{dash-for-empty client.email_id}}</p>
         </div>
       </section>
     </li>

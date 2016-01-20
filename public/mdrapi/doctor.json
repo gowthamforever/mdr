@@ -12,7 +12,7 @@
             "speciality":"Family Medicine",
             "board":"American Board of Family Medicine"
          },
-         "primary_speciality":"6",
+         "primary_speciality":6,
          "practice_type":"single",
          "practice_years":7,
          "surgeon":0,
@@ -35,7 +35,7 @@
             "speciality":"Family Medicine",
             "board":"American Board of Family Medicine"
          },
-         "primary_speciality":"6",
+         "primary_speciality":6,
          "practice_type":"single",
          "practice_years":0,
          "surgeon":0,
