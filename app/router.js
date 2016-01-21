@@ -50,7 +50,12 @@ Router.map(function() {
 
     this.resource('appointments', function() {
       this.route('calendar', { path: '/' });
-      this.route('requests');
+      this.route('requests', function() {
+        this.route('pending', { path: '/' });
+        this.route('accepted');
+        this.route('rejected');
+      });
+      this.route('details', { path: '/:id' });
     });
   });
 

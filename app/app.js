@@ -1,4 +1,4 @@
-import Ember from 'ember';
+  import Ember from 'ember';
 import Resolver from 'ember/resolver';
 import loadInitializers from 'ember/load-initializers';
 import config from './config/environment';
@@ -34,8 +34,11 @@ Route.reopen({
       'assessors.add': { title: 'Add a Assessor' },
       'assessors.assessor.profile': { title: 'Assessor Profile' },
       'assessors.assessor.appointment': { title: 'Create Appointment' },
-      'appointments.calendar': {title: 'Appointments', subtitle: 'Calendar'},
-      'appointments.requests': {title: 'Appointments', subtitle: 'Requests'}
+      'appointments.calendar': {title: 'Appointments'},
+      'appointments.details': {title: 'Appointment Details'},
+      'appointments.requests.pending': {title: 'Appointments'},
+      'appointments.requests.accepted': {title: 'Appointments'},
+      'appointments.requests.rejected': {title: 'Appointments'}
     };
     let title = titles[routeName] || 'MDRealtime';
 

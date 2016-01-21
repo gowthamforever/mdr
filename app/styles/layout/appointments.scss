@@ -1,14 +1,37 @@
 section.appointments-request-block {
-  table.request-table  {
-    tbody {
-      tr:hover {
-        background: #D9EDF7;
-      }
-    }
+
+  .appointment-tab {
+    padding-top: 10px;
   }
 
-  .view-details {
-    margin-left: 5px;
+  li.appointment-list-item {
+    padding: 10px;
+
+    .appointment-wrapper {
+      background: #fff;
+      border: 1px solid #c4c4c4;
+      -webkit-box-shadow: 2px 2px 2px rgba(0,0,0,.2);
+      -moz-box-shadow: 2px 2px 2px rgba(0,0,0,.2);
+      box-shadow: 2px 2px 2px rgba(0,0,0,.2);
+      position: relative;
+
+      .main {
+        background: whitesmoke;
+        padding: 5px 20px;
+
+        .pending {
+          color: #f0ad4e;
+        }
+
+        .accepted {
+          color: #5cb85c;
+        }
+
+        .rejected {
+          color: #d9534f;
+        }
+      }
+    }
   }
 }
 

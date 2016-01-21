@@ -11,4 +11,10 @@ export default function() {
   this.transition(
     this.use('toRight', { duration })
   );
+
+  this.transition(
+    this.withinRoute(['appointments.requests.pending', 'appointments.requests.accepted', 'appointments.requests.rejected']),
+    this.use('crossFade', { duration }),
+    this.reverse('crossFade', { duration })
+  );
 }

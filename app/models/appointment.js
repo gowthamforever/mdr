@@ -5,6 +5,10 @@ const {
   computed
 } = Ember;
 
+const {
+  equal
+} = computed;
+
 export default Ember.Object.extend(BreadCrumb, {
   selected_client: null,
   selected_doctor: null,
@@ -39,5 +43,9 @@ export default Ember.Object.extend(BreadCrumb, {
         return end_date_time;
       }
     }
-  })
+  }),
+  status: null,
+  pending: equal('status', 'pending'),
+  accepted: equal('status', 'accepted'),
+  rejected: equal('status', 'rejected')
 });

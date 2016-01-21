@@ -1,0 +1,36 @@
+<ul class="list-unstyled clearfix">
+  {{#each appointments as |appointment|}}
+    {{#link-to 'appointments.details' appointment tagName="li" class="appointment-list-item col-md-4 clickable"}}
+      <section class="appointment-wrapper clearfix">
+        <div class="main clearfix">
+          <h4>
+            <i class="fa fa-user fa-2 {{if pending 'pending'}} {{if accepted 'accepted'}} {{if rejected 'rejected'}}"></i>
+            {{#if appointment.customer}}
+              {{appointment.customer.first_name}} {{appointment.customer.last_name}}
+            {{/if}}
+          </h4>
+          <p>
+            <i class="fa fa-hourglass-start"></i> {{date-format appointment.ts_request "MM-DD-YYYY HH:mm" "dddd, MMM DD YYYY HH:mm"}}
+          </p>
+          <p>
+            <i class="fa fa-hourglass-end"></i> {{date-format appointment.ts_added "MM-DD-YYYY HH:mm" "dddd, MMM DD YYYY HH:mm"}}
+          </p>
+          {{#unless (or session.role_doctor session.role_assessor)}}
+            <p>
+              <i class="fa fa-user-md"></i>
+              {{#if appointment.doctor}}
+                {{appointment.doctor.first_name}} {{appointment.doctor.last_name}} (Doctor)
+              {{else if appointment.assessor}}
+                {{appointment.assessor.first_name}} {{appointment.assessor.last_name}} (Assessor)
+              {{/if}}
+            </p>
+          {{/unless}}
+        </div>
+      </section>
+    {{/link-to}}
+  {{else}}
+    <div class="alert alert-danger">
+      No <strong>{{if pending 'pending'}} {{if accepted 'accepted'}} {{if rejected 'rejected'}}</strong> appointments.
+    </div>
+  {{/each}}
+</ul>
