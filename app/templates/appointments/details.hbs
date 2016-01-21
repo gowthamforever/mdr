@@ -1,59 +1,67 @@
-<section class="col-md-12">
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="form-group row">
-        <label class="col-sm-4">Status:</label>
-        <div class="col-sm-8">
-          <span class="label {{if model.pending 'label-warning'}} {{if model.accepted 'label-success'}} {{if model.rejected 'label-danger'}}">
-            {{if model.pending 'Pending'}} {{if model.accepted 'Accepted'}} {{if model.rejected 'Rejected'}}
-          </span>
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label class="col-sm-4">Patient:</label>
-        <div class="col-sm-8">
-          {{#link-to 'clients.client.profile' model.customer}}
-            {{model.customer.first_name}} {{model.customer.last_name}}
-          {{/link-to}}
-        </div>
-      </div>
-
-      {{#if model.doctor}}
+<section class="appointment-details-block">
+  <section class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
         <div class="form-group row">
-          <label class="col-sm-4">Doctor:</label>
-          {{#link-to 'doctors.doctor.profile' model.doctor}}
-            <div class="col-sm-8">{{model.doctor.first_name}} {{model.doctor.last_name}}</div>
-          {{/link-to}}
+          <label class="col-sm-4">Status:</label>
+          <div class="col-sm-8">
+            <span class="label {{if model.pending 'label-warning'}} {{if model.accepted 'label-success'}} {{if model.rejected 'label-danger'}}">
+              {{if model.pending 'Pending'}} {{if model.accepted 'Accepted'}} {{if model.rejected 'Rejected'}}
+            </span>
+            {{#if model.pending}}
+              <span class="status-btn-margin">
+                <button class="btn btn-xs btn-success" {{action "accept"}}><i class="fa fa-check-circle"></i> Accept</button>
+                <button class="btn btn-xs btn-danger" {{action "reject"}}><i class="fa fa-stop-circle"></i> Reject</button>
+              </span>
+            {{/if}}
+          </div>
         </div>
-      {{else if model.assessor}}
+
         <div class="form-group row">
-          <label class="col-sm-4">Assessor:</label>
-          {{#link-to 'assessors.assessor.profile' model.assessor}}
-            <div class="col-sm-8">{{model.assessor.first_name}} {{model.assessor.last_name}}</div>
-          {{/link-to}}
+          <label class="col-sm-4">Patient:</label>
+          <div class="col-sm-8">
+            {{#link-to 'clients.client.profile' model.customer}}
+              {{model.customer.first_name}} {{model.customer.last_name}}
+            {{/link-to}}
+          </div>
         </div>
-      {{/if}}
 
-      <div class="form-group row">
-        <label class="col-sm-4">Start Time:</label>
-        <div class="col-sm-8">{{date-format model.ts_request "MM-DD-YYYY HH:mm" "dddd, MMM DD YYYY HH:mm"}}</div>
-      </div>
+        {{#if model.doctor}}
+          <div class="form-group row">
+            <label class="col-sm-4">Doctor:</label>
+            {{#link-to 'doctors.doctor.profile' model.doctor}}
+              <div class="col-sm-8">{{model.doctor.first_name}} {{model.doctor.last_name}}</div>
+            {{/link-to}}
+          </div>
+        {{else if model.assessor}}
+          <div class="form-group row">
+            <label class="col-sm-4">Assessor:</label>
+            {{#link-to 'assessors.assessor.profile' model.assessor}}
+              <div class="col-sm-8">{{model.assessor.first_name}} {{model.assessor.last_name}}</div>
+            {{/link-to}}
+          </div>
+        {{/if}}
 
-      <div class="form-group row">
-        <label class="col-sm-4">End Time:</label>
-        <div class="col-sm-8">{{date-format model.ts_added "MM-DD-YYYY HH:mm" "dddd, MMM DD YYYY HH:mm"}}</div>
-      </div>
+        <div class="form-group row">
+          <label class="col-sm-4">Start Time:</label>
+          <div class="col-sm-8">{{date-format model.ts_request "MM-DD-YYYY HH:mm" "dddd, MMM DD YYYY HH:mm"}}</div>
+        </div>
 
-      <div class="form-group row">
-        <label class="col-sm-4">Reason:</label>
-        <div class="col-sm-8">{{model.reason}}</div>
-      </div>
+        <div class="form-group row">
+          <label class="col-sm-4">End Time:</label>
+          <div class="col-sm-8">{{date-format model.ts_added "MM-DD-YYYY HH:mm" "dddd, MMM DD YYYY HH:mm"}}</div>
+        </div>
 
-      <div class="form-group row">
-        <label class="col-sm-4">Other Information:</label>
-        <div class="col-sm-8">{{model.alt_info}}</div>
+        <div class="form-group row">
+          <label class="col-sm-4">Reason:</label>
+          <div class="col-sm-8">{{model.reason}}</div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-4">Other Information:</label>
+          <div class="col-sm-8">{{model.alt_info}}</div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 </section>
