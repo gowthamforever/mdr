@@ -242,3 +242,21 @@ a:hover, a:focus {
     border-color: #c4c4c4;
   }
 }
+
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 350px;
+  }
+}
+
+.link {
+  color: #03a9f4;
+
+  &:focus {
+    color: darken(#03a9f4, 10);
+  }
+
+  &:hover {
+    color: darken(#03a9f4, 10);
+  }
+}

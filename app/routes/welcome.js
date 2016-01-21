@@ -11,6 +11,7 @@ const {
 
 export default Route.extend({
   header: service(),
+  dialog: service(),
 
   activate() {
     this._super(...arguments);
@@ -20,5 +21,17 @@ export default Route.extend({
   deactivate() {
     this._super(...arguments);
     this.set('header.showLoginBtn', false);
+  },
+
+  actions: {
+    login() {
+      this.get('dialog').showDialog({
+        name: 'modal-login'
+      });
+    },
+
+    home() {
+      this.transitionTo('home');
+    }
   }
 });
