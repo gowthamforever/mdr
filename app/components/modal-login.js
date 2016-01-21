@@ -63,7 +63,6 @@ export default Component.extend(EmberValidator, Api, {
           session.isAuthenticated = true;
 
           self.get('session').setProperties(session);
-          self.get('dialog').hideDialog();
           self.sendAction('home');
         });
       }).catch((validationResult) => {

@@ -7,6 +7,8 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('welcome');
+  this.route('forget-password');
+  this.route('request-account');
 
   this.resource('account', function() {
     this.route('signin');

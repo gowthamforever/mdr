@@ -67,6 +67,8 @@ Route.reopen({
       }
       document.title = title;
     });
+
+    this.get('dialog').hideDialog();
   }
 });
 
@@ -77,6 +79,7 @@ App = Ember.Application.extend({
 
   ready() {
     this.inject('route', 'titlebar', 'service:titlebar');
+    this.inject('route', 'dialog', 'service:dialog');
   }
 });
 

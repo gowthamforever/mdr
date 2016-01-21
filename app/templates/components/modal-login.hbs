@@ -11,13 +11,19 @@
 
 			<div class="row">
 				<div class="form-group col-md-12">
-					{{input type="text" class="form-control" name="user-name" value=model.userName autocomplete="off" placeholder="User name (Email ID / NPI No)"}}
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-user"></i></span>
+						{{input type="text" class="form-control" name="user-name" value=model.userName autocomplete="off" placeholder="User name (Email ID / NPI No)"}}
+					</div>
 					<p class="help-block">User name is your email id, doctors can also use their NPI number to sign in.</p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="form-group col-md-12">
-					{{input type="password" class="form-control" name="password" value=model.password autocomplete="off" placeholder="Password"}}
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+						{{input type="password" class="form-control" name="password" value=model.password autocomplete="off" placeholder="Password"}}
+					</div>
 				</div>
 			</div>
 			<div class="row">
@@ -28,7 +34,7 @@
 				</div>
         <div class="col-md-6">
           <div class="form-control-static forget-password">
-            <a href="#" class="link">Forgot password?</a>
+            {{#link-to 'forget-password' class="link"}}Forgot password?{{/link-to}}
           </div>
         </div>
 			</div>
@@ -40,6 +46,6 @@
   	</form>
   </div>
 	<div class="modal-footer">
-		Don't have an account? <a href="#" class="link"> Request here</a>
+		Don't have an account? {{#link-to 'request-account' class="link"}} Request here{{/link-to}}.
 	</div>
 </div>

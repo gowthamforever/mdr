@@ -13,6 +13,7 @@ export default Component.extend({
   header: service(),
   sidebar: service(),
   session: service(),
+  dialog: service(),
 
   tagName: 'header',
   classNames: ['mdr-header'],
@@ -22,6 +23,12 @@ export default Component.extend({
   actions: {
     toggleSideBar() {
       this.get('sidebar').toggle();
+    },
+
+    login() {
+      this.get('dialog').showDialog({
+        name: 'modal-login'
+      });
     }
   }
 });
