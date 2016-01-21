@@ -91,6 +91,8 @@ export default Component.extend({
         if (viewRender) {
           viewRender(...arguments);
         }
+
+        self.$().fullCalendar('refetchEvents');
       },
 
       // Timezone
@@ -117,7 +119,8 @@ export default Component.extend({
           dayClick(...arguments);
         }
 
-        const toDate = new Date(date);
+        let toDate = new Date(date);
+        toDate = moment(toDate).add(1, 'days').toDate();
         self.$().fullCalendar( 'changeView', 'basicDay' );
         self.$().fullCalendar( 'gotoDate', toDate );
       },
