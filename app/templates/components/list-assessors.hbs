@@ -26,7 +26,7 @@
 
 <ul class="list-unstyled clearfix">
   {{#each filtered as |assessor|}}
-    <li class="assessor-list-item col-md-4">
+    {{#link-to 'assessors.assessor.profile' assessor tagName="li" class="assessor-list-item col-md-4 clickable"}}
       <section class="assessor-wrapper clearfix">
         <div class="main clearfix">
           <h4>
@@ -35,15 +35,13 @@
                 <i class="fa {{if (eq selected assessor) 'fa-check-circle' 'fa-circle-thin'}} fa-2"></i>
               </span>
             {{/if}}
-            
+
             <i class="fa fa-user fa-2 {{if assessor.isActive 'success-color' 'danger-color'}}"></i>
-            {{#link-to 'assessors.assessor.profile' assessor}}
-              {{assessor.first_name}} {{assessor.last_name}}
-            {{/link-to}}
+            {{assessor.first_name}} {{assessor.last_name}}
           </h4>
           <p><i class="fa fa-envelope"></i> {{dash-for-empty assessor.email_id}}</p>
         </div>
       </section>
-    </li>
+    {{/link-to}}
   {{/each}}
 </ul>

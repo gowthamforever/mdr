@@ -40,7 +40,7 @@
 
 <ul class="list-unstyled clearfix">
   {{#each filtered as |doctor|}}
-    <li class="doctor-list-item col-md-4">
+    {{#link-to 'doctors.doctor.profile' doctor tagName="li" class="doctor-list-item col-md-4 clickable"}}
       <section class="doctor-wrapper clearfix">
         <div class="main clearfix">
           <div>
@@ -50,11 +50,9 @@
                   <i class="fa {{if (eq selected doctor) 'fa-check-circle' 'fa-circle-thin'}} fa-2"></i>
                 </span>
               {{/if}}
-              
+
               <i class="fa fa-user-md fa-2 {{if doctor.isActive 'success-color' 'danger-color'}}"></i>
-              {{#link-to 'doctors.doctor.profile' doctor}}
-                {{doctor.first_name}} {{doctor.last_name}}
-              {{/link-to}}
+              {{doctor.first_name}} {{doctor.last_name}}
             </h4>
             <p>{{doctor.primary_speciality_obj.name}}</p>
             <p>Service Charge: $ {{doctor.service_charge}}</p>
@@ -62,6 +60,6 @@
           </div>
         </div>
       </section>
-    </li>
+    {{/link-to}}
   {{/each}}
 </ul>

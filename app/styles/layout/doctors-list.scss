@@ -23,6 +23,10 @@ section.doctors-list-block {
       .main {
         background: whitesmoke;
         padding: 5px 20px;
+
+        &:hover {
+          background: #DDF4FF;
+        }
       }
 
       .options {

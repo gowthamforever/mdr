@@ -26,7 +26,7 @@
 
 <ul class="list-unstyled clearfix">
   {{#each filtered as |client|}}
-    <li class="client-list-item col-md-4">
+    {{#link-to 'clients.client.profile' client tagName="li" class="client-list-item col-md-4 clickable"}}
       <section class="client-wrapper clearfix">
         <div class="main clearfix">
           <h4>
@@ -35,16 +35,14 @@
                 <i class="fa {{if (eq selected client) 'fa-check-circle' 'fa-circle-thin'}} fa-2"></i>
               </span>
             {{/if}}
-            
+
             <i class="fa fa-user fa-2 primary-color"></i>
-            {{#link-to 'clients.client.profile' client}}
-              {{client.first_name}} {{client.last_name}}
-            {{/link-to}}
+            {{client.first_name}} {{client.last_name}}
           </h4>
           <p>{{client.insurance_plan_obj.name}}</p>
           <p><i class="fa fa-envelope"></i> {{dash-for-empty client.email_id}}</p>
         </div>
       </section>
-    </li>
+    {{/link-to}}
   {{/each}}
 </ul>
