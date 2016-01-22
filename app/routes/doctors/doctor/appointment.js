@@ -48,7 +48,9 @@ export default Route.extend({
         'doctor_id',
         'first_name',
         'last_name',
-        'service_charge'
+        'service_charge',
+        'email_id',
+        'primary_speciality'
       ]));
       doctors.set('doctors', Ember.A([doctor]));
       appointment.set('selected_doctor', doctor);

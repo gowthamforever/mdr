@@ -19,6 +19,10 @@ section.appointments-request-block {
         background: whitesmoke;
         padding: 5px 20px;
 
+        &:hover {
+          background: #DDF4FF;
+        }
+
         .pending {
           color: #f0ad4e;
         }

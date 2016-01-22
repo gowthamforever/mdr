@@ -48,7 +48,8 @@ export default Route.extend({
         'customer_id',
         'first_name',
         'last_name',
-        'insurance_plan'
+        'insurance_plan',
+        'email_id'
       ]));
       clients.set('clients', Ember.A([client]));
       appointment.set('selected_client', client);

@@ -7,7 +7,7 @@ const {
 export default Route.extend({
   activate() {
     this._super(...arguments);
-    this.get('titlebar').set('right_content', 'add-doctor-assessor-btn');
+    this.get('titlebar').set('right_content', 'add-assessor-appointment-btn');
   },
 
   deactivate() {

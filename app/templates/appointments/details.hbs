@@ -8,12 +8,6 @@
             <span class="label {{if model.pending 'label-warning'}} {{if model.accepted 'label-success'}} {{if model.rejected 'label-danger'}}">
               {{if model.pending 'Pending'}} {{if model.accepted 'Accepted'}} {{if model.rejected 'Rejected'}}
             </span>
-            {{#if model.pending}}
-              <span class="status-btn-margin">
-                <button class="btn btn-xs btn-success" {{action "accept"}}><i class="fa fa-check-circle"></i> Accept</button>
-                <button class="btn btn-xs btn-danger" {{action "reject"}}><i class="fa fa-stop-circle"></i> Reject</button>
-              </span>
-            {{/if}}
           </div>
         </div>
 
@@ -61,6 +55,15 @@
           <label class="col-sm-4">Other Information:</label>
           <div class="col-sm-8">{{model.alt_info}}</div>
         </div>
+
+        {{#if model.pending}}
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <button class="btn btn-success" {{action "accept"}}><i class="fa fa-check-circle"></i> Accept</button>
+              <button class="btn btn-danger" {{action "reject"}}><i class="fa fa-stop-circle"></i> Reject</button>
+            </div>
+          </div>
+        {{/if}}
       </div>
     </div>
   </section>

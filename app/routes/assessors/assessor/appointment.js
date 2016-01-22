@@ -48,7 +48,8 @@ export default Route.extend({
         'assessor_id',
         'first_name',
         'last_name',
-        'service_charge'
+        'service_charge',
+        'email_id'
       ]));
       assessors.set('assessors', Ember.A([assessor]));
       appointment.set('selected_assessor', assessor);
