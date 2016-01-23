@@ -10,11 +10,6 @@ Router.map(function() {
   this.route('forget-password');
   this.route('request-account');
 
-  this.resource('account', function() {
-    this.route('signin');
-    this.route('signup');
-  });
-
   this.resource('authenticated', { path: '/' }, function() {
     this.resource('home');
     this.resource('admin-tasks');
