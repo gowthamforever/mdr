@@ -326,7 +326,10 @@ export default Route.extend(EmberValidator, Api, {
           id: 'addclient',
           data
         }).then(() => {
-          self.transitionTo('clients.list');
+          self.refresh().then(() => {
+            const model = self.get('controller.model');
+            model.set('created', true);
+          });
         }).catch(() => {
 
         });

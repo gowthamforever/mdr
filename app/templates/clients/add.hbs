@@ -1,4 +1,10 @@
 <section class="clients-add-block">
+	{{#if model.created}}
+		<div class="alert alert-success">
+			Client created successfullly.
+		</div>
+	{{/if}}
+
 	{{mdr-page-error validationResult=model.validationResult message="Please fix the errors to continue"}}
 
 	<form role="form" novalidate {{action "add" on="submit"}} autocomplete="off">
