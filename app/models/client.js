@@ -59,21 +59,9 @@ export default Ember.Object.extend(AppointmentFlags, {
     return this.get('states').findBy('id', state1);
   }),
   cities1: null,
-  cities2: null,
   selected_city_1: null,
   zip1: null,
   country1: 'United States',
-  is_no_secondary_address: none('address2'),
-  is_secondary_address: not('is_no_secondary_address'),
-  address2: null,
-  state2: null,
-  selected_state_2: computed('state2', function() {
-    const state2 = this.get('state2');
-    return this.get('states').findBy('id', state2);
-  }),
-  selected_city_2: null,
-  zip2: null,
-  country2: 'United States',
   dependents: Constants.DEPENDENTS,
   memebership_name: 'individual',
   family_memebers: null,
@@ -137,17 +125,6 @@ export default Ember.Object.extend(AppointmentFlags, {
     });
 
     return this.get('billing_is_primary');
-  }),
-
-  on_is_secondary_address: computed('is_secondary_address', function() {
-    if (this.get('is_secondary_address') && this.get('validationResult')) {
-      this.get('validationResult').setProperties({
-        address2: null,
-        selected_state_2: null,
-        selected_city_2: null,
-        zip2: null
-      });
-    }
   }),
 
   validationResult: null

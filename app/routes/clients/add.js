@@ -91,31 +91,6 @@ export default Route.extend(EmberValidator, Api, {
         zip: 'Zip is not valid(NNNNN or NNNNN-NNNN).'
       },
 
-      address2: {
-        if: model.is_secondary_address,
-        required: 'Address is required.',
-        length: {
-          maximum: 250,
-          message: 'Must be 250 characters or less.'
-        }
-      },
-
-      selected_state_2: {
-        if: model.is_secondary_address,
-        required: 'State is required.'
-      },
-
-      selected_city_2: {
-        if: model.get('is_secondary_address'),
-        required: 'City is required.'
-      },
-
-      zip2: {
-        if: model.is_secondary_address,
-        required: 'Zip is required',
-        zip: 'Zip is not valid(NNNNN or NNNNN-NNNN).'
-      },
-
       pcd_name: {
         length: {
           maximum: 100,
@@ -241,10 +216,6 @@ export default Route.extend(EmberValidator, Api, {
       // TODO: Remove after integrating City API
       model.set('selected_city_1', { name: 'Charlotte' });
       // TODO: Remove after integrating City API
-      if (model.get('is_secondary_address')) {
-        model.set('selected_city_2', { name: 'Charlotte' });
-      }
-      // TODO: Remove after integrating City API
       if (!model.get('is_cash_payment')) {
         model.set('selected_card_city', { name: 'Charlotte' });
       }
@@ -322,17 +293,6 @@ export default Route.extend(EmberValidator, Api, {
 
         if (model.get('pcd_phone')) {
           data.pcd_phone = model.get('pcd_phone');
-        }
-
-        if (model.get('is_secondary_address')) {
-          data = _.extend(data, _.pick(model, [
-            'address2',
-            'zip2'
-          ]));
-
-          data.country2 = 'US';
-          data.state2 = model.get('selected_state_2.id');
-          data.city2 = model.get('selected_city_2.name');
         }
 
         data = _.extend(data, _.pick(model, [

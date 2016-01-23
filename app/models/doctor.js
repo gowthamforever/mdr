@@ -58,12 +58,6 @@ export default Ember.Object.extend(AppointmentFlags, {
   selected_city_1: null,
   zip1: null,
   country1: 'United States',
-  is_secondary_address: false,
-  address2: null,
-  selected_state_2: null,
-  selected_city_2: null,
-  zip2: null,
-  country2: 'United States',
   selected_profession: null,
   selected_speciality: null,
   selected_practice_type: null
