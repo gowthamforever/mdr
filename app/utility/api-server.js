@@ -11,6 +11,11 @@ export default {
     method: 'GET'
   },
 
+  adddoctor: {
+    path: 'doctor',
+    method: 'POST'
+  },
+
   clients: {
     path: 'client',
     method: 'GET'
@@ -26,6 +31,11 @@ export default {
     method: 'GET'
   },
 
+  adddassessor: {
+    path: 'assessor',
+    method: 'POST'
+  },
+
   appointments: {
     path: 'appointment',
     method: 'GET'
@@ -33,6 +43,11 @@ export default {
 
   addappointment: {
     path: 'appointment',
+    method: 'POST'
+  },
+
+  addagencystaff: {
+    path: 'agencystaff',
     method: 'POST'
   }
 };
