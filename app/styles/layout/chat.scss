@@ -1,15 +1,14 @@
 .health-form-block {
   margin-bottom: 25px;
-  .chat-block {
+
+}
+.chat-block {
     background-color: whitesmoke;
     min-height: 200px;
     max-height: 200px;
     height: 100%;
 
-    @media (min-width: 991px) {
-      min-height: 400px;
-      max-height: 400px;
-    }
+
 
     .videos {
       width: 100%;
@@ -22,19 +21,51 @@
         top: 0;
         width: 100%;
         height: 100%;
+        min-height: 400px;
         z-index: 10;
       }
 
       .publisher {
         position: absolute;
-        width: 40%;
-        height: 40%;
+        width: 26%;
+        height: 34%;
         bottom: 10px;
-        left: 10px;
+        top: 10px;
         z-index: 100;
-        border: 3px solid white;
+        right: 22px;
+        border: 3px solid #FFF;
         border-radius: 3px;
       }
     }
+    .assessment-link {
+      display: inline-block;
+      position: absolute;
+      top: 93%;
+      color: #03A9F4;
+      font-size: 1.3em;
+      right: 26px;
+      border: 3px solid #FFF;
+      cursor: pointer;
+    }
+    .close-assessment-link {
+      color: #03A9F4;
+      font-size: 1.3em;
+      right: 26px;
+      border: 3px solid #FFF;
+      cursor: pointer;
+      display: inline-block;
+    }
+    &.chat-minimized {
+      position: fixed;
+      top: 117px;
+      right: 0;
+      width: 350px;
+      z-index: 2;
+    }
+    &.chat-maximized {
+      @media (min-width: 991px) {
+        min-height: 400px;
+        max-height: 400px;
+      }
+    }
   }
-}
