@@ -79,6 +79,7 @@ export default Route.extend(EmberValidator, Api, {
       const self        = this;
       const model       = self.get('controller.model');
       const validations = this._validations();
+      const data        = {};
 
       model.set('validationResult', null);
       animateTo();

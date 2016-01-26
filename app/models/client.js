@@ -7,9 +7,7 @@ const {
 } = Ember;
 
 const {
-  equal,
-  none,
-  not
+  equal
 } = computed;
 
 export default Ember.Object.extend(AppointmentFlags, {

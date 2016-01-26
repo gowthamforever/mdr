@@ -13,14 +13,18 @@ export default Route.extend(EmberValidator, Api, {
     return Doctor.create();
   },
 
-  _validations() {
+  _validations(model) {
     return {
-      user_name: {
-        required: 'User name is required.'
+      password1: {
+        required: 'Password is required.'
       },
 
-      password: {
-        required: 'Password is required.'
+      password2: {
+        required: 'Password is required.',
+        equals: {
+          accept: model.get('password1'),
+          message: 'Must be same as password.'
+        }
       },
 
       npi: {
@@ -113,13 +117,41 @@ export default Route.extend(EmberValidator, Api, {
     add() {
       const self        = this;
       const model       = self.get('controller.model');
-      const validations = this._validations();
+      const validations = this._validations(model);
+      let data;
 
-      model.set('validationResult', null);
+      model.setProperties({
+        validationResult: null,
+        created: false
+      });
+
       animateTo();
       self.validateMap({ model, validations }).then(() => {
+        data = _.pick(model, [
+          'first_name',
+          'last_name',
+          'email_id',
+          'gender',
+          'address1',
+          'city1',
+          'zip1',
+          'phone1',
+          'phone2',
+          'npi',
+          'medicare_number',
+          'medicaid_number'
+        ]);
+
+        data.dob = moment(model.get('dob'), 'MMM DD YYYY').format('MM-DD-YYYY');
+        data.state1 = model.get('selected_state_1.id');
+        data.country1 = 'US';
+        // TODO: Get from profile and assign
+        data.agency_id = '715c979c0f77be37e82e52cbeb54883f';
+        data.password = model.get('password1');
+        data.timezone = model.get('selected_timezone.id');
+
         self.ajax({
-          id: 'addclient',
+          id: 'adddoctor',
           data
         }).then(() => {
           self.refresh().then(() => {

@@ -20,7 +20,7 @@ export default Ember.Object.extend(AppointmentFlags, {
   doctor_id: null,
   email_id: null,
   first_name: null,
-  gender: 'Male',
+  gender: 'MALE',
   graduation_institution: null,
   graduation_year: null,
   medicaid_number: null,
