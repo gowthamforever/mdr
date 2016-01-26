@@ -4,6 +4,7 @@
       {{mdr-sidebar class="animate-sidebar" classNameBindings="sidebar.showSideBar::sidebar-hidden"}}
       {{mdr-titlebar class="animate-sidebar fixed-title-bar"}}
       {{! remove all the classes and add only col-md-12 below}}
+      <div id="fixed-block"></div>
       <div class="main-content animate-sidebar {{if sidebar.showSideBar 'col-md-10 col-md-offset-2 col-xs-offset-1 col-sm-offset-1' 'col-md-12'}}">
         {{liquid-outlet}}
       </div>
