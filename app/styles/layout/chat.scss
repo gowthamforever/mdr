@@ -28,9 +28,8 @@
         width: 26%;
         height: 34%;
         bottom: 10px;
-        top: 10px;
         z-index: 100;
-        right: 22px;
+        left: 22px;
         border: 3px solid #FFF;
         border-radius: 3px;
       }
@@ -57,7 +56,7 @@
       position: fixed;
       //top: 117px;
       bottom: 5px;
-      right: 0;
+      right: 10px;
       width: 350px;
       height: 350px;
       z-index: 2;
