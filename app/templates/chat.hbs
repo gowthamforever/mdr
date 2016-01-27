@@ -2,23 +2,13 @@
 	<section>
     <div>
       <div class="col-md-12">
-
-          {{#ember-wormhole to="fixed-block" renderInPlace=isChatMaximized}}
-            <section class="chat-block {{if isChatMaximized 'chat-maximized' 'chat-minimized'}}">
-              {{mdr-opentok class="videos"}}
-              {{#if isChatMaximized}}
-                <div class="assessment-link" {{action "toggleChat"}}>
-                  Open Assessment Form <i class="fa fa-external-link"></i>
-                </div>
-              {{else}}
-                <div class="close-assessment-link" {{action "toggleChat"}}>
-                  Close Assessment <i class="fa fa-expand"></i>
-                </div>
-              {{/if}}
-            </section>
-          {{/ember-wormhole}}
+	      {{#ember-wormhole to="fixed-block" renderInPlace=opentok.fullscreen}}
+	        <section class="chat-block {{if opentok.fullscreen 'chat-maximized' 'chat-minimized'}}">
+	          {{mdr-opentok class="videos"}}
+	        </section>
+	      {{/ember-wormhole}}
       </div>
-      {{#unless isChatMaximized}}
+      {{#unless opentok.fullscreen}}
       <div class="col-md-8">
         <section class="col-md-12">
           <div class="row">

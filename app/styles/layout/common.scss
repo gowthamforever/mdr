@@ -9,10 +9,30 @@ body {
 a {
   color: #000;
   text-decoration: none;
-}
-a:hover, a:focus {
-  color: #03a9f4;
-  text-decoration: none;
+
+  &:hover {
+    color: #03a9f4;
+    text-decoration: none;
+  }
+
+  &:focus {
+    text-decoration: none;
+  }
+
+  &.link-color {
+    color: #818486;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+
+    &:hover {
+      color: #03a9f4;
+    }
+
+    &.link-margin {
+      margin: 5px;
+    }
+  }
 }
 
 .hide {
@@ -251,10 +271,6 @@ a:hover, a:focus {
 
 .link {
   color: #03a9f4;
-
-  &:focus {
-    color: darken(#03a9f4, 10);
-  }
 
   &:hover {
     color: darken(#03a9f4, 10);

@@ -1,5 +1,14 @@
 import Ember from 'ember';
 
-export default Ember.Controller.extend({
-  isChatMaximized: true
+const {
+  Controller,
+  inject
+} = Ember;
+
+const {
+  service
+} = inject;
+
+export default Controller.extend({
+  opentok: service()
 });

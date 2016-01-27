@@ -8,8 +8,6 @@
     max-height: 200px;
     height: 100%;
 
-
-
     .videos {
       width: 100%;
       height: 100%;
@@ -57,10 +55,16 @@
     }
     &.chat-minimized {
       position: fixed;
-      top: 117px;
+      //top: 117px;
+      bottom: 5px;
       right: 0;
       width: 350px;
+      height: 350px;
       z-index: 2;
+
+      @media (max-width: 650px) {
+        width: 60%;
+      }
     }
     &.chat-maximized {
       @media (min-width: 991px) {
