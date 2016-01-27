@@ -46,7 +46,7 @@
           <div>
             <h4>
               {{#if showSelect}}
-                <span class="pull-left clickable toggle-select" {{action "select" doctor}}>
+                <span class="pull-left clickable toggle-select" {{action "select" doctor bubbles=false}}>
                   <i class="fa {{if (eq selected doctor) 'fa-check-circle' 'fa-circle-thin'}} fa-2"></i>
                 </span>
               {{/if}}

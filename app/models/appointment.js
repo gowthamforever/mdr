@@ -33,19 +33,16 @@ export default Ember.Object.extend(BreadCrumb, {
       }
     }
   }),
-  end_date_time: computed('end_date', 'end_time', function() {
-    const end_date  = this.get('end_date');
-    const end_time  = this.get('end_time');
-    let end_date_time;
-    if (end_date && end_time) {
-      end_date_time = `${end_date} ${end_time}`;
-      if (moment(end_date_time, 'MMM DD YYYY hh:ss A', true).isValid()) {
-        return end_date_time;
-      }
-    }
-  }),
   status: null,
   pending: equal('status', 'pending'),
   accepted: equal('status', 'accepted'),
-  rejected: equal('status', 'rejected')
+  rejected: equal('status', 'rejected'),
+  ts_added: null,
+  ts_added_moment: computed('ts_added', function() {
+    return moment(this.get('ts_added'), 'MM-DD-YYYY HH:mm');
+  }),
+  ts_request: null,
+  ts_request_moment: computed('ts_request', function() {
+    return moment(this.get('ts_request'), 'MM-DD-YYYY HH:mm');
+  }),
 });

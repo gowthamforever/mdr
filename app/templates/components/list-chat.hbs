@@ -1,0 +1,36 @@
+{{#link-to 'chats.chat' appointment tagName="li" class="appointment-list-item col-md-4 clickable"}}
+  <section class="appointment-wrapper clearfix">
+    <div class="main clearfix {{unless appointment.started 'disabled'}}">
+      <h4>
+        <i class="fa fa-user fa-2 {{if appointment.started 'primary-color'}}"></i>
+        {{#if appointment.customer}}
+          {{appointment.customer.first_name}} {{appointment.customer.last_name}}
+        {{/if}}
+      </h4>
+      <ul class="list-unstyled clearfix small-font">
+        <li>
+          {{#if appointment.started}}
+            <span class="text-success"><i class="fa fa-hourglass-half"></i> In Progress</span>
+          {{else}}
+            <span class="text-danger">
+              <i class="fa fa-hourglass-start"></i> Starts in next {{starts_in_next}}
+            </span>
+          {{/if}}
+        </li>
+        <li>
+          <i class="fa fa-hourglass-end"></i> {{date-format appointment.ts_added "MM-DD-YYYY HH:mm" "dddd, MMM DD YYYY HH:mm"}}
+        </li>
+        {{#unless (or session.role_doctor session.role_assessor)}}
+          <li>
+            <i class="fa fa-user-md"></i>
+            {{#if appointment.doctor}}
+              {{appointment.doctor.first_name}} {{appointment.doctor.last_name}} (Doctor)
+            {{else if appointment.assessor}}
+              {{appointment.assessor.first_name}} {{appointment.assessor.last_name}} (Assessor)
+            {{/if}}
+          </li>
+        {{/unless}}
+      </ul>
+    </div>
+  </section>
+{{/link-to}}

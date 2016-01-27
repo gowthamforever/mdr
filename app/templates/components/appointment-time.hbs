@@ -14,15 +14,18 @@
       {{mdr-field-error client=model.validationResult.start_time}}
     </div>
     <div class="form-group col-md-4  {{if model.validationResult.end_date.hasError 'has-error'}} {{if model.validationResult.end_date_time.hasError 'has-error'}}">
-      <label class="control-label" for="end_date">End Date</label>
-      {{input-date-picker class="form-control" name="end_date" value=model.end_date max=model.max_date min=model.min_date}}
+      <label class="control-label" for="duration">Duration</label>
+      {{input-select
+        class="form-control"
+        name="duration"
+        options=durations
+        labelPath="display"
+        valuePath="value"
+        selected=model.duration
+        prompt="Select"
+      }}
       {{mdr-field-error client=model.validationResult.end_date}}
       {{mdr-field-error client=model.validationResult.end_date_time}}
-    </div>
-    <div class="form-group col-md-2  {{if model.validationResult.end_time.hasError 'has-error'}} {{if model.validationResult.end_date_time.hasError 'has-error'}}">
-      <label class="control-label" for="end_time">End Time</label>
-      {{input-time-picker class="form-control" name="end_time" value=model.end_time}}
-      {{mdr-field-error client=model.validationResult.end_time}}
     </div>
   </div>
   <div class="row">

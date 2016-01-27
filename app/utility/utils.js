@@ -28,3 +28,12 @@ export function blurActiveElement() {
 export function scrollTop(val=0) {
   window.scroll(0, val);
 }
+
+export function prepend(value='', text=0, length=2) {
+  let result = value.toString();
+  while (result.length < length) {
+    result = text + result;
+  }
+
+  return result;
+}

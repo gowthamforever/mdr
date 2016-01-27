@@ -54,6 +54,11 @@ Router.map(function() {
       });
       this.route('details', { path: '/:id' });
     });
+
+    this.resource('chats', function() {
+      this.route('list', { path: '/' });
+      this.route('chat', { path: '/:id' });
+    });
   });
 
   this.route('missing', { path: '/*path' });

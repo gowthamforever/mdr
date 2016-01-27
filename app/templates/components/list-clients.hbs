@@ -31,7 +31,7 @@
         <div class="main clearfix">
           <h4>
             {{#if showSelect}}
-              <span class="pull-left clickable toggle-select" {{action "select" client}}>
+              <span class="pull-left clickable toggle-select" {{action "select" client bubbles=false}}>
                 <i class="fa {{if (eq selected client) 'fa-check-circle' 'fa-circle-thin'}} fa-2"></i>
               </span>
             {{/if}}

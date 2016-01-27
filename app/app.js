@@ -38,7 +38,9 @@ Route.reopen({
       'appointments.details': {title: 'Appointment Details'},
       'appointments.requests.pending': {title: 'Appointments'},
       'appointments.requests.accepted': {title: 'Appointments'},
-      'appointments.requests.rejected': {title: 'Appointments'}
+      'appointments.requests.rejected': {title: 'Appointments'},
+      'chats.list': {title: 'Chats'},
+      'chats.chat': {title: 'Chat'}
     };
     let title = titles[routeName] || 'MDRealtime';
 

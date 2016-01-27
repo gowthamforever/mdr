@@ -95,7 +95,9 @@ export default Controller.extend({
       const client  = model.get('selected_client');
       const doctor  = model.get('selected_doctor');
       const data    = {};
+      let duration;
 
+      duration = model.get('duration');
       data.customer_id = client.get('customer_id');
       data.insurance_plan = client.get('insurance_plan');
       data.doctor_id = doctor.get('doctor_id');
@@ -103,13 +105,15 @@ export default Controller.extend({
       data.reason = model.get('reason');
       data.alt_info = model.get('alt_info');
       data.ts_request = formatToServer(model.get('start_date_time'));
-      data.ts_request_endtime = formatToServer(model.get('end_date_time'));
+      data.ts_request_endtime = formatToServer(model.get('start_date_time').add(duration, 'minutes'));
       data.status = 'pending';
+
 
       service.postAppointment(data).then(() => {
         self.get('appointments').set('cache', false);
-        self.send('refresh');
-        self.set('model.created', true);
+        self.send('refresh').then(() => {
+          self.set('model.created', true);
+        });
       });
     }
   }

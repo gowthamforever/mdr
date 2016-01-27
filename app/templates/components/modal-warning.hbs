@@ -1,0 +1,11 @@
+<div class="modal-content">
+	<div class="modal-body">
+		<button type="button" class="close" {{action "hideDialog"}}>×</button>
+		<h4 class="modal-title">
+      <i class="fa fa-exclamation-triangle text-danger"></i> {{model.message}}
+    </h4>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default" {{action "hideDialog"}}>Close</button>
+	</div>
+</div>

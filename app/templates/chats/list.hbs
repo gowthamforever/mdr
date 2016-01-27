@@ -1,0 +1,13 @@
+<section class="chat-list-block">
+  {{#if model.appointments}}
+    <ul class="list-unstyled clearfix">
+      {{#each model.appointments as |appointment|}}
+        {{list-chat appointment=appointment}}
+      {{/each}}
+    </ul>
+  {{else}}
+    <div class="alert alert-danger">
+      No active appointments available.
+    </div>
+  {{/if}}
+</section>

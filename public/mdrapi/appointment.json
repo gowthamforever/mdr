@@ -70,9 +70,9 @@
       "reason":"test 0322 1030pm",
       "alt_info":"test 0322 1030pm",
       "insurance_plan":3,
-      "ts_request":"03-23-2015 14:00",
-      "ts_added":"03-23-2015 02:35",
-      "status":"pending"
+      "ts_request":"01-27-2016 00:00",
+      "ts_added":"01-26-2016 20:00",
+      "status":"accepted"
    },
    {
       "id":112,
@@ -145,9 +145,9 @@
       "reason":"test w Siva",
       "alt_info":"test w Siva",
       "insurance_plan":3,
-      "ts_request":"03-23-2015 22:00",
-      "ts_added":"03-23-2015 15:26",
-      "status":"pending"
+      "ts_request":"01-27-2016 03:00",
+      "ts_added":"01-27-2016 01:00",
+      "status":"accepted"
    },
    {
       "id":113,
@@ -426,7 +426,7 @@
       "insurance_plan":7,
       "ts_request":"04-18-2015 12:00",
       "ts_added":"04-17-2015 17:44",
-      "status":"accepted"
+      "status":"pending"
    },
    {
       "id":117,
@@ -554,7 +554,7 @@
       "insurance_plan":3,
       "ts_request":"04-18-2015 18:30",
       "ts_added":"04-18-2015 17:03",
-      "status":"accepted"
+      "status":"pending"
    },
    {
       "id":119,
@@ -622,7 +622,7 @@
       "insurance_plan":3,
       "ts_request":"04-18-2015 17:30",
       "ts_added":"04-18-2015 17:11",
-      "status":"accepted"
+      "status":"pending"
    },
    {
       "id":120,
@@ -690,7 +690,7 @@
       "insurance_plan":3,
       "ts_request":"04-21-2015 23:00",
       "ts_added":"04-21-2015 20:39",
-      "status":"accepted"
+      "status":"pending"
    },
    {
       "id":121,
@@ -758,7 +758,7 @@
       "insurance_plan":3,
       "ts_request":"04-21-2015 17:00",
       "ts_added":"04-21-2015 20:43",
-      "status":"accepted"
+      "status":"pending"
    },
    {
       "id":122,
@@ -826,7 +826,7 @@
       "insurance_plan":3,
       "ts_request":"04-21-2015 16:00",
       "ts_added":"04-21-2015 21:15",
-      "status":"accepted"
+      "status":"pending"
    },
    {
       "id":123,
@@ -964,7 +964,7 @@
       "insurance_plan":3,
       "ts_request":"05-10-2015 15:00",
       "ts_added":"05-10-2015 14:37",
-      "status":"accepted"
+      "status":"pending"
    },
    {
       "id":125,
@@ -1230,7 +1230,7 @@
       "insurance_plan":3,
       "ts_request":"10-13-2015 18:30",
       "ts_added":"10-08-2015 15:30",
-      "status":"accepted"
+      "status":"pending"
    },
    {
       "id":129,
@@ -1426,7 +1426,7 @@
       "insurance_plan":15,
       "ts_request":"10-11-2015 21:00",
       "ts_added":"10-10-2015 16:57",
-      "status":"accepted"
+      "status":"pending"
    },
    {
       "id":132,

@@ -8,6 +8,25 @@ const {
 export default Component.extend(EmberValidator, {
   tagName: 'section',
 
+  durations: [
+    {
+      value: '30',
+      display: '30 min'
+    },
+    {
+      value: '60',
+      display: '1 hour'
+    },
+    {
+      value: '90',
+      display: '1 hour 30 mins'
+    },
+    {
+      value: '120',
+      display: '2 hours'
+    }
+  ],
+
   validations() {
     return {
       start_date: {
@@ -16,11 +35,8 @@ export default Component.extend(EmberValidator, {
       start_time: {
         required: 'Start time is required'
       },
-      end_date: {
+      duration: {
         required: 'End date is required'
-      },
-      end_time: {
-        required: 'End time is required'
       },
       reason: {
         required: 'Reason is required',
@@ -48,17 +64,6 @@ export default Component.extend(EmberValidator, {
             target: moment()
           },
           message: 'Start date/time must be after current date.'
-        }
-      },
-      end_date_time: {
-        date: {
-          time: true,
-          format: 'MMM DD YYYY hh:ss A',
-          after: {
-            target: model.get('start_date_time'),
-            format: 'MMM DD YYYY hh:ss A'
-          },
-          message: 'End date/time must be after start date/time.'
         }
       }
     };
