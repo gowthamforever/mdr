@@ -49,5 +49,10 @@ export default {
   addagencystaff: {
     path: 'agencystaff',
     method: 'POST'
+  },
+
+  chatsession: {
+    path: 'appointment/{id}/chat',
+    method: 'GET'
   }
 };

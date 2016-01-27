@@ -34,5 +34,10 @@ export default {
   addappointment: {
     path: 'appointment',
     method: 'POST'
+  },
+
+  chatsession: {
+    path: 'appointment-chat.json',
+    method: 'GET'
   }
 };
