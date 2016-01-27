@@ -50,6 +50,12 @@ export default Mixin.create({
       settings.url = `${Api.MDR_API}${api.path}`;
       settings.method = api.method || 'GET';
 
+      if (request.path) {
+        _.keys(request.path).forEach((key) => {
+          settings.url = settings.url.replace(`{${key}}`, request.path[key]);
+        });
+      }
+
       if (request.context) {
         settings.context = request.context;
       }

@@ -10,5 +10,6 @@ const {
 } = inject;
 
 export default Controller.extend({
-  opentok: service()
+  opentok: service(),
+  supported_browser: true
 });

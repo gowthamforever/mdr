@@ -21,8 +21,8 @@ export default Route.extend({
     const endTime      = moment().add(24, 'hours');
     let todaysAppointments;
     let activeAppointments;
-    let ts_added_moment;
     let ts_request_moment;
+    let ts_request_endtime_moment;
 
     todaysAppointments = Ember.A();
 
@@ -31,11 +31,11 @@ export default Route.extend({
       activeAppointments.setEach('started', false);
 
       activeAppointments.forEach((appointment) => {
-        ts_added_moment = appointment.get('ts_added_moment');
         ts_request_moment = appointment.get('ts_request_moment');
+        ts_request_endtime_moment = appointment.get('ts_request_endtime_moment');
 
-        if ((ts_added_moment.isSameOrAfter(currentTime) || currentTime.isSameOrBefore(ts_request_moment)) && ts_added_moment.isSameOrBefore(endTime)) {
-          if(currentTime.isSameOrAfter(ts_added_moment) && currentTime.isSameOrBefore(ts_request_moment)) {
+        if ((ts_request_moment.isSameOrAfter(currentTime) || currentTime.isSameOrBefore(ts_request_endtime_moment)) && ts_request_moment.isSameOrBefore(endTime)) {
+          if(currentTime.isSameOrAfter(ts_request_moment) && currentTime.isSameOrBefore(ts_request_endtime_moment)) {
             appointment.set('started', true);
           }
 

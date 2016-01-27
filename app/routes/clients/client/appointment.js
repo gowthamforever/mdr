@@ -88,7 +88,10 @@ export default Route.extend({
 
   actions: {
     refresh() {
-      this.refresh();
+      const self = this;
+      this.refresh().then(() => {
+        self.set('controller.model.created', true);
+      });
     }
   }
 });

@@ -3,7 +3,7 @@
     <div class="col-md-12">
       {{#ember-wormhole to="fixed-block" renderInPlace=opentok.fullscreen}}
         <section class="chat-block {{if opentok.fullscreen 'chat-maximized' 'chat-minimized'}}">
-          {{mdr-opentok class="videos"}}
+          {{mdr-opentok class="videos" model=model}}
         </section>
       {{/ember-wormhole}}
     </div>

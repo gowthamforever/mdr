@@ -10,19 +10,19 @@ export default Component.extend(EmberValidator, {
 
   durations: [
     {
-      value: '30',
+      value: 30,
       display: '30 min'
     },
     {
-      value: '60',
+      value: 60,
       display: '1 hour'
     },
     {
-      value: '90',
+      value: 90,
       display: '1 hour 30 mins'
     },
     {
-      value: '120',
+      value: 120,
       display: '2 hours'
     }
   ],
@@ -54,7 +54,7 @@ export default Component.extend(EmberValidator, {
     };
   },
 
-  dateValidation(model) {
+  dateValidation() {
     return {
       start_date_time: {
         date: {
@@ -77,7 +77,7 @@ export default Component.extend(EmberValidator, {
       let validations   = this.validations();
 
       self.validateMap({ model, validations }).then(() => {
-        validations = self.dateValidation(model);
+        validations = self.dateValidation();
         self.validateMap({ model, validations }).then(() => {
           if (nextAction) {
             nextAction();

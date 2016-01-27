@@ -2,13 +2,13 @@
 
 const contentSecurityPolicy = {
   'default-src': "'none'",
-  'object-src': "'self'",
-  'script-src': "'self' 'unsafe-inline' 'unsafe-eval'",
-  'font-src': "'self'",
-  'connect-src': "'self' 192.168.1.106:8080",
-  'img-src': "'self'",
-  'style-src': "'self' 'unsafe-inline'",
-  'media-src': "'self'",
+  'object-src': "'self' static.opentok.com hlg.tokbox.com anvil.opentok.com mantis003-nyj.tokbox.com",
+  'script-src': "'self' 'unsafe-inline' 'unsafe-eval' static.opentok.com hlg.tokbox.com anvil.opentok.com mantis003-nyj.tokbox.com",
+  'font-src': "'self' static.opentok.com hlg.tokbox.com anvil.opentok.com mantis003-nyj.tokbox.com",
+  'connect-src': "'self' 192.168.1.106:8080 static.opentok.com hlg.tokbox.com anvil.opentok.com mantis003-nyj.tokbox.com",
+  'img-src': "'self' static.opentok.com hlg.tokbox.com anvil.opentok.com mantis003-nyj.tokbox.com",
+  'style-src': "'self' 'unsafe-inline' static.opentok.com hlg.tokbox.com anvil.opentok.com mantis003-nyj.tokbox.com",
+  'media-src': "'self' static.opentok.com hlg.tokbox.com anvil.opentok.com mantis003-nyj.tokbox.com",
   'frame-src': "'self'"
 }
 

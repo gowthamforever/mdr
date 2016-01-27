@@ -1,16 +1,22 @@
 import Ember from 'ember';
+import Api from 'mdr/mixins/api';
 
 const {
   Route,
+  RSVP,
   Object: EmberObject,
-  inject
+  inject,
 } = Ember;
 
 const {
   service
 } = inject;
 
-export default Route.extend({
+const {
+  Promise
+} = RSVP;
+
+export default Route.extend(Api, {
   dialog: service(),
   opentok: service(),
 
@@ -43,17 +49,18 @@ export default Route.extend({
   },
 
   afterModel(model, transition) {
+    const self         = this;
     const currentTime  = moment();
     const endTime      = moment().endOf('day');
-    let ts_added_moment;
     let ts_request_moment;
+    let ts_request_endtime_moment;
 
-    ts_added_moment = model.get('ts_added_moment');
     ts_request_moment = model.get('ts_request_moment');
+    ts_request_endtime_moment = model.get('ts_request_endtime_moment');
 
     model.set('started', false);
-    if ((ts_added_moment.isSameOrAfter(currentTime) || currentTime.isSameOrBefore(ts_request_moment)) && ts_added_moment.isSameOrBefore(endTime)) {
-      if(currentTime.isSameOrAfter(ts_added_moment) && currentTime.isSameOrBefore(ts_request_moment)) {
+    if ((ts_request_moment.isSameOrAfter(currentTime) || currentTime.isSameOrBefore(ts_request_endtime_moment)) && ts_request_moment.isSameOrBefore(endTime)) {
+      if(currentTime.isSameOrAfter(ts_request_moment) && currentTime.isSameOrBefore(ts_request_endtime_moment)) {
         model.set('started', true);
       }
     }
@@ -63,6 +70,24 @@ export default Route.extend({
       this.get('dialog').showDialog({
         name: 'modal-warning',
         model: EmberObject.create({ message: 'Appointment not started.' })
+      });
+    } else {
+      return new Promise((resolve) => {
+        self.ajax({
+          id: 'chatsession',
+          path: {
+            id: model.get('id')
+          }
+        }).then((response) => {
+          model.setProperties(_.pick(response, [
+            'sessionId',
+            'tokenID',
+            'apiKey'
+          ]));
+          resolve();
+        }).catch(() => {
+          resolve();
+        });
       });
     }
   }

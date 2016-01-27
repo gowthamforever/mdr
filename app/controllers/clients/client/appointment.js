@@ -105,15 +105,13 @@ export default Controller.extend({
       data.reason = model.get('reason');
       data.alt_info = model.get('alt_info');
       data.ts_request = formatToServer(model.get('start_date_time'));
-      data.ts_request_endtime = formatToServer(model.get('start_date_time').add(duration, 'minutes'));
+      data.ts_request_endtime = formatToServer(model.get('start_date_time_moment').add(duration.value, 'minutes'));
       data.status = 'pending';
 
 
       service.postAppointment(data).then(() => {
         self.get('appointments').set('cache', false);
-        self.send('refresh').then(() => {
-          self.set('model.created', true);
-        });
+        self.send('refresh');
       });
     }
   }

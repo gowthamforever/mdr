@@ -7,6 +7,8 @@ const {
 } = Ember;
 
 export default Component.extend({
+  session: null,
+
   subscriberId: computed('elementId', function() {
     return `${this.get('elementId')}-subscriber`;
   }),
@@ -17,10 +19,12 @@ export default Component.extend({
 
   initializeSession: on('didInsertElement', function() {
     const self      = this;
-    const apiKey    = this.get('apiKey');
-    const sessionId = this.get('sessionId');
-    const token     = this.get('token');
+    const apiKey    = this.get('model.apiKey');
+    const sessionId = this.get('model.sessionId');
+    const token     = this.get('model.tokenID');
     const session   = OT.initSession(apiKey, sessionId);
+
+    this.set('session', session);
 
     // Subscribe to a newly created stream
     session.on('streamCreated', function(event) {
@@ -50,5 +54,9 @@ export default Component.extend({
         console.log('There was an error connecting to the session: ', error.code, error.message);
       }
     });
+  }),
+
+  destroySession: on('willDestroyElement', function() {
+    this.get('session').disconnect();
   })
 });

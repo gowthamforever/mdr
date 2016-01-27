@@ -1,0 +1,316 @@
+<div class="panel-group">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      Personal Information
+      {{#if edit_personal}}
+        <a href="#" class="pull-right btn btn-xs btn-default" {{action "togglePersonal"}}><i class="fa fa-ban"></i> Cancel</a>
+      {{else}}
+        <a href="#" class="pull-right btn btn-xs btn-default" {{action "togglePersonal"}}><i class="fa fa-pencil"></i> Edit</a>
+      {{/if}}
+    </div>
+    <div class="panel-body">
+      <form role="form" novalidate {{action "add" on="submit"}} autocomplete="off">
+        <section class="col-md-12">
+          <div class="row">
+            <div class="form-group col-md-6 {{if model.validationResult.npi.hasError 'has-error'}}">
+              <label class="control-label" for="npi">NPI</label>
+              {{#if edit_personal}}
+                {{input type="text" class="form-control" name="npi" value=model.npi maxlength=50 autocomplete="off"}}
+                {{mdr-field-error client=model.validationResult.npi}}
+              {{else}}
+                <div class="form-control-static">{{model.npi}}</div>
+              {{/if}}
+            </div>
+
+            <div class="form-group col-md-6 {{if model.validationResult.email_id.hasError 'has-error'}}">
+              <label class="control-label" for="email-id">Email address</label>
+              {{#if edit_personal}}
+                {{input type="text" class="form-control" name="email-id" value=model.email_id maxlength=50 autocomplete="off"}}
+                {{mdr-field-error client=model.validationResult.email_id}}
+              {{else}}
+                <div class="form-control-static">{{dash-for-empty model.email_id}}</div>
+              {{/if}}
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-md-6 {{if model.validationResult.medicaid_number.hasError 'has-error'}}">
+              <label class="control-label" for="medicaid_number">Medicaid Number</label>
+              {{#if edit_personal}}
+                {{input type="text" class="form-control" name="medicaid_number" value=model.medicaid_number maxlength=50 autocomplete="off"}}
+                {{mdr-field-error client=model.validationResult.medicaid_number}}
+              {{else}}
+                <div class="form-control-static">{{model.medicaid_number}}</div>
+              {{/if}}
+            </div>
+            <div class="form-group col-md-6 {{if model.validationResult.medicare_number.hasError 'has-error'}}">
+              <label class="control-label" for="medicare_number">Medicare Number</label>
+              {{#if edit_personal}}
+                {{input type="text" class="form-control" name="npi" value=model.medicare_number maxlength=50 autocomplete="off"}}
+                {{mdr-field-error client=model.validationResult.medicare_number}}
+              {{else}}
+                <div class="form-control-static">{{model.medicare_number}}</div>
+              {{/if}}
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-md-6 {{if model.validationResult.last_name.hasError 'has-error'}}">
+              <label class="control-label" for="first-name">Last name</label>
+              {{#if edit_personal}}
+                {{input type="text" class="form-control" name="last-name" value=model.last_name maxlength=50 autocomplete="off"}}
+                {{mdr-field-error client=model.validationResult.last_name}}
+              {{else}}
+                <div class="form-control-static">{{model.last_name}}</div>
+              {{/if}}
+            </div>
+            <div class="form-group col-md-6 {{if model.validationResult.first_name.hasError 'has-error'}}">
+              <label class="control-label" for="first-name">First name</label>
+              {{#if edit_personal}}
+                {{input type="text" class="form-control" name="first-name" value=model.first_name maxlength=50 autocomplete="off"}}
+                {{mdr-field-error client=model.validationResult.first_name}}
+              {{else}}
+                <div class="form-control-static">{{model.first_name}}</div>
+              {{/if}}
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-md-6  {{if model.validationResult.dob.hasError 'has-error'}}">
+              <label class="control-label" for="dob">Date of birth</label>
+              {{#if edit_personal}}
+                {{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=(date-format model.dob "YYYY-MM-DD" "MMM DD YYYY")}}
+                {{mdr-field-error client=model.validationResult.dob}}
+              {{else}}
+                <div class="form-control-static">{{date-format model.dob "YYYY-MM-DD" "MMM DD YYYY"}}</div>
+              {{/if}}
+            </div>
+  					<div class="form-group col-md-6">
+  						<label class="control-label" for="gender">Gender</label>
+              {{#if edit_personal}}
+    						<div>
+    							<div class="radio-inline">
+    								<label>
+    									{{input-radio name="gender" group=model.gender value="MALE"}} Male
+    								</label>
+    							</div>
+    							<div class="radio-inline">
+    								<label>
+    									{{input-radio name="gender" group=model.gender value="FEMALE"}} Female
+    								</label>
+    							</div>
+    						</div>
+              {{else}}
+                <div class="form-control-static">{{model.gender}}</div>
+              {{/if}}
+  					</div>
+  				</div>
+
+          <div class="row">
+            <div class="form-group col-md-6 {{if model.validationResult.ein.hasError 'has-error'}}">
+              <label class="control-label" for="ein">EIN Number</label>
+              {{#if edit_personal}}
+                {{input type="text" class="form-control" name="ein" value=model.ein maxlength=10 autocomplete="off"}}
+                {{mdr-field-error client=model.validationResult.ein}}
+              {{else}}
+                <div class="form-control-static">{{model.ein}}</div>
+              {{/if}}
+            </div>
+            <div class="form-group col-md-6 {{if model.validationResult.dea.hasError 'has-error'}}">
+              <label class="control-label" for="medicare_number">DEA Number</label>
+              {{#if edit_personal}}
+                {{input type="text" class="form-control" name="dea" value=model.dea maxlength=9 autocomplete="off"}}
+                {{mdr-field-error client=model.validationResult.dea}}
+              {{else}}
+                <div class="form-control-static">{{model.npi}}</div>
+              {{/if}}
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-md-6 {{if model.validationResult.ein.hasError 'has-error'}}">
+              <label class="control-label" for="ein">EIN Number</label>
+              {{#if edit_personal}}
+                {{input type="text" class="form-control" name="ein" value=model.ein maxlength=10 autocomplete="off"}}
+                {{mdr-field-error client=model.validationResult.ein}}
+              {{else}}
+                <div class="form-control-static">{{model.ein}}</div>
+              {{/if}}
+            </div>
+            <div class="form-group col-md-6 {{if model.validationResult.dea.hasError 'has-error'}}">
+              <label class="control-label" for="medicare_number">DEA Number</label>
+              {{#if edit_personal}}
+                {{input type="text" class="form-control" name="dea" value=model.dea maxlength=9 autocomplete="off"}}
+                {{mdr-field-error client=model.validationResult.dea}}
+              {{else}}
+                <div class="form-control-static">{{model.npi}}</div>
+              {{/if}}
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-md-6">
+  						<label class="control-label" for="surgeon">Surgeon</label>
+              {{#if edit_personal}}
+    						<div>
+    							<div class="radio-inline">
+    								<label>
+    									{{input-radio name="surgeon" group=model.surgeon value=0}} Yes
+    								</label>
+    							</div>
+    							<div class="radio-inline">
+    								<label>
+    									{{input-radio name="surgeon" group=model.surgeon value=1}} No
+    								</label>
+    							</div>
+    						</div>
+              {{else}}
+                <div class="form-control-static">{{if (eq model.surgeon 0) 'No' 'Yes'}}</div>
+              {{/if}}
+  					</div>
+
+            <div class="form-group col-md-6 {{if model.validationResult.email_id.hasError 'has-error'}}">
+              <label class="control-label" for="email-id">Primary Speciality</label>
+              {{#if edit_personal}}
+                {{input-select
+                  class="form-control"
+                  name="doctors-speciality"
+                  options=model.specialities
+                  labelPath="name"
+                  valuePath="id"
+                  selected=model.speciality
+                  prompt="Doctor Speciality"
+                }}
+                {{mdr-field-error client=model.validationResult.email_id}}
+              {{else}}
+                <div class="form-control-static">{{dash-for-empty model.email_id}}</div>
+              {{/if}}
+            </div>
+          </div>
+
+          {{#if edit_personal}}
+            <div class="row">
+              <div class="form-group col-md-2">
+                <button class="btn btn-primary btn-block" type="submit" autocomplete="off">Save</button>
+              </div>
+            </div>
+          {{/if}}
+        </section>
+      </form>
+    </div>
+  </div>
+
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      Contact Information
+      {{#if edit_contact}}
+        <a href="#" class="pull-right btn btn-xs btn-default" {{action "toggleContact"}}><i class="fa fa-ban"></i> Cancel</a>
+      {{else}}
+        <a href="#" class="pull-right btn btn-xs btn-default" {{action "toggleContact"}}><i class="fa fa-pencil"></i> Edit</a>
+      {{/if}}
+    </div>
+    <div class="panel-body">
+      <form role="form" novalidate {{action "add" on="submit"}} autocomplete="off">
+        <section class="col-md-12">
+          <div class="row">
+            <div class="form-group col-md-6  {{if model.validationResult.phone1.hasError 'has-error'}}">
+              <label class="control-label" for="phone1">Phone number</label>
+              {{#if edit_contact}}
+                {{input type="text" class="form-control" name="phone1" value=model.phone1 maxlength=10 autocomplete="off"}}
+                {{mdr-field-error client=model.validationResult.phone1}}
+              {{else}}
+                <div class="form-control-static">{{dash-for-empty model.phone1}}</div>
+              {{/if}}
+            </div>
+            <div class="form-group col-md-6  {{if model.validationResult.phone2.hasError 'has-error'}}">
+              <label class="control-label" for="phone2">Alternate phone number <small>(optional)</small></label>
+              {{#if edit_contact}}
+                {{input type="text" class="form-control" name="phone2" value=model.phone2 maxlength=10 autocomplete="off"}}
+                {{mdr-field-error client=model.validationResult.phone2}}
+              {{else}}
+                <div class="form-control-static">{{dash-for-empty model.phone2}}</div>
+              {{/if}}
+            </div>
+          </div>
+
+          {{#if edit_contact}}
+            <div class="row">
+              <div class="form-group col-md-8  {{if model.validationResult.address1.hasError 'has-error'}}">
+                <label class="control-label" for="address1">Primary address</label>
+                {{input type="text" class="form-control" name="address1" value=model.address1 maxlength=250 autocomplete="off"}}
+                {{mdr-field-error client=model.validationResult.address1}}
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group col-md-6  {{if model.validationResult.selected_state_1.hasError 'has-error'}}">
+                <label class="control-label" for="state1">State</label>
+                {{input-select
+                  class="form-control"
+                  name="state1"
+                  options=model.states
+                  labelPath="name"
+                  valuePath="id"
+                  selected=model.selected_state_1
+                  prompt="Select"
+                }}
+                {{mdr-field-error client=model.validationResult.selected_state_1}}
+              </div>
+              <div class="form-group col-md-6  {{if model.validationResult.selected_city_1.hasError 'has-error'}}">
+                <label class="control-label" for="city1">City</label>
+                {{input-select
+                  class="form-control"
+                  name="city1"
+                  options=model.cities1
+                  labelPath="name"
+                  valuePath="id"
+                  selected=model.selected_city_1
+                  prompt="Select"
+                }}
+                {{mdr-field-error client=model.validationResult.selected_city_1}}
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group col-md-6  {{if model.validationResult.zip1.hasError 'has-error'}}">
+                <label class="control-label" for="zip1">Zip code</label>
+                {{input type="text" class="form-control" name="zip1" value=model.zip1 autocomplete="off"}}
+                {{mdr-field-error client=model.validationResult.zip1}}
+              </div>
+              <div class="form-group col-md-6">
+                <label class="control-label" for="country1">Country</label>
+                {{input type="text" class="form-control" name="country1" value=model.country1 disabled=true}}
+                <p class="help-block">Currently available for US regions only</p>
+              </div>
+            </div>
+          {{else}}
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label class="control-label" for="address1">Primary address</label>
+                <div class="form-control-static">{{dash-for-empty model.address1}}</div>
+              </div>
+              <div class="form-group col-md-6">
+                <label class="control-label" for="address1">Primary location</label>
+                <div class="form-control-static">
+                  {{#if model.address1}}
+                    {{model.city1}}, {{model.state1}} ({{model.zip1}})
+                  {{else}}
+                    &ndash;
+                  {{/if}}
+                </div>
+              </div>
+            </div>
+          {{/if}}
+
+          {{#if edit_contact}}
+            <div class="row">
+              <div class="form-group col-md-2">
+                <button class="btn btn-primary btn-block" type="submit" autocomplete="off">Save</button>
+              </div>
+            </div>
+          {{/if}}
+        </section>
+      </form>
+    </div>
+  </div>
+</div>
