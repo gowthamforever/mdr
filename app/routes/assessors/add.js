@@ -16,11 +16,19 @@ export default Route.extend(EmberValidator, Api, {
   _validations(model) {
     return {
       employee_number: {
-        required: 'Employee Id is required.'
+        required: 'Employee Id is required.',
+        pattern: {
+          with: /^\[a-zA-Z0-9]{9}$/,
+          message: 'Enter valid Employee id number.'
+        }
       },
 
       rater_id: {
-        required: 'Rater Id is required.'
+        required: 'Rater Id is required.',
+        pattern: {
+          with: /^\[a-zA-Z0-9]{9}$/,
+          message: 'Enter valid Ratee id number.'
+        }
       },
 
       password1: {
