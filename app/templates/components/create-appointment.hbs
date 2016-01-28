@@ -1,0 +1,130 @@
+<div class="panel-group">
+  <div class="panel {{if one.current 'panel-primary' (if one.selected 'panel-success' (if one.disabled 'panel-default' 'panel-primary'))}}">
+    <div class="panel-heading clickable" {{action "toggle" one}}>
+      1. Select Client
+      {{#if (and one.selected (not one.current))}}
+        <span class="pull-right">
+          <i class="fa fa-chevron-down"></i>
+        </span>
+      {{/if}}
+    </div>
+    {{#liquid-if one.current use="crossFade"}}
+      <div class="panel-body">
+        <section class="col-md-12">
+          {{list-clients class="clients-list-block"
+            model=clients
+            hideSearch=single
+            showSelect=true
+            selected=appointment.selected_client}}
+
+          {{#if appointment.selected_client}}
+            <div class="row">
+              <div class="form-group col-md-2">
+                <button class="btn btn-primary btn-block" {{action "gotoTwo"}}>Next &gt;&gt;</button>
+              </div>
+            </div>
+          {{/if}}
+        </section>
+      </div>
+    {{/liquid-if}}
+  </div>
+
+  <div class="panel {{if two.current 'panel-primary' (if two.selected 'panel-success' (if two.disabled 'panel-default' 'panel-primary'))}}">
+    <div class="panel-heading clickable" {{action "toggle" two}}>
+      2. Appointment Details
+      {{#if (and two.selected (not two.current))}}
+        <span class="pull-right">
+          <i class="fa fa-chevron-down"></i>
+        </span>
+      {{/if}}
+    </div>
+    {{#liquid-if two.current use="crossFade"}}
+      <div class="panel-body">
+        <section class="col-md-12">
+          {{appointment-time nextAction=(action "gotoThree") model=appointment}}
+        </section>
+      </div>
+    {{/liquid-if}}
+  </div>
+
+  <div class="panel {{if three.current 'panel-primary' (if three.selected 'panel-success' (if three.disabled 'panel-default' 'panel-primary'))}}">
+    <div class="panel-heading clickable" {{action "toggle" three}}>
+      3. Select Attender
+      {{#if (and three.selected (not three.current))}}
+        <span class="pull-right">
+          <i class="fa fa-chevron-down"></i>
+        </span>
+      {{/if}}
+    </div>
+    {{#liquid-if three.current use="crossFade"}}
+      <div class="panel-body">
+        <section class="col-md-12">
+          {{#if (eq appointment.selected_appointment_with "Assessor")}}
+            {{list-assessors class="assessors-list-block"
+              model=appointment.assessors
+              hideSearch=false
+              showSelect=true
+              selected=appointment.selected_assessor}}
+          {{else}}
+            {{list-doctors class="doctors-list-block"
+              model=appointment.doctors
+              hideSearch=false
+              showSelect=true
+              selected=appointment.selected_doctor}}
+          {{/if}}
+          <div class="row">
+            <div class="form-group col-md-2">
+              <button class="btn btn-primary btn-block" {{action "gotoFour"}}>Next &gt;&gt;</button>
+            </div>
+          </div>
+        </section>
+      </div>
+    {{/liquid-if}}
+  </div>
+
+  <div class="panel {{if four.current 'panel-primary' (if four.selected 'panel-success' (if four.disabled 'panel-default' 'panel-primary'))}}">
+    <div class="panel-heading clickable" {{action "toggle" one}}>
+      4. Verify
+      {{#if (and four.selected (not four.current))}}
+        <span class="pull-right">
+          <i class="fa fa-chevron-down"></i>
+        </span>
+      {{/if}}
+    </div>
+    {{#liquid-if four.current use="crossFade"}}
+      <div class="panel-body">
+        <section class="col-md-12">
+          {{appointment-submit model=appointment submit=(action "gotoFive")
+            doctor_appointment=(eq appointment.selected_appointment_with "Doctor")
+            assessor_appointment=(eq appointment.selected_appointment_with "Assessor")}}
+        </section>
+      </div>
+    {{/liquid-if}}
+  </div>
+
+  <div class="panel {{if five.current 'panel-primary' (if five.selected 'panel-success' (if five.disabled 'panel-default' 'panel-primary'))}}">
+    <div class="panel-heading clickable" {{action "toggle" five}}>
+      5. Confirmation
+      {{#if (and five.selected (not five.current))}}
+        <span class="pull-right">
+          <i class="fa fa-chevron-down"></i>
+        </span>
+      {{/if}}
+    </div>
+    {{#liquid-if five.current use="crossFade"}}
+      <div class="panel-body">
+        <section class="col-md-12">
+          <div class="alert alert-success">
+            <strong>Success!! </strong>Appointment created.
+          </div>
+
+          <div class="row">
+            <div class="form-group col-md-2">
+              <button class="btn btn-primary btn-block" {{action "create"}}>Create more</button>
+            </div>
+          </div>
+        </section>
+      </div>
+    {{/liquid-if}}
+  </div>
+</div>

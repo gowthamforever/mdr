@@ -13,7 +13,7 @@ export default Route.extend({
   activate() {
     this._super(...arguments);
     this.get('titlebar').setProperties({
-      right_content: 'view-requests-btn',
+      right_content: 'right-content-appointment',
       right_content_model: Ember.Object.create({ calendar: true })
     });
   },

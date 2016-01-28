@@ -23,7 +23,6 @@ Router.map(function() {
       this.route('add');
       this.route('client', { path: '/:customer_id' }, function() {
         this.route('profile');
-        this.route('appointment');
       });
     });
 
@@ -32,7 +31,6 @@ Router.map(function() {
       this.route('add');
       this.route('assessor', { path: '/:assessor_id' }, function() {
         this.route('profile');
-        this.route('appointment');
       });
     });
 
@@ -41,7 +39,6 @@ Router.map(function() {
       this.route('add');
       this.route('doctor', { path: '/:doctor_id' }, function() {
         this.route('profile');
-        this.route('appointment');
       });
     });
 
@@ -53,6 +50,7 @@ Router.map(function() {
         this.route('rejected');
       });
       this.route('details', { path: '/:id' });
+      this.route('create', { path: '/create/:customer_id' });
     });
 
     this.resource('chats', function() {

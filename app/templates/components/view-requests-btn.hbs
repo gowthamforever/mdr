@@ -1,9 +1,9 @@
 {{#if model.calendar}}
   {{#link-to 'appointments.calendar' class="link-color link-margin" ariaRole="button"}}
-    Calendar
+    <i class="fa fa-calendar left"></i> <span class="hidden-sm hidden-xs">Calendar</span>
   {{/link-to}}
 {{else}}
   {{#link-to 'appointments.requests' class="link-color link-margin" ariaRole="button"}}
-    Requests
+    <i class="fa fa-th left"></i> <span class="hidden-sm hidden-xs">Requests</span>
   {{/link-to}}
 {{/if}}

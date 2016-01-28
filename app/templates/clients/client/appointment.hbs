@@ -31,6 +31,8 @@
                   </div>
                 </div>
               {{else if (eq bread_crumb.id 2)}}
+                {{appointment-time nextAction=(action "next") model=model.appointment}}
+              {{else if (eq bread_crumb.id 3)}}
                 {{list-doctors class="doctors-list-block"
                   model=bread_crumb.model
                   hideBtns=model.hide_btn_doctor
@@ -45,8 +47,6 @@
                     </div>
                   </div>
                 {{/if}}
-              {{else if (eq bread_crumb.id 3)}}
-                {{appointment-time nextAction=(action "next") model=model.appointment}}
               {{else if (eq bread_crumb.id 4)}}
                 {{appointment-submit model=model.appointment submit=(action "submit") doctor_appointment=true}}
               {{/if}}

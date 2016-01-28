@@ -36,7 +36,7 @@ export default Component.extend(EmberValidator, {
         required: 'Start time is required'
       },
       duration: {
-        required: 'End date is required'
+        required: 'Duration is required'
       },
       reason: {
         required: 'Reason is required',

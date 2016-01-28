@@ -33,7 +33,7 @@ export default Route.extend(Api, {
   },
 
   model(param) {
-    const model        = this.modelFor('appointments');
+    const model        = this.modelFor('chats');
     const appointments = model.get('appointments');
     let appointment;
 
