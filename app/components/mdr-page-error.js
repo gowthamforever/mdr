@@ -6,14 +6,14 @@ const {
 } = Ember;
 
 const {
-  alias
+  or
 } = computed;
 
 export default Component.extend({
-  classNames: ['bs-callout', 'bs-callout-danger'],
+  classNames: ['alert', 'alert-danger'],
   classNameBindings: ['hasError:show:hide'],
   validationResult: null,
-  hasError: alias('validationResult.hasError'),
-  error: alias('validationResult.error'),
+  hasError: or('validationResult.hasError', 'serverError.errorCode'),
+  error: or('validationResult.error', 'serverError.error'),
   message: null
 });

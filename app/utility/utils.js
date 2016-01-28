@@ -6,7 +6,7 @@ export function animateTo(options = {}) {
 }
 
 export function formatToServer(date) {
-  return moment(date, 'MMM DD YYYY hh:ss A', true).format('MM-DD-YYYY HH:ss');
+  return moment(date, 'MMM DD YYYY hh:mm A', true).format('MM-DD-YYYY HH:mm');
 }
 
 export function toggleScrollBar(show) {

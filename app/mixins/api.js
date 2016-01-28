@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import Api from 'mdr/utility/api';
+import ErrorStr from 'mdr/utility/error-str';
 
 const {
   Mixin,
@@ -69,7 +70,15 @@ export default Mixin.create({
       };
 
       Ember.$.ajax(settings).done((...args) => {
-        resolve(...args);
+        const response = args[0];
+        if (response && response.errorCode) {
+          reject({
+            errorCode: response.errorCode,
+            errorMessgae: ErrorStr[response.errorCode] || response.errorDescription
+          }, ...args);
+        } else {
+          resolve(...args);
+        }
       }).fail((...args) => {
         reject(...args);
       }).always(() => {

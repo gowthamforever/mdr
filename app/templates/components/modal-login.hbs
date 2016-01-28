@@ -7,7 +7,7 @@
 	</div>
 	<div class="modal-body">
   	<form role="form" class="signin-form" novalidate {{action "signin" on="submit"}} autocomplete="off">
-  		{{mdr-page-error validationResult=model.validationResult message="Invalid user name or password"}}
+  		{{mdr-page-error validationResult=model.validationResult serverError=model.serverError message="Invalid user name or password"}}
 
 			<div class="row">
 				<div class="form-group col-md-12">

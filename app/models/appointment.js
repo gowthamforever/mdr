@@ -28,7 +28,7 @@ export default Ember.Object.extend(BreadCrumb, {
     let start_date_time;
     if (start_date && start_time) {
       start_date_time = `${start_date} ${start_time}`;
-      if (moment(start_date_time, 'MMM DD YYYY hh:ss A', true).isValid()) {
+      if (moment(start_date_time, 'MMM DD YYYY hh:mm A', true).isValid()) {
         return start_date_time;
       }
     }
@@ -37,7 +37,20 @@ export default Ember.Object.extend(BreadCrumb, {
     const start_date_time  = this.get('start_date_time');
 
     if (start_date_time) {
-      return moment(start_date_time, 'MMM DD YYYY hh:ss A', true);
+      return moment(start_date_time, 'MMM DD YYYY hh:mm A', true);
+    }
+  }),
+  end_date_time_moment: computed('start_date_time_moment', 'duration', function() {
+    const start_date_time_moment  = model.get('start_date_time_moment');
+    const duration                = model.get('duration');
+    if (start_date_time_moment && duration) {
+      return start_date_time_moment.add(duration.value, 'minutes');
+    }
+  }),
+  end_date_time: computed('end_date_time_moment', function() {
+    const end_date_time_moment = model.get('end_date_time_moment');
+    if (end_date_time_moment) {
+      return end_date_time_moment.format('MMM DD YYYY hh:mm A');
     }
   }),
   status: null,

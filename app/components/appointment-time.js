@@ -59,7 +59,7 @@ export default Component.extend(EmberValidator, {
       start_date_time: {
         date: {
           time: true,
-          format: 'MMM DD YYYY hh:ss A',
+          format: 'MMM DD YYYY hh:mm A',
           after: {
             target: moment()
           },

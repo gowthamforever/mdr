@@ -42,7 +42,10 @@ export default Component.extend(EmberValidator, Api, {
       const self        = this;
       const data        = {};
 
-      model.set('validationResult', null);
+      model.setProperties({
+        validationResult: null,
+        serverError: null
+      });
 
       self.validateMap({ model, validations }).then(() => {
         data.userid = model.get('userName');
@@ -64,6 +67,8 @@ export default Component.extend(EmberValidator, Api, {
 
           self.get('session').setProperties(session);
           self.sendAction('home');
+        }).catch((error) => {
+          model.set('serverError', error);
         });
       }).catch((validationResult) => {
         model.set('validationResult', validationResult);

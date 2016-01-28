@@ -6,10 +6,17 @@ import {
 
 const {
   Component,
-  on
+  on,
+  inject
 } = Ember;
 
+const {
+  service
+} = inject;
+
 export default Component.extend({
+  dialog: service(),
+
   classNames: ['loader-container'],
 
   hideScrollBar: on('didInsertElement', () => {
@@ -17,7 +24,9 @@ export default Component.extend({
     blurActiveElement();
   }),
 
-  showScrollBar: on('willDestroyElement', () => {
-    toggleScrollBar(true);
+  showScrollBar: on('willDestroyElement', function() {
+    if (!this.get('dialog.show')) {
+      toggleScrollBar(true);
+    }
   })
 });

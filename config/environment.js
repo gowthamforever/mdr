@@ -2,14 +2,14 @@
 
 const contentSecurityPolicy = {
   'default-src': "'none'",
-  'object-src': "'self' static.opentok.com hlg.tokbox.com anvil.opentok.com mantis003-nyj.tokbox.com",
-  'script-src': "'self' 'unsafe-inline' 'unsafe-eval' static.opentok.com hlg.tokbox.com anvil.opentok.com mantis003-nyj.tokbox.com",
-  'font-src': "'self' static.opentok.com hlg.tokbox.com anvil.opentok.com mantis003-nyj.tokbox.com",
-  'connect-src': "'self' 192.168.1.106:8080 static.opentok.com hlg.tokbox.com anvil.opentok.com mantis003-nyj.tokbox.com",
-  'img-src': "'self' static.opentok.com hlg.tokbox.com anvil.opentok.com mantis003-nyj.tokbox.com",
-  'style-src': "'self' 'unsafe-inline' static.opentok.com hlg.tokbox.com anvil.opentok.com mantis003-nyj.tokbox.com",
-  'media-src': "'self' static.opentok.com hlg.tokbox.com anvil.opentok.com mantis003-nyj.tokbox.com",
-  'frame-src': "'self'"
+  'object-src': "'self' 172.20.10.8:4200 devapi-mdrealtime.elasticbeanstalk.com static.opentok.com hlg.tokbox.com anvil.opentok.com mantis003-nyj.tokbox.com wss://mantis005-sjc.tokbox.com/rumorwebsocketsv2",
+  'script-src': "'self' 172.20.10.8:4200 devapi-mdrealtime.elasticbeanstalk.com static.opentok.com hlg.tokbox.com anvil.opentok.com mantis003-nyj.tokbox.com wss://mantis005-sjc.tokbox.com/rumorwebsocketsv2",
+  'font-src': "'self' 172.20.10.8:4200 devapi-mdrealtime.elasticbeanstalk.com static.opentok.com hlg.tokbox.com anvil.opentok.com mantis003-nyj.tokbox.com wss://mantis005-sjc.tokbox.com/rumorwebsocketsv2",
+  'connect-src': "'self' 172.20.10.8:4200 devapi-mdrealtime.elasticbeanstalk.com static.opentok.com hlg.tokbox.com anvil.opentok.com mantis003-nyj.tokbox.com wss://mantis005-sjc.tokbox.com/rumorwebsocketsv2",
+  'img-src': "'self' 172.20.10.8:4200 devapi-mdrealtime.elasticbeanstalk.com static.opentok.com hlg.tokbox.com anvil.opentok.com mantis003-nyj.tokbox.com wss://mantis005-sjc.tokbox.com/rumorwebsocketsv2",
+  'style-src': "'self' 172.20.10.8:4200 devapi-mdrealtime.elasticbeanstalk.com static.opentok.com hlg.tokbox.com anvil.opentok.com mantis003-nyj.tokbox.com wss://mantis005-sjc.tokbox.com/rumorwebsocketsv2",
+  'media-src': "'self' 172.20.10.8:4200 devapi-mdrealtime.elasticbeanstalk.com static.opentok.com hlg.tokbox.com anvil.opentok.com mantis003-nyj.tokbox.com wss://mantis005-sjc.tokbox.com/rumorwebsocketsv2",
+  'frame-src': "'self' 172.20.10.8:4200 devapi-mdrealtime.elasticbeanstalk.com static.opentok.com hlg.tokbox.com anvil.opentok.com mantis003-nyj.tokbox.com wss://mantis005-sjc.tokbox.com/rumorwebsocketsv2"
 }
 
 module.exports = function(environment) {
