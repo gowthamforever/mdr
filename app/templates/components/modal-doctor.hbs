@@ -6,54 +6,38 @@
 		</h4>
 	</div>
 	<div class="modal-body">
-		<section class="row">
-			<section class="col-md-3 col-sm-3 col-xs-3 text-center">
-				<img class="img-responsive" src="./assets/img/default_avatar_doctor_male_120x.png">
-			</section>
-			<section class="col-md-9 col-sm-9 col-xs-9">
-				<section>
-					<h4>Personal Information</h4>
-				</section>
-				<section>
-					<table>
-						<tbody>
-              <tr>
-  							<td class="value">{{model.age}} years, {{model.gender}}</td>
-  						</tr>
-  						<tr>
-  							<td class="value">{{model.speciality.speciality}} <small class="text-warning">({{model.speciality.board}})</small></td>
-  						</tr>
-            </tbody>
-          </table>
-				</section>
-				<section>
-					<h4>Contact Information</h4>
-				</section>
-				<section>
-					<table>
-						<tbody>
-              <tr>
-  							<td class="value"><i class="icon-hospital text-info"></i> <strong>{{model.graduation_institution}}</strong></td>
-  						</tr>
-  						<tr>
-  							<td class="value"><i class="icon-map-marker text-info"></i> placeholder</td>
-  						</tr>
-  						<tr>
-  							<td class="value">placeholder</td>
-  						</tr>
-  						<tr>
-  							<td class="value"><i class="icon-phone text-info"></i> placeholder</td>
-  						</tr>
-  						<tr>
-                <td class="value"><i class="icon-phone text-info"></i> placeholder</td>
-  						</tr>
-            </tbody>
-          </table>
-				</section>
-			</section>
-		</section>
-		<br>
-						</div>
+		<div>
+			<div class="form-group row">
+				<label class="col-sm-4">Date of birth:</label>
+				<div class="col-sm-8">{{date-format model.dob "YYYY-MM-DD" "MMM DD YYYY"}}</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-sm-4">Gender:</label>
+				<div class="col-sm-8">{{model.gender}}</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-sm-4">Service Charge:</label>
+				<div class="col-sm-8">${{model.service_charge}}</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-sm-4">Speciality:</label>
+				<div class="col-sm-8">{{model.speciality.speciality}} <small class="text-warning">({{model.speciality.board}})</small></div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-sm-4">Graduation Institution:</label>
+				<div class="col-sm-8">{{model.graduation_institution}}</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-sm-4">Email:</label>
+				<div class="col-sm-8">{{model.email_id}}</div>
+			</div>
+		</div>
+	</div>
 	<div class="modal-footer">
 		<button type="button" class="btn btn-default" {{action "hideDialog"}}>Close</button>
 	</div>

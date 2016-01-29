@@ -1,0 +1,51 @@
+<section class="search-header">
+  <div class="row">
+    <div class="col-md-3 input-elements">
+      <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+        {{input-select
+          class="form-control"
+          name="durations"
+          options=durations
+          labelPath="start_end"
+          valuePath="start"
+          selected=selected_duration
+        }}
+      </div>
+    </div>
+  </div>
+</section>
+
+{{#if filtered}}
+  <div class="alert alert-info">
+    Available doctors on {{selected_duration.date}} between {{selected_duration.start_time}} and {{selected_duration.end_time}}.
+  </div>
+
+  <ul class="list-unstyled clearfix">
+    {{#each filtered as |doctor|}}
+      <li class="doctor-list-item col-md-4 clickable" {{action "doctor" doctor}}>
+        <section class="doctor-wrapper clearfix">
+          <div class="main clearfix">
+            <div>
+              <h4>
+                <span class="pull-left clickable toggle-select" {{action "select" doctor bubbles=false}}>
+                  <i class="fa {{if (eq selected doctor) 'fa-check-circle' 'fa-circle-thin'}} fa-2"></i>
+                </span>
+
+                <i class="fa fa-user-md fa-2 {{if doctor.isActive 'success-color' 'danger-color'}}"></i>
+                {{doctor.first_name}} {{doctor.last_name}}
+              </h4>
+              <p>{{doctor.primary_speciality_obj.name}}</p>
+              <p>Service Charge: $ {{doctor.service_charge}}</p>
+              <p><i class="fa fa-envelope"></i> {{dash-for-empty doctor.email_id}}</p>
+            </div>
+          </div>
+        </section>
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <div class="alert alert-danger">
+    No doctors available in selected time slot. Try different slot.
+  </div>
+{{/if}}

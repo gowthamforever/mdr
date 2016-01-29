@@ -15,6 +15,7 @@
             model=clients
             hideSearch=single
             showSelect=true
+            profile_modal=true
             selected=appointment.selected_client}}
 
           {{#if appointment.selected_client}}
@@ -60,23 +61,24 @@
       <div class="panel-body">
         <section class="col-md-12">
           {{#if (eq appointment.selected_appointment_with "Assessor")}}
-            {{list-assessors class="assessors-list-block"
+            {{appointment-list-assessor class="assessors-list-block"
               model=appointment.assessors
-              hideSearch=false
-              showSelect=true
+              appointment=appointment
               selected=appointment.selected_assessor}}
           {{else}}
-            {{list-doctors class="doctors-list-block"
+            {{appointment-list-doctor class="doctors-list-block"
               model=appointment.doctors
-              hideSearch=false
-              showSelect=true
+              appointment=appointment
               selected=appointment.selected_doctor}}
           {{/if}}
-          <div class="row">
-            <div class="form-group col-md-2">
-              <button class="btn btn-primary btn-block" {{action "gotoFour"}}>Next &gt;&gt;</button>
+
+          {{#if (or appointment.selected_assessor appointment.selected_doctor)}}
+            <div class="row">
+              <div class="form-group col-md-2">
+                <button class="btn btn-primary btn-block" {{action "gotoFour"}}>Next &gt;&gt;</button>
+              </div>
             </div>
-          </div>
+          {{/if}}
         </section>
       </div>
     {{/liquid-if}}

@@ -2,7 +2,7 @@
 
 <form role="form" novalidate {{action "next" on="submit"}} autocomplete="off">
   <div class="row">
-    <div class="form-group col-md-2 ">
+    <div class="form-group col-md-6 ">
       <label class="control-label" for="duration">Attender</label>
       {{input-select
         class="form-control"
@@ -11,18 +11,31 @@
         selected=model.selected_appointment_with
       }}
     </div>
+
+    {{#if (eq model.selected_appointment_with "Doctor")}}
+      <div class="form-group col-md-6 ">
+        <label class="control-label" for="speciality">Speciality</label>
+        {{input-select
+          class="form-control"
+          name="speciality"
+          options=model.specialities
+          labelPath="name"
+          valuePath="id"
+          onChange=(action "onSpecailityChange")
+          selected=model.selected_speciality
+          prompt="Select"
+        }}
+      </div>
+    {{/if}}
+  </div>
+  <div class="row">
     <div class="form-group col-md-4  {{if model.validationResult.start_date.hasError 'has-error'}} {{if model.validationResult.start_date_time.hasError 'has-error'}}">
       <label class="control-label" for="start_date">Start Date</label>
       {{input-date-picker class="form-control" name="start_date" value=model.start_date max=model.max_date min=model.min_date}}
       {{mdr-field-error client=model.validationResult.start_date}}
       {{mdr-field-error client=model.validationResult.start_date_time}}
     </div>
-    <div class="form-group col-md-2  {{if model.validationResult.start_time.hasError 'has-error'}} {{if model.validationResult.start_date_time.hasError 'has-error'}}">
-      <label class="control-label" for="start_time">Start Time</label>
-      {{input-time-picker class="form-control" name="start_time" value=model.start_time}}
-      {{mdr-field-error client=model.validationResult.start_time}}
-    </div>
-    <div class="form-group col-md-4  {{if model.validationResult.duration.hasError 'has-error'}}">
+    <div class="form-group col-md-3  {{if model.validationResult.duration.hasError 'has-error'}}">
       <label class="control-label" for="duration">Duration</label>
       {{input-select
         class="form-control"

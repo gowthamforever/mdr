@@ -50,5 +50,11 @@
     "morgan": "^1.6.0",
     "on-headers": "^1.0.0",
     "proxy-middleware": "^0.15.0"
+  },
+
+  "ember-addon": {
+    "paths": [
+      "lib/dev-proxy"
+    ]
   }
 }

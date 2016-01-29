@@ -23,6 +23,7 @@ export default Service.extend({
   role_doctor: equal('user_role', 'ADoctors'),
   role_assessor: equal('user_role', 'AAssessors'),
   role_coordinator: equal('user_role', 'ACoordinator'),
+  role_staff: equal('user_role', 'AStaff'),
   email_id: null,
   first_name: null,
   last_name: null,

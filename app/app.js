@@ -22,6 +22,7 @@ Route.reopen({
     const routeName = self.routeName;
     let titles  = {
       home: { title: 'Home' },
+      profile: { title: 'Profile' },
       'clients.list': { title: 'Clients' },
       'clients.add': { title: 'Add a Client' },
       'clients.client.profile': { title: 'Client Profile' },

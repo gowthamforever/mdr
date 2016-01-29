@@ -6,14 +6,21 @@ const {
   get,
   set,
   on,
-  computed
+  computed,
+  inject
 } = Ember;
 
 const {
   oneWay
 } = computed;
 
+const {
+  service
+} = inject;
+
 export default Component.extend({
+  dialog: service(),
+
   tagName: 'section',
   selected: null,
   filtered: oneWay('model.assessors'),
@@ -33,9 +40,9 @@ export default Component.extend({
       const assessors = model.get('assessors');
 
       if (!isEmpty(assessors)) {
-        set(this, 'filtered', assessors.filter((client) =>
-          get(client, 'first_name').indexOf(firstName) !== -1 ||
-          get(client, 'last_name').indexOf(lastName) !== -1));
+        set(this, 'filtered', assessors.filter((assessor) =>
+          get(assessor, 'first_name').indexOf(firstName) !== -1 ||
+          get(assessor, 'last_name').indexOf(lastName) !== -1));
       }
     },
 
@@ -50,6 +57,13 @@ export default Component.extend({
         this.set('selected', null);
         set(this, 'filtered', Ember.A(assessors));
       }
+    },
+
+    assessor(assessor) {
+      this.get('dialog').showDialog({
+        name: 'modal-assessor',
+        model: assessor
+      });
     }
   }
 });

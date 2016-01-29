@@ -27,7 +27,8 @@ export default Component.extend({
 
     login() {
       this.get('dialog').showDialog({
-        name: 'modal-login'
+        name: 'modal-login',
+        extraclass: ['small-dialog']
       });
     }
   }

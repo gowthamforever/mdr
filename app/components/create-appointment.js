@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import Clients from 'mdr/models/clients';
 import Doctors from 'mdr/models/doctors';
 import Assessors from 'mdr/models/assessors';
 import CreateAppointment from 'mdr/models/create-appointment';
@@ -7,7 +6,6 @@ import { formatToServer } from 'mdr/utility/utils';
 
 const {
   Component,
-  RSVP,
   inject,
   computed,
   set,
@@ -20,10 +18,6 @@ const {
 } = computed;
 
 const {
-  Promise
-} = RSVP;
-
-const {
   service
 } = inject;
 
@@ -31,7 +25,6 @@ export default Component.extend({
   doctors: service(),
   assessors: service(),
   appointments: service(),
-
   created: false,
   clients: null,
   single: equal('clients.clients.length', 1),
@@ -39,40 +32,41 @@ export default Component.extend({
 
   _initialize: on('init', function() {
     this.set('appointment', CreateAppointment.create());
+    this.set('accordians', {
+      one: {
+        id: 1,
+        current: true,
+        selected: false,
+        disabled: false
+      },
+      two: {
+        id: 2,
+        current: false,
+        selected: false,
+        disabled: true
+      },
+      three: {
+        id: 3,
+        current: false,
+        selected: false,
+        disabled: true
+      },
+      four: {
+        id: 4,
+        current: false,
+        selected: false,
+        disabled: true
+      },
+      five: {
+        id: 5,
+        current: false,
+        selected: false,
+        disabled: true
+      }
+    });
   }),
 
-  accordians: {
-    one: {
-      id: 1,
-      current: true,
-      selected: false,
-      disabled: false
-    },
-    two: {
-      id: 2,
-      current: false,
-      selected: false,
-      disabled: true
-    },
-    three: {
-      id: 3,
-      current: false,
-      selected: false,
-      disabled: true
-    },
-    four: {
-      id: 4,
-      current: false,
-      selected: false,
-      disabled: true
-    },
-    five: {
-      id: 5,
-      current: false,
-      selected: false,
-      disabled: true
-    }
-  },
+  accordians: null,
 
   one: alias('accordians.one'),
   two: alias('accordians.two'),
@@ -204,7 +198,7 @@ export default Component.extend({
       data.customer_id = client.get('customer_id');
       data.insurance_plan = client.get('insurance_plan');
       if (model.get('selected_appointment_with') === 'Assessor') {
-        data.assessor_id = doctor.get('assessor_id');
+        data.assessor_id = assessor.get('assessor_id');
       } else {
         data.doctor_id = doctor.get('doctor_id');
         data.service_charge = doctor.get('service_charge');

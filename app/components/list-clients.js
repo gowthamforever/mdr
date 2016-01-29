@@ -6,14 +6,21 @@ const {
   get,
   set,
   on,
-  computed
+  computed,
+  inject
 } = Ember;
 
 const {
   oneWay
 } = computed;
 
+const {
+  service
+} = inject;
+
 export default Component.extend({
+  dialog: service(),
+
   tagName: 'section',
   selected: null,
   filtered: oneWay('model.clients'),
@@ -50,6 +57,13 @@ export default Component.extend({
         this.set('selected', null);
         set(this, 'filtered', Ember.A(clients));
       }
+    },
+
+    client(client) {
+      this.get('dialog').showDialog({
+        name: 'modal-client',
+        model: client
+      });
     }
   }
 });

@@ -14,6 +14,7 @@ export default Service.extend({
   fadein: null,
   name: null,
   model: null,
+  containerClassNames: null,
 
   toggle() {
     this.toggleProperty('show');
@@ -21,8 +22,13 @@ export default Service.extend({
 
   showDialog(props = {}) {
     this.setProperties(_.extend({
-      show: true
+      show: true,
     }, props));
+
+    if (props.extraclass) {
+      this.set('containerClassNames', props.extraclass);
+    }
+
     toggleScrollBar(false);
     blurActiveElement();
   },
@@ -33,6 +39,7 @@ export default Service.extend({
       name: null,
       model: null,
       hideAction: "hideDialog",
+      containerClassNames: null
     });
     toggleScrollBar(true);
   }

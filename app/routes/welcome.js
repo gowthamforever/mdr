@@ -26,7 +26,8 @@ export default Route.extend({
   actions: {
     login() {
       this.get('dialog').showDialog({
-        name: 'modal-login'
+        name: 'modal-login',
+        extraclass: ['small-dialog']
       });
     },
 

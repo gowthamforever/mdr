@@ -32,9 +32,6 @@ export default Component.extend(EmberValidator, {
       start_date: {
         required: 'Start date is required'
       },
-      start_time: {
-        required: 'Start time is required'
-      },
       duration: {
         required: 'Duration is required'
       },
@@ -56,14 +53,13 @@ export default Component.extend(EmberValidator, {
 
   dateValidation() {
     return {
-      start_date_time: {
+      start_date: {
         date: {
-          time: true,
-          format: 'MMM DD YYYY hh:mm A',
-          after: {
-            target: moment()
+          format: 'MMM DD YYYY',
+          afterSame: {
+            target: new Date()
           },
-          message: 'Start date/time must be after current date.'
+          message: 'Start date must be after current date.'
         }
       }
     };
@@ -75,6 +71,8 @@ export default Component.extend(EmberValidator, {
       const nextAction  = this.attrs.nextAction;
       const model       = this.get('model');
       let validations   = this.validations();
+
+      model.set('validationResult', null);
 
       self.validateMap({ model, validations }).then(() => {
         validations = self.dateValidation();
@@ -88,6 +86,11 @@ export default Component.extend(EmberValidator, {
       }).catch((validationResult) => {
         model.set('validationResult', validationResult);
       });
+    },
+
+    onSpecailityChange() {
+      const model       = this.get('model');
+      model.set('selected_speciality', null);
     }
   }
 });

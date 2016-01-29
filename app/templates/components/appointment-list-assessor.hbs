@@ -1,0 +1,46 @@
+<section class="search-header">
+  <div class="row">
+    <div class="col-md-3 input-elements">
+      <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+        {{input-select
+          class="form-control"
+          name="durations"
+          options=durations
+          labelPath="start_end"
+          valuePath="start_end"
+          selected=selected_duration
+        }}
+      </div>
+    </div>
+  </div>
+</section>
+
+{{#if filtered}}
+  <div class="alert alert-info">
+    Available assessors on {{selected_duration.date}} between {{selected_duration.start_time}} and {{selected_duration.end_time}}.
+  </div>
+  <ul class="list-unstyled clearfix">
+    {{#each filtered as |assessor|}}
+      <li class="assessor-list-item col-md-4 clickable" {{action "assessor" assessor}}>
+        <section class="assessor-wrapper clearfix">
+          <div class="main clearfix">
+            <h4>
+              <span class="pull-left clickable toggle-select" {{action "select" assessor bubbles=false}}>
+                <i class="fa {{if (eq selected assessor) 'fa-check-circle' 'fa-circle-thin'}} fa-2"></i>
+              </span>
+
+              <i class="fa fa-user fa-2 {{if assessor.isActive 'success-color' 'danger-color'}}"></i>
+              {{assessor.first_name}} {{assessor.last_name}}
+            </h4>
+            <p><i class="fa fa-envelope"></i> {{dash-for-empty assessor.email_id}}</p>
+          </div>
+        </section>
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <div class="alert alert-danger">
+    No assessors available in the selected time slot. Select different slot.
+  </div>
+{{/if}}

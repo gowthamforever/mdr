@@ -10,7 +10,7 @@
   {{#link-to "clients" class="list-group-item"}}
     <i class="fa fa-users fa-2"></i><span class="visible-lg-inline visible-md-inline">Clients</span>
   {{/link-to}}
-  {{#if (or session.role_coordinator session.role_admin session.role_super_admin session.role_regional_admin session.role_global_admin)}}
+  {{#if (or session.role_coordinator session.role_admin session.role_super_admin session.role_regional_admin session.role_global_admin session.role_staff)}}
     {{#link-to "assessors" class="list-group-item"}}
       <i class="fa fa-user fa-2"></i><span class="visible-lg-inline visible-md-inline">Assessors</span>
     {{/link-to}}
