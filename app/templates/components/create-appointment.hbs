@@ -11,12 +11,10 @@
     {{#liquid-if one.current use="crossFade"}}
       <div class="panel-body">
         <section class="col-md-12">
-          {{list-clients class="clients-list-block"
+          {{appointment-list-client class="clients-list-block"
             model=clients
-            hideSearch=single
-            showSelect=true
-            profile_modal=true
-            selected=appointment.selected_client}}
+            selected=appointment.selected_client
+          }}
 
           {{#if appointment.selected_client}}
             <div class="row">

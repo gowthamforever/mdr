@@ -1,4 +1,4 @@
-{{#unless (or hideSearch selected)}}
+{{#unless selected}}
   <section class="search-header">
     <form class="clearfix" name="search-form" role="form" novalidate {{action "filter" on="submit"}} autocomplete="off">
       <div class="row">
@@ -26,15 +26,13 @@
 
 <ul class="list-unstyled clearfix">
   {{#each filtered as |client|}}
-    {{#link-to 'clients.client.profile' client tagName="li" class="client-list-item col-md-4 clickable"}}
+    <li class="client-list-item col-md-4 clickable" {{action "client" client}}>
       <section class="client-wrapper clearfix">
         <div class="main clearfix">
           <h4>
-            {{#if showSelect}}
-              <span class="pull-left clickable toggle-select" {{action "select" client bubbles=false}}>
-                <i class="fa {{if (eq selected client) 'fa-check-circle' 'fa-circle-thin'}} fa-2"></i>
-              </span>
-            {{/if}}
+            <span class="pull-left clickable toggle-select" {{action "select" client bubbles=false}}>
+              <i class="fa {{if (eq selected client) 'fa-check-circle' 'fa-circle-thin'}} fa-2"></i>
+            </span>
 
             <i class="fa fa-user fa-2 primary-color"></i>
             {{client.first_name}} {{client.last_name}}
@@ -43,6 +41,6 @@
           <p><i class="fa fa-envelope"></i> {{dash-for-empty client.email_id}}</p>
         </div>
       </section>
-    {{/link-to}}
+    </li>
   {{/each}}
 </ul>

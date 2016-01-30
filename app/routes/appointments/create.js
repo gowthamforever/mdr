@@ -36,9 +36,10 @@ export default Route.extend({
           client = clients.findBy('customer_id', customer_id);
           _clients = Ember.A([ client ]);
 
-          model.set('clients', Clients.create({
-            clients:  _clients
-          }));
+          model.setProperties({
+            selected_client: client,
+            clients: Clients.create({ clients:  _clients })
+          });
         }
         resolve();
       });

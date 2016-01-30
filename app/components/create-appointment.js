@@ -37,7 +37,9 @@ export default Component.extend({
   appointment: null,
 
   _initialize: on('init', function() {
-    this.set('appointment', CreateAppointment.create());
+    this.set('appointment', CreateAppointment.create({
+      selected_client: this.get('model.selected_client')
+    }));
     this.set('accordians', {
       one: {
         id: 1,
