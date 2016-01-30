@@ -1,5 +1,5 @@
 <div class="panel-group">
-  <div class="panel {{if one.current 'panel-primary' (if one.selected 'panel-success' (if one.disabled 'panel-default' 'panel-primary'))}}">
+  <div class="panel {{if one.current 'panel-primary' (if one.selected 'panel-success' (if one.disabled 'panel-default' 'panel-primary'))}} {{one.reference}}">
     <div class="panel-heading clickable" {{action "toggle" one}}>
       1. Select Client
       {{#if (and one.selected (not one.current))}}
@@ -30,7 +30,7 @@
     {{/liquid-if}}
   </div>
 
-  <div class="panel {{if two.current 'panel-primary' (if two.selected 'panel-success' (if two.disabled 'panel-default' 'panel-primary'))}}">
+  <div class="panel {{if two.current 'panel-primary' (if two.selected 'panel-success' (if two.disabled 'panel-default' 'panel-primary'))}} {{two.reference}}">
     <div class="panel-heading clickable" {{action "toggle" two}}>
       2. Appointment Details
       {{#if (and two.selected (not two.current))}}
@@ -48,7 +48,7 @@
     {{/liquid-if}}
   </div>
 
-  <div class="panel {{if three.current 'panel-primary' (if three.selected 'panel-success' (if three.disabled 'panel-default' 'panel-primary'))}}">
+  <div class="panel {{if three.current 'panel-primary' (if three.selected 'panel-success' (if three.disabled 'panel-default' 'panel-primary'))}} {{three.reference}}">
     <div class="panel-heading clickable" {{action "toggle" three}}>
       3. Select Attender
       {{#if (and three.selected (not three.current))}}
@@ -84,7 +84,7 @@
     {{/liquid-if}}
   </div>
 
-  <div class="panel {{if four.current 'panel-primary' (if four.selected 'panel-success' (if four.disabled 'panel-default' 'panel-primary'))}}">
+  <div class="panel {{if four.current 'panel-primary' (if four.selected 'panel-success' (if four.disabled 'panel-default' 'panel-primary'))}} {{four.eference}}">
     <div class="panel-heading clickable" {{action "toggle" one}}>
       4. Verify
       {{#if (and four.selected (not four.current))}}
@@ -104,7 +104,7 @@
     {{/liquid-if}}
   </div>
 
-  <div class="panel {{if five.current 'panel-primary' (if five.selected 'panel-success' (if five.disabled 'panel-default' 'panel-primary'))}}">
+  <div class="panel {{if five.current 'panel-primary' (if five.selected 'panel-success' (if five.disabled 'panel-default' 'panel-primary'))}} {{five.reference}}">
     <div class="panel-heading clickable" {{action "toggle" five}}>
       5. Confirmation
       {{#if (and five.selected (not five.current))}}

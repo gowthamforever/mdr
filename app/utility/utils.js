@@ -1,8 +1,27 @@
 import Ember from 'ember';
 
 export function animateTo(options = {}) {
-  const { position, duration } = options;
-  Ember.$('html, body').animate({ scrollTop: position || 0 }, duration || 'fast');
+  let { position, duration, offset, selector, element } = options;
+  let jqPosition;
+
+  if (selector) {
+    jqPosition = Ember.$(`#${selector}`).position();
+    jqPosition = jqPosition || Ember.$(`.${selector}`).position();
+    position = jqPosition ? jqPosition.top : 0;
+  }
+
+  if (element) {
+    jqPosition = element.position(); 
+    position = jqPosition ? jqPosition.top : 0;
+  }
+
+  if (offset) {
+    position += offset;
+  }
+
+  Ember.$('html, body').animate({
+    scrollTop: position || 0
+  }, duration || 'fast');
 }
 
 export function formatToServer(date) {

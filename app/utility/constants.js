@@ -1,4 +1,9 @@
 export default {
+  APPOINTMENT_MINS: {
+    MIN: 360, // 6AM
+    MAX: 1320 // 10PM
+  },
+
   GENDER: {
     MALE: 'Male',
     FEMALE: 'Female'

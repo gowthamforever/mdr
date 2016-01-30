@@ -3,14 +3,20 @@ import Doctors from 'mdr/models/doctors';
 import Assessors from 'mdr/models/assessors';
 import CreateAppointment from 'mdr/models/create-appointment';
 import { formatToServer } from 'mdr/utility/utils';
+import { animateTo } from 'mdr/utility/utils';
 
 const {
   Component,
   inject,
   computed,
   set,
-  on
+  on,
+  run
 } = Ember;
+
+const {
+  scheduleOnce
+} = run;
 
 const {
   equal,
@@ -37,31 +43,36 @@ export default Component.extend({
         id: 1,
         current: true,
         selected: false,
-        disabled: false
+        disabled: false,
+        reference: 'app-client-panel'
       },
       two: {
         id: 2,
         current: false,
         selected: false,
-        disabled: true
+        disabled: true,
+        reference: 'app-details-panel'
       },
       three: {
         id: 3,
         current: false,
         selected: false,
-        disabled: true
+        disabled: true,
+        reference: 'app-attender-panel'
       },
       four: {
         id: 4,
         current: false,
         selected: false,
-        disabled: true
+        disabled: true,
+        reference: 'app-verify-panel'
       },
       five: {
         id: 5,
         current: false,
         selected: false,
-        disabled: true
+        disabled: true,
+        reference: 'app-confirm-panel'
       }
     });
   }),
@@ -92,7 +103,9 @@ export default Component.extend({
     set(current, 'selected', true);
     set(current, 'disabled', false);
 
-    this.open(next);
+    scheduleOnce('afterRender', this, function() {
+      this.open(next);
+    });
   },
 
   reset(skip) {
@@ -112,6 +125,7 @@ export default Component.extend({
   open(accordian) {
     set(accordian, 'disabled', false);
     set(accordian, 'current', true);
+    animateTo({ element: this.$(`#${accordian.reference}`) });
   },
 
   actions: {
@@ -135,7 +149,7 @@ export default Component.extend({
         set(current, 'current', false);
         set(accordian, 'current', true);
 
-        if (current.id === 4 || current.id === 5) {
+        if (current.id === 3 || current.id === 4 || current.id === 5) {
           set(current, 'disabled', true);
         }
       }

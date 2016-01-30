@@ -25,3 +25,15 @@ section.appointment-block {
     }
   }
 }
+
+section.appointment-time {
+  .row-confirm {
+    border: 1px solid #a94442;
+    border-radius: 5px;
+    padding: 15px;
+
+    .confirm-btn-block {
+      margin-top: 10px;
+    }
+  }
+}

@@ -34,9 +34,7 @@ export default EmberObject.extend({
     const toStr = (hour, min) => {
       const am_pm = hour > 12 ? hour % 12 : hour;
       let result  = am_pm === 0 ? '12' : prepend(am_pm);
-      if (min > 0) {
-        result += `:${prepend(min)}`;
-      }
+      result += `:${prepend(min)}`;
 
       if (hour >= 12) {
         result += ' PM';
@@ -59,9 +57,7 @@ export default EmberObject.extend({
     const toStr = (hour, min) => {
       const am_pm = hour > 12 ? hour % 12 : hour;
       let result  = am_pm === 0 ? '12' : prepend(am_pm);
-      if (min > 0) {
-        result += `:${prepend(min)}`;
-      }
+      result += `:${prepend(min)}`;
 
       if (hour >= 12) {
         result += ' PM';

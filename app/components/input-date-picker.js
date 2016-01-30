@@ -12,15 +12,22 @@ export default TextField.extend({
   max: new Date(),
 
   initPickADate: on('didInsertElement', function() {
-    const self = this;
-    const max  = self.get('max');
-    const min  = self.get('min');
+    const self    = this;
+    const max     = self.get('max');
+    const min     = self.get('min');
+    const change  = self.get('onChange');
 
     let props  = {
       format: self.get('format'),
       clear: '',
       selectMonths: true,
-      selectYears: true
+      selectYears: true,
+
+      onSet: function(context) {
+        if (change) {
+          change(moment(context.select).format('MMM DD YYYY'));
+        }
+      }
     };
 
     if (min) {

@@ -1,5 +1,7 @@
 import Ember from 'ember';
 import Duration from 'mdr/models/duration';
+import Constants from 'mdr/utility/constants';
+import { animateTo } from 'mdr/utility/utils';
 
 const {
   Component,
@@ -26,13 +28,20 @@ export default Component.extend({
     const duration  = this.get('duration.value');
     const date      = this.get('date');
     const durations = Ember.A();
+    let start;
+    let end;
 
-    for (let count = 0; count < 1440 - 1; count = count + duration) {
-      durations.push(Duration.create({
-        date,
-        start: count,
-        end: count + duration
-      }));
+    for (let count = Constants.APPOINTMENT_MINS.MIN; count < Constants.APPOINTMENT_MINS.MAX - 1; count = count + duration) {
+      start = count;
+      end = count + duration;
+
+      if (end <= Constants.APPOINTMENT_MINS.MAX) {
+        durations.push(Duration.create({
+          date,
+          start: count,
+          end: count + duration
+        }));
+      }
     }
 
     return durations;
@@ -43,7 +52,7 @@ export default Component.extend({
   tagName: 'section',
   selected: null,
   assessors: oneWay('model.assessors'),
-  filtered: computed('all_assessors.[]', 'selected', function() {
+  filtered: computed('assessors.[]', 'selected', function() {
     const selected    = this.get('selected');
     const assessors     = this.get('assessors');
     if (selected) {
@@ -59,16 +68,15 @@ export default Component.extend({
       const assessors   = model.get('assessors');
       const selected = this.get('selected');
       const appointment = this.get('appointment');
-      
+
       if (!selected) {
         this.set('selected', assessor);
         appointment.set('time_range', this.get('selected_duration'));
-        set(this, 'filtered', Ember.A([assessor]));
       } else {
         this.set('selected', null);
         appointment.set('time_range', null);
-        set(this, 'filtered', Ember.A(assessors));
       }
+      animateTo({ element: this.$() });
     },
 
     assessor(assessor) {

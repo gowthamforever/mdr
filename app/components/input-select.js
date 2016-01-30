@@ -1,8 +1,7 @@
 import Ember from "ember";
 
 const {
-  Component,
-  isEmpty
+  Component
 } = Ember;
 
 export default Component.extend({
@@ -13,10 +12,7 @@ export default Component.extend({
 
   didInitAttrs() {
     this._super(...arguments);
-    const change    = this.get('onChange');
     const options   = this.get('options');
-    const prompt    = this.get('prompt');
-    const selected  = this.get('selected');
 
     if (!options) {
       this.set('options', Ember.A());

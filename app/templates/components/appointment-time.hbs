@@ -9,31 +9,31 @@
         name="duration"
         options=model.book_appointment_with
         selected=model.selected_appointment_with
+        onChange=(action "onAttenderChange")
       }}
     </div>
 
     {{#if (eq model.selected_appointment_with "Doctor")}}
-      <div class="form-group col-md-6 ">
+      <div class="form-group col-md-6  {{if model.validationResult.selected_speciality.hasError 'has-error'}}">
         <label class="control-label" for="speciality">Speciality</label>
         {{input-select
           class="form-control"
-          name="speciality"
+          name="insurance-plan"
           options=model.specialities
           labelPath="name"
           valuePath="id"
-          onChange=(action "onSpecailityChange")
           selected=model.selected_speciality
           prompt="Select"
         }}
+        {{mdr-field-error client=model.validationResult.selected_speciality}}
       </div>
     {{/if}}
   </div>
   <div class="row">
-    <div class="form-group col-md-4  {{if model.validationResult.start_date.hasError 'has-error'}} {{if model.validationResult.start_date_time.hasError 'has-error'}}">
+    <div class="form-group col-md-4  {{if model.validationResult.start_date.hasError 'has-error'}}">
       <label class="control-label" for="start_date">Start Date</label>
       {{input-date-picker class="form-control" name="start_date" value=model.start_date max=model.max_date min=model.min_date}}
       {{mdr-field-error client=model.validationResult.start_date}}
-      {{mdr-field-error client=model.validationResult.start_date_time}}
     </div>
     <div class="form-group col-md-3  {{if model.validationResult.duration.hasError 'has-error'}}">
       <label class="control-label" for="duration">Duration</label>
@@ -70,9 +70,20 @@
       {{input-file-custom class="btn-info btn-block" name="report-files" files=model.files}}
     </div>
   </div>
-  <div class="row">
-    <div class="form-group col-md-2">
-      <button class="btn btn-primary btn-block" type="submit">Next &gt;&gt;</button>
-    </div>
+  <div class="row appointment-time-confirm">
+    {{#liquid-if showConfirm use="crossFade"}}
+      <div class="form-group col-md-8 row-confirm">
+        <i class="fa fa-exclamation-triangle text-danger"></i>
+        Are you sure want to continue creating appointment with doctor without uploading report?
+        <div class="confirm-btn-block">
+          <button class="btn btn-default" {{action "cancel"}}>Cancel</button>
+          <button class="btn btn-primary" type="submit">Next &gt;&gt;</button>
+        </div>
+      </div>
+    {{else}}
+      <div class="form-group col-md-2">
+        <button class="btn btn-primary btn-block" type="submit">Next &gt;&gt;</button>
+      </div>
+    {{/liquid-if}}
   </div>
 </form>

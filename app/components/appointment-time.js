@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import EmberValidator from 'ember-validator';
+import { animateTo } from 'mdr/utility/utils';
 
 const {
   Component
@@ -7,6 +8,8 @@ const {
 
 export default Component.extend(EmberValidator, {
   tagName: 'section',
+  classNames: ['appointment-time'],
+  showConfirm: false,
 
   durations: [
     {
@@ -27,13 +30,19 @@ export default Component.extend(EmberValidator, {
     }
   ],
 
-  validations() {
+  validations(model) {
     return {
       start_date: {
         required: 'Start date is required'
       },
       duration: {
         required: 'Duration is required'
+      },
+      selected_speciality: {
+        if: function() {
+          return model.get('selected_appointment_with') === 'Doctor';
+        },
+        required: 'Speciality is required.'
       },
       reason: {
         required: 'Reason is required',
@@ -70,15 +79,29 @@ export default Component.extend(EmberValidator, {
       const self        = this;
       const nextAction  = this.attrs.nextAction;
       const model       = this.get('model');
-      let validations   = this.validations();
+      let validations   = this.validations(model);
 
       model.set('validationResult', null);
+
+      if (this.get('showConfirm')) {
+        this.set('showConfirm', false);
+        if (nextAction) {
+          nextAction();
+        }
+
+        return;
+      }
 
       self.validateMap({ model, validations }).then(() => {
         validations = self.dateValidation();
         self.validateMap({ model, validations }).then(() => {
-          if (nextAction) {
-            nextAction();
+          if (model.get('selected_appointment_with') === 'Doctor' && !model.get('files')) {
+            self.set('showConfirm', true);
+            animateTo({ element: this.$('.appointment-time-confirm') });
+          } else {
+            if (nextAction) {
+              nextAction();
+            }
           }
         }).catch((validationResult) => {
           model.set('validationResult', validationResult);
@@ -88,9 +111,20 @@ export default Component.extend(EmberValidator, {
       });
     },
 
-    onSpecailityChange() {
+    cancel() {
+      this.set('showConfirm', false);
+    },
+
+    onAttenderChange() {
       const model       = this.get('model');
       model.set('selected_speciality', null);
+    },
+
+    confirmAction() {
+      const nextAction  = this.attrs.nextAction;
+      if (nextAction) {
+        nextAction();
+      }
     }
   }
 });
