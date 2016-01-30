@@ -151,7 +151,7 @@ svg.inline-svg {
     max-height:250px;
     p {
       display: inline-block;
-      width: 200px;
+      width: 80%;
     }
   }
   .mark-read-text {
@@ -200,8 +200,9 @@ svg.inline-svg {
 
   .notification-item {
     padding: 5px 10px;
+    border-bottom: 1px solid #e5e5e5;
     &:hover {
-      background-color: #57A1E0;
+      background-color: #DDF4FF;
     }
   }
 }

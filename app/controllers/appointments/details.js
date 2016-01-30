@@ -1,10 +1,17 @@
 import Ember from 'ember';
 
 const {
-  Controller
+  Controller,
+  inject
 } = Ember;
 
+const {
+  service
+} = inject;
+
 export default Controller.extend({
+  session: service(),
+  
   actions: {
     accept() {
       this.set('model.status', 'accepted');
