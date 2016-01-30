@@ -1,6 +1,6 @@
 {{#unless (or hideSearch selected)}}
   <section class="search-header">
-    <form class="clearfix" name="search-form" role="form" novalidate {{action "filter" on="submit"}}>
+    <form class="clearfix" name="search-form" role="form" novalidate {{action "filter" on="submit"}} autocomplete="off">
       <div class="row">
         <div class="col-md-3 input-elements">
           <div class="input-group">
@@ -19,13 +19,13 @@
         <div class="col-md-3 input-elements">
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-            {{input type="text" class="form-control" name="first-name" placeholder="First name" value=model.firstName}}
+            {{input type="text" class="form-control" name="first-name" placeholder="First name" value=model.firstName autocomplete="off"}}
           </div>
         </div>
         <div class="col-md-3 input-elements">
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-            {{input type="text" class="form-control" name="last-name" placeholder="Last name" value=model.lastName}}
+            {{input type="text" class="form-control" name="last-name" placeholder="Last name" value=model.lastName autocomplete="off"}}
           </div>
         </div>
         <div class="col-md-3 input-elements">
@@ -38,28 +38,28 @@
   </section>
 {{/unless}}
 
-<ul class="list-unstyled clearfix">
-  {{#each filtered as |doctor|}}
-    {{#link-to 'doctors.doctor.profile' doctor tagName="li" class="doctor-list-item col-md-4 clickable"}}
-      <section class="doctor-wrapper clearfix">
-        <div class="main clearfix">
-          <div>
-            <h4>
-              {{#if showSelect}}
-                <span class="pull-left clickable toggle-select" {{action "select" doctor bubbles=false}}>
-                  <i class="fa {{if (eq selected doctor) 'fa-check-circle' 'fa-circle-thin'}} fa-2"></i>
-                </span>
-              {{/if}}
-
-              <i class="fa fa-user-md fa-2 {{if doctor.isActive 'success-color' 'danger-color'}}"></i>
-              {{doctor.first_name}} {{doctor.last_name}}
-            </h4>
-            <p>{{doctor.primary_speciality_obj.name}}</p>
-            <p>Service Charge: $ {{doctor.service_charge}}</p>
-            <p><i class="fa fa-envelope"></i> {{dash-for-empty doctor.email_id}}</p>
+{{#if filtered}}
+  <ul class="list-unstyled clearfix">
+    {{#each filtered as |doctor|}}
+      {{#link-to 'doctors.doctor.profile' doctor tagName="li" class="doctor-list-item col-md-4 clickable"}}
+        <section class="doctor-wrapper clearfix">
+          <div class="main clearfix">
+            <div>
+              <h4>
+                <i class="fa fa-user-md fa-2 {{if doctor.isActive 'success-color' 'danger-color'}}"></i>
+                {{doctor.first_name}} {{doctor.last_name}}
+              </h4>
+              <p>{{doctor.primary_speciality_obj.name}}</p>
+              <p>Service Charge: $ {{doctor.service_charge}}</p>
+              <p><i class="fa fa-envelope"></i> {{dash-for-empty doctor.email_id}}</p>
+            </div>
           </div>
-        </div>
-      </section>
-    {{/link-to}}
-  {{/each}}
-</ul>
+        </section>
+      {{/link-to}}
+    {{/each}}
+  </ul>
+{{else}}
+  <div class="alert alert-danger">
+    Doctors are not available.
+  </div>
+{{/if}}

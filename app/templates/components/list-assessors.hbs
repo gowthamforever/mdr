@@ -1,17 +1,17 @@
 {{#unless (or hideSearch selected)}}
   <section class="search-header">
-    <form class="clearfix" name="search-form" role="form" novalidate {{action "filter" on="submit"}}>
+    <form class="clearfix" name="search-form" role="form" novalidate {{action "filter" on="submit"}} autocomplete="off">
       <div class="row">
         <div class="col-md-4 input-elements">
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-            {{input type="text" class="form-control" name="first-name" placeholder="First name" value=model.firstName}}
+            {{input type="text" class="form-control" name="first-name" placeholder="First name" value=model.firstName autocomplete="off"}}
           </div>
         </div>
         <div class="col-md-4 input-elements">
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-            {{input type="text" class="form-control" name="last-name" placeholder="Last name" value=model.lastName}}
+            {{input type="text" class="form-control" name="last-name" placeholder="Last name" value=model.lastName autocomplete="off"}}
           </div>
         </div>
         <div class="col-md-4 input-elements">
@@ -24,24 +24,24 @@
   </section>
 {{/unless}}
 
-<ul class="list-unstyled clearfix">
-  {{#each filtered as |assessor|}}
-    {{#link-to 'assessors.assessor.profile' assessor tagName="li" class="assessor-list-item col-md-4 clickable"}}
-      <section class="assessor-wrapper clearfix">
-        <div class="main clearfix">
-          <h4>
-            {{#if showSelect}}
-              <span class="pull-left clickable toggle-select" {{action "select" assessor bubbles=false}}>
-                <i class="fa {{if (eq selected assessor) 'fa-check-circle' 'fa-circle-thin'}} fa-2"></i>
-              </span>
-            {{/if}}
-
-            <i class="fa fa-user fa-2 {{if assessor.isActive 'success-color' 'danger-color'}}"></i>
-            {{assessor.first_name}} {{assessor.last_name}}
-          </h4>
-          <p><i class="fa fa-envelope"></i> {{dash-for-empty assessor.email_id}}</p>
-        </div>
-      </section>
-    {{/link-to}}
-  {{/each}}
-</ul>
+{{#if filtered}}
+  <ul class="list-unstyled clearfix">
+    {{#each filtered as |assessor|}}
+      {{#link-to 'assessors.assessor.profile' assessor tagName="li" class="assessor-list-item col-md-4 clickable"}}
+        <section class="assessor-wrapper clearfix">
+          <div class="main clearfix">
+            <h4>
+              <i class="fa fa-user fa-2 {{if assessor.isActive 'success-color' 'danger-color'}}"></i>
+              {{assessor.first_name}} {{assessor.last_name}}
+            </h4>
+            <p><i class="fa fa-envelope"></i> {{dash-for-empty assessor.email_id}}</p>
+          </div>
+        </section>
+      {{/link-to}}
+    {{/each}}
+  </ul>
+{{else}}
+  <div class="alert alert-danger">
+    Assessors are not available.
+  </div>
+{{/if}}

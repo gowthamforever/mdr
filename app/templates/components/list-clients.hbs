@@ -24,25 +24,25 @@
   </section>
 {{/unless}}
 
-<ul class="list-unstyled clearfix">
-  {{#each filtered as |client|}}
-    {{#link-to 'clients.client.profile' client tagName="li" class="client-list-item col-md-4 clickable"}}
-      <section class="client-wrapper clearfix">
-        <div class="main clearfix">
-          <h4>
-            {{#if showSelect}}
-              <span class="pull-left clickable toggle-select" {{action "select" client bubbles=false}}>
-                <i class="fa {{if (eq selected client) 'fa-check-circle' 'fa-circle-thin'}} fa-2"></i>
-              </span>
-            {{/if}}
-
-            <i class="fa fa-user fa-2 primary-color"></i>
-            {{client.first_name}} {{client.last_name}}
-          </h4>
-          <p>{{client.insurance_plan_obj.name}}</p>
-          <p><i class="fa fa-envelope"></i> {{dash-for-empty client.email_id}}</p>
-        </div>
-      </section>
-    {{/link-to}}
-  {{/each}}
-</ul>
+{{#if filtered}}
+  <ul class="list-unstyled clearfix">
+    {{#each filtered as |client|}}
+      {{#link-to 'clients.client.profile' client tagName="li" class="client-list-item col-md-4 clickable"}}
+        <section class="client-wrapper clearfix">
+          <div class="main clearfix">
+            <h4>
+              <i class="fa fa-user fa-2 primary-color"></i>
+              {{client.first_name}} {{client.last_name}}
+            </h4>
+            <p>{{client.insurance_plan_obj.name}}</p>
+            <p><i class="fa fa-envelope"></i> {{dash-for-empty client.email_id}}</p>
+          </div>
+        </section>
+      {{/link-to}}
+    {{/each}}
+  </ul>
+{{else}}
+  <div class="alert alert-danger">
+    Clients are not available.
+  </div>
+{{/if}}
