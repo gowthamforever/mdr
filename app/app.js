@@ -26,6 +26,7 @@ Route.reopen({
       'clients.list': { title: 'Clients' },
       'clients.add': { title: 'Add a Client' },
       'clients.client.profile': { title: 'Client Profile' },
+      'staffs.staff.profile': { title: 'Staff Profile' },
       'doctors.list': { title: 'Doctors' },
       'doctors.add': { title: 'Add a Doctor' },
       'doctors.doctor.profile': { title: 'Doctor Profile' },
@@ -34,12 +35,15 @@ Route.reopen({
       'assessors.assessor.profile': { title: 'Assessor Profile' },
       'appointments.calendar': {title: 'Appointments'},
       'appointments.create': { title: 'Create Appointment' },
-      'appointments.details': {title: 'Appointment Details'},
-      'appointments.requests.pending': {title: 'Appointments'},
-      'appointments.requests.accepted': {title: 'Appointments'},
-      'appointments.requests.rejected': {title: 'Appointments'},
-      'chats.list': {title: 'Chats'},
-      'chats.chat': {title: 'Chat'}
+      'appointments.details': { title: 'Appointment Details' },
+      'appointments.requests.pending': { title: 'Appointments' },
+      'appointments.requests.accepted': { title: 'Appointments' },
+      'appointments.requests.rejected': { title: 'Appointments' },
+      'admin-tasks.staffs': { title: 'Staffs Requests' },
+      'admin-tasks.doctors': { title: 'Doctors Requests' },
+      'admin-tasks.assessors': { title: 'Assessors Requests' },
+      'chats.list': { title: 'Chats' },
+      'chats.chat': { title: 'Chat' }
     };
     let title = titles[routeName] || 'MDRealtime';
 

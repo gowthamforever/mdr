@@ -1,12 +1,21 @@
 import Ember from 'ember';
 import Doctor from 'mdr/models/doctor';
+import Api from 'mdr/mixins/api';
 
 const {
   Component,
-  on
+  on,
+  inject
 } = Ember;
 
-export default Component.extend({
+const {
+  service
+} = inject;
+
+export default Component.extend(Api, {
+  session: service(),
+  doctors: service(),
+
   edit_personal: false,
   edit_contact: false,
   edit_work: false,
@@ -21,6 +30,8 @@ export default Component.extend({
     const doctor = Doctor.create();
 
     doctor.setProperties(_.pick(this.get('doctor'), [
+      'doctor_id',
+      'active',
       'last_name',
       'first_name',
       'dob',
@@ -133,6 +144,26 @@ export default Component.extend({
         contact_open: false,
         work_open: true
       });
+    },
+
+    approve() {
+      const self = this;
+      const data = {};
+      data.isApproved = true;
+      data.doctor_id = self.get('doctor.doctor_id');
+
+      self.ajax({
+        id: 'patchprospect',
+        data
+      }).then(() => {
+        self.set('doctors.cache', false);
+        self.set('model.doctor.active', 1);
+        self.set('doctor.active', 1);
+      });
+    },
+
+    reject() {
+
     }
   }
 });

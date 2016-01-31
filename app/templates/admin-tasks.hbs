@@ -1,0 +1,16 @@
+<section class="admin-tasks-request-block">
+  <ul class="nav nav-tabs">
+    {{#link-to "admin-tasks.staffs" tagName="li"}}
+      <a href="{{view.href}}">Staffs</a>
+    {{/link-to}}
+    {{#link-to "admin-tasks.doctors" tagName="li"}}
+      <a href="{{view.href}}">Doctors</a>
+    {{/link-to}}
+    {{#link-to "admin-tasks.assessors" tagName="li"}}
+      <a href="{{view.href}}">Assessors</a>
+    {{/link-to}}
+	</ul>
+  <section class="tabs-container admin-tasks-tab">
+    {{liquid-outlet}}
+	</section>
+</section>

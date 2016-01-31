@@ -1,8 +1,25 @@
 <div class="panel-group">
+  {{#if (or session.role_admin session.role_super_admin session.role_regional_admin session.role_global_admin)}}
+    <div class="panel panel-primary">
+      <div class="panel-body">
+        <section class="col-md-12">
+          <div class="row">
+            <div class="col-md-6">
+              {{#unless model.isActive}}
+                <button type="button" class="btn btn-success" {{action "approve"}}>Approve</button> or
+                <button type="button" class="btn btn-danger" {{action "reject"}}>Reject</button> the request.
+              {{/unless}}
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  {{/if}}
+
   <div class="panel panel-primary">
     <div class="panel-heading clickable" {{action "openPersonal"}}>
       Personal Information
-      {{#if personal_open}}
+      {{#if (and model.isActive personal_open)}}
         {{#if edit_personal}}
           <a href="#" class="pull-right btn btn-xs btn-default" {{action "togglePersonal" bubbles=false}}><i class="fa fa-ban"></i> Cancel</a>
         {{else}}
@@ -251,7 +268,7 @@
   <div class="panel panel-primary">
     <div class="panel-heading clickable" {{action "openContact"}}>
       Contact Information
-      {{#if contact_open}}
+      {{#if (and model.isActive contact_open)}}
         {{#if edit_contact}}
           <a href="#" class="pull-right btn btn-xs btn-default" {{action "toggleContact" bubbles=false}}><i class="fa fa-ban"></i> Cancel</a>
         {{else}}
@@ -369,7 +386,7 @@
   <div class="panel panel-primary">
     <div class="panel-heading clickable" {{action "openWork"}}>
       Work Preferences
-      {{#if work_open}}
+      {{#if (and model.isActive work_open)}}
         {{#if edit_work}}
           <a href="#" class="pull-right btn btn-xs btn-default" {{action "toggleWork" bubbles=false}}><i class="fa fa-ban"></i> Cancel</a>
         {{else}}

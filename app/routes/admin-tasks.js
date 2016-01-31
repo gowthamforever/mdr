@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import Assessors from 'mdr/models/assessors';
 
 const {
   Route,
@@ -16,15 +15,13 @@ const {
 } = inject;
 
 export default Route.extend({
-  assessors: service(),
+  enrollments: service(),
 
   model() {
     const self = this;
     return new Promise((resolve) => {
-      self.get('assessors').getAssessors().then((assessors) => {
-        resolve(Assessors.create({
-          assessors
-        }));
+      self.get('enrollments').getPendingProspects().then((enrollments) => {
+        resolve(enrollments);
       });
     });
   }

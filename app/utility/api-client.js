@@ -39,5 +39,10 @@ export default {
   chatsession: {
     path: 'appointment-chat.json',
     method: 'GET'
+  },
+
+  pendingprospect: {
+    path: 'pending-prospects.json',
+    method: 'GET'
   }
 };

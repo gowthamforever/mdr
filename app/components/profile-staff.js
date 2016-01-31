@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import Assessor from 'mdr/models/assessor';
+import Staff from 'mdr/models/staff';
 import Api from 'mdr/mixins/api';
 
 const {
@@ -14,18 +14,16 @@ const {
 
 export default Component.extend(Api, {
   session: service(),
-  assessors: service(),
 
   edit_personal: false,
   edit_contact: false,
-  edit_billing: false,
 
   model: null,
 
   set_model() {
-    const assessor = Assessor.create();
+    const staff = Staff.create();
 
-    assessor.setProperties(_.pick(this.get('assessor'), [
+    staff.setProperties(_.pick(this.get('staff'), [
       'active',
       'last_name',
       'first_name',
@@ -40,10 +38,10 @@ export default Component.extend(Api, {
       'zip1',
       'rater_id',
       'employee_number',
-      'assessor_id'
+      'agency_staff_id'
     ]));
 
-    this.set('model', assessor);
+    this.set('model', staff);
   },
 
   init_props: on('didInitAttrs', function() {
@@ -64,15 +62,14 @@ export default Component.extend(Api, {
       const self = this;
       const data = {};
       data.isApproved = true;
-      data.assessor_id = self.get('assessor.assessor_id');
+      data.agency_staff_id = self.get('staff.agency_staff_id');
 
       self.ajax({
         id: 'patchprospect',
         data
       }).then(() => {
-        self.set('assessors.cache', false);
-        self.set('model.assessor.active', 1);
-        self.set('assessor.active', 1);
+        self.set('model.staff.active', 1);
+        self.set('staff.active', 1);
       });
     },
 

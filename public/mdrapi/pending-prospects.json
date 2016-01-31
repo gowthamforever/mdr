@@ -1,0 +1,106 @@
+{
+   "agencyStaffInfoList":[
+      {
+         "agency_staff_id":"1453099821814304208565563902",
+         "first_name":"Maruti",
+         "last_name":"Sahnbhag",
+         "photo":"sfddsf"
+      }
+   ],
+   "doctorInfoList":[
+      {
+         "doctor_id":"doctor_1453071464053275858377561061",
+         "first_name":"Maruti",
+         "last_name":"Sahnbhag",
+         "email_id":"maruti04121@gmail.com",
+         "gender":"Male",
+         "dob":"1999-11-01",
+         "speciality":{
+            "speciality":"Allergy and Immunology",
+            "board":"American Board of Allergy and Immunology"
+         },
+         "primary_speciality":"1",
+         "practice_type":"hospital",
+         "practice_years":0,
+         "surgeon":0,
+         "photo":"sfddsf",
+         "customer_rating":0,
+         "service_charge":0.0,
+         "active":0
+      },
+      {
+         "doctor_id":"doctor_1453071759629276153956844116",
+         "first_name":"Maruti",
+         "last_name":"Sahnbhag",
+         "email_id":"maruti0412111@gmail.com",
+         "gender":"Male",
+         "dob":"1999-11-01",
+         "speciality":{
+            "speciality":"Allergy and Immunology",
+            "board":"American Board of Allergy and Immunology"
+         },
+         "primary_speciality":"1",
+         "practice_type":"hospital",
+         "practice_years":0,
+         "surgeon":0,
+         "photo":"sfddsf",
+         "customer_rating":0,
+         "service_charge":0.0,
+         "active":0
+      },
+      {
+         "doctor_id":"doctor_1453071942225276336550728145",
+         "first_name":"Maruti",
+         "last_name":"Sahnbhag",
+         "email_id":"12121@gmail.com",
+         "gender":"Male",
+         "dob":"1999-11-01",
+         "speciality":{
+            "speciality":"Allergy and Immunology",
+            "board":"American Board of Allergy and Immunology"
+         },
+         "primary_speciality":"1",
+         "practice_type":"hospital",
+         "practice_years":0,
+         "surgeon":0,
+         "photo":"sfddsf",
+         "customer_rating":0,
+         "service_charge":0.0,
+         "active":0
+      },
+      {
+         "doctor_id":"doctor_1453091794617296181366665711",
+         "first_name":"Maruti",
+         "last_name":"Sahnbhag",
+         "email_id":"12121111@gmail.com",
+         "gender":"Male",
+         "dob":"1999-11-01",
+         "speciality":{
+            "speciality":"Allergy and Immunology",
+            "board":"American Board of Allergy and Immunology"
+         },
+         "primary_speciality":"1",
+         "practice_type":"hospital",
+         "practice_years":0,
+         "surgeon":0,
+         "photo":"sfddsf",
+         "customer_rating":0,
+         "service_charge":0.0,
+         "active":0
+      }
+   ],
+   "assessorInfoList":[
+      {
+         "assessor_id":"1453767895103972377795574376",
+         "first_name":"Assessor",
+         "last_name":"First",
+         "rater_id":"123456789",
+         "employee_number":"123456789",
+         "email_id":"assessor1@gmail.com",
+         "gender":"Male",
+         "dob":"2016-01-25",
+         "graduation_year":0,
+         "active":0
+      }
+   ]
+}

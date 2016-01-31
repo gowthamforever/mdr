@@ -1,0 +1,47 @@
+{{#unless (or hideSearch selected)}}
+  <section class="search-header">
+    <form class="clearfix" name="search-form" role="form" novalidate {{action "filter" on="submit"}} autocomplete="off">
+      <div class="row">
+        <div class="col-md-4 input-elements">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+            {{input type="text" class="form-control" name="first-name" placeholder="First name" value=model.firstName autocomplete="off"}}
+          </div>
+        </div>
+        <div class="col-md-4 input-elements">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+            {{input type="text" class="form-control" name="last-name" placeholder="Last name" value=model.lastName autocomplete="off"}}
+          </div>
+        </div>
+        <div class="col-md-4 input-elements">
+          <div class="input-group">
+            <button class="btn btn-primary btn-block" type="submit"><i class="fa fa-search"></i> Search</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </section>
+{{/unless}}
+
+{{#if filtered}}
+  <ul class="list-unstyled clearfix">
+    {{#each filtered as |staff|}}
+      {{#link-to 'staffs.staff.profile' staff tagName="li" class="staff-list-item col-md-4 clickable"}}
+        <section class="staff-wrapper clearfix">
+          <div class="main clearfix">
+            <h4>
+              <i class="fa fa-user fa-2 {{if staff.isActive 'success-color' 'danger-color'}}"></i>
+              {{staff.first_name}} {{staff.last_name}}
+            </h4>
+            <p><i class="fa fa-envelope"></i> {{dash-for-empty staff.email_id}}</p>
+          </div>
+        </section>
+      {{/link-to}}
+    {{/each}}
+  </ul>
+{{else}}
+  <div class="alert alert-danger">
+    Staffs are not available.
+  </div>
+{{/if}}

@@ -12,7 +12,11 @@ Router.map(function() {
 
   this.resource('authenticated', { path: '/' }, function() {
     this.resource('home');
-    this.resource('admin-tasks');
+    this.resource('admin-tasks', function() {
+      this.route('staffs', { path: '/' });
+      this.route('doctors');
+      this.route('assessors');
+    });
     this.resource('profile');
     this.resource('settings');
     this.resource('chat');
@@ -22,6 +26,12 @@ Router.map(function() {
       this.route('list', { path: '/' });
       this.route('add');
       this.route('client', { path: '/:customer_id' }, function() {
+        this.route('profile');
+      });
+    });
+
+    this.resource('staffs', function() {
+      this.route('staff', { path: '/:agency_staff_id' }, function() {
         this.route('profile');
       });
     });
