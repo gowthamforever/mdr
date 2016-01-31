@@ -5,7 +5,6 @@ import { animateTo } from 'mdr/utility/utils';
 
 const {
   Component,
-  set,
   computed,
   inject
 } = Ember;
@@ -64,8 +63,6 @@ export default Component.extend({
 
   actions: {
     select(doctor) {
-      const model       = this.get('model');
-      const doctors     = model.get('doctors');
       const selected    = this.get('selected');
       const appointment = this.get('appointment');
 
