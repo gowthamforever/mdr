@@ -66,6 +66,17 @@
   display: inline-block;
 }
 
+@media (max-width: 460px) {
+  .logo img {
+    width: 150px;
+    height: 45px;
+    margin-top: 4px;
+  }
+  .login-nav-li a {
+    padding: 10px 4px !important;
+  }
+}
+
 .profile-name {
   color: $primary-color;
 }
