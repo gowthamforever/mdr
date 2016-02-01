@@ -39,11 +39,11 @@
   color: #000;
   &.active, &:hover {
     background-color: whitesmoke;
-    color: #03a9f4;
+    color: $primary-color;
   }
   &.active {
     border-bottom: none;
-    border-left: 3px solid #03a9f4;
+    border-left: 3px solid $primary-color;
   }
 }
 

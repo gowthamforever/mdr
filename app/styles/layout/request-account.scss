@@ -1,18 +1,24 @@
 section.request-account-block {
   padding: 100px 15px;
   text-align: center;
+  background-image: -ms-linear-gradient(top left,#fff 0,$primary-color-light 100%);
+  background-image: -moz-linear-gradient(top left,#fff 0,$primary-color-light 100%);
+  background-image: -o-linear-gradient(top left,#fff 0,$primary-color-light 100%);
+  background-image: -webkit-gradient(linear,left top,right bottom,color-stop(0,#fff),color-stop(1,$primary-color-light));
+  background-image: -webkit-linear-gradient(top left,#fff 0,$primary-color-light 100%);
+  background-image: linear-gradient(to bottom right,#fff 0,$primary-color-light 100%);
 
   section.register-block {
     display: inline-block;
     text-align: initial;
-    border: 1px solid #c4c4c4;
-    -webkit-box-shadow: 2px 2px 2px rgba(0,0,0,.2);
-    -moz-box-shadow: 2px 2px 2px rgba(0,0,0,.2);
-    box-shadow: 2px 2px 2px rgba(0,0,0,.2);
     padding: 15px;
     width: 100%;
     @media (min-width: 991px) {
       width: 75%;
+    }
+
+    section.register-form-content {
+      padding-top: 15px;
     }
   }
 

@@ -2,7 +2,7 @@
 	<div class="modal-header">
 		<button type="button" class="close" {{action "hideDialog"}}>×</button>
 		<h4 class="modal-title login-modal-header layout-color">
-			<strong>Signin</strong>
+			<strong><img src="./assets/img/brand2.png" width="150" height="35"></strong>
 		</h4>
 	</div>
 	<div class="modal-body">
@@ -13,9 +13,9 @@
 				<div class="form-group col-md-12">
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-user"></i></span>
-						{{input type="text" class="form-control" name="user-name" value=model.userName autocomplete="off" placeholder="User name (Email ID / NPI No)"}}
+						{{input type="text" class="form-control" name="user-name" value=model.userName autocomplete="off" placeholder="User name"}}
 					</div>
-					<p class="help-block">User name is your email id, doctors can also use their NPI number to sign in.</p>
+					<p class="help-block hide">User name is your email id, doctors can also use their NPI number to sign in.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -40,12 +40,12 @@
 			</div>
 			<div class="row">
 				<div class="form-group col-md-12">
-					{{#mdr-processing-button class="btn btn-primary btn-block" type="submit"}}Sign in{{/mdr-processing-button}}
+					{{#mdr-processing-button class="btn btn-primary btn-block" type="submit"}}<i class="fa fa-sign-in"></i> Sign In{{/mdr-processing-button}}
 				</div>
 			</div>
   	</form>
   </div>
 	<div class="modal-footer">
-		Don't have an account? {{#link-to 'request-account' class="link"}} Request here{{/link-to}}.
+		Don't have an account? {{#link-to 'request-account' class="link"}} Sign Up{{/link-to}} Today.
 	</div>
 </div>

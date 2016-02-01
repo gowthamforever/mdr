@@ -1,21 +1,19 @@
-$header-color: #fff;
-
 .navbar {
-  box-shadow: inset 0 1px #03a9f4,0 1px 3px rgba(34,25,25,.4);
-  -moz-box-shadow: inset 0 1px #03a9f4,0 1px 3px rgba(34,25,25,.4);
-  -webkit-box-shadow: inset 0 1px #03a9f4,0 1px 3px rgba(34,25,25,.4);
-  background-color: #03a9f4;
+  box-shadow: inset 0 1px $header-color,0 1px 3px rgba(34,25,25,.4);
+  -moz-box-shadow: inset 0 1px $header-color,0 1px 3px rgba(34,25,25,.4);
+  -webkit-box-shadow: inset 0 1px $header-color,0 1px 3px rgba(34,25,25,.4);
+  background-color: $header-color;
 
   &.navbar-default {
-    border-color: #03a9f4;
+    border-color: $header-color;;
   }
 
   .login-link {
-    color: #fff;
+    color: $primary-color;
   }
 
   .notify-menu {
-    color: #fff;
+    color: $primary-color;
     padding-top: 5px;
   }
   .notify-badge {
@@ -33,12 +31,28 @@ $header-color: #fff;
 .navbar-default .navbar-nav {
   li {
     &:hover{
-      background-color: darken(#03a9f4, 10%);
+      background-color: $primary-color;
+
+      .login-link {
+        color: #fff;
+      }
+
+      .notify-menu {
+        color: #fff;
+      }
+
+      .profile-name {
+        color: #fff;
+      }
     }
   }
   > .open {
     > a:hover, > a:focus {
-      background-color: darken(#03a9f4, 10%);
+      background-color: $primary-color;
+
+      .login-link {
+        color: #fff;
+      }
     }
   }
 }
@@ -53,7 +67,7 @@ $header-color: #fff;
 }
 
 .profile-name {
-  color: #fff;
+  color: $primary-color;
 }
 
 .profile-header-avatar {
@@ -76,9 +90,9 @@ span.sidenav-toggle {
   z-index: 100;
 }
 .page-title {
-  background-color: #f3f5f6;
-  border-bottom: 1px solid #c8c8c8;
-  color: #818486;
+  background-color: $primary-color;
+  border-bottom: 1px solid $primary-color;
+  color: #fff;
   padding: 7px;
   padding-left: 50px;
   height: 50px;
@@ -103,7 +117,7 @@ svg.inline-svg {
   display: inline-block;
 }
 .svg-menu-toggle {
-  fill: #000;
+  fill: #fff;
   pointer-events:all; //needs to be there so the hover works
   cursor:pointer;
 

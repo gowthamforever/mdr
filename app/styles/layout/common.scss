@@ -7,11 +7,11 @@ body {
 }
 
 a {
-  color: #000;
+  color: $primary-color;
   text-decoration: none;
 
   &:hover {
-    color: #03a9f4;
+    color: $primary-color-light;
     text-decoration: none;
   }
 
@@ -20,13 +20,21 @@ a {
   }
 
   &.link-color {
-    color: #818486;
+    color: $primary-color;
     text-decoration: none;
     font-size: 15px;
     font-weight: 700;
 
+    &.link-color-white {
+      color: #fff;
+    }
+
     &:hover {
-      color: #03a9f4;
+      color: $primary-color-light;
+
+      &.link-color-white {
+        color: #fff;
+      }
     }
 
     &.link-margin {
@@ -212,7 +220,7 @@ a {
 }
 
 .primary-color {
-  color: #03a9f4;
+  color: $primary-color;
 }
 
 .theme-color {
@@ -246,22 +254,25 @@ a {
 }
 
 .btn-primary {
-  background-color: #03a9f4;
-  border-color: #03a9f4;
+  background-color: $primary-color;
+  border-color: $primary-color;
 
   &:focus {
-    background-color: darken(#03a9f4, 10);
-    border-color: darken(#03a9f4, 10);
+    background-color: $primary-color-light;
+    border-color: $primary-color-light;
   }
 
   &:hover {
-    background-color: darken(#03a9f4, 10);
-    border-color: darken(#03a9f4, 10);
+    background-color: $primary-color-light;
+    border-color: $primary-color-light;
   }
 }
 
 .panel-primary {
   border-color: #90a4ae;
+  -webkit-box-shadow: 2px 2px 2px rgba(0,0,0,.2);
+  -moz-box-shadow: 2px 2px 2px rgba(0,0,0,.2);
+  box-shadow: 2px 2px 2px rgba(0,0,0,.2);
 
   .panel-heading {
     background-color: #90a4ae;
@@ -278,10 +289,10 @@ a {
 }
 
 .link {
-  color: #03a9f4;
+  color: $primary-color;
 
   &:hover {
-    color: darken(#03a9f4, 10);
+    color: $primary-color-light;
   }
 }
 

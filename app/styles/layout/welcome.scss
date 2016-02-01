@@ -2,11 +2,12 @@ section.welcome-block {
   padding-top: 100px;
   position: relative;
   min-height: 201px;
-  //background: url("./img/home-background-mountains.jpg") 50% 0% / cover no-repeat rgb(82, 82, 82);
+  background: url("./img/welcome.jpg") 50% 0% / cover no-repeat rgb(82, 82, 82);
   border-bottom: 1px solid #c4c4c4;
 
   section.join-now-block {
-    padding-bottom: 150px;
+    padding-bottom: 100px;
+    padding-top: 50px;
 
     /* make keyframes that tell the start state and the end state of our object */
     @-webkit-keyframes fadeIn {
@@ -149,6 +150,7 @@ section.welcome-block {
 
 
     h1.main-text {
+      color: $secondary-color;
       margin: 20px;
       @media screen and (min-width: 768px) {
         font-size: 49px;
@@ -158,7 +160,7 @@ section.welcome-block {
     p.info-text {
       position: relative;
       margin: 20px;
-      color: #787876;
+      color: $primary-color;
       font-family: museo-slab,Georgia,serif;
       font-style: italic;
       font-size: 21px;

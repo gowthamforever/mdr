@@ -15,6 +15,9 @@ export default Route.extend(EmberValidator, Api, {
 
   _validations() {
     return {
+      agency_name: {
+        required: 'Agency name is required'
+      },
       last_name: {
         length: {
           maximum: 50,
@@ -49,27 +52,6 @@ export default Route.extend(EmberValidator, Api, {
           format9: true,
           message: 'Phone no is not valid(NNNNNNNNNN).'
         }
-      },
-
-      address1: {
-        required: 'Address is required.',
-        length: {
-          maximum: 250,
-          message: 'Must be 250 characters or less.'
-        }
-      },
-
-      selected_state_1: {
-        required: 'State is required.'
-      },
-
-      city1: {
-        required: 'City is required.'
-      },
-
-      zip1: {
-        required: 'Zip is required',
-        zip: 'Zip is not valid(NNNNN or NNNNN-NNNN).'
       }
     };
   },

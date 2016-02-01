@@ -1,140 +1,76 @@
 <section class="request-account-block">
   <section class="register-block">
     <section class="col-md-12">
-      {{#if model.created}}
-        <div class="alert alert-success">
-          Your request is under process. Please check you email for further updates.
-          Go back to {{#link-to 'welcome' class="link"}}<strong>welcome</strong>{{/link-to}} page.
-        </div>
-      {{/if}}
+      <div class="panel panel-primary">
+        <div class="panel-heading">NEW AGENCY REGISTRATION</div>
+        <div class="panel-body">
+          <p>Thanks for your interest in MDRealtime. Please complete and submit the New Agency Registration form, an MDRealtime account manager will call you to complete the Registration.</p>
 
-      {{mdr-page-error validationResult=model.validationResult message="Please fix the errors to continue"}}
+          <p>If you are associated with an agency affiliated with MDRealtime, please contact your Agency Administrator for sign up assistance.</p>
 
-      <form role="form" novalidate {{action "request" on="submit"}} autocomplete="off">
-        <div class="row">
-          <div class="form-group col-md-4 hide">
-            <label class="control-label" for="are_you">Are you?</label>
-            <div>
-              <div class="radio-inline">
-                <label>
-                  {{input-radio name="are_you" group=model.are_you value="Agent"}} Agent
-                </label>
+          <section class="register-form-content">
+            {{#if model.created}}
+              <div class="alert alert-success">
+                Once again, thanks for your interest and someone will reach out to you soon!
               </div>
-            </div>
-          </div>
-          <div class="form-group col-md-4 hide">
-            <label class="control-label">&nbsp;</label>
-            <div>
-              <div class="radio-inline">
-                <label>
-                  {{input-radio name="are_you" group=model.are_you value="Doctor"}} Doctor
-                </label>
+            {{/if}}
+
+            {{mdr-page-error validationResult=model.validationResult message="Please fix the errors to continue"}}
+
+            <form role="form" novalidate {{action "request" on="submit"}} autocomplete="off">
+              <div class="row">
+                <div class="form-group col-md-8 {{if model.validationResult.agency_name.hasError 'has-error'}}">
+                  <label class="control-label" for="agency_name">Agency Name</label>
+                  {{input type="text" class="form-control" name="agency_name" value=model.agency_name maxlength=50 autocomplete="off"}}
+                  {{mdr-field-error client=model.validationResult.agency_name}}
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="form-group col-md-4 hide">
-            <label class="control-label">&nbsp;</label>
-            <div>
-              <div class="radio-inline">
-                <label>
-                  {{input-radio name="are_you" group=model.are_you value="Assessor"}} Assessor
-                </label>
+
+              <div class="row">
+                <div class="form-group col-md-6 {{if model.validationResult.first_name.hasError 'has-error'}}">
+                  <label class="control-label" for="first-name">First name</label>
+                  {{input type="text" class="form-control" name="first-name" value=model.first_name maxlength=50 autocomplete="off"}}
+                  {{mdr-field-error client=model.validationResult.first_name}}
+                </div>
+
+                <div class="form-group col-md-6 {{if model.validationResult.last_name.hasError 'has-error'}}">
+                  <label class="control-label" for="first-name">Last name</label>
+                  {{input type="text" class="form-control" name="last-name" value=model.last_name maxlength=50 autocomplete="off"}}
+                  {{mdr-field-error client=model.validationResult.last_name}}
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="row">
-          <div class="form-group col-md-8 {{if model.validationResult.agency_name.hasError 'has-error'}}">
-            <label class="control-label" for="agency_name">Agency Name</label>
-            {{input type="text" class="form-control" name="agency_name" value=model.agency_name maxlength=50 autocomplete="off"}}
-            {{mdr-field-error client=model.validationResult.agency_name}}
-          </div>
-        </div>
+              <div class="row">
+                <div class="form-group col-md-6 {{if model.validationResult.email_id.hasError 'has-error'}}">
+                  <label class="control-label" for="email-id">Email address</label>
+                  {{input type="text" class="form-control" name="email-id" value=model.email_id maxlength=50 autocomplete="off"}}
+                  {{mdr-field-error client=model.validationResult.email_id}}
+                </div>
 
-        <div class="row">
-          <div class="form-group col-md-6 {{if model.validationResult.last_name.hasError 'has-error'}}">
-            <label class="control-label" for="first-name">Last name</label>
-            {{input type="text" class="form-control" name="last-name" value=model.last_name maxlength=50 autocomplete="off"}}
-            {{mdr-field-error client=model.validationResult.last_name}}
-          </div>
-          <div class="form-group col-md-6 {{if model.validationResult.first_name.hasError 'has-error'}}">
-            <label class="control-label" for="first-name">First name</label>
-            {{input type="text" class="form-control" name="first-name" value=model.first_name maxlength=50 autocomplete="off"}}
-            {{mdr-field-error client=model.validationResult.first_name}}
-          </div>
-        </div>
+                <div class="form-group col-md-6  {{if model.validationResult.phone1.hasError 'has-error'}}">
+                  <label class="control-label" for="phone1">Phone number</label>
+                  {{input type="text" class="form-control" name="phone1" value=model.phone1 maxlength=10 autocomplete="off"}}
+                  {{mdr-field-error client=model.validationResult.phone1}}
+                </div>
+              </div>
 
-        <div class="row">
-          <div class="form-group col-md-6 {{if model.validationResult.email_id.hasError 'has-error'}}">
-            <label class="control-label" for="email-id">Email address</label>
-            {{input type="text" class="form-control" name="email-id" value=model.email_id maxlength=50 autocomplete="off"}}
-            {{mdr-field-error client=model.validationResult.email_id}}
-          </div>
+              <div class="row">
+                <div class="form-group col-md-12  {{if model.validationResult.comments.hasError 'has-error'}}">
+                  <label class="control-label" for="comments">Comments</label>
+                  {{textarea class="form-control" name="comments" value=model.comments autocomplete="off"}}
+                  {{mdr-field-error client=model.validationResult.comments}}
+                </div>
+              </div>
 
-          <div class="form-group col-md-6  {{if model.validationResult.phone1.hasError 'has-error'}}">
-            <label class="control-label" for="phone1">Phone number</label>
-            {{input type="text" class="form-control" name="phone1" value=model.phone1 maxlength=10 autocomplete="off"}}
-            {{mdr-field-error client=model.validationResult.phone1}}
-          </div>
+              <div class="row">
+                <div class="form-group col-md-2">
+                  <button class="btn btn-primary btn-block" type="submit" autocomplete="off">Send request</button>
+                </div>
+              </div>
+            </form>
+          </section>
         </div>
-
-        <div class="row">
-          <div class="form-group col-md-8  {{if model.validationResult.address1.hasError 'has-error'}}">
-            <label class="control-label" for="address1">Address</label>
-            {{input type="text" class="form-control" name="address1" value=model.address1 maxlength=250 autocomplete="off"}}
-            {{mdr-field-error client=model.validationResult.address1}}
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="form-group col-md-6  {{if model.validationResult.selected_state_1.hasError 'has-error'}}">
-            <label class="control-label" for="state1">State</label>
-            {{input-select
-              class="form-control"
-              name="state1"
-              options=model.states
-              labelPath="name"
-              valuePath="id"
-              selected=model.selected_state_1
-              prompt="Select"
-            }}
-            {{mdr-field-error client=model.validationResult.selected_state_1}}
-          </div>
-          <div class="form-group col-md-6  {{if model.validationResult.selected_city_1.hasError 'has-error'}}">
-            <label class="control-label" for="city1">City</label>
-            {{input type="text" class="form-control" name="city1" value=model.city1 maxlength=250 autocomplete="off"}}
-            {{mdr-field-error client=model.validationResult.selected_city_1}}
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="form-group col-md-6  {{if model.validationResult.zip1.hasError 'has-error'}}">
-            <label class="control-label" for="zip1">Zip code</label>
-            {{input type="text" class="form-control" name="zip1" value=model.zip1 autocomplete="off"}}
-            {{mdr-field-error client=model.validationResult.zip1}}
-          </div>
-          <div class="form-group col-md-6">
-            <label class="control-label" for="country1">Country</label>
-            {{input type="text" class="form-control" name="country1" value=model.country1 disabled=true}}
-            <p class="help-block">Currently available for US regions only</p>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="form-group col-md-12  {{if model.validationResult.comments.hasError 'has-error'}}">
-            <label class="control-label" for="comments">Comments</label>
-            {{textarea class="form-control" name="comments" value=model.comments autocomplete="off"}}
-            {{mdr-field-error client=model.validationResult.comments}}
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="form-group col-md-2">
-            <button class="btn btn-primary btn-block" type="submit" autocomplete="off">Send request</button>
-          </div>
-        </div>
-      </form>
+      </div>
     </section>
   </section>
 </section>

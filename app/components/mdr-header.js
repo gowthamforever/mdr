@@ -36,6 +36,7 @@ export default Component.extend({
   session: service(),
   dialog: service(),
   appointments: service(),
+  enrollments: service(),
 
   tagName: 'header',
   classNames: ['mdr-header'],
@@ -88,8 +89,11 @@ export default Component.extend({
 
     if (_.keys(promises).length > 0) {
       hash(promises).then((result) => {
-        const appointments    = result.appointments;
+        const { appointments, enrollments }   = result;
         const notifications   = Ember.A();
+        let staffs;
+        let doctors;
+        let assessors;
 
         if (appointments && !isEmpty(appointments.get('pending'))) {
           appointments.get('pending').forEach((appointment) => {
@@ -98,6 +102,30 @@ export default Component.extend({
               model: appointment
             });
           });
+        }
+
+        if (enrollments) {
+          staffs = enrollments.get('staffs');
+          doctors = enrollments.get('doctors');
+          assessors = enrollments.get('assessors');
+
+          if (!isEmpty(staffs)) {
+            staffs.forEach((staff) => {
+              model: staff
+            });
+          }
+
+          if (!isEmpty(doctors)) {
+            doctors.forEach((doctor) => {
+              model: doctor
+            });
+          }
+
+          if (!isEmpty(assessors)) {
+            staffs.forEach((assessor) => {
+              model: assessor
+            });
+          }
         }
 
         self.set('notifications', notifications);
@@ -125,8 +153,11 @@ export default Component.extend({
   },
 
   getEnrollments() {
+    const self = this;
     return new Promise((resolve) => {
-      resolve(Ember.A());
+      self.get('enrollments').getPendingProspects().then((enrollments) => {
+        resolve(enrollments);
+      });
     });
   }
 });
