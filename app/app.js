@@ -72,7 +72,7 @@ Route.reopen({
       }
       document.title = title;
 
-      $('.wrapper-main').css('min-height', $(window).height() - $('.navbar').height());
+      $('.wrapper-main').css('min-height', $(window).height());
 
     });
 
