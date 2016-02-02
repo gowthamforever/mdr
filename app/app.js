@@ -71,6 +71,9 @@ Route.reopen({
         title += ` - ${parts.join(' | ')}`;
       }
       document.title = title;
+
+      $('.wrapper-main').css('min-height', $(window).height() - $('.navbar').height());
+
     });
 
     this.get('dialog').hideDialog();
