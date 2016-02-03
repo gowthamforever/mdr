@@ -19,6 +19,7 @@ export default Component.extend(Api, {
   edit_personal: false,
   edit_contact: false,
   edit_billing: false,
+  approved: false,
 
   model: null,
 
@@ -73,7 +74,8 @@ export default Component.extend(Api, {
         self.setProperties({
           'assessor.cache': false,
           'model.active': 1,
-          'assessor.active': 1
+          'assessor.active': 1,
+          approved: true
         });
       });
     }

@@ -327,3 +327,9 @@ a {
     }
   }
 }
+
+.alert {
+  &.no-margin {
+    margin-bottom: 0;
+  }
+}

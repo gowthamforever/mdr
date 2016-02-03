@@ -160,7 +160,8 @@ export default Component.extend(Api, {
         self.setProperties({
           'doctors.cache': false,
           'model.active': 1,
-          'doctor.active': 1
+          'doctor.active': 1,
+          approved: true
         });
       });
     }

@@ -17,6 +17,7 @@ export default Component.extend(Api, {
 
   edit_personal: false,
   edit_contact: false,
+  approved: false,
 
   model: null,
 
@@ -70,7 +71,8 @@ export default Component.extend(Api, {
       }).then(() => {
         self.setProperties({
           'model.active': 1,
-          'doctor.active': 1
+          'staff.active': 1,
+          approved: true
         });
       });
     }
