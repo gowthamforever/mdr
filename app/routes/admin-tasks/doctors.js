@@ -4,8 +4,7 @@ import Doctors from 'mdr/models/doctors';
 const {
   Route,
   RSVP,
-  inject,
-  isEmpty
+  inject
 } = Ember;
 
 const {

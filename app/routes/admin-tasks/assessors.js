@@ -4,8 +4,7 @@ import Assessors from 'mdr/models/assessors';
 const {
   Route,
   RSVP,
-  inject,
-  isEmpty
+  inject
 } = Ember;
 
 const {

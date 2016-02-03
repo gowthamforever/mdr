@@ -4,8 +4,7 @@ import Staffs from 'mdr/models/staffs';
 const {
   Route,
   RSVP,
-  inject,
-  isEmpty
+  inject
 } = Ember;
 
 const {

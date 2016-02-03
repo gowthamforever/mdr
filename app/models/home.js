@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import Constants from 'mdr/utility/constants';
 
 const {
   Object: EmberObject,
