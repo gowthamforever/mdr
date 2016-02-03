@@ -2,15 +2,32 @@ import Ember from 'ember';
 import Assessors from 'mdr/models/assessors';
 
 const {
-  Route
+  Route,
+  RSVP,
+  inject,
+  isEmpty
 } = Ember;
 
+const {
+  Promise
+} = RSVP;
+
+const {
+  service
+} = inject;
 
 export default Route.extend({
+  enrollments: service(),
+
   model() {
-    const enrollments = this.modelFor('admin-tasks');
-    return Assessors.create({
-      assessors: enrollments.get('assessors')
+    const self = this;
+    return new Promise((resolve) => {
+      self.get('enrollments').getPendingProspects().then((enrollments) => {
+        const model = Assessors.create({
+          assessors: enrollments.get('assessors')
+        });
+        resolve(model);
+      });
     });
   }
 });

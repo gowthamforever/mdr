@@ -15,6 +15,7 @@ const {
 export default Component.extend(Api, {
   session: service(),
   doctors: service(),
+  approved: false,
 
   edit_personal: false,
   edit_contact: false,
