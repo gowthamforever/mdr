@@ -156,14 +156,12 @@ export default Component.extend(Api, {
         id: 'patchprospect',
         data
       }).then(() => {
-        self.set('doctors.cache', false);
-        self.set('model.doctor.active', 1);
-        self.set('doctor.active', 1);
+        self.setProperties({
+          'doctors.cache': false,
+          'model.active': 1,
+          'doctor.active': 1
+        });
       });
-    },
-
-    reject() {
-
     }
   }
 });

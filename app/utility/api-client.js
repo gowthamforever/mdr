@@ -44,5 +44,10 @@ export default {
   pendingprospect: {
     path: 'pending-prospects.json',
     method: 'GET'
+  },
+
+  patchprospect: {
+    path: 'pending-prospects.json',
+    method: 'GET'
   }
 };

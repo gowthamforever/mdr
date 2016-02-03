@@ -2,6 +2,10 @@
 @import 'ember-power-select/themes/bootstrap';
 @import "ember-power-select";
 
+@import "mixins/border-shadow.scss";
+@import "mixins/search-header.scss";
+@import "mixins/list-wrapper.scss";
+
 @import "layout/main.scss";
 @import "layout/common.scss";
 

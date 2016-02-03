@@ -68,13 +68,11 @@ export default Component.extend(Api, {
         id: 'patchprospect',
         data
       }).then(() => {
-        self.set('model.staff.active', 1);
-        self.set('staff.active', 1);
+        self.setProperties({
+          'model.active': 1,
+          'doctor.active': 1
+        });
       });
-    },
-
-    reject() {
-
     }
   }
 });

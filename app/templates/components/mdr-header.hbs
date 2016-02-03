@@ -36,7 +36,7 @@
                 <div class="notifications-wrapper">
                   {{#each notifications as |notification index|}}
                     {{#if notification.appointment}}
-                      <div class="notification-item clearfix">
+                      <div class="notification-item {{unless (eq (mod index) 0) 'even'}} clearfix">
                         <div class="item-avatar {{if (eq (mod index) 0) 'pull-left' 'pull-right'}}">
                           <i class="fa fa-user fa-2 primary-color"></i>
                         </div>
@@ -47,6 +47,20 @@
                           requested for appointment on
                           {{date-format notification.model.ts_request "MM-DD-YYYY HH:mm" "dddd, MMM DD YYYY HH:mm A"}}.
                           <strong>{{#link-to 'appointments.details' notification.model}}View{{/link-to}}</strong>.
+                        </p>
+                      </div>
+                    {{else}}
+                      <div class="notification-item {{unless (eq (mod index) 0) 'even'}} clearfix">
+                        <div class="item-avatar {{if (eq (mod index) 0) 'pull-left' 'pull-right'}}">
+                          <i class="fa fa-user fa-2 primary-color"></i>
+                        </div>
+                        <p class="item-info">
+                          <strong>
+                            {{notification.model.first_name}} {{notification.model.last_name}}
+                          </strong>
+                          requested for an account.
+                          <strong>{{#link-to (if notification.staff 'staffs.staff.profile' (if notification.doctor 'doctors.doctor.profile' 'assessors.assessor.profile')) notification.model
+                          }}View{{/link-to}}</strong>.
                         </p>
                       </div>
                     {{/if}}

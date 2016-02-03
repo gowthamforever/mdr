@@ -1,13 +1,37 @@
 import Ember from 'ember';
+import Appointments from 'mdr/models/appointments';
 
 const {
-  Route
+  Route,
+  RSVP,
+  inject
 } = Ember;
 
+const {
+  Promise
+} = RSVP;
+
+const {
+  service
+} = inject;
+
 export default Route.extend({
+  appointments: service(),
+
   activate() {
     this._super(...arguments);
     this.get('titlebar').set('right_content', 'right-content-appointment');
+  },
+
+  model() {
+    const self = this;
+    return new Promise((resolve) => {
+      self.get('appointments').getAppointments().then((appointments) => {
+        resolve(Appointments.create({
+          appointments
+        }));
+      });
+    });
   },
 
   deactivate() {
@@ -15,8 +39,7 @@ export default Route.extend({
     this.get('titlebar').set('right_content', undefined);
   },
 
-  model() {
-    const model         = this.modelFor('appointments');
+  afterModel(model) {
     const events        = Ember.A();
     const appointments  = model.get('appointments');
 
@@ -34,6 +57,6 @@ export default Route.extend({
       });
     }
 
-    return events;
+    model.set('events', events);
   }
 });

@@ -1,5 +1,5 @@
 section.request-account-block {
-  padding: 100px 15px;
+  padding-top: 100px;
   text-align: center;
   background-image: -ms-linear-gradient(top left,#fff 0,$primary-color-light 100%);
   background-image: -moz-linear-gradient(top left,#fff 0,$primary-color-light 100%);
@@ -11,24 +11,12 @@ section.request-account-block {
   section.register-block {
     display: inline-block;
     text-align: initial;
-    padding: 15px;
-    width: 100%;
     @media (min-width: 991px) {
       width: 75%;
     }
 
     section.register-form-content {
       padding-top: 15px;
-    }
-  }
-
-  section.confirmation-block {
-    display: inline-block;
-    text-align: initial;
-    padding: 15px;
-    width: 100%;
-    @media (min-width: 991px) {
-      width: 75%;
     }
   }
 }

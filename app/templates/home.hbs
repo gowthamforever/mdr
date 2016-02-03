@@ -14,7 +14,7 @@
         </div>
       {{/link-to}}
       <h4 class="widget-title">APPOINTMENTS</h4>
-      <h3 class="widget-meta">{{model.appointments.length}} New Requests</h3>
+      <h3 class="widget-meta">{{model.appointments.length}} Requests</h3>
       <div class="widget-footer hidden-xs">
         {{#link-to 'appointments'}}More Info <span class="right-arrow"></span>{{/link-to}}
       </div>
@@ -36,7 +36,7 @@
         </div>
       {{/link-to}}
       <h4 class="widget-title">CONSULTING ROOM</h4>
-      <h3 class="widget-meta">0 Video Sessions</h3>
+      <h3 class="widget-meta">{{model.video_sessions.length}} Video Sessions</h3>
       <div class="widget-footer hidden-xs">
         {{#link-to 'chat'}}More Info <span class="right-arrow"></span>{{/link-to}}
       </div>
@@ -61,7 +61,7 @@
           </div>
         {{/link-to}}
         <h4 class="widget-title">DOCTORS</h4>
-        <h3 class="widget-meta">{{model.doctors.length}} Online</h3>
+        <h3 class="widget-meta">{{model.active_doctors.length}} Active</h3>
         <div class="widget-footer hidden-xs">
           {{#link-to 'doctors'}}More Info <span class="right-arrow"></span>{{/link-to}}
         </div>
@@ -105,7 +105,7 @@
           </div>
         {{/link-to}}
         <h4 class="widget-title">ASSESSORS</h4>
-        <h3 class="widget-meta">{{model.assessors.length}} Online</h3>
+        <h3 class="widget-meta">{{model.active_assessors.length}} Active</h3>
         <div class="widget-footer hidden-xs">
           {{#link-to 'assessors'}}More Info <span class="right-arrow"></span>{{/link-to}}
         </div>

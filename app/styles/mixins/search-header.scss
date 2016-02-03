@@ -1,0 +1,10 @@
+@mixin search-header() {
+  padding: 10px;
+  border: $primary-border;
+  border-radius: 4px;
+
+  .input-elements {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}

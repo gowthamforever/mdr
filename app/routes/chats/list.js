@@ -3,9 +3,14 @@ import Chats from 'mdr/models/chats';
 
 const {
   Route,
+  RSVP,
   isEmpty,
   inject
 } = Ember;
+
+const {
+  Promise
+} = RSVP;
 
 const {
   service
@@ -13,9 +18,20 @@ const {
 
 export default Route.extend({
   dialog: service(),
+  appointments: service(),
 
   model() {
-    const model        = this.modelFor('chats');
+    const self = this;
+    return new Promise((resolve) => {
+      self.get('appointments').getAppointments().then((appointments) => {
+        resolve(Chats.create({
+          appointments
+        }));
+      });
+    });
+  },
+
+  afterModel(model) {
     const appointments = model.get('appointments');
     const currentTime  = moment();
     const endTime      = moment().add(24, 'hours');
@@ -44,23 +60,12 @@ export default Route.extend({
       });
     }
 
-    return Chats.create({
-      appointments: todaysAppointments
-    });
+    model.set('video_sessions', todaysAppointments);
   },
 
   redirect(model) {
     if (model.get('single_appointment')) {
       this.transitionTo('chats.chat', model.get('first_appointment'));
-    }
-  },
-
-  deactivate() {
-    const model         = this.get('controller.model');
-    const appointments  = model.get('appointments');
-
-    if (!isEmpty(appointments)) {
-      appointments.setEach('started', false);
     }
   }
 });

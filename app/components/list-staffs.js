@@ -22,7 +22,6 @@ export default Component.extend({
       const model     = this.get('model');
       const firstName = model.get('firstName');
       const lastName  = model.get('lastName');
-      const speciality = model.get('speciality');
       const staffs   = model.get('staffs');
 
       if (!isEmpty(staffs)) {

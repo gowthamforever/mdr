@@ -1,0 +1,25 @@
+@mixin list-wrapper() {
+  background: #fff;
+  border: $primary-border;
+  @include border-shadow();
+  position: relative;
+
+  .main {
+    background: #FAFDFF;
+    padding: 5px 20px;
+    border-radius: 4px;
+
+    &:hover {
+      background: #DDF4FF;
+    }
+
+    &.disabled {
+      background: whitesmoke
+    }
+  }
+
+  .toggle-select {
+    margin-right: 13px;
+    color: $primary-color;
+  }
+}

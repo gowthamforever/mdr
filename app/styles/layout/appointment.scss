@@ -4,26 +4,6 @@ section.appointment-block {
       cursor: pointer;
     }
   }
-  li.list-item {
-    padding: 10px;
-
-    .list-wrapper {
-      background: #FAFDFF;;
-      border: 1px solid #c4c4c4;
-      -webkit-box-shadow: 2px 2px 2px rgba(0,0,0,.2);
-      -moz-box-shadow: 2px 2px 2px rgba(0,0,0,.2);
-      box-shadow: 2px 2px 2px rgba(0,0,0,.2);
-      position: relative;
-
-      .right-content {
-        margin-left: 130px;
-      }
-
-      &:hover {
-        background: #D9EDF7;
-      }
-    }
-  }
 }
 
 section.appointment-time {

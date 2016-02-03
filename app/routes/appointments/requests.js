@@ -1,20 +1,40 @@
 import Ember from 'ember';
+import Appointments from 'mdr/models/appointments';
 
 const {
   Route,
+  RSVP,
   inject
 } = Ember;
 
-const { service } = inject;
+const {
+  Promise
+} = RSVP;
+
+const {
+  service
+} = inject;
 
 export default Route.extend({
   dialog: service(),
+  appointments: service(),
 
   activate() {
     this._super(...arguments);
     this.get('titlebar').setProperties({
       right_content: 'right-content-appointment',
       right_content_model: Ember.Object.create({ calendar: true })
+    });
+  },
+
+  model() {
+    const self = this;
+    return new Promise((resolve) => {
+      self.get('appointments').getAppointments().then((appointments) => {
+        resolve(Appointments.create({
+          appointments
+        }));
+      });
     });
   },
 

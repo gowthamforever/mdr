@@ -70,14 +70,12 @@ export default Component.extend(Api, {
         id: 'patchprospect',
         data
       }).then(() => {
-        self.set('assessors.cache', false);
-        self.set('model.assessor.active', 1);
-        self.set('assessor.active', 1);
+        self.setProperties({
+          'assessor.cache': false,
+          'model.active': 1,
+          'assessor.active': 1
+        });
       });
-    },
-
-    reject() {
-
     }
   }
 });

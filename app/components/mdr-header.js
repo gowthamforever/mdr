@@ -111,19 +111,19 @@ export default Component.extend({
 
           if (!isEmpty(staffs)) {
             staffs.forEach((staff) => {
-              model: staff
+              notifications.push({ staff: true, model: staff });
             });
           }
 
           if (!isEmpty(doctors)) {
             doctors.forEach((doctor) => {
-              model: doctor
+              notifications.push({ doctor: true, model: doctor });
             });
           }
 
           if (!isEmpty(assessors)) {
             staffs.forEach((assessor) => {
-              model: assessor
+              notifications.push({ assessor: true, model: assessor }); 
             });
           }
         }

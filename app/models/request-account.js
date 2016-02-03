@@ -1,13 +1,10 @@
 import Ember from 'ember';
-import Constants from 'mdr/utility/constants';
 
 const {
-  computed
+  Object: EmberObject
 } = Ember;
 
-export default Ember.Object.extend({
-  states: Constants.STATES,
-  are_you: 'Agent',
+export default EmberObject.extend({
   first_name: null,
   last_name: null,
   email_id: null,

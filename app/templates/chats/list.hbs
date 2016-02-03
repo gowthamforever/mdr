@@ -1,8 +1,8 @@
 <section class="chat-list-block">
-  {{#if model.appointments}}
+  {{#if model.video_sessions}}
     <ul class="list-unstyled clearfix">
-      {{#each model.appointments as |appointment|}}
-        {{list-chat appointment=appointment}}
+      {{#each model.video_sessions as |video_session|}}
+        {{list-chat appointment=video_session}}
       {{/each}}
     </ul>
   {{else}}
