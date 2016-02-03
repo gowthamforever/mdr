@@ -73,7 +73,7 @@ Route.reopen({
       }
       document.title = title;
 
-      $('.wrapper-main').css('min-height', $(window).height());
+      Ember.$('.wrapper-main').css('min-height', Ember.$(window).height());
 
     });
 
