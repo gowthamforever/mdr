@@ -18,6 +18,8 @@ const {
 
 export default Mixin.create({
   session: service(),
+  errorhandler: service(),
+
   skip: false,
 
   ajax(request) {
@@ -80,10 +82,31 @@ export default Mixin.create({
           resolve(...args);
         }
       }).fail((...args) => {
-        reject(...args);
+        const handled = self.handleFail(...args);
+        if (!handled) {
+          reject(...args);
+        }
       }).always(() => {
         self.get('session').hideProgressBar();
       });
     });
+  },
+
+  handleFail(xhr) {
+    const self          = this;
+    const errorhandler  = self.get('errorhandler');
+    const status        = typeof(xhr.status) === 'number' ? xhr.status : 0;
+
+    if (/[4]\d\d/.test(status) && status === 401) {
+      errorhandler.unauthorized();
+      return true;
+    }
+
+    if (/[5]\d\d/) {
+      errorhandler.fullpageerror();
+      return true;
+    }
+
+    return false;
   }
 });

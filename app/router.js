@@ -69,6 +69,7 @@ Router.map(function() {
     });
   });
 
+  this.route('full-page-error', { path: '/error' })
   this.route('missing', { path: '/*path' });
 });
 
