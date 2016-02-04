@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import Staff from 'mdr/models/staff';
+import Admin from 'mdr/models/admin';
 
 const {
   Service,
@@ -7,29 +7,27 @@ const {
 } = Ember;
 
 export default Service.extend({
-  createStaffs(response) {
+  createAdmins(response) {
     const result = Ember.A();
 
     if (!isEmpty(response)) {
-      result.addObjects(_.map(response, (item) => this.createStaff(item)));
+      result.addObjects(_.map(response, (item) => this.createAdmin(item)));
     }
 
     return result;
   },
 
-  createStaff(response) {
+  createAdmin(response) {
     const data = [
       'active',
-      'agency_staff_id',
+      'agency_admin_id',
       'dob',
       'email_id',
       'employee_number',
       'first_name',
       'gender',
-      'graduation_year',
       'last_name',
       'photo',
-      'rater_id',
       'address1',
       'city1',
       'state1',
@@ -38,6 +36,6 @@ export default Service.extend({
       'phone2'
     ];
 
-    return Staff.create(_.pick(response, data));
+    return Admin.create(_.pick(response, data));
   }
 });

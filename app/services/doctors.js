@@ -48,6 +48,7 @@ export default Service.extend(Api, {
   },
 
   createDoctor(response) {
+    const model = Doctor.create();
     const data = [
       'active',
       'customer_rating',
@@ -68,9 +69,19 @@ export default Service.extend(Api, {
       'primary_speciality',
       'service_charge',
       'surgeon',
-      'speciality'
+      'speciality',
+      'address1',
+      'city1',
+      'state1',
+      'zip1',
+      'phone1',
+      'phone2'
     ];
 
-    return Doctor.create(_.pick(response, data));
+    if (response) {
+      model.setProperties(_.pick(response, data));
+    }
+
+    return model;
   }
 });

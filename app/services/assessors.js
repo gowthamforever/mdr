@@ -60,6 +60,12 @@ export default Service.extend(Api, {
       'last_name',
       'photo',
       'rater_id',
+      'address1',
+      'city1',
+      'state1',
+      'zip1',
+      'phone1',
+      'phone2'
     ];
 
     return Assessor.create(_.pick(response, data));

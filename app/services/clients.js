@@ -60,7 +60,13 @@ export default Service.extend(Api, {
       'last_name',
       'pcd_name',
       'photo',
-      'race'
+      'race',
+      'address1',
+      'city1',
+      'state1',
+      'zip1',
+      'phone1',
+      'phone2'
     ];
 
     return Client.create(_.pick(response, data));

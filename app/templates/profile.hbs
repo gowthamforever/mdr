@@ -2,4 +2,8 @@
   {{profile-doctor doctor=model}}
 {{else if session.role_assessor}}
   {{profile-assessor assessor=model}}
+{{else if session.role_staff}}
+  {{profile-staff staff=model}}
+{{else if (or session.role_admin session.role_super_admin session.role_regional_admin session.role_global_admin)}}
+  {{profile-admin admin=model}}
 {{/if}}

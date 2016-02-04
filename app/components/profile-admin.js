@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import Assessor from 'mdr/models/assessor';
+import Admin from 'mdr/models/admin';
 import Api from 'mdr/mixins/api';
 
 const {
@@ -14,19 +14,17 @@ const {
 
 export default Component.extend(Api, {
   session: service(),
-  assessors: service(),
 
   edit_personal: false,
   edit_contact: false,
-  edit_billing: false,
   approved: false,
 
   model: null,
 
   set_model() {
-    const assessor = Assessor.create();
+    const admin = Admin.create();
 
-    assessor.setProperties(_.pick(this.get('assessor'), [
+    admin.setProperties(_.pick(this.get('admin'), [
       'active',
       'last_name',
       'first_name',
@@ -39,13 +37,11 @@ export default Component.extend(Api, {
       'state1',
       'city1',
       'zip1',
-      'rater_id',
-      'employee_number',
-      'assessor_id',
+      'agency_admin_id',
       'active'
     ]));
 
-    this.set('model', assessor);
+    this.set('model', admin);
   },
 
   init_props: on('didInitAttrs', function() {
@@ -60,25 +56,6 @@ export default Component.extend(Api, {
 
     toggleContact() {
       this.toggleProperty('edit_contact');
-    },
-
-    approve() {
-      const self = this;
-      const data = {};
-      data.isApproved = true;
-      data.assessor_id = self.get('assessor.assessor_id');
-
-      self.ajax({
-        id: 'patchprospect',
-        data
-      }).then(() => {
-        self.setProperties({
-          'assessor.cache': false,
-          'model.active': 1,
-          'assessor.active': 1,
-          approved: true
-        });
-      });
     }
   }
 });

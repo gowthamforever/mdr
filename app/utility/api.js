@@ -49,5 +49,10 @@ export default {
   patchprospect: {
     path: 'pending-prospects.json',
     method: 'GET'
+  },
+
+  contact: {
+    path: 'contact-admin.json',
+    method: 'GET'
   }
 };

@@ -39,7 +39,8 @@ export default Component.extend(Api, {
       'zip1',
       'rater_id',
       'employee_number',
-      'agency_staff_id'
+      'agency_staff_id',
+      'active'
     ]));
 
     this.set('model', staff);
