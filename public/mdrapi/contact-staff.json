@@ -1,0 +1,27 @@
+{
+  "agencyStaffInfo": {
+    "agency_staff_id": "1453100031447304418196504609",
+    "first_name": "Maruti",
+    "last_name": "Sahnbhag",
+    "photo": "sfddsf"
+  },
+  "agencyStaffContact": {
+    "agency_staff_id": "1453100031447304418196504609",
+    "address1": "11905 Allforth Lane Apt 2219",
+    "city1": "Charlotte",
+    "state1": "NC",
+    "zip1": "28277",
+    "country1": "US",
+    "latitude1": 1,
+    "longitude1": 11,
+    "address2": "11905 Allforth Lane Apt 2219",
+    "city2": "Charlotte",
+    "state2": "NC",
+    "zip2": "28277",
+    "country2": "US",
+    "latitude2": 11,
+    "longitude2": 11,
+    "phone1": "7045501947",
+    "phone2": "7045501947"
+  }
+}

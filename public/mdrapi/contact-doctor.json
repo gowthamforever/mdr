@@ -1,0 +1,32 @@
+{
+  "doctorInfo": {
+    "doctor_id": "1453767071654971554349969658",
+    "first_name": "User",
+    "last_name": "1234",
+    "npi": "1234567890",
+    "email_id": "user1234@gmail.com",
+    "gender": "Male",
+    "dob": "2016-01-11",
+    "practice_years": 0,
+    "surgeon": 0,
+    "customer_rating": 0,
+    "service_charge": 0,
+    "medicare_number": "1234",
+    "medicaid_number": "1234",
+    "active": 0
+  },
+  "doctorContact": {
+    "doctor_id": "1453767071654971554349969658",
+    "address1": "adress",
+    "city1": "Charlotte",
+    "state1": "NC",
+    "zip1": "28277",
+    "country1": "US",
+    "latitude1": 0,
+    "longitude1": 0,
+    "latitude2": 0,
+    "longitude2": 0,
+    "phone1": "9803493580",
+    "phone2": "9803493580"
+  }
+}

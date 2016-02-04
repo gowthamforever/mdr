@@ -69,5 +69,10 @@ export default {
   patchprospect: {
     path: 'prospect/pending',
     method: 'PATCH'
+  },
+
+  contact: {
+    path: 'session/contact',
+    method: 'GET'
   }
 };

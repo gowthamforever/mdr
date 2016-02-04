@@ -1,0 +1,32 @@
+{
+  "assessorInfo": {
+    "assessor_id": "1453099103671303490422371540",
+    "first_name": "Maruti",
+    "last_name": "Sahnbhag",
+    "email_id": "ssdsdsdsd22@gmail.com",
+    "gender": "Male",
+    "dob": "1999-11-01",
+    "graduation_year": 0,
+    "photo": "sfddsf",
+    "active": 0
+  },
+  "assessorContact": {
+    "assessor_id": "1453099103671303490422371540",
+    "address1": "11905 Allforth Lane Apt 2219",
+    "city1": "Charlotte",
+    "state1": "NC",
+    "zip1": "28277",
+    "country1": "US",
+    "latitude1": 1,
+    "longitude1": 11,
+    "address2": "11905 Allforth Lane Apt 2219",
+    "city2": "Charlotte",
+    "state2": "NC",
+    "zip2": "28277",
+    "country2": "US",
+    "latitude2": 11,
+    "longitude2": 11,
+    "phone1": "7045501947",
+    "phone2": "7045501947"
+  }
+}

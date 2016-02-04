@@ -1,0 +1,30 @@
+{
+  "agencyAdminInfo": {
+    "agency_admin_id": "e9ba3ba78dfffdea1dd1f03bc6a23d61",
+    "first_name": "asdsad",
+    "middle_name": "asdad",
+    "last_name": "asdad",
+    "suffix": "asda",
+    "ein": "asd",
+    "description": "asdsad"
+  },
+  "agencyAdminContact": {
+    "agency_admin_id": "e9ba3ba78dfffdea1dd1f03bc6a23d61",
+    "address1": "asdsada",
+    "city1": "jbb",
+    "state1": "hh",
+    "zip1": "hhh",
+    "country1": "hh",
+    "latitude1": 0,
+    "longitude1": 0,
+    "address2": "h",
+    "city2": "h",
+    "state2": "h",
+    "zip2": "h",
+    "latitude2": 0,
+    "longitude2": 0,
+    "phone1": "h",
+    "phone2": "h",
+    "fax": "h"
+  }
+}
