@@ -2,17 +2,27 @@ export default {
   MDR_API: './mdrapi/',
 
   session: {
-    path: 'session.json',
+    path: 'session',
     method: 'POST'
   },
 
+  logout: {
+    path: 'session',
+    method: 'DELETE'
+  },
+
   doctors: {
-    path: 'doctor.json',
+    path: 'doctor',
     method: 'GET'
   },
 
+  adddoctor: {
+    path: 'doctor',
+    method: 'POST'
+  },
+
   clients: {
-    path: 'client.json',
+    path: 'client',
     method: 'GET'
   },
 
@@ -22,12 +32,17 @@ export default {
   },
 
   assessors: {
-    path: 'assessor.json',
+    path: 'assessor',
     method: 'GET'
   },
 
+  adddassessor: {
+    path: 'assessor',
+    method: 'POST'
+  },
+
   appointments: {
-    path: 'appointment.json',
+    path: 'appointment',
     method: 'GET'
   },
 
@@ -36,23 +51,28 @@ export default {
     method: 'POST'
   },
 
+  addagencystaff: {
+    path: 'agencystaff',
+    method: 'POST'
+  },
+
   chatsession: {
-    path: 'appointment-chat.json',
+    path: 'appointment/{id}/chat',
     method: 'GET'
   },
 
   pendingprospect: {
-    path: 'pending-prospects.json',
+    path: 'prospect/pending',
     method: 'GET'
   },
 
   patchprospect: {
-    path: 'pending-prospects.json',
-    method: 'GET'
+    path: 'prospect/pending',
+    method: 'PATCH'
   },
 
   contact: {
-    path: 'contact-admin.json',
+    path: 'session/contact',
     method: 'GET'
   }
 };

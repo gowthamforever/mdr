@@ -2,12 +2,10 @@
   <div class="panel panel-primary">
     <div class="panel-heading">
       Personal Information
-      {{#if model.isActive}}
-        {{#if edit_personal}}
-          <a href="#" class="pull-right btn btn-xs btn-default" {{action "togglePersonal"}}><i class="fa fa-ban"></i> Cancel</a>
-        {{else}}
-          <a href="#" class="pull-right btn btn-xs btn-default" {{action "togglePersonal"}}><i class="fa fa-pencil"></i> Edit</a>
-        {{/if}}
+      {{#if edit_personal}}
+        <a href="#" class="pull-right btn btn-xs btn-default" {{action "togglePersonal"}}><i class="fa fa-ban"></i> Cancel</a>
+      {{else}}
+        <a href="#" class="pull-right btn btn-xs btn-default" {{action "togglePersonal"}}><i class="fa fa-pencil"></i> Edit</a>
       {{/if}}
     </div>
     <div class="panel-body">
@@ -92,12 +90,10 @@
   <div class="panel panel-primary">
     <div class="panel-heading">
       Contact Information
-      {{#if model.isActive}}
-        {{#if edit_contact}}
-          <a href="#" class="pull-right btn btn-xs btn-default" {{action "toggleContact"}}><i class="fa fa-ban"></i> Cancel</a>
-        {{else}}
-          <a href="#" class="pull-right btn btn-xs btn-default" {{action "toggleContact"}}><i class="fa fa-pencil"></i> Edit</a>
-        {{/if}}
+      {{#if edit_contact}}
+        <a href="#" class="pull-right btn btn-xs btn-default" {{action "toggleContact"}}><i class="fa fa-ban"></i> Cancel</a>
+      {{else}}
+        <a href="#" class="pull-right btn btn-xs btn-default" {{action "toggleContact"}}><i class="fa fa-pencil"></i> Edit</a>
       {{/if}}
     </div>
     <div class="panel-body">
