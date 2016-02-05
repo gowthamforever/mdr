@@ -13,6 +13,7 @@ const {
 export default Controller.extend(Api, {
   session: service(),
   notifications: service(),
+  appointments: service(),
 
   actions: {
     accept() {
@@ -25,6 +26,7 @@ export default Controller.extend(Api, {
         },
         data
       }).then(() => {
+        self.set('appointments.cache', false);
         self.set('model.status', 'accepted');
         self.get('notifications').backgroundNotification();
       });
@@ -40,6 +42,7 @@ export default Controller.extend(Api, {
         },
         data
       }).then(() => {
+        self.set('appointments.cache', false);
         self.set('model.status', 'rejected');
         self.get('notifications').backgroundNotification();
       });
