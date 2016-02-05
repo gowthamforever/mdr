@@ -150,7 +150,7 @@ section.welcome-block {
 
 
     h1.main-text {
-      color: $secondary-color;
+      color: #fff;
       margin: 20px;
       @media screen and (min-width: 768px) {
         font-size: 49px;
@@ -160,7 +160,7 @@ section.welcome-block {
     p.info-text {
       position: relative;
       margin: 20px;
-      color: $primary-color;
+      color: #17C6D2;
       font-family: museo-slab,Georgia,serif;
       font-style: italic;
       font-size: 21px;
