@@ -2,16 +2,10 @@ import Ember from 'ember';
 import { scrollTop } from 'mdr/utility/utils';
 
 const {
-  Route,
-  inject
+  Route
 } = Ember;
 
-const {
-  service
-} = inject;
-
 export default Route.extend({
-  session: service(),
 
   actions: {
     loading() {

@@ -17,7 +17,6 @@ const {
 const { service } = inject;
 
 export default Route.extend(Api, {
-  session: service(),
   header: service(),
   clients: service(),
   doctors: service(),

@@ -1,0 +1,8 @@
+<section class="appointments-request-block">
+  {{#if model.appointments}}
+    <div class="alert alert-info">
+      Appointments on <strong>{{model.formatted}}</strong>
+    </div>
+  {{/if}}
+  {{list-appointments date=model.formatted appointments=model.appointments}}
+</section>

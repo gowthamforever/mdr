@@ -18,6 +18,16 @@ const {
 export default Route.extend({
   assessors: service(),
 
+  beforeModel() {
+    const session = this.get('session');
+
+    if (!(session.get('role_admin') || session.get('role_super_admin') ||
+      session.get('role_regional_admin') || session.get('role_global_admin') ||
+      session.get('role_staff'))) {
+      this.transitionTo('home');
+    }
+  },
+
   model() {
     const self = this;
     return new Promise((resolve) => {

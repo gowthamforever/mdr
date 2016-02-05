@@ -14,8 +14,8 @@ export default Component.extend({
   // General Display
   header: {
     left: 'prev,next today',
-    center: 'title',
-    right: 'month,basicDay'
+    center: 'title'//,
+    //right: 'month,basicDay'
   },
   theme: false,
   firstDay: 0,
@@ -115,14 +115,17 @@ export default Component.extend({
       // date, jsEvent, view
       dayClick(date) {
         const dayClick = self.attrs.dayClick;
+        let toDate = new Date(date);
+
+        toDate = moment(toDate).add(1, 'days').toDate();
         if (dayClick) {
-          dayClick(...arguments);
+          dayClick(toDate, ...arguments);
         }
 
-        let toDate = new Date(date);
-        toDate = moment(toDate).add(1, 'days').toDate();
-        self.$().fullCalendar( 'changeView', 'basicDay' );
-        self.$().fullCalendar( 'gotoDate', toDate );
+        if (this.get('gotoToday')) {
+          self.$().fullCalendar( 'changeView', 'basicDay' );
+          self.$().fullCalendar( 'gotoDate', toDate );
+        }
       },
 
       // calEvent, jsEvent, view

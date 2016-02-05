@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import Appointments from 'mdr/models/appointments';
 
 const {
   Controller
@@ -14,7 +15,13 @@ export default Controller.extend({
     },
 
     eventClick(event) {
-      this.transitionTo('appointments.details', event.appointment);
+      this.transitionToRoute('appointments.details', event.appointment);
+    },
+
+    dayClick(date) {
+      this.transitionToRoute('appointments.day', Appointments.create({
+        date: moment(date).format('MMDDYYYY')
+      }));
     }
   }
 });

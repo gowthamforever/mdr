@@ -4,7 +4,7 @@
       <section class="appointment-wrapper clearfix">
         <div class="main clearfix">
           <h4>
-            <i class="fa fa-user fa-2 {{if pending 'pending'}} {{if accepted 'accepted'}} {{if rejected 'rejected'}}"></i>
+            <i class="fa fa-user fa-2 {{if (eq appointment.status 'pending') 'pending'}} {{if (eq appointment.status 'accepted') 'accepted'}} {{if (eq appointment.status 'rejected') 'rejected'}}"></i>
             {{#if appointment.customer}}
               {{appointment.customer.first_name}} {{appointment.customer.last_name}}
             {{/if}}
@@ -32,7 +32,11 @@
     {{/link-to}}
   {{else}}
     <div class="alert alert-danger">
-      No <strong>{{if pending 'pending'}} {{if accepted 'accepted'}} {{if rejected 'rejected'}}</strong> appointments.
+      {{#if date}}
+        No appointments for {{date}}.
+      {{else}}
+        No <strong>{{if pending 'pending'}} {{if accepted 'accepted'}} {{if rejected 'rejected'}}</strong> appointments.
+      {{/if}}
     </div>
   {{/each}}
 </ul>

@@ -14,6 +14,14 @@ const {
 const { Promise } = RSVP;
 
 export default Route.extend(EmberValidator, Api, {
+  beforeModel() {
+    const session = this.get('session');
+
+    if (session.get('role_doctor') || session.get('role_assessor')) {
+      this.transitionTo('home');
+    }
+  },
+  
   model() {
     return Client.create();
   },

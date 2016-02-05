@@ -35,6 +35,7 @@ Route.reopen({
       'assessors.add': { title: 'Add a Assessor' },
       'assessors.assessor.profile': { title: 'Assessor Profile' },
       'appointments.calendar': {title: 'Appointments'},
+      'appointments.day': {title: 'Appointments'},
       'appointments.create': { title: 'Create Appointment' },
       'appointments.details': { title: 'Appointment Details' },
       'appointments.requests.pending': { title: 'Appointments' },
@@ -94,6 +95,7 @@ App = Application.extend({
   ready() {
     this.inject('route', 'titlebar', 'service:titlebar');
     this.inject('route', 'dialog', 'service:dialog');
+    this.inject('route', 'session', 'service:session');
     this.inject('service:errorhandler', 'router', 'router:main');
   }
 });

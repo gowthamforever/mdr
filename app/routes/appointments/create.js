@@ -18,6 +18,14 @@ const {
 export default Route.extend({
   clients: service(),
 
+  beforeModel() {
+    const session = this.get('session');
+
+    if (session.get('role_doctor') || session.get('role_assessor')) {
+      this.transitionTo('home');
+    }
+  },
+
   model() {
     this.transitionTo('home');
   },

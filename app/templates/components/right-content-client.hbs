@@ -1,2 +1,4 @@
-{{add-client-btn tagName="span"}}
-{{create-appointment-btn tagName="span" model=model}}
+{{#unless (or session.role_doctor session.role_assessor)}}
+  {{add-client-btn tagName="span"}}
+  {{create-appointment-btn tagName="span" model=model}}
+{{/unless}}
