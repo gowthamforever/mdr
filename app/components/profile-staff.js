@@ -14,6 +14,7 @@ const {
 
 export default Component.extend(Api, {
   session: service(),
+  notifications: service(),
 
   edit_personal: false,
   edit_contact: false,
@@ -70,6 +71,7 @@ export default Component.extend(Api, {
         id: 'patchprospect',
         data
       }).then(() => {
+        self.get('notifications').backgroundNotification();
         self.setProperties({
           'model.active': 1,
           'staff.active': 1,

@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import Api from 'mdr/mixins/api';
 
 const {
   Controller,
@@ -9,16 +10,39 @@ const {
   service
 } = inject;
 
-export default Controller.extend({
+export default Controller.extend(Api, {
   session: service(),
-  
+  notifications: service(),
+
   actions: {
     accept() {
-      this.set('model.status', 'accepted');
+      const self = this;
+      const data = { status: 'accepted' };
+      self.ajax({
+        id: 'patchappointment',
+        path: {
+          id: self.get('model.id')
+        },
+        data
+      }).then(() => {
+        self.set('model.status', 'accepted');
+        self.get('notifications').backgroundNotification();
+      });
     },
 
     reject() {
-      this.set('model.status', 'rejected');
+      const self = this;
+      const data = { status: 'rejected' };
+      self.ajax({
+        id: 'patchappointment',
+        path: {
+          id: self.get('model.id')
+        },
+        data
+      }).then(() => {
+        self.set('model.status', 'rejected');
+        self.get('notifications').backgroundNotification();
+      });
     }
   }
 });

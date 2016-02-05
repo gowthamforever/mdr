@@ -74,5 +74,10 @@ export default {
   contact: {
     path: 'session/contact',
     method: 'GET'
+  },
+
+  patchappointment: {
+    path: 'appointment/{id}',
+    method: 'PATCH'
   }
 };

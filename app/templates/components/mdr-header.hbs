@@ -23,18 +23,18 @@
           <li class="dropdown hidden-xs">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <i class="notify-menu fa fa-bell fa-2"></i>
-              {{#if notifications}}
-                <span class="badge notify-badge">{{notifications_count}}</span>
+              {{#if notifications.content}}
+                <span class="badge notify-badge">{{notifications.count}}</span>
               {{/if}}
             </a>
-            {{#if notifications}}
+            {{#if notifications.content}}
               <ul class="dropdown-menu header-notifications">
                 <div class="notification-heading">
                   <h4 class="header-title"><i class="fa fa-bell"></i> Notifications</h4>
                 </div>
                 <li class="divider"></li>
                 <div class="notifications-wrapper">
-                  {{#each notifications as |notification index|}}
+                  {{#each notifications.content as |notification index|}}
                     {{#if notification.appointment}}
                       <div class="notification-item {{unless (eq (mod index) 0) 'even'}} clearfix">
                         <div class="item-avatar {{if (eq (mod index) 0) 'pull-left' 'pull-right'}}">

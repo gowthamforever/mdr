@@ -15,6 +15,7 @@ const {
 export default Component.extend(Api, {
   session: service(),
   assessors: service(),
+  notifications: service(),
 
   edit_personal: false,
   edit_contact: false,
@@ -72,6 +73,7 @@ export default Component.extend(Api, {
         id: 'patchprospect',
         data
       }).then(() => {
+        self.get('notifications').backgroundNotification();
         self.setProperties({
           'assessor.cache': false,
           'model.active': 1,

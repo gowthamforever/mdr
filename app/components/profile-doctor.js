@@ -16,6 +16,7 @@ export default Component.extend(Api, {
   session: service(),
   doctors: service(),
   approved: false,
+  notifications: service(),
 
   edit_personal: false,
   edit_contact: false,
@@ -157,6 +158,7 @@ export default Component.extend(Api, {
         id: 'patchprospect',
         data
       }).then(() => {
+        self.get('notifications').backgroundNotification();
         self.setProperties({
           'doctors.cache': false,
           'model.active': 1,
