@@ -7,7 +7,11 @@ section.welcome-block {
 
   section.join-now-block {
     height: 450px;
-    padding-top: 100px;
+    padding-top: 25px;
+
+    @media (min-width: 768px) {
+      padding-top: 75px;
+    }
 
     /* make keyframes that tell the start state and the end state of our object */
     @-webkit-keyframes fadeIn {
@@ -160,7 +164,7 @@ section.welcome-block {
     p.info-text {
       position: relative;
       margin: 20px;
-      color: #17C6D2;
+      color: #00EFFF;
       font-family: museo-slab,Georgia,serif;
       font-style: italic;
       font-size: 21px;
