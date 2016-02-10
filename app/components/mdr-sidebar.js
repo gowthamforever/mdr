@@ -20,6 +20,6 @@ export default Component.extend({
   initAppointments: on('didInitAttrs', function() {
     this.set('appointments', Appointments.create({
       date: moment().format('MMDDYYYY')
-    }))
+    }));
   })
 });

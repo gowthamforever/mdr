@@ -4,6 +4,6 @@ export default Ember.Object.extend({
   first_name: null,
   last_name: null,
   dob: null,
-  gender: 'MALE',
+  gender: 'Male',
   relation: null
 });

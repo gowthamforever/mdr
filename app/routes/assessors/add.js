@@ -2,7 +2,7 @@ import Ember from 'ember';
 import EmberValidator from 'ember-validator';
 import Assessor from 'mdr/models/assessor';
 import Api from 'mdr/mixins/api';
-import { animateTo } from 'mdr/utility/utils';
+import { animateTo, retainNumbers } from 'mdr/utility/utils';
 
 const {
   Route
@@ -44,6 +44,7 @@ export default Route.extend(EmberValidator, Api, {
       },
 
       last_name: {
+        required: 'Last Name is required.',
         length: {
           maximum: 50,
           message: 'Must be 50 characters or less.'
@@ -51,7 +52,7 @@ export default Route.extend(EmberValidator, Api, {
       },
 
       first_name: {
-        required: 'First name is required.',
+        required: 'First Name is required.',
         length: {
           minimum: 3,
           maximum: 50,
@@ -63,33 +64,30 @@ export default Route.extend(EmberValidator, Api, {
       },
 
       email_id: {
+        required: 'Email Address is required.',
         length: {
           maximum: 50,
           message: 'Must be 50 characters or less.'
         },
-        email: 'Email id is not valid.'
+        email: 'Email Address is not valid.'
       },
 
       dob: {
-        required: 'DOB is required.',
+        required: 'Date of Birth is required.',
       },
 
       phone1: {
-        required: 'Phone no is required',
+        required: 'Phone Number is required',
         phone: {
-          format9: true,
-          message: 'Phone no is not valid(NNNNNNNNNN).'
+          format2: true,
+          message: 'Phone Number is not valid (NNN) NNN-NNNN.'
         }
       },
 
       phone2: {
         phone: {
-          format9: true,
-          message: 'Phone no is not valid(NNNNNNNNNN).'
-        },
-        equals: {
-          accept: model.get('phone1'),
-          message: 'Must be same as phone number.'
+          format2: true,
+          message: 'Confirm Phone Number is not valid (NNN) NNN-NNNN.'
         }
       },
 
@@ -139,12 +137,12 @@ export default Route.extend(EmberValidator, Api, {
           'address1',
           'city1',
           'zip1',
-          'phone1',
-          'phone2',
           'employee_number',
           'rater_id'
         ]);
 
+        data.phone1 = retainNumbers(model.get('phone1'));
+        data.phone2 = retainNumbers(model.get('phone2'));
         data.dob = moment(model.get('dob'), 'MMM DD YYYY').format('MM-DD-YYYY');
         data.state1 = model.get('selected_state_1.id');
         data.country1 = 'US';

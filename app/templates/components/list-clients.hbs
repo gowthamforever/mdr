@@ -34,9 +34,10 @@
               <i class="fa fa-user fa-2 primary-color"></i>
               {{client.first_name}} {{client.last_name}}
             </h4>
-            <p>{{client.insurance_plan_obj.name}}</p>
-            <p><i class="fa fa-envelope"></i> {{dash-for-empty client.email_id}}</p>
-            <p><i class="fa fa-phone"></i> {{dash-for-empty client.phone1}}</p>
+            <ul class="list-unstyled">
+              <li><i class="fa {{if (eq client.gender 'Male') 'fa-male' 'fa-female'}}"></i> {{client.gender}} (Age {{client.age}} years)</li>
+              <li><i class="fa fa-phone"></i> {{phone-number client.phone1}}</li>
+            </ul>
           </div>
         </section>
       {{/link-to}}

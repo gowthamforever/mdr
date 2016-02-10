@@ -5,8 +5,8 @@ export default {
   },
 
   GENDER: {
-    MALE: 'Male',
-    FEMALE: 'Female'
+    Male: 'Male',
+    Female: 'Female'
   },
 
   STATUS: {
@@ -75,35 +75,15 @@ export default {
   ],
 
   TIME_ZONES: [
-    { id: 'America/Adak', name: 'Adak' },
-    { id: 'America/Anchorage', name: 'Anchorage' },
-    { id: 'America/Boise', name: 'Boise' },
-    { id: 'America/Chicago', name: 'Chicago' },
-    { id: 'America/Denver', name: 'Denver' },
-    { id: 'America/Detroit', name: 'Detroit' },
-    { id: 'America/Indiana/Indianapolis', name: 'Indiana/Indianapolis' },
-    { id: 'America/Indiana/Knox', name: 'Indiana/Knox' },
-    { id: 'America/Indiana/Marengo', name: 'Indiana/Marengo' },
-    { id: 'America/Indiana/Petersburg', name: 'Indiana/Petersburg' },
-    { id: 'America/Indiana/Tell_City', name: 'Indiana/Tell_City' },
-    { id: 'America/Indiana/Vevay', name: 'Indiana/Vevay' },
-    { id: 'America/Indiana/Vincennes', name: 'Indiana/Vincennes' },
-    { id: 'America/Indiana/Winamac', name: 'Indiana/Winamac' },
-    { id: 'America/Juneau', name: 'Juneau' },
-    { id: 'America/Kentucky/Louisville', name: 'Kentucky/Louisville' },
-    { id: 'America/Kentucky/Monticello', name: 'Kentucky/Monticello' },
-    { id: 'America/Los_Angeles', name: 'Los_Angeles' },
-    { id: 'America/Menominee', name: 'Menominee' },
-    { id: 'America/Metlakatla', name: 'Metlakatla' },
-    { id: 'America/New_York', name: 'New_York' },
-    { id: 'America/Nome', name: 'Nome' },
-    { id: 'America/North_Dakota/Beulah', name: 'North_Dakota/Beulah' },
-    { id: 'America/North_Dakota/Center', name: 'North_Dakota/Center' },
-    { id: 'America/North_Dakota/New_Salem', name: 'North_Dakota/New_Salem' },
-    { id: 'America/Phoenix', name: 'Phoenix' },
-    { id: 'America/Sitka', name: 'Sitka' },
-    { id: 'America/Yakutat', name: 'Yakutat' },
-    { id: 'Pacific/Honolulu', name: 'Pacific/Honolulu' }
+    { id: 'Samoa', name: 'Samoa' },
+    { id: 'Hawaii–Aleutian', name: 'Hawaii–Aleutian' },
+    { id: 'Alaska', name: 'Alaska' },
+    { id: 'Pacific', name: 'Pacific' },
+    { id: 'Mountain', name: 'Mountain' },
+    { id: 'Central', name: 'Central' },
+    { id: 'Eastern', name: 'Eastern' },
+    { id: 'Atlantic', name: 'Atlantic' },
+    { id: 'Chamorro', name: 'Chamorro' }
   ],
 
   MONTHS: [

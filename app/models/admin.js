@@ -11,14 +11,14 @@ export default Ember.Object.extend({
   email_id: null,
   employee_number: null,
   first_name: null,
-  gender: "MALE",
+  gender: "Male",
   graduation_year: null,
   last_name: null,
   photo: null,
   rater_id: null,
   isActive: equal('active', Constants.STATUS.ACTIVE),
-  male: equal('gender', Constants.GENDER.MALE),
-  female: equal('gender', Constants.GENDER.FEMALE),
+  male: equal('gender', Constants.GENDER.Male),
+  female: equal('gender', Constants.GENDER.Female),
   states: Constants.STATES,
   timezones: Constants.TIME_ZONES
 });

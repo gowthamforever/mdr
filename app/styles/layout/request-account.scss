@@ -15,8 +15,22 @@ section.request-account-block {
       width: 75%;
     }
 
+    .tabs-container {
+      padding-top: 20px;
+    }
+
     section.register-form-content {
       padding-top: 15px;
+    }
+  }
+
+  section.confirmation-block {
+    display: inline-block;
+    text-align: initial;
+    padding: 15px;
+    width: 100%;
+    @media (min-width: 991px) {
+      width: 75%;
     }
   }
 }

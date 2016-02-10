@@ -2,8 +2,13 @@ import Ember from 'ember';
 
 const {
   Route,
-  inject
+  inject,
+  run
 } = Ember;
+
+const {
+  scheduleOnce
+} = run;
 
 const {
   service
@@ -21,6 +26,13 @@ export default Route.extend({
   deactivate() {
     this._super(...arguments);
     this.set('header.showLoginBtn', false);
+  },
+
+  renderTemplate() {
+    this._super(...arguments);
+    scheduleOnce('afterRender', this, () => {
+      Ember.$('.join-now-block').css('height', Ember.$(window).height() -180);
+    });
   },
 
   actions: {

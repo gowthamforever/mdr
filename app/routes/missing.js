@@ -6,6 +6,6 @@ const {
 
 export default Route.extend({
   redirect() {
-    this.transitionTo('welcome');
+    this.transitionTo('store-front');
   }
 });

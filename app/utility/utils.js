@@ -11,7 +11,7 @@ export function animateTo(options = {}) {
   }
 
   if (element) {
-    jqPosition = element.position(); 
+    jqPosition = element.position();
     position = jqPosition ? jqPosition.top : 0;
   }
 
@@ -55,4 +55,8 @@ export function prepend(value='', text=0, length=2) {
   }
 
   return result;
+}
+
+export function retainNumbers(str="") {
+  return str.replace(/\D/g, "");
 }

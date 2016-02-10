@@ -77,12 +77,12 @@
     						<div>
     							<div class="radio-inline">
     								<label>
-    									{{input-radio name="gender" group=model.gender value="MALE"}} Male
+    									{{input-radio name="gender" group=model.gender value="Male"}} Male
     								</label>
     							</div>
     							<div class="radio-inline">
     								<label>
-    									{{input-radio name="gender" group=model.gender value="FEMALE"}} Female
+    									{{input-radio name="gender" group=model.gender value="Female"}} Female
     								</label>
     							</div>
     						</div>
@@ -159,7 +159,7 @@
                 {{input type="text" class="form-control" name="phone1" value=model.phone1 maxlength=10 autocomplete="off"}}
                 {{mdr-field-error client=model.validationResult.phone1}}
               {{else}}
-                <div class="form-control-static">{{dash-for-empty model.phone1}}</div>
+                <div class="form-control-static">{{phone-number model.phone1}}</div>
               {{/if}}
             </div>
             <div class="form-group col-md-6  {{if model.validationResult.phone2.hasError 'has-error'}}">
@@ -168,7 +168,7 @@
                 {{input type="text" class="form-control" name="phone2" value=model.phone2 maxlength=10 autocomplete="off"}}
                 {{mdr-field-error client=model.validationResult.phone2}}
               {{else}}
-                <div class="form-control-static">{{dash-for-empty model.phone2}}</div>
+                <div class="form-control-static">{{phone-number model.phone2}}</div>
               {{/if}}
             </div>
           </div>

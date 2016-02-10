@@ -1,53 +1,50 @@
 import Ember from 'ember';
 import EmberValidator from 'ember-validator';
-import Doctor from 'mdr/models/doctor';
+import Agent from 'mdr/models/enroll-agent';
 import Api from 'mdr/mixins/api';
 import { animateTo, retainNumbers } from 'mdr/utility/utils';
 
 const {
-  Route
+  Route,
+  inject
 } = Ember;
 
+const {
+  service
+} = inject;
+
 export default Route.extend(EmberValidator, Api, {
+  session: service(),
+
+  beforeModel() {
+    if (this.get('session.isAuthenticated')) {
+      this.transitionTo('store-front');
+    }
+  },
+
   model() {
-    return Doctor.create();
+    return Agent.create();
   },
 
   _validations(model) {
     return {
+      agency_id: {
+        required: 'Agency Id is required.'
+      },
+
+      employee_number: {
+        required: 'Employee Id is required.'
+      },
+
       password1: {
         required: 'Password is required.'
       },
 
       password2: {
-        required: 'Password is required.',
+        required: 'Confirm Password is required.',
         equals: {
           accept: model.get('password1'),
-          message: 'Must be same as password.'
-        }
-      },
-
-      npi: {
-        required: 'NPI is required.',
-        pattern: {
-          with: /^\d{10}$/,
-          message: 'Enter valid NPI number.'
-        }
-      },
-
-      medicaid_number: {
-        required: 'Medicaid number is required.',
-        pattern: {
-          with: /^\[a-zA-Z0-9]{10}$/,
-          message: 'Enter valid Medicaid number number.'
-        }
-      },
-
-      medicare_number: {
-        required: 'Medicare number is required.',
-        pattern: {
-          with: /^\[a-zA-Z0-9]{10}$/,
-          message: 'Enter valid Medicare number number.'
+          message: 'Confirm Password must be same as password.'
         }
       },
 
@@ -55,7 +52,7 @@ export default Route.extend(EmberValidator, Api, {
         required: 'Last Name is required.',
         length: {
           maximum: 50,
-          message: 'Must be 50 characters or less.'
+          message: 'Last Name must be 50 characters or less.'
         }
       },
 
@@ -65,8 +62,8 @@ export default Route.extend(EmberValidator, Api, {
           minimum: 3,
           maximum: 50,
           messages: {
-            minimum: 'Must be 3 characters or more.',
-            maximum: 'Must be 50 characters or less.'
+            minimum: 'First Name must be 3 characters or more.',
+            maximum: 'First Name must be 50 characters or less.'
           }
         }
       },
@@ -75,9 +72,13 @@ export default Route.extend(EmberValidator, Api, {
         required: 'Email Address is required.',
         length: {
           maximum: 50,
-          message: 'Must be 50 characters or less.'
+          message: 'Email Address must be 50 characters or less.'
         },
         email: 'Email Address is not valid.'
+      },
+
+      selected_timezone: {
+        required: 'Timezone is required'
       },
 
       dob: {
@@ -116,25 +117,21 @@ export default Route.extend(EmberValidator, Api, {
       },
 
       zip1: {
-        required: 'Zip is required',
-        zip: 'Zip is not valid(NNNNN or NNNNN-NNNN).'
+        required: 'Zip Code is required',
+        zip: 'Zip Code is not valid(NNNNN or NNNNN-NNNN).'
       }
     };
   },
 
   actions: {
     add() {
-      const self        = this;
-      const model       = self.get('controller.model');
+      const model       = this.get('controller.model');
       const validations = this._validations(model);
-      let data;
+      const self        = this;
+      let data          = {};
 
-      model.setProperties({
-        validationResult: null,
-        created: false
-      });
+      model.set('validationResult', null);
 
-      animateTo();
       self.validateMap({ model, validations }).then(() => {
         data = _.pick(model, [
           'first_name',
@@ -144,9 +141,8 @@ export default Route.extend(EmberValidator, Api, {
           'address1',
           'city1',
           'zip1',
-          'npi',
-          'medicare_number',
-          'medicaid_number'
+          'agency_id',
+          'employee_number'
         ]);
 
         data.phone1 = retainNumbers(model.get('phone1'));
@@ -154,23 +150,19 @@ export default Route.extend(EmberValidator, Api, {
         data.dob = moment(model.get('dob'), 'MMM DD YYYY').format('MM-DD-YYYY');
         data.state1 = model.get('selected_state_1.id');
         data.country1 = 'US';
-        // TODO: Get from profile and assign
-        data.agency_id = '715c979c0f77be37e82e52cbeb54883f';
         data.password = model.get('password1');
         data.timezone = model.get('selected_timezone.id');
 
         self.ajax({
-          id: 'adddoctor',
+          id: 'addagencystaff',
           data
         }).then(() => {
-          self.refresh().then(() => {
-            const model = self.get('controller.model');
-            model.set('created', true);
-          });
+          self.transitionTo("enrollment.confirmation");
         }).catch(() => {
 
         });
       }).catch((validationResult) => {
+        animateTo();
         model.set('validationResult', validationResult);
       });
     }

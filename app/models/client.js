@@ -21,7 +21,7 @@ export default Ember.Object.extend(AppointmentFlags, {
   }),
   email_id: null,
   first_name: null,
-  gender: 'MALE',
+  gender: 'Male',
   insurance_plan: null,
   insurance_plan_obj: computed('insurance_plan', function() {
     const insurance_plan = this.get('insurance_plan');
@@ -35,8 +35,8 @@ export default Ember.Object.extend(AppointmentFlags, {
   insurance: computed('insurance_plan', function() {
     return Constants.INSURANCE_PLANS.findBy('id', this.get('insurance_plan'));
   }),
-  male: equal('gender', Constants.GENDER.MALE),
-  female: equal('gender', Constants.GENDER.FEMALE),
+  male: equal('gender', Constants.GENDER.Male),
+  female: equal('gender', Constants.GENDER.Female),
   states: Constants.STATES,
   timezones: Constants.TIME_ZONES,
   months: Constants.MONTHS,

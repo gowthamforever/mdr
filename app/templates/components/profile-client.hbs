@@ -21,7 +21,7 @@
                 <div class="form-control-static">{{model.first_name}}</div>
               {{/if}}
             </div>
-            
+
             <div class="form-group col-md-6 {{if model.validationResult.last_name.hasError 'has-error'}}">
               <label class="control-label" for="first-name">Last name</label>
               {{#if edit_personal}}
@@ -49,12 +49,12 @@
     						<div>
     							<div class="radio-inline">
     								<label>
-    									{{input-radio name="gender" group=model.gender value="MALE"}} Male
+    									{{input-radio name="gender" group=model.gender value="Male"}} Male
     								</label>
     							</div>
     							<div class="radio-inline">
     								<label>
-    									{{input-radio name="gender" group=model.gender value="FEMALE"}} Female
+    									{{input-radio name="gender" group=model.gender value="Female"}} Female
     								</label>
     							</div>
     						</div>
@@ -80,7 +80,7 @@
                 {{input type="text" class="form-control" name="pcd-phone" value=model.pcd_phone maxlength=10 autocomplete="off"}}
                 {{mdr-field-error client=model.validationResult.pcd_phone}}
               {{else}}
-                <div class="form-control-static">{{dash-for-empty model.pcd_phone}}</div>
+                <div class="form-control-static">{{phone-number model.pcd_phone}}</div>
               {{/if}}
             </div>
           </div>
@@ -155,7 +155,7 @@
                 {{input type="text" class="form-control" name="phone2" value=model.phone2 maxlength=10 autocomplete="off"}}
                 {{mdr-field-error client=model.validationResult.phone2}}
               {{else}}
-                <div class="form-control-static">{{dash-for-empty model.phone2}}</div>
+                <div class="form-control-static">{{phone-number model.phone2}}</div>
               {{/if}}
             </div>
           </div>
@@ -318,7 +318,7 @@
       </form>
     </div>
   </div>
-  <div class="panel panel-primary">
+  <div class="panel panel-primary hide">
     <div class="panel-heading">
       Billing Information
       {{#if edit_billing}}

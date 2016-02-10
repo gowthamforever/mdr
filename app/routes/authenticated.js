@@ -36,7 +36,7 @@ export default Route.extend(Api, {
     const isAuthenticated = this.get('session.isAuthenticated');
 
     if (!isAuthenticated) {
-      this.transitionTo('welcome');
+      this.transitionTo('store-front');
     }
   },
 

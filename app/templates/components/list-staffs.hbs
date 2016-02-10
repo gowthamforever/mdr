@@ -34,7 +34,9 @@
               <i class="fa fa-user fa-2 {{if staff.isActive 'success-color' 'danger-color'}}"></i>
               {{staff.first_name}} {{staff.last_name}}
             </h4>
-            <p><i class="fa fa-envelope"></i> {{dash-for-empty staff.email_id}}</p>
+            <ul class="list-unstyled">
+              <li><i class="fa fa-envelope"></i> {{dash-for-empty assessor.email_id}}</li>
+            </ul>
           </div>
         </section>
       {{/link-to}}

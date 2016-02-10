@@ -21,7 +21,7 @@ export default TextField.extend({
       format: self.get('format'),
       clear: '',
       selectMonths: true,
-      selectYears: true,
+      selectYears: 100,
 
       onSet: function(context) {
         if (change) {

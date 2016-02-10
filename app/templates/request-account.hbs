@@ -1,6 +1,12 @@
 <section class="request-account-block">
   <section class="register-block">
     <section class="col-md-12">
+      {{#if model.created}}
+    		<div class="alert alert-success">
+    			Thanks for your interest in MDRealtime. Your request has been received and someone will reach out to you soon!
+    		</div>
+    	{{/if}}
+
       <div class="panel panel-primary">
         <div class="panel-heading">NEW AGENCY REGISTRATION</div>
         <div class="panel-body">
@@ -28,13 +34,13 @@
 
               <div class="row">
                 <div class="form-group col-md-6 {{if model.validationResult.first_name.hasError 'has-error'}}">
-                  <label class="control-label" for="first-name">First name</label>
+                  <label class="control-label" for="first-name">First Name</label>
                   {{input type="text" class="form-control" name="first-name" value=model.first_name maxlength=50 autocomplete="off"}}
                   {{mdr-field-error client=model.validationResult.first_name}}
                 </div>
 
                 <div class="form-group col-md-6 {{if model.validationResult.last_name.hasError 'has-error'}}">
-                  <label class="control-label" for="first-name">Last name</label>
+                  <label class="control-label" for="first-name">Last Name</label>
                   {{input type="text" class="form-control" name="last-name" value=model.last_name maxlength=50 autocomplete="off"}}
                   {{mdr-field-error client=model.validationResult.last_name}}
                 </div>
@@ -42,14 +48,15 @@
 
               <div class="row">
                 <div class="form-group col-md-6 {{if model.validationResult.email_id.hasError 'has-error'}}">
-                  <label class="control-label" for="email-id">Email address</label>
+                  <label class="control-label" for="email-id">Email Address</label>
                   {{input type="text" class="form-control" name="email-id" value=model.email_id maxlength=50 autocomplete="off"}}
                   {{mdr-field-error client=model.validationResult.email_id}}
                 </div>
 
                 <div class="form-group col-md-6  {{if model.validationResult.phone1.hasError 'has-error'}}">
-                  <label class="control-label" for="phone1">Phone number</label>
-                  {{input type="text" class="form-control" name="phone1" value=model.phone1 maxlength=10 autocomplete="off"}}
+                  <label class="control-label" for="phone1">Phone Number</label>
+                  {{input type="text" class="form-control" name="phone1" value=model.phone1 maxlength=14 autocomplete="off"}}
+                  <small class="help-block prevent-error">(NNN) NNN-NNNN</small>
                   {{mdr-field-error client=model.validationResult.phone1}}
                 </div>
               </div>
@@ -63,8 +70,16 @@
               </div>
 
               <div class="row">
-                <div class="form-group col-md-2">
-                  <button class="btn btn-primary btn-block" type="submit" autocomplete="off">Send request</button>
+                <div class="form-group col-md-2 form-group-right-align">
+                  <button class="btn btn-primary btn-block" type="submit" autocomplete="off">Submit</button>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-md-12">
+                  <div class="form-control-static form-group-right-align">
+                    Already have an MDRealtime Account ID? {{#link-to "store-front"}}Sign In{{/link-to}} redirects to store front
+                  </div>
                 </div>
               </div>
             </form>

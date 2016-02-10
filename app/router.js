@@ -6,9 +6,19 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('welcome');
+  this.route('store-front');
   this.route('forget-password');
   this.route('request-account');
+
+  this.resource('enrollment', function() {
+    this.route('register', { path: '/' });
+    this.route('agent');
+    this.route('doctor');
+    this.route('assessor');
+    this.route('confirmation');
+  });
+
+
 
   this.resource('authenticated', { path: '/' }, function() {
     this.resource('home');
