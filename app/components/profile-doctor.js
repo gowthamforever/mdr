@@ -166,6 +166,47 @@ export default Component.extend(Api, {
           approved: true
         });
       });
+    },
+
+    personal() {
+      const self  = this;
+      const model = self.get('model');
+      let data;
+
+      data = _.pick(model, [
+        'first_name',
+        'last_name',
+        'email_id',
+        'gender',
+        'medicaid_number',
+        'medicare_number',
+        'npi',
+        'practice_years',
+        'service_charge',
+        'surgeon',
+        'ein',
+        'dea',
+        'graduation_year'
+      ]);
+
+      data.dob = moment(model.get('dob'), 'MMM DD YYYY').format('MM-DD-YYYY');
+      data.primary_speciality = model.get('primary_speciality_obj.id');
+      data.practice_type = model.get('practice_type_obj.id');
+
+      self.ajax({
+        id: 'updatedoctorinfo',
+        path: {
+          id: self.get('model.doctor_id')
+        },
+        data
+      }).then(() => {
+        self.toggleProperty('edit_personal');
+        self.set('doctors.cache', false);
+      });
+    },
+
+    contact() {
+
     }
   }
 });

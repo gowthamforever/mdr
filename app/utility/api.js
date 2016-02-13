@@ -99,5 +99,15 @@ export default {
   staffdetails: {
     path: 'agencystaff/{id}',
     method: 'GET'
+  },
+
+  updatedoctorinfo: {
+    path: 'doctor/{id}/info',
+    method: 'PATCH'
+  },
+
+  updatedoctorcontact: {
+    path: 'doctor/{id}/contact',
+    method: 'PATCH'
   }
 };
