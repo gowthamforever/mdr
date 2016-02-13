@@ -157,7 +157,7 @@ export default Route.extend(EmberValidator, Api, {
           id: 'addagencystaff',
           data
         }).then(() => {
-          self.transitionTo("enrollment.confirmation");
+          self.transitionTo("enrollment-confirmation");
         }).catch(() => {
 
         });

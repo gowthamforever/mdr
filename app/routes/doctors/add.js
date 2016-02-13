@@ -154,8 +154,6 @@ export default Route.extend(EmberValidator, Api, {
         data.dob = moment(model.get('dob'), 'MMM DD YYYY').format('MM-DD-YYYY');
         data.state1 = model.get('selected_state_1.id');
         data.country1 = 'US';
-        // TODO: Get from profile and assign
-        data.agency_id = '715c979c0f77be37e82e52cbeb54883f';
         data.password = model.get('password1');
         data.timezone = model.get('selected_timezone.id');
 

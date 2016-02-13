@@ -15,10 +15,9 @@ Router.map(function() {
     this.route('agent');
     this.route('doctor');
     this.route('assessor');
-    this.route('confirmation');
   });
 
-
+  this.route('enrollment-confirmation');
 
   this.resource('authenticated', { path: '/' }, function() {
     this.resource('home');
