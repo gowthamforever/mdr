@@ -26,12 +26,19 @@ export default Route.extend({
   deactivate() {
     this._super(...arguments);
     this.set('header.showLoginBtn', false);
+    Ember.$(window).off('resize.store-front');
   },
 
   renderTemplate() {
     this._super(...arguments);
     scheduleOnce('afterRender', this, () => {
-      Ember.$('.join-now-block').css('height', Ember.$(window).height() -180);
+      Ember.$(window).on('resize.store-front', () => {
+        let height = Ember.$(window).height();
+        if (height < 570) {
+          height = 570;
+        }
+        Ember.$('.join-now-block').css('height', height -180);
+      });
     });
   },
 

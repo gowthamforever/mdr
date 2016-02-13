@@ -62,7 +62,8 @@ Router.map(function() {
     });
 
     this.resource('appointments', function() {
-      this.route('calendar', { path: '/' });
+      this.route('index',  { path: '/' });
+      this.route('calendar');
       this.route('day', { path: '/day/:date' });
       this.route('requests', function() {
         this.route('pending', { path: '/' });

@@ -7,7 +7,7 @@ const {
 export default Service.extend({
   unauthorized() {
     this.get('router').transitionTo('authenticated').then(() => {
-      window.MDR.reset();
+      window.location = document.location.href.replace(location.hash , "" );
     });
   },
 

@@ -1,1 +1,7 @@
-{{list-assessors class="assessors-list-block" model=model hideSearch=true}}
+{{#if model.assessors}}
+  {{list-assessors class="assessors-list-block" model=model hideSearch=true}}
+{{else}}
+  <div class="alert alert-danger">
+    No any enrollment request received from assessor.
+  </div>
+{{/if}}

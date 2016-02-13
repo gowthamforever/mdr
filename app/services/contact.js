@@ -14,6 +14,7 @@ export default Service.extend({
   assessors: service(),
   staffs: service(),
   admins: service(),
+  clients: service(),
 
   createDoctor(response) {
     let data;
@@ -45,5 +46,13 @@ export default Service.extend({
       data = _.extend(response.agencyAdminInfo, response.agencyAdminContact);
     }
     return this.get('admins').createAdmin(data);
+  },
+
+  createClient(response) {
+    let data;
+    if (response) {
+      data = _.extend(response.customerInfo, response.customerContact);
+    }
+    return this.get('clients').createClient(data);
   }
 });

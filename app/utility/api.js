@@ -79,5 +79,25 @@ export default {
   patchappointment: {
     path: 'appointment/{id}',
     method: 'PATCH'
+  },
+
+  doctordetails: {
+    path: 'doctor/{id}',
+    method: 'GET'
+  },
+
+  clientdetails: {
+    path: 'client/{id}',
+    method: 'GET'
+  },
+
+  assessordetails: {
+    path: 'assessor/{id}',
+    method: 'GET'
+  },
+
+  staffdetails: {
+    path: 'agencystaff/{id}',
+    method: 'GET'
   }
 };

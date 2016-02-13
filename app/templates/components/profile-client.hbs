@@ -146,7 +146,7 @@
                 {{input type="text" class="form-control" name="phone1" value=model.phone1 maxlength=10 autocomplete="off"}}
                 {{mdr-field-error client=model.validationResult.phone1}}
               {{else}}
-                <div class="form-control-static">{{dash-for-empty model.phone1}}</div>
+                <div class="form-control-static">{{phone-number model.phone1}}</div>
               {{/if}}
             </div>
             <div class="form-group col-md-6  {{if model.validationResult.phone2.hasError 'has-error'}}">
@@ -221,84 +221,6 @@
                 <div class="form-control-static">
                   {{#if model.address1}}
                     {{model.city1}}, {{model.state1}} ({{model.zip1}})
-                  {{else}}
-                    &ndash;
-                  {{/if}}
-                </div>
-              </div>
-            </div>
-          {{/if}}
-
-          {{#if edit_contact}}
-            <div class="row">
-              <div class="col-md-6 checkbox">
-                <label>
-                  {{input type="checkbox" name="secondary-address" checked=model.is_secondary_address}} Add Secondary Address
-                  <span class="hide">{{model.on_is_secondary_address}}</span>
-                </label>
-              </div>
-            </div>
-
-            {{#liquid-if model.is_secondary_address use="crossFade"}}
-              <div class="row">
-                <div class="form-group col-md-8  {{if model.validationResult.address2.hasError 'has-error'}}">
-                  <label class="control-label" for="address2">Secondary address</label>
-                  {{input type="text" class="form-control" name="address2" value=model.address2 maxlength=250 autocomplete="off"}}
-                  {{mdr-field-error client=model.validationResult.address2}}
-                </div>
-              </div>
-              <div class="row">
-                <div class="form-group col-md-6  {{if model.validationResult.selected_state_2.hasError 'has-error'}}">
-                  <label class="control-label" for="state2">State</label>
-                  {{input-select
-                    class="form-control"
-                    name="state2"
-                    options=model.states
-                    labelPath="name"
-                    valuePath="id"
-                    selected=model.selected_state_2
-                    prompt="Select"
-                  }}
-                  {{mdr-field-error client=model.validationResult.selected_state_2}}
-                </div>
-                <div class="form-group col-md-6  {{if model.validationResult.selected_city_2.hasError 'has-error'}}">
-                  <label class="control-label" for="city2">City</label>
-                  {{input-select
-                    class="form-control"
-                    name="city1"
-                    options=model.cities2
-                    labelPath="name"
-                    valuePath="id"
-                    selected=model.selected_city_2
-                    prompt="Select"
-                  }}
-                  {{mdr-field-error client=model.validationResult.selected_city_2}}
-                </div>
-              </div>
-              <div class="row">
-                <div class="form-group col-md-6  {{if model.validationResult.zip2.hasError 'has-error'}}">
-                  <label class="control-label" for="zip2">Zip code</label>
-                  {{input type="text" class="form-control" name="zip2" value=model.zip2 maxlength=10 autocomplete="off"}}
-                  {{mdr-field-error client=model.validationResult.zip2}}
-                </div>
-                <div class="form-group col-md-6">
-                  <label class="control-label" for="country2">Country</label>
-                  {{input type="text" class="form-control" name="country2" value=model.country2 disabled="disabled"}}
-                  <p class="help-block">Currently available for US regions only</p>
-                </div>
-              </div>
-            {{/liquid-if}}
-          {{else}}
-            <div class="row">
-              <div class="form-group col-md-6">
-                <label class="control-label" for="address1">Secondary address</label>
-                <div class="form-control-static">{{dash-for-empty model.address2}}</div>
-              </div>
-              <div class="form-group col-md-6">
-                <label class="control-label" for="address1">Secondary location</label>
-                <div class="form-control-static">
-                  {{#if model.address2}}
-                    {{model.city2}}, {{model.state2}} ({{model.zip2}})
                   {{else}}
                     &ndash;
                   {{/if}}
