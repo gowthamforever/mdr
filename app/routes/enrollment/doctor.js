@@ -32,15 +32,27 @@ export default Route.extend(EmberValidator, Api, {
       },
 
       npi: {
-        required: 'NPI Number is required.'
+        required: 'NPI Number is required.',
+        pattern: {
+          with: /^\d{10}$/,
+          message: 'Enter valid NPI number.'
+        }
       },
 
       medicaid_number: {
-        required: 'Medicaid Number is required.'
+        required: 'Medicaid Number is required.',
+        pattern: {
+          with: /^[a-zA-Z0-9]{10}$/,
+          message: 'Enter valid Medicaid Number.'
+        }
       },
 
       medicare_number: {
-        required: 'Medicare Number is required.'
+        required: 'Medicare Number is required.',
+        pattern: {
+          with: /^[a-zA-Z0-9]{10}$/,
+          message: 'Enter valid Medicare Number.'
+        }
       },
 
       password1: {

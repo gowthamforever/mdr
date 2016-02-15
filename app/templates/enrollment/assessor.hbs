@@ -11,7 +11,7 @@
 
       <div class="form-group col-md-6 {{if model.validationResult.employee_number.hasError 'has-error'}}">
         <label class="control-label" for="emp_id">Employee Id</label>
-        {{input type="text" class="form-control" name="employee_number" value=model.employee_number maxlength=50 autocomplete="off"}}
+        {{input type="text" class="form-control" name="employee_number" value=model.employee_number maxlength=9 autocomplete="off"}}
         {{mdr-field-error client=model.validationResult.employee_number}}
       </div>
     </div>
@@ -19,7 +19,7 @@
     <div class="row">
       <div class="form-group col-md-6 {{if model.validationResult.rater_id.hasError 'has-error'}}">
         <label class="control-label" for="user_name">Rater Id</label>
-        {{input type="text" class="form-control" name="rater_id" value=model.rater_id maxlength=50 autocomplete="off"}}
+        {{input type="text" class="form-control" name="rater_id" value=model.rater_id maxlength=9 autocomplete="off"}}
         {{mdr-field-error client=model.validationResult.rater_id}}
       </div>
     </div>

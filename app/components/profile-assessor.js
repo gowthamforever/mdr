@@ -26,6 +26,59 @@ export default Component.extend(Api, EmberValidator, {
 
   model: null,
 
+  personal_validations() {
+    return {
+      employee_number: {
+        required: 'Employee Id is required.',
+        pattern: {
+          with: /^[a-zA-Z0-9]{9}$/,
+          message: 'Enter valid Employee Id number.'
+        }
+      },
+
+      rater_id: {
+        required: 'Rater Id is required.',
+        pattern: {
+          with: /^[a-zA-Z0-9]{9}$/,
+          message: 'Enter valid Ratee Id number.'
+        }
+      },
+
+      last_name: {
+        required: 'Last Name is required.',
+        length: {
+          maximum: 50,
+          message: 'Must be 50 characters or less.'
+        }
+      },
+
+      first_name: {
+        required: 'First Name is required.',
+        length: {
+          minimum: 3,
+          maximum: 50,
+          messages: {
+            minimum: 'Must be 3 characters or more.',
+            maximum: 'Must be 50 characters or less.'
+          }
+        }
+      },
+
+      email_id: {
+        required: 'Email Address is required.',
+        length: {
+          maximum: 50,
+          message: 'Must be 50 characters or less.'
+        },
+        email: 'Email Address is not valid.'
+      },
+
+      dob: {
+        required: 'Date of Birth is required.',
+      }
+    };
+  },
+
   contact_validations() {
     return {
       phone1: {
@@ -128,30 +181,36 @@ export default Component.extend(Api, EmberValidator, {
     personal() {
       const self  = this;
       const model = self.get('model');
+      const validations = self.personal_validations();
       let data;
 
-      data = _.pick(model, [
-        'first_name',
-        'last_name',
-        'gender',
-        'rater_id',
-        'employee_number',
-        'email_id'
-      ]);
+      model.set('validationResult', undefined);
+      self.validateMap({ model, validations }).then(() => {
+        data = _.pick(model, [
+          'first_name',
+          'last_name',
+          'gender',
+          'rater_id',
+          'employee_number',
+          'email_id'
+        ]);
 
-      data.dob = moment(model.get('dob'), 'MMM DD YYYY').format('MM-DD-YYYY');
+        data.dob = moment(model.get('dob'), 'MMM DD YYYY').format('MM-DD-YYYY');
 
-      data = omitNoValue(data);
+        data = omitNoValue(data);
 
-      self.ajax({
-        id: 'updateassessorinfo',
-        path: {
-          id: self.get('model.assessor_id')
-        },
-        data
-      }).then(() => {
-        self.toggleProperty('edit_personal');
-        self.set('assessors.cache', false);
+        self.ajax({
+          id: 'updateassessorinfo',
+          path: {
+            id: self.get('model.assessor_id')
+          },
+          data
+        }).then(() => {
+          self.toggleProperty('edit_personal');
+          self.set('assessors.cache', false);
+        });
+      }).catch((validationResult) => {
+        model.set('validationResult', validationResult);
       });
     },
 

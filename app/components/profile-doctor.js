@@ -30,6 +30,67 @@ export default Component.extend(Api, EmberValidator, {
 
   model: null,
 
+  personal_validations() {
+    return {
+      npi: {
+        required: 'NPI is required.',
+        pattern: {
+          with: /^\d{10}$/,
+          message: 'Enter valid NPI number.'
+        }
+      },
+
+      medicaid_number: {
+        required: 'Medicaid Number is required.',
+        pattern: {
+          with: /^[a-zA-Z0-9]{10}$/,
+          message: 'Enter valid Medicaid number number.'
+        }
+      },
+
+      medicare_number: {
+        required: 'Medicare Number is required.',
+        pattern: {
+          with: /^[a-zA-Z0-9]{10}$/,
+          message: 'Enter valid Medicare number number.'
+        }
+      },
+
+      last_name: {
+        required: 'Last Name is required.',
+        length: {
+          maximum: 50,
+          message: 'Must be 50 characters or less.'
+        }
+      },
+
+      first_name: {
+        required: 'First Name is required.',
+        length: {
+          minimum: 3,
+          maximum: 50,
+          messages: {
+            minimum: 'Must be 3 characters or more.',
+            maximum: 'Must be 50 characters or less.'
+          }
+        }
+      },
+
+      email_id: {
+        required: 'Email Address is required.',
+        length: {
+          maximum: 50,
+          message: 'Must be 50 characters or less.'
+        },
+        email: 'Email Address is not valid.'
+      },
+
+      dob: {
+        required: 'Date of Birth is required.',
+      }
+    };
+  },
+
   contact_validations() {
     return {
       phone1: {
@@ -213,39 +274,45 @@ export default Component.extend(Api, EmberValidator, {
     personal() {
       const self  = this;
       const model = self.get('model');
+      const validations = self.personal_validations();
       let data;
 
-      data = _.pick(model, [
-        'first_name',
-        'last_name',
-        'email_id',
-        'gender',
-        'medicaid_number',
-        'medicare_number',
-        'npi',
-        'practice_years',
-        'service_charge',
-        'surgeon',
-        'ein',
-        'dea',
-        'graduation_year'
-      ]);
+      model.set('validationResult', undefined);
+      self.validateMap({ model, validations }).then(() => {
+        data = _.pick(model, [
+          'first_name',
+          'last_name',
+          'email_id',
+          'gender',
+          'medicaid_number',
+          'medicare_number',
+          'npi',
+          'practice_years',
+          'service_charge',
+          'surgeon',
+          'ein',
+          'dea',
+          'graduation_year'
+        ]);
 
-      data.dob = moment(model.get('dob'), 'MMM DD YYYY').format('MM-DD-YYYY');
-      data.primary_speciality = model.get('primary_speciality_obj.id');
-      data.practice_type = model.get('practice_type_obj.id');
+        data.dob = moment(model.get('dob'), 'MMM DD YYYY').format('MM-DD-YYYY');
+        data.primary_speciality = model.get('primary_speciality_obj.id');
+        data.practice_type = model.get('practice_type_obj.id');
 
-      data = omitNoValue(data);
+        data = omitNoValue(data);
 
-      self.ajax({
-        id: 'updatedoctorinfo',
-        path: {
-          id: self.get('model.doctor_id')
-        },
-        data
-      }).then(() => {
-        self.toggleProperty('edit_personal');
-        self.set('doctors.cache', false);
+        self.ajax({
+          id: 'updatedoctorinfo',
+          path: {
+            id: self.get('model.doctor_id')
+          },
+          data
+        }).then(() => {
+          self.toggleProperty('edit_personal');
+          self.set('doctors.cache', false);
+        });
+      }).catch((validationResult) => {
+        model.set('validationResult', validationResult);
       });
     },
 

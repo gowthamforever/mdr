@@ -22,6 +22,61 @@ export default Component.extend(Api, EmberValidator, {
 
   model: null,
 
+  personal_validations() {
+    return {
+      last_name: {
+        required: 'Last Name is required.',
+        length: {
+          maximum: 50,
+          message: 'Must be 50 characters or less.'
+        }
+      },
+
+      first_name: {
+        required: 'First Name is required.',
+        length: {
+          minimum: 3,
+          maximum: 50,
+          messages: {
+            minimum: 'Must be 3 characters or more.',
+            maximum: 'Must be 50 characters or less.'
+          }
+        }
+      },
+
+      email_id: {
+        required: 'Email Address is required',
+        length: {
+          maximum: 50,
+          message: 'Must be 50 characters or less.'
+        },
+        email: 'Email Address is not valid.'
+      },
+
+      dob: {
+        required: 'Date of Birth is required.',
+      },
+
+      pcd_name: {
+        length: {
+          maximum: 100,
+          message: 'Must be 100 characters or less.'
+        }
+      },
+
+      pcd_phone: {
+        phone: {
+          format2: true,
+          message: 'Phone no is not valid(NNNNNNNNNN).'
+        }
+      },
+
+      selected_insurance_plan: {
+        required: 'Insurance plan is required'
+      }
+    };
+  },
+
   contact_validations() {
     return {
       phone1: {
@@ -118,31 +173,38 @@ export default Component.extend(Api, EmberValidator, {
     personal() {
       const self  = this;
       const model = self.get('model');
+      const validations = self.personal_validations();
       let data;
 
-      data = _.pick(model, [
-        'first_name',
-        'last_name',
-        'gender',
-        'pcd_name',
-        'pcd_phone',
-        'email_id'
-      ]);
+      model.set('validationResult', undefined);
+      self.validateMap({ model, validations }).then(() => {
 
-      data.dob = moment(model.get('dob'), 'MMM DD YYYY').format('MM-DD-YYYY');
-      data.insurance_plan = model.get('selected_insurance_plan.id');
+        data = _.pick(model, [
+          'first_name',
+          'last_name',
+          'gender',
+          'pcd_name',
+          'pcd_phone',
+          'email_id'
+        ]);
 
-      data = omitNoValue(data);
+        data.dob = moment(model.get('dob'), 'MMM DD YYYY').format('MM-DD-YYYY');
+        data.insurance_plan = model.get('selected_insurance_plan.id');
 
-      self.ajax({
-        id: 'updateclientinfo',
-        path: {
-          id: self.get('model.customer_id')
-        },
-        data
-      }).then(() => {
-        self.toggleProperty('edit_personal');
-        self.set('clients.cache', false);
+        data = omitNoValue(data);
+
+        self.ajax({
+          id: 'updateclientinfo',
+          path: {
+            id: self.get('model.customer_id')
+          },
+          data
+        }).then(() => {
+          self.toggleProperty('edit_personal');
+          self.set('clients.cache', false);
+        });
+      }).catch((validationResult) => {
+        model.set('validationResult', validationResult);
       });
     },
 

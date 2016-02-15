@@ -33,11 +33,19 @@ export default Route.extend(EmberValidator, Api, {
       },
 
       employee_number: {
-        required: 'Employee Id is required.'
+        required: 'Employee Id is required.',
+        pattern: {
+          with: /^[a-zA-Z0-9]{9}$/,
+          message: 'Enter valid Employee Id.'
+        }
       },
 
       rater_id: {
-        required: 'Rater Id is required.'
+        required: 'Rater Id is required.',
+        pattern: {
+          with: /^[a-zA-Z0-9]{9}$/,
+          message: 'Enter valid Ratee Id.'
+        }
       },
 
       password1: {

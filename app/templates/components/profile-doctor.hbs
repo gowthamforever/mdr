@@ -44,7 +44,7 @@
               <div class="form-group col-md-6 {{if model.validationResult.npi.hasError 'has-error'}}">
                 <label class="control-label" for="npi">NPI</label>
                 {{#if edit_personal}}
-                  {{input type="text" class="form-control" name="npi" value=model.npi maxlength=50 autocomplete="off"}}
+                  {{input type="text" class="form-control" name="npi" value=model.npi maxlength=10 autocomplete="off"}}
                   {{mdr-field-error client=model.validationResult.npi}}
                 {{else}}
                   <div class="form-control-static">{{dash-for-empty model.npi}}</div>
@@ -66,7 +66,7 @@
               <div class="form-group col-md-6 {{if model.validationResult.medicaid_number.hasError 'has-error'}}">
                 <label class="control-label" for="medicaid_number">Medicaid Number</label>
                 {{#if edit_personal}}
-                  {{input type="text" class="form-control" name="medicaid_number" value=model.medicaid_number maxlength=50 autocomplete="off"}}
+                  {{input type="text" class="form-control" name="medicaid_number" value=model.medicaid_number maxlength=10 autocomplete="off"}}
                   {{mdr-field-error client=model.validationResult.medicaid_number}}
                 {{else}}
                   <div class="form-control-static">{{dash-for-empty model.medicaid_number}}</div>
@@ -75,7 +75,7 @@
               <div class="form-group col-md-6 {{if model.validationResult.medicare_number.hasError 'has-error'}}">
                 <label class="control-label" for="medicare_number">Medicare Number</label>
                 {{#if edit_personal}}
-                  {{input type="text" class="form-control" name="npi" value=model.medicare_number maxlength=50 autocomplete="off"}}
+                  {{input type="text" class="form-control" name="npi" value=model.medicare_number maxlength=10 autocomplete="off"}}
                   {{mdr-field-error client=model.validationResult.medicare_number}}
                 {{else}}
                   <div class="form-control-static">{{dash-for-empty model.medicare_number}}</div>
