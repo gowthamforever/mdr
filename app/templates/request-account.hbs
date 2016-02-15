@@ -55,8 +55,7 @@
 
                 <div class="form-group col-md-6  {{if model.validationResult.phone1.hasError 'has-error'}}">
                   <label class="control-label" for="phone1">Phone Number</label>
-                  {{input type="text" class="form-control" name="phone1" value=model.phone1 maxlength=14 autocomplete="off"}}
-                  <small class="help-block prevent-error">(NNN) NNN-NNNN</small>
+                  {{mdr-phone type="text" class="form-control" name="phone1" value=model.phone1 autocomplete="off"}}
                   {{mdr-field-error client=model.validationResult.phone1}}
                 </div>
               </div>

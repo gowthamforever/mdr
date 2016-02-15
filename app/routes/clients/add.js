@@ -305,7 +305,7 @@ export default Route.extend(EmberValidator, Api, {
           data.pcd_phone = model.get('pcd_phone');
         }
 
-        data = _.extend(data, _.pick(model, [
+        data = _.assignIn(data, _.pick(model, [
           'card_full_name',
           'card_type',
           'card_no',
@@ -315,7 +315,7 @@ export default Route.extend(EmberValidator, Api, {
         data.expiry_month = model.get('selected_expiry_month.id');
         data.expiry_year = model.get('expiry_year');
 
-        data = _.extend(data, _.pick(model, [
+        data = _.assignIn(data, _.pick(model, [
           'card_address',
           'card_zip'
         ]));

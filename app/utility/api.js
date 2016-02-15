@@ -109,5 +109,25 @@ export default {
   updatedoctorcontact: {
     path: 'doctor/{id}/contact',
     method: 'PATCH'
+  },
+
+  updateassessorinfo: {
+    path: 'assessor/{id}/info',
+    method: 'PATCH'
+  },
+
+  updateassessorcontact: {
+    path: 'assessor/{id}/contact',
+    method: 'PATCH'
+  },
+
+  updateclientinfo: {
+    path: 'client/{id}/info',
+    method: 'PATCH'
+  },
+
+  updateclientcontact: {
+    path: 'client/{id}/contact',
+    method: 'PATCH'
   }
 };

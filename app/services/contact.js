@@ -19,7 +19,7 @@ export default Service.extend({
   createDoctor(response) {
     let data;
     if (response) {
-      data = _.extend(response.doctorInfo, response.doctorContact);
+      data = _.assignIn(response.doctorInfo, response.doctorContact);
     }
     return this.get('doctors').createDoctor(data);
   },
@@ -27,7 +27,7 @@ export default Service.extend({
   createAssessor(response) {
     let data;
     if (response) {
-      data = _.extend(response.assessorInfo, response.assessorContact);
+      data = _.assignIn(response.assessorInfo, response.assessorContact);
     }
     return this.get('assessors').createAssessor(data);
   },
@@ -35,7 +35,7 @@ export default Service.extend({
   createStaff(response) {
     let data;
     if (response) {
-      data = _.extend(response.agencyStaffInfo, response.agencyStaffContact);
+      data = _.assignIn(response.agencyStaffInfo, response.agencyStaffContact);
     }
     return this.get('staffs').createStaff(data);
   },
@@ -43,7 +43,7 @@ export default Service.extend({
   createAdmin(response) {
     let data;
     if (response) {
-      data = _.extend(response.agencyAdminInfo, response.agencyAdminContact);
+      data = _.assignIn(response.agencyAdminInfo, response.agencyAdminContact);
     }
     return this.get('admins').createAdmin(data);
   },
@@ -51,7 +51,7 @@ export default Service.extend({
   createClient(response) {
     let data;
     if (response) {
-      data = _.extend(response.customerInfo, response.customerContact);
+      data = _.assignIn(response.customerInfo, response.customerContact);
     }
     return this.get('clients').createClient(data);
   }

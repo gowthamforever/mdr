@@ -20,5 +20,15 @@ export default Ember.Object.extend({
   male: equal('gender', Constants.GENDER.Male),
   female: equal('gender', Constants.GENDER.Female),
   states: Constants.STATES,
-  timezones: Constants.TIME_ZONES
+  timezones: Constants.TIME_ZONES,
+  phone1: null,
+  phone2: null,
+  address1: null,
+  selected_state_1: computed('state1', function() {
+    const state1 = this.get('state1');
+    return Constants.STATES.findBy('id', state1);
+  }),
+  city1: null,
+  zip1: null,
+  country1: 'United States'
 });

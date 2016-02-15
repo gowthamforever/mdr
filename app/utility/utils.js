@@ -57,6 +57,12 @@ export function prepend(value='', text=0, length=2) {
   return result;
 }
 
-export function retainNumbers(str="") {
+export function retainNumbers(str='') {
   return str.replace(/\D/g, "");
+}
+
+export function omitNoValue(data={}) {
+  return _.omitBy(data, (d) => {
+    return _.isUndefined(d) || _.isNull(d);
+  });
 }

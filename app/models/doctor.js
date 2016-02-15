@@ -61,10 +61,11 @@ export default Ember.Object.extend(AppointmentFlags, {
   phone1: null,
   phone2: null,
   address1: null,
-  selected_state_1: null,
-  cities1: null,
-  cities2: null,
-  selected_city_1: null,
+  selected_state_1: computed('state1', function() {
+    const state1 = this.get('state1');
+    return Constants.STATES.findBy('id', state1);
+  }),
+  city1: null,
   zip1: null,
   country1: 'United States',
   selected_profession: null,

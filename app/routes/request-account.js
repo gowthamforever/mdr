@@ -2,7 +2,7 @@ import Ember from 'ember';
 import EmberValidator from 'ember-validator';
 import RequestAccount from 'mdr/models/request-account';
 import Api from 'mdr/mixins/api';
-import { animateTo } from 'mdr/utility/utils';
+import { animateTo, retainNumbers } from 'mdr/utility/utils';
 
 const {
   Route
@@ -66,11 +66,22 @@ export default Route.extend(EmberValidator, Api, {
       const self        = this;
       const model       = self.get('controller.model');
       const validations = this._validations();
-      const data        = {};
+      let data;
 
       model.set('validationResult', null);
+
       animateTo();
       self.validateMap({ model, validations }).then(() => {
+        data = _.pick(model, [
+          'agency_name',
+          'first_name',
+          'last_name',
+          'email_id',
+          'comments'
+        ]);
+
+        data.phone1 = retainNumbers(model.get('phone1'));
+
         self.ajax({
           id: 'addclient',
           data

@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import Appointments from 'mdr/models/appointments';
 
 const {
   Component,
