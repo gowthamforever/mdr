@@ -96,6 +96,8 @@ App = Application.extend({
     this.inject('route', 'dialog', 'service:dialog');
     this.inject('route', 'session', 'service:session');
     this.inject('service:errorhandler', 'router', 'router:main');
+    Ember.$('#preload-css').remove();
+    Ember.$('#preload-html').remove();
   }
 });
 
