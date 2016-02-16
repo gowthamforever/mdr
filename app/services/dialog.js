@@ -39,7 +39,8 @@ export default Service.extend({
       name: null,
       model: null,
       hideAction: "hideDialog",
-      containerClassNames: null
+      containerClassNames: null,
+      extraclass: null
     });
     toggleScrollBar(true);
   }

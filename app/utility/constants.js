@@ -10,8 +10,10 @@ export default {
   },
 
   STATUS: {
-    ACTIVE: 0,
-    INACTIVE: 1
+    REQUESTED: 0,
+    ACTIVE: 1,
+    REJECTED: 2,
+    INACTIVE: 3
   },
 
   REQUEST_STATUS: {

@@ -1,11 +1,12 @@
 import Ember from 'ember';
 import { scrollTop } from 'mdr/utility/utils';
+import Api from 'mdr/mixins/api';
 
 const {
   Route
 } = Ember;
 
-export default Route.extend({
+export default Route.extend(Api, {
 
   actions: {
     loading() {
@@ -21,6 +22,15 @@ export default Route.extend({
 
     didTransition() {
       scrollTop();
+    }
+  },
+
+  deactivate() {
+    const session = this.get('session');
+    this._super(...arguments);
+
+    if (session.get('isAuthenticated')) {
+      this.ajax({ data: 'logout' });
     }
   }
 });

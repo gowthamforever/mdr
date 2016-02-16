@@ -18,6 +18,7 @@
     "bootstrap-sass": "~3.3.6",
     "font-awesome": "fontawesome#~4.5.0",
     "pickadate": "3.5.6",
-    "fullcalendar": "~2.5.0"
+    "fullcalendar": "~2.5.0",
+    "bootstrap-switch": "3.3.2"
   }
 }

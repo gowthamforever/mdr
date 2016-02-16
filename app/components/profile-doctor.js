@@ -2,6 +2,7 @@ import Ember from 'ember';
 import EmberValidator from 'ember-validator';
 import Doctor from 'mdr/models/doctor';
 import Api from 'mdr/mixins/api';
+import Constants from 'mdr/utility/constants';
 import { omitNoValue, retainNumbers } from 'mdr/utility/utils';
 
 const {
@@ -254,7 +255,7 @@ export default Component.extend(Api, EmberValidator, {
     approve() {
       const self = this;
       const data = {};
-      data.isApproved = true;
+      data.status = Constants.STATUS.ACTIVE;
       data.doctor_id = self.get('doctor.doctor_id');
 
       self.ajax({
@@ -268,6 +269,50 @@ export default Component.extend(Api, EmberValidator, {
           'doctor.active': 1,
           approved: true
         });
+      });
+    },
+
+    reject() {
+      const self = this;
+      const data = {};
+      data.status = Constants.STATUS.REJECTED;
+      data.doctor_id = self.get('doctor.doctor_id');
+
+      self.ajax({
+        id: 'patchprospect',
+        data
+      }).then(() => {
+        self.get('notifications').backgroundNotification();
+        self.setProperties({
+          'doctors.cache': false,
+          'model.active': 1,
+          'doctor.active': 1,
+          rejected: true
+        });
+      });
+    },
+
+    status() {
+      const self = this;
+      const data = {};
+      const model = self.get('model');
+      let newstatus = model.get('available') ? Constants.STATUS.ACTIVE : Constants.STATUS.INACTIVE;
+      let oldstatus = model.get('available') ? Constants.STATUS.INACTIVE : Constants.STATUS.ACTIVE;
+      data.status = newstatus;
+      data.doctor_id = self.get('doctor.doctor_id');
+
+      self.ajax({
+        id: 'patchprospect',
+        data
+      }).then(() => {
+        self.get('notifications').backgroundNotification();
+        self.setProperties({
+          'doctors.cache': false,
+          'model.active': newstatus,
+          'doctor.active': newstatus
+        });
+      }).catch(() => {
+        model.set('active', oldstatus);
       });
     },
 

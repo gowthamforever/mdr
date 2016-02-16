@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import Staff from 'mdr/models/staff';
 import Api from 'mdr/mixins/api';
+import Constants from 'mdr/utility/constants';
 
 const {
   Component,
@@ -64,7 +65,7 @@ export default Component.extend(Api, {
     approve() {
       const self = this;
       const data = {};
-      data.isApproved = true;
+      data.status = Constants.STATUS.ACTIVE;
       data.agency_staff_id = self.get('staff.agency_staff_id');
 
       self.ajax({
@@ -76,6 +77,25 @@ export default Component.extend(Api, {
           'model.active': 1,
           'staff.active': 1,
           approved: true
+        });
+      });
+    },
+
+    reject() {
+      const self = this;
+      const data = {};
+      data.status = Constants.STATUS.INACTIVE;
+      data.agency_staff_id = self.get('staff.agency_staff_id');
+
+      self.ajax({
+        id: 'patchprospect',
+        data
+      }).then(() => {
+        self.get('notifications').backgroundNotification();
+        self.setProperties({
+          'model.active': 1,
+          'staff.active': 1,
+          rejected: true
         });
       });
     }

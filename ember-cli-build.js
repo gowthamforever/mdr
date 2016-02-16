@@ -40,6 +40,7 @@ module.exports = function(defaults) {
   app.import('bower_components/pickadate/lib/picker.date.js');
   app.import('bower_components/pickadate/lib/picker.time.js');
   app.import('bower_components/fullcalendar/dist/fullcalendar.js');
+  app.import('bower_components/bootstrap-switch/dist/js/bootstrap-switch.js');
 
   app.import('bower_components/bootstrap/dist/css/bootstrap.css');
   //app.import('bower_components/bootstrap/dist/css/bootstrap-theme.css');
@@ -48,6 +49,7 @@ module.exports = function(defaults) {
   app.import('bower_components/pickadate/lib/themes/classic.date.css');
   app.import('bower_components/pickadate/lib/themes/classic.time.css');
   app.import('bower_components/fullcalendar/dist/fullcalendar.css');
+  app.import('bower_components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css');
 
   app.import('vendor/opentok.js');
 

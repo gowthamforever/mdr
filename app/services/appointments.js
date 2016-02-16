@@ -21,14 +21,15 @@ export default Service.extend(Api, {
   appointments: null,
   cache: false,
 
-  getAppointments() {
+  getAppointments(background) {
     const self = this;
     return new Promise((resolve) => {
       if (self.get('cache')) {
         resolve(self.get('appointments'));
       } else {
         self.ajax({
-          id: 'appointments'
+          id: 'appointments',
+          background
         }).then((response) => {
           self.setProperties({
             appointments: self.createAppointments(response),

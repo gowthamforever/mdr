@@ -2,6 +2,7 @@ import Ember from 'ember';
 import EmberValidator from 'ember-validator';
 import Assessor from 'mdr/models/assessor';
 import Api from 'mdr/mixins/api';
+import Constants from 'mdr/utility/constants';
 import { omitNoValue, retainNumbers } from 'mdr/utility/utils';
 
 const {
@@ -161,7 +162,7 @@ export default Component.extend(Api, EmberValidator, {
     approve() {
       const self = this;
       const data = {};
-      data.isApproved = true;
+      data.status = Constants.STATUS.ACTIVE;
       data.assessor_id = self.get('assessor.assessor_id');
 
       self.ajax({
@@ -170,11 +171,55 @@ export default Component.extend(Api, EmberValidator, {
       }).then(() => {
         self.get('notifications').backgroundNotification();
         self.setProperties({
-          'assessor.cache': false,
+          'assessors.cache': false,
           'model.active': 1,
           'assessor.active': 1,
           approved: true
         });
+      });
+    },
+
+    reject() {
+      const self = this;
+      const data = {};
+      data.status = Constants.STATUS.INACTIVE;
+      data.assessor_id = self.get('assessor.assessor_id');
+
+      self.ajax({
+        id: 'patchprospect',
+        data
+      }).then(() => {
+        self.get('notifications').backgroundNotification();
+        self.setProperties({
+          'assessors.cache': false,
+          'model.active': 1,
+          'assessor.active': 1,
+          rejected: true
+        });
+      });
+    },
+
+    status() {
+      const self = this;
+      const data = {};
+      const model = self.get('model');
+      let newstatus = model.get('available') ? Constants.STATUS.ACTIVE : Constants.STATUS.INACTIVE;
+      let oldstatus = model.get('available') ? Constants.STATUS.INACTIVE : Constants.STATUS.ACTIVE;
+      data.status = newstatus;
+      data.doctor_id = self.get('assessor.assessor_id');
+
+      self.ajax({
+        id: 'patchprospect',
+        data
+      }).then(() => {
+        self.get('notifications').backgroundNotification();
+        self.setProperties({
+          'assessors.cache': false,
+          'model.active': newstatus,
+          'assessor.active': newstatus
+        });
+      }).catch(() => {
+        model.set('active', oldstatus);
       });
     },
 

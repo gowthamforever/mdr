@@ -1,23 +1,45 @@
 <div class="panel-group">
-  {{#if approved}}
+  {{#if rejected}}
     <div class="panel panel-primary">
       <div class="panel-body">
         <section class="col-md-12">
-          <div class="alert alert-success no-margin">
-            <strong><i class="fa fa-2 fa-check"></i></strong> Request accepted. Assessor is now active.
+          <div class="alert alert-danger no-margin">
+            <strong><i class="fa fa-2 fa-check"></i></strong> Request rejected.
           </div>
         </section>
       </div>
     </div>
   {{/if}}
 
-  {{#if (and (not approved) (not model.isActive) (or session.role_admin session.role_super_admin session.role_regional_admin session.role_global_admin))}}
+  {{#if (and (not approved) model.requested (or session.role_admin session.role_super_admin session.role_regional_admin session.role_global_admin))}}
     <div class="panel panel-primary">
       <div class="panel-body">
         <section class="col-md-12">
           <div class="row">
             <div class="col-md-6">
-              Activate this assessor <button type="button" class="btn btn-success" {{action "approve"}}>Activate</button>
+              <button type="button" class="btn btn-success" {{action "approve"}}>Approve</button>
+              <button type="button" class="btn btn-danger" {{action "reject"}}>Reject</button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  {{/if}}
+
+  {{#if (or model.available model.inactive)}}
+    <div class="panel panel-primary">
+      <div class="panel-body">
+        <section class="col-md-12">
+          <div class="row">
+            <div class="col-md-6">
+              {{bs-switch name="my-bs-switch"
+                btnSize="small"
+                onText="Active"
+                offText="Inactive"
+                onColor='success'
+                offColor='danger'
+                status=model.available
+                callback="status"}}
             </div>
           </div>
         </section>

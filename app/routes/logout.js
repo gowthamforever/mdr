@@ -9,6 +9,6 @@ export default Route.extend(Api, {
   },
 
   redirect() {
-     window.location = document.location.href.replace(location.hash , "" );
+    window.location = document.location.href.replace(location.hash , "" );
   }
 });

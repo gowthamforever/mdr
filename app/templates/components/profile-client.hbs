@@ -95,7 +95,7 @@
                 <div class="form-control-static">{{dash-for-empty model.email_id}}</div>
               {{/if}}
             </div>
-            <div class="form-group col-md-6  {{if model.validationResult.selected_insurance_plan.hasError 'has-error'}}">
+            <div class="form-group col-md-6  {{if model.validationResult.insurance_plan_obj.hasError 'has-error'}}">
               <label class="control-label" for="insurance-plan">Insurance plan</label>
               {{#if edit_personal}}
                 {{input-select
@@ -107,7 +107,7 @@
                   selected=model.insurance_plan_obj
                   prompt="Select"
                 }}
-                {{mdr-field-error client=model.validationResult.selected_insurance_plan}}
+                {{mdr-field-error client=model.validationResult.insurance_plan_obj}}
                 <p class="help-block prevent-error">Your current insured plan, important to search doctors</p>
               {{else}}
                 <div class="form-control-static">{{dash-for-empty model.insurance_plan_obj.name}}</div>

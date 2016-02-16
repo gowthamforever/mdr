@@ -71,7 +71,7 @@ export default Component.extend(Api, EmberValidator, {
         }
       },
 
-      selected_insurance_plan: {
+      insurance_plan_obj: {
         required: 'Insurance plan is required'
       }
     };
@@ -189,7 +189,7 @@ export default Component.extend(Api, EmberValidator, {
         ]);
 
         data.dob = moment(model.get('dob'), 'MMM DD YYYY').format('MM-DD-YYYY');
-        data.insurance_plan = model.get('selected_insurance_plan.id');
+        data.insurance_plan = model.get('insurance_plan_obj.id');
 
         data = omitNoValue(data);
 

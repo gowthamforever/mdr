@@ -114,7 +114,7 @@ export default Route.extend(EmberValidator, Api, {
 
       phone2: {
         phone: {
-          format9: true,
+          format2: true,
           message: 'Confirm Phone Number is not valid (NNN) NNN-NNNN.'
         }
       },

@@ -4,7 +4,8 @@ import Doctors from 'mdr/models/doctors';
 const {
   Route,
   RSVP,
-  inject
+  inject,
+  isEmpty
 } = Ember;
 
 const {
@@ -28,7 +29,7 @@ export default Route.extend({
     return new Promise((resolve) => {
       self.get('doctors').getDoctors().then((doctors) => {
         resolve(Doctors.create({
-          doctors
+          doctors: doctors.filter((doctor) => doctor.get('available') || doctor.get('inactive'))
         }));
       });
     });
