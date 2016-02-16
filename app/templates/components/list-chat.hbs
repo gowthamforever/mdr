@@ -18,7 +18,7 @@
           {{/if}}
         </li>
         <li>
-          <i class="fa fa-hourglass-end"></i> {{date-format appointment.ts_added "MM-DD-YYYY HH:mm" "dddd, MMM DD YYYY HH:mm"}}
+          <i class="fa fa-hourglass-end"></i> {{date-format appointment.ts_request_endtime "MM-DD-YYYY HH:mm" "dddd, MMM DD YYYY HH:mm"}}
         </li>
         {{#unless (or session.role_doctor session.role_assessor)}}
           <li>

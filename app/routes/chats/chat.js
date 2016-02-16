@@ -69,7 +69,7 @@ export default Route.extend(Api, {
       transition.abort();
       this.get('dialog').showDialog({
         name: 'modal-warning',
-        model: EmberObject.create({ message: 'Appointment not started.' })
+        model: EmberObject.create({ message: `Appointment is going to start at ${model.get('ts_request_moment').format('MMM DD YYYY HH:mm')}. Please come back later.` })
       });
     } else {
       return new Promise((resolve) => {
