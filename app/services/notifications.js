@@ -92,7 +92,7 @@ export default Service.extend({
           }
 
           if (!isEmpty(assessors)) {
-            staffs.forEach((assessor) => {
+            assessors.forEach((assessor) => {
               notifications.push({ assessor: true, model: assessor });
             });
           }

@@ -41,9 +41,10 @@
                 <i class="fa fa-user-md fa-2 {{if doctor.isActive 'success-color' 'danger-color'}}"></i>
                 {{doctor.first_name}} {{doctor.last_name}}
               </h4>
-              <p>{{doctor.primary_speciality_obj.name}}</p>
-              <p>Service Charge: $ {{doctor.service_charge}}</p>
-              <p><i class="fa fa-envelope"></i> {{dash-for-empty doctor.email_id}}</p>
+              <ul class="list-unstyled">
+                <li>{{doctor.primary_speciality_obj.name}}</li>
+                <li><i class="fa fa-envelope"></i> {{dash-for-empty doctor.email_id}}</li>
+              </ul>
             </div>
           </div>
         </section>
