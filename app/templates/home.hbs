@@ -1,13 +1,13 @@
 <div class="home-block">
   <div class="row ">
     <div class="col-md-6 col-sm-6 col-xs-12 home-widget appointment-wg">
-      {{#link-to 'appointments'}}
+      {{#link-to 'appointments.requests.pending'}}
         <div class="fa-wrapper hidden-xs">
           <i class="fa fa-calendar"></i>
         </div>
       {{/link-to}}
       <div class="widget-body">
-        {{#link-to 'appointments'}}
+        {{#link-to 'appointments.requests.pending'}}
           <div class="big-r-arrow-overlay visible-xs-inline-block"></div>
           <div class="big-r-arrow visible-xs-inline-block"></div>
           <div class="fa-xs-wrapper visible-xs-inline-block">
@@ -15,9 +15,9 @@
           </div>
         {{/link-to}}
         <h4 class="widget-title">APPOINTMENTS</h4>
-        <h3 class="widget-meta">{{model.appointments.length}} Requests</h3>
+        <h3 class="widget-meta">{{model.pending_appointments.length}} Requests</h3>
         <div class="widget-footer hidden-xs">
-          {{#link-to 'appointments'}}More Info <span class="right-arrow"></span>{{/link-to}}
+          {{#link-to 'appointments.requests.pending'}}More Info <span class="right-arrow"></span>{{/link-to}}
         </div>
       </div>
     </div>

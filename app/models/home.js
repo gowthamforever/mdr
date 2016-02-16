@@ -14,6 +14,7 @@ export default EmberObject.extend({
   clients: null,
   assessors: null,
   appointments: null,
+  pending_appointments: filterBy('appointments', 'pending', true),
   active_doctors: filterBy('doctors', 'available', true),
   active_assessors: filterBy('assessors', 'available', true)
 });

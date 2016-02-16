@@ -20,6 +20,9 @@ export default Service.extend({
   },
 
   fullpageerror() {
+    if (this.get('dialog.show')) {
+      this.get('dialog').hideDialog();
+    }
     this.get('dialog').showDialog({
       name: 'modal-error'
     });
