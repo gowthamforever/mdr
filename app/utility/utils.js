@@ -80,7 +80,7 @@ export function ageCalculator(dob, today) {
 
   if (ybirth < ynow) {
     age = ynow - ybirth;
-    if (mbirth == mnow) {
+    if (mbirth === mnow) {
       if (dbirth > dnow) {
         age--;
       }

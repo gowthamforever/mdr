@@ -14,7 +14,7 @@ const {
 
 const {
   service
-} = inject
+} = inject;
 
 const { Promise } = RSVP;
 
