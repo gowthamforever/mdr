@@ -76,15 +76,17 @@ export function ageCalculator(dob, today) {
   const mnow = today.month() + 1;
   const dnow = today.date();
 
-  let age;
+  let age = 0;
 
-  age = ynow - ybirth;
-  if(mbirth == mnow){
-    if (dbirth > dnow) {
+  if (ybirth < ynow) {
+    age = ynow - ybirth;
+    if (mbirth == mnow) {
+      if (dbirth > dnow) {
+        age--;
+      }
+    } else if (mbirth > mnow) {
       age--;
     }
-  } else if(mbirth > mnow) {
-    age--;
   }
 
   return age;

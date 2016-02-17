@@ -179,7 +179,7 @@
               <div class="form-group col-md-6">
                 <label class="control-label" for="address1">Primary location</label>
                 <div class="form-control-static">
-                  {{#if model.address1}}
+                  {{#if (and model.address1 model.city1 model.selected_state_1.id model.zip1)}}
                     {{model.city1}}, {{model.selected_state_1.id}} ({{model.zip1}})
                   {{else}}
                     &ndash;

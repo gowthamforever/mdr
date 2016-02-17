@@ -19,6 +19,6 @@ export default Helper.helper(function(params) {
     }
     return value;
   } else {
-    return Ember.String.htmlSafe("&ndash;");
+    return Ember.String.htmlSafe('&ndash;');
   }
 });

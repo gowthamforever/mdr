@@ -8,6 +8,10 @@ export default Helper.helper(function(params) {
   const to    = params[2] || 'MMM DD YYYY';
   let result;
 
+  if (!value) {
+    return;
+  }
+
   // Check date is already in valid format or else format the date.
   if (moment(value, to, true).isValid()) {
     result = value;
