@@ -21,11 +21,6 @@ export default Route.extend(Api, {
     });
   },
 
-  deactivate() {
-    this._super(...arguments);
-    Ember.$(window).off('resize.mdr-wrapper-main');
-  },
-
   actions: {
     loading() {
       const self    = this;
@@ -46,6 +41,8 @@ export default Route.extend(Api, {
   deactivate() {
     const session = this.get('session');
     this._super(...arguments);
+
+    Ember.$(window).off('resize.mdr-wrapper-main');
 
     if (session.get('isAuthenticated')) {
       this.ajax({ id: 'logout' });
