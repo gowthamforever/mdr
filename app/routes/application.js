@@ -30,7 +30,7 @@ export default Route.extend(Api, {
     this._super(...arguments);
 
     if (session.get('isAuthenticated')) {
-      this.ajax({ data: 'logout' });
+      this.ajax({ id: 'logout' });
     }
   }
 });
