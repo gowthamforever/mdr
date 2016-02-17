@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import AppointmentFlags from 'mdr/mixins/appointment-flags';
 import Constants from 'mdr/utility/constants';
+import { ageCalculator } from 'mdr/utility/utils';
 
 const {
   computed
@@ -17,7 +18,9 @@ export default Ember.Object.extend(AppointmentFlags, {
   customer_id: null,
   dob: null,
   age: computed('dob', function() {
-    return moment(this.get('dob'), 'YYYY-MM-DD').month(0).from(moment().month(0)).split(' ')[0];
+    const dob   = moment(this.get('dob'), 'YYYY-MM-DD');
+    const today = moment();
+    return ageCalculator(dob, today);
   }),
   email_id: null,
   first_name: null,

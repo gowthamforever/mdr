@@ -8,12 +8,19 @@ import { animateTo, retainNumbers } from 'mdr/utility/utils';
 const {
   Route,
   RSVP,
-  isEmpty
+  isEmpty,
+  inject
 } = Ember;
+
+const {
+  service
+} = inject
 
 const { Promise } = RSVP;
 
 export default Route.extend(EmberValidator, Api, {
+  clients: service(),
+
   beforeModel() {
     const session = this.get('session');
 
@@ -339,6 +346,7 @@ export default Route.extend(EmberValidator, Api, {
           self.refresh().then(() => {
             const model = self.get('controller.model');
             model.set('created', true);
+            self.set('clients.cache', false);
           });
         }).catch(() => {
 

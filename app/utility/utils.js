@@ -66,3 +66,26 @@ export function omitNoValue(data={}) {
     return _.isUndefined(d) || _.isNull(d);
   });
 }
+
+export function ageCalculator(dob, today) {
+  const ybirth = dob.year();
+  const mbirth = dob.month() + 1;
+  const dbirth = dob.date();
+
+  const ynow = today.year();
+  const mnow = today.month() + 1;
+  const dnow = today.date();
+
+  let age;
+
+  age = ynow - ybirth;
+  if(mbirth == mnow){
+    if (dbirth > dnow) {
+      age--;
+    }
+  } else if(mbirth > mnow) {
+    age--;
+  }
+
+  return age;
+}

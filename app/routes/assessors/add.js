@@ -5,10 +5,17 @@ import Api from 'mdr/mixins/api';
 import { animateTo, retainNumbers } from 'mdr/utility/utils';
 
 const {
-  Route
+  Route,
+  inject
 } = Ember;
 
+const {
+  service
+} = inject;
+
 export default Route.extend(EmberValidator, Api, {
+  assessors: service(),
+
   model() {
     return Assessor.create();
   },
@@ -156,6 +163,7 @@ export default Route.extend(EmberValidator, Api, {
           self.refresh().then(() => {
             const model = self.get('controller.model');
             model.set('created', true);
+            self.set('assessors.cache', false);
           });
         }).catch(() => {
 
