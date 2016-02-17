@@ -56,7 +56,7 @@
           <div class="col-sm-8">{{model.alt_info}}</div>
         </div>
 
-        {{#if (and model.pending (or session.role_doctor role_assessor))}}
+        {{#if (and model.pending (or session.role_doctor session.role_assessor))}}
           <div class="form-group row">
             <div class="col-sm-12">
               <button class="btn btn-success" {{action "accept"}}><i class="fa fa-check-circle"></i> Accept</button>

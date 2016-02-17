@@ -20,10 +20,22 @@ export default Service.extend({
   role_super_admin: equal('user_role', 'ASuperAdmin'),
   role_global_admin: equal('user_role', 'AGlobalAdmin'),
   role_regional_admin: equal('user_role', 'ARegionalAdmin'),
-  role_doctor: equal('user_role', 'ADoctor'),
-  role_assessor: equal('user_role', 'AAssessor'),
-  role_coordinator: equal('user_role', 'ACoordinator'),
-  role_staff: equal('user_role', 'AStaff'),
+  role_doctor: computed('user_role', function() {
+    const role = this.get('user_role');
+    return role === 'Doctor' || role === 'ADoctor';
+  }),
+  role_assessor: computed('user_role', function() {
+    const role = this.get('user_role');
+    return role === 'Assessor' || role === 'AAssessor';
+  }),
+  role_coordinator: computed('user_role', function() {
+    const role = this.get('user_role');
+    return role === 'Coordinator' || role === 'ACoordinator';
+  }),
+  role_staff: computed('user_role', function() {
+    const role = this.get('user_role');
+    return role === 'Staff' || role === 'AStaff';
+  }),
   email_id: null,
   first_name: null,
   last_name: null,

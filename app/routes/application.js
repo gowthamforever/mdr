@@ -7,6 +7,24 @@ const {
 } = Ember;
 
 export default Route.extend(Api, {
+  activate() {
+    this._super(...arguments);
+    Ember.$(window).on('resize.mdr-wrapper-main', () => {
+      let height = Ember.$(window).height() + 50;
+      let eleheight = Ember.$('.resizeable-container').outerHeight();
+
+      if (height > eleheight) {
+        Ember.$('.resizeable-container').css('min-height', height);
+      }
+
+      Ember.$('.wrapper-main').css('min-height', height + 50);
+    });
+  },
+
+  deactivate() {
+    this._super(...arguments);
+    Ember.$(window).off('resize.mdr-wrapper-main');
+  },
 
   actions: {
     loading() {

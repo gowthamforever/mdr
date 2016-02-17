@@ -37,7 +37,7 @@ export default Route.extend({
         if (height < 570) {
           height = 570;
         }
-        Ember.$('.join-now-block').css('height', height -180);
+        Ember.$('.join-now-block').css('height', height - 180);
       });
     });
   },

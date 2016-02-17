@@ -229,14 +229,6 @@ export default Route.extend(EmberValidator, Api, {
       let data          = {};
       let valid         = true;
 
-
-      // TODO: Remove after integrating City API
-      model.set('selected_city_1', { name: 'Charlotte' });
-      // TODO: Remove after integrating City API
-      if (!model.get('is_cash_payment')) {
-        model.set('selected_card_city', { name: 'Charlotte' });
-      }
-
       model.set('validationResult', null);
 
       promises.model = new Promise((resolve, reject) => {
@@ -285,14 +277,15 @@ export default Route.extend(EmberValidator, Api, {
           'gender',
           'address1',
           'zip1',
-          'memebership_name'
+          'city1',
+          'memebership_name',
+          'email_id'
         ]);
 
         data.phone1 = retainNumbers(model.get('phone1'));
         data.phone2 = retainNumbers(model.get('phone2'));
         data.dob = moment(model.get('dob'), 'MMM DD YYYY').format('MM-DD-YYYY');
         data.state1 = model.get('selected_state_1.id');
-        data.city1 = model.get('selected_city_1.name');
         data.country1 = 'US';
         data.insurance_plan = model.get('selected_insurance_plan.id');
 

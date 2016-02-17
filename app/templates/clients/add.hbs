@@ -148,10 +148,10 @@
 						</div>
 
 						<div class="row">
-							<div class="form-group col-md-6  {{if model.validationResult.selected_city_1.hasError 'has-error'}}">
+							<div class="form-group col-md-6  {{if model.validationResult.city1.hasError 'has-error'}}">
 								<label class="control-label" for="city1">City</label>
 								{{input type="text" class="form-control" name="city1" value=model.city1 maxlength=250 autocomplete="off"}}
-								{{mdr-field-error client=model.validationResult.selected_city_1}}
+								{{mdr-field-error client=model.validationResult.city1}}
 							</div>
 							<div class="form-group col-md-6  {{if model.validationResult.selected_state_1.hasError 'has-error'}}">
 								<label class="control-label" for="state1">State</label>
