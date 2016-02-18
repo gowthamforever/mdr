@@ -9,14 +9,6 @@ module.exports = function(defaults) {
     // Add options here
     emberCliFontAwesome: {
       useScss: true
-    },
-
-    fingerprint: {
-      exclude: ['img']
-    },
-
-    intlTelInput: {
-      includeUtilsScript: true
     }
   });
 

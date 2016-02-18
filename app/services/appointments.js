@@ -18,6 +18,7 @@ const { service } = inject;
 export default Service.extend(Api, {
   clients: service(),
   doctors: service(),
+  assessors: service(),
   appointments: null,
   cache: false,
 
@@ -87,6 +88,10 @@ export default Service.extend(Api, {
 
     if (response.doctor) {
       result.set('doctor', this.get('doctors').createDoctor(response.doctor));
+    }
+
+    if (response.assessor) {
+      result.set('assessor', this.get('assessors').createAssessor(response.assessor));
     }
 
     return result;
