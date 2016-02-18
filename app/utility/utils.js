@@ -58,7 +58,7 @@ export function prepend(value='', text=0, length=2) {
 }
 
 export function retainNumbers(str='') {
-  return str.replace(/\D/g, "");
+  return (str || '').replace(/\D/g, "");
 }
 
 export function omitNoValue(data={}) {

@@ -4,8 +4,13 @@ import Api from 'mdr/mixins/api';
 
 const {
   Route,
+  RSVP,
   inject
 } = Ember;
+
+const {
+  Promise
+} = RSVP;
 
 const {
   service
@@ -14,11 +19,21 @@ const {
 export default Route.extend(Api, {
   session: service(),
 
+  beforeModel() {
+    const self = this;
+    return new Promise((resolve) => {
+      self.ajax({ id: 'logout' }).then(() => {
+        resolve();
+      }).catch(() => {
+        resolve();
+      });
+    });
+  },
+
   activate() {
     const self = this;
 
     this._super(...arguments);
-    this.ajax({ id: 'logout' }).catch(Ember.K);
     Ember.$(window).on('resize.mdr-wrapper-main', () => {
       let height = Ember.$(window).height() + 50;
       let eleheight = Ember.$('.resizeable-container').outerHeight();
@@ -41,6 +56,12 @@ export default Route.extend(Api, {
 
       $(window).off('beforeunload');
     });
+  },
+
+  renderTemplate() {
+    this._super(...arguments);
+    Ember.$('#preload-css').remove();
+    Ember.$('#preload-html').remove();
   },
 
   actions: {

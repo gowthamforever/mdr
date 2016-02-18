@@ -168,7 +168,7 @@ export default Route.extend(EmberValidator, Api, {
 
         data.phone1 = retainNumbers(model.get('phone1'));
         data.phone2 = retainNumbers(model.get('phone2'));
-        data.dob = moment(model.get('dob'), 'MMM DD YYYY').format('MM-DD-YYYY');
+        data.dob = moment(model.get('dob'), 'MMM DD YYYY').format('YYYY-MM-DD');
         data.state1 = model.get('selected_state_1.id');
         data.country1 = 'US';
         data.password = model.get('password1');

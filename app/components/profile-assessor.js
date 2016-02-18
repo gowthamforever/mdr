@@ -74,7 +74,7 @@ export default Component.extend(Api, EmberValidator, {
         email: 'Email Address is not valid.'
       },
 
-      dob: {
+      dob_formatted: {
         required: 'Date of Birth is required.',
       }
     };
@@ -237,10 +237,11 @@ export default Component.extend(Api, EmberValidator, {
           'gender',
           'rater_id',
           'employee_number',
-          'email_id'
+          'email_id',
+          'active'
         ]);
 
-        data.dob = moment(model.get('dob'), 'MMM DD YYYY').format('MM-DD-YYYY');
+        data.dob = moment(model.get('dob_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
 
         data = omitNoValue(data);
 
@@ -251,6 +252,7 @@ export default Component.extend(Api, EmberValidator, {
           },
           data
         }).then(() => {
+          model.set('dob', data.dob);
           self.toggleProperty('edit_personal');
           self.set('assessors.cache', false);
         });

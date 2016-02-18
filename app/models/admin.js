@@ -8,6 +8,12 @@ export default Ember.Object.extend({
   active: null,
   agency_admin_id: null,
   dob: null,
+  dob_formatted: computed('dob', function() {
+    const dob = this.get('dob');
+    if (dob) {
+      return moment(dob, 'YYYY-MM-DD', true).format('MMM DD YYYY');
+    }
+  }),
   email_id: null,
   employee_number: null,
   first_name: null,

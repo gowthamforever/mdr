@@ -34,11 +34,11 @@
           </div>
 
           <div class="row">
-            <div class="form-group col-md-6  {{if model.validationResult.dob.hasError 'has-error'}}">
+            <div class="form-group col-md-6  {{if model.validationResult.dob_formatted.hasError 'has-error'}}">
               <label class="control-label" for="dob">Date of Birth</label>
               {{#if edit_personal}}
-                {{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=(date-format model.dob "YYYY-MM-DD" "MMM DD YYYY")}}
-                {{mdr-field-error client=model.validationResult.dob}}
+                {{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=model.dob_formatted}}
+                {{mdr-field-error client=model.validationResult.dob_formatted}}
               {{else}}
                 <div class="form-control-static">{{date-format model.dob "YYYY-MM-DD" "MMM DD YYYY"}}</div>
               {{/if}}

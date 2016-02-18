@@ -17,6 +17,12 @@ export default Ember.Object.extend(AppointmentFlags, {
   agency_id: null,
   customer_id: null,
   dob: null,
+  dob_formatted: computed('dob', function() {
+    const dob = this.get('dob');
+    if (dob) {
+      return moment(dob, 'YYYY-MM-DD', true).format('MMM DD YYYY');
+    }
+  }),
   age: computed('dob', function() {
     const dob   = moment(this.get('dob'), 'YYYY-MM-DD');
     const today = moment();

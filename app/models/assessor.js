@@ -9,6 +9,12 @@ export default Ember.Object.extend(AppointmentFlags, {
   active: null,
   assessor_id: null,
   dob: null,
+  dob_formatted: computed('dob', function() {
+    const dob = this.get('dob');
+    if (dob) {
+      return moment(dob, 'YYYY-MM-DD', true).format('MMM DD YYYY');
+    }
+  }),
   email_id: null,
   employee_number: null,
   first_name: null,
@@ -20,7 +26,7 @@ export default Ember.Object.extend(AppointmentFlags, {
   requested: equal('active', Constants.STATUS.REQUESTED),
   rejected: equal('active', Constants.STATUS.REJECTED),
   inactive: equal('active', Constants.STATUS.INACTIVE),
-  available: equal('active', Constants.STATUS.ACTIVE), 
+  available: equal('active', Constants.STATUS.ACTIVE),
   isActive: equal('active', Constants.STATUS.ACTIVE),
   male: equal('gender', Constants.GENDER.Male),
   female: equal('gender', Constants.GENDER.Female),

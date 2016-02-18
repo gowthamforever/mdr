@@ -86,7 +86,7 @@ export default Component.extend(Api, EmberValidator, {
         email: 'Email Address is not valid.'
       },
 
-      dob: {
+      dob_formatted: {
         required: 'Date of Birth is required.',
       }
     };
@@ -337,10 +337,11 @@ export default Component.extend(Api, EmberValidator, {
           'surgeon',
           'ein',
           'dea',
-          'graduation_year'
+          'graduation_year',
+          'active'
         ]);
 
-        data.dob = moment(model.get('dob'), 'MMM DD YYYY').format('MM-DD-YYYY');
+        data.dob = moment(model.get('dob_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
         data.primary_speciality = model.get('primary_speciality_obj.id');
         data.practice_type = model.get('practice_type_obj.id');
 
@@ -353,6 +354,7 @@ export default Component.extend(Api, EmberValidator, {
           },
           data
         }).then(() => {
+          model.set('dob', data.dob);
           self.toggleProperty('edit_personal');
           self.set('doctors.cache', false);
         });

@@ -129,5 +129,15 @@ export default {
   updateclientcontact: {
     path: 'client/{id}/contact',
     method: 'PATCH'
+  },
+
+  updateadmininfo: {
+    path: 'agencyadmin/{id}/info',
+    method: 'PATCH'
+  },
+
+  updateadmincontact: {
+    path: 'agencyadmin/{id}/contact',
+    method: 'PATCH'
   }
 };

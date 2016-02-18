@@ -1,8 +1,8 @@
 export default {
   APPOINTMENT_MINS: {
     MIN: 360, // 6AM
-    MAX: 1320, // 10PM
-    MAX_HOUR: 22,
+    MAX: 1440, // 10PM
+    MAX_HOUR: 24,
     MIN_HOUR: 6
   },
 
