@@ -85,7 +85,7 @@ export default Mixin.create({
         }
       }).fail((...args) => {
         if (!request.background) {
-          self.handleFail(...args);
+          self.handleFail(request, ...args);
         }
         reject(...args);
       }).always(() => {
@@ -96,13 +96,15 @@ export default Mixin.create({
     });
   },
 
-  handleFail(xhr) {
+  handleFail(request, xhr) {
     const self          = this;
     const errorhandler  = self.get('errorhandler');
     const status        = typeof(xhr.status) === 'number' ? xhr.status : 0;
 
     if (/[4]\d\d/.test(status) && status === 401) {
-      errorhandler.unauthorized();
+      if (request.id !== 'logout') {
+        errorhandler.unauthorized();
+      }
       return true;
     }
 

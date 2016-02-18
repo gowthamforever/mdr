@@ -3,12 +3,22 @@ import { scrollTop } from 'mdr/utility/utils';
 import Api from 'mdr/mixins/api';
 
 const {
-  Route
+  Route,
+  inject
 } = Ember;
 
+const {
+  service
+} = inject;
+
 export default Route.extend(Api, {
+  session: service(),
+
   activate() {
+    const self = this;
+
     this._super(...arguments);
+    this.ajax({ id: 'logout' }).catch(Ember.K);
     Ember.$(window).on('resize.mdr-wrapper-main', () => {
       let height = Ember.$(window).height() + 50;
       let eleheight = Ember.$('.resizeable-container').outerHeight();
@@ -18,6 +28,18 @@ export default Route.extend(Api, {
       }
 
       Ember.$('.wrapper-main').css('min-height', height + 50);
+    });
+
+    $(window).on('beforeunload', function(){
+      const session = self.get('session');
+
+      Ember.$(window).off('resize.mdr-wrapper-main');
+
+      if (session.get('isAuthenticated')) {
+        self.ajax({ id: 'logout' });
+      }
+
+      $(window).off('beforeunload');
     });
   },
 
@@ -35,17 +57,6 @@ export default Route.extend(Api, {
 
     didTransition() {
       scrollTop();
-    }
-  },
-
-  deactivate() {
-    const session = this.get('session');
-    this._super(...arguments);
-
-    Ember.$(window).off('resize.mdr-wrapper-main');
-
-    if (session.get('isAuthenticated')) {
-      this.ajax({ id: 'logout' });
     }
   }
 });
