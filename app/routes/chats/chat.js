@@ -19,10 +19,13 @@ const {
 export default Route.extend(Api, {
   dialog: service(),
   opentok: service(),
+  session: service(),
 
   activate() {
     this._super(...arguments);
-    this.get('titlebar').set('right_content', 'right-content-chat');
+    if (session.get('role_doctor') || session.get('role_assessor')) {
+      this.get('titlebar').set('right_content', 'right-content-chat');
+    }
     this.set('opentok.fullscreen', true);
   },
 
