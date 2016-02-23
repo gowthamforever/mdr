@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import Form from 'mdr/models/form';
 import Api from 'mdr/mixins/api';
 
 const {
@@ -7,6 +8,10 @@ const {
   Object: EmberObject,
   inject,
 } = Ember;
+
+const {
+  hash
+} = RSVP;
 
 const {
   service
@@ -20,10 +25,11 @@ export default Route.extend(Api, {
   dialog: service(),
   opentok: service(),
   session: service(),
+  contact: service(),
 
   activate() {
     this._super(...arguments);
-    if (session.get('role_doctor') || session.get('role_assessor')) {
+    if (this.get('session.role_doctor') || this.get('session.role_assessor')) {
       this.get('titlebar').set('right_content', 'right-content-chat');
     }
     this.set('opentok.fullscreen', true);
@@ -33,6 +39,7 @@ export default Route.extend(Api, {
     this._super(...arguments);
     this.get('titlebar').set('right_content', undefined);
     this.set('opentok.fullscreen', true);
+    this.get('controller.form', undefined);
   },
 
   model(param) {
@@ -51,12 +58,18 @@ export default Route.extend(Api, {
     this.transitionTo('appointments');
   },
 
+  setupController(controller) {
+    this._super(...arguments);
+    controller.set('form', Form.create());
+  },
+
   afterModel(model, transition) {
     const self         = this;
     const currentTime  = moment();
     const endTime      = moment().endOf('day');
     let ts_request_moment;
     let ts_request_endtime_moment;
+    let promises;
 
     ts_request_moment = model.get('ts_request_moment');
     ts_request_endtime_moment = model.get('ts_request_endtime_moment');
@@ -75,23 +88,60 @@ export default Route.extend(Api, {
         model: EmberObject.create({ message: `Appointment is going to start at ${model.get('ts_request_moment').format('MMM DD YYYY HH:mm')}. Please come back later.` })
       });
     } else {
+      promises = {
+        chatsession: undefined,
+        customer: undefined
+      };
+
       return new Promise((resolve) => {
-        self.ajax({
-          id: 'chatsession',
-          path: {
-            id: model.get('id')
+        hash(promises).then((promises) => {
+          const { chatsession, customer } = promises;
+          if (chatsession) {
+            model.setProperties(_.pick(chatsession, [
+              'sessionId',
+              'tokenID',
+              'apiKey'
+            ]));
           }
-        }).then((response) => {
-          model.setProperties(_.pick(response, [
-            'sessionId',
-            'tokenID',
-            'apiKey'
-          ]));
-          resolve();
-        }).catch(() => {
+
+          if (customer) {
+            model.set('customer', customer);
+          }
           resolve();
         });
       });
     }
+  },
+
+  getChatSession(model) {
+    const self = this;
+    return new Promise((resolve) => {
+      self.ajax({
+        id: 'chatsession',
+        path: {
+          id: model.get('id')
+        }
+      }).then((response) => {
+        resolve(response);
+      }).catch(() => {
+        resolve();
+      });
+    });
+  },
+
+  getClient(model) {
+    const self = this;
+    return new Promise((resolve) => {
+      self.ajax({
+        id: 'clientdetails',
+        path: {
+          id: model.get('customer.customer_id')
+        }
+      }).then((response) => {
+        resolve(self.get('contact').createClient(response));
+      }).catch(() => {
+        resolve();
+      });
+    });
   }
 });

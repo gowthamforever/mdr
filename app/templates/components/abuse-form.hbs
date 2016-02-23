@@ -1,0 +1,13 @@
+<section class="col-md-12">
+  <div class="panel panel-primary abuse-mental-form">
+    <div class="panel-heading text-center">SUBSTANCE ABUSE &amp; MENTAL HEALTH ASSESSMENT MANUAL FORM</div>
+    {{#if pages.form1}}
+      {{form-one model=model form=form class="panel-body" page=(action "page")}}
+    {{/if}}
+
+    {{#if pages.form2}}
+      {{form-two model=model form=form class="panel-body" page=(action "page")}}
+    {{/if}}
+  </div>
+  <div class="height-adjustment">&nbsp;</div>
+</section>
