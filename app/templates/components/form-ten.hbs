@@ -1,0 +1,92 @@
+<form {{action "next" on="submit"}}>
+  <div class="form-group row form-section">
+    <label class="col-sm-2">SECTION TEN</label>
+    <div class="col-sm-10 form-section-title">
+      PLACE &amp; DISPOSITION
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">PRIMARY RECOMMENDATION:</label>
+    <div class="col-sm-5">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">DISPOSITION:</label>
+    <div class="col-sm-5">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <label class="col-sm-3">REFERRAL SOURCE:</label>
+    <div class="col-sm-9">
+      {{textarea class="form-control" value=form.two_pdpf rows="7" maxlength=500}}
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <label class="col-sm-3">Additional Information:</label>
+    <div class="col-sm-9">
+      {{textarea class="form-control" value=form.two_pdpf rows="15" maxlength=500}}
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <label class="col-sm-3">ASSESSMENT THERAPIST:</label>
+    <div class="col-sm-5">
+      {{model.doctor.first_name}} {{model.doctor.last_name}}
+      {{model.assessor.first_name}} {{model.assessor.last_name}}
+    </div>
+
+    <label class="col-sm-2">DATE:</label>
+    <div class="col-sm-2">
+      {{assessment_date}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-3">SUPERVISOR:</label>
+    <div class="col-sm-5">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+
+    <label class="col-sm-2">DATE:</label>
+    <div class="col-sm-2">
+      {{assessment_date}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-3">ENTERED INTO SYSTEM:</label>
+    <div class="col-sm-5">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+
+    <label class="col-sm-2">DATE:</label>
+    <div class="col-sm-2">
+      {{assessment_date}}
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <label class="col-sm-1">&nbsp;</label>
+    <div class="col-md-2 form-group-right-align">
+      <button class="btn btn-primary btn-block" type="submit" autocomplete="off">Submit</button>
+    </div>
+    <label class="col-sm-1">&nbsp;</label>
+    <div class="col-md-2 form-group-right-align">
+      <button class="btn btn-primary btn-block" autocomplete="off" {{action "previous"}}>Previous (Page 9)</button>
+    </div>
+  </div>
+</form>

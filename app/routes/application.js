@@ -45,7 +45,7 @@ export default Route.extend(Api, {
       Ember.$('.wrapper-main').css('min-height', height + 50);
     });
 
-    $(window).on('beforeunload', function(){
+    Ember.$(window).on('beforeunload', function(){
       const session = self.get('session');
 
       Ember.$(window).off('resize.mdr-wrapper-main');
@@ -54,7 +54,7 @@ export default Route.extend(Api, {
         self.ajax({ id: 'logout' });
       }
 
-      $(window).off('beforeunload');
+      Ember.$(window).off('beforeunload');
     });
   },
 

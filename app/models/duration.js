@@ -36,7 +36,7 @@ export default EmberObject.extend({
       let result  = am_pm === 0 ? '12' : prepend(am_pm);
       result += `:${prepend(min)}`;
 
-      if (hour == 24) {
+      if (hour === 24) {
         result += ' AM';
       } else if (hour >= 12) {
         result += ' PM';
@@ -61,7 +61,7 @@ export default EmberObject.extend({
       let result  = am_pm === 0 ? '12' : prepend(am_pm);
       result += `:${prepend(min)}`;
 
-      if (hour == 24) {
+      if (hour === 24) {
         result += ' AM';
       } else if (hour >= 12) {
         result += ' PM';

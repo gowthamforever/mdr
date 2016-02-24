@@ -1,0 +1,283 @@
+<form {{action "next" on="submit"}}>
+  <div class="form-group row form-section">
+    <label class="col-sm-2">SECTION EIGHT</label>
+    <div class="col-sm-10 form-section-title">
+      BRIEF MEDICAL HISTORY
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">NUMBER OF TIMES HOSPITALIZED IN PAST 24 MONTHS:</label>
+    <div class="col-sm-5">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">EVER HOSPITALIZED DUE TO DRUGS OR ALCOHOL:</label>
+    <div class="col-sm-5">
+      <div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">NUMBER OF SURGERIES IN PAST 24 MONTHS:</label>
+    <div class="col-sm-5">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">NUMBER OF PREGANANCIES AND DELIVERIES:</label>
+    <div class="col-sm-5">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">GIVEN BIRTH IN PAST 12 MONTHS:</label>
+    <div class="col-sm-5">
+      <div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">CURRENTLY PREGNANT:</label>
+    <div class="col-sm-5">
+      <div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">IF PREGANANT, HOW MANY MONTHS:</label>
+    <div class="col-sm-5">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">LAST PHYSICAL EXAM:</label>
+    <div class="col-sm-5">
+      {{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=form.dob_formatted}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">LAST PHYSICIAN VISIT:</label>
+    <div class="col-sm-5">
+      {{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=form.dob_formatted}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">LAST BREAK EXAM:</label>
+    <div class="col-sm-5">
+      {{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=form.dob_formatted}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">LAST PAP SMEAR:</label>
+    <div class="col-sm-5">
+      {{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=form.dob_formatted}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">DO HAVE A PRIMARY PHYSICIAN:</label>
+    <div class="col-sm-5">
+      <div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">DO YOU HAVE A HEALTH INSURANCE:</label>
+    <div class="col-sm-5">
+      <div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">LAST TIME TESTED FOR HIV/AIDS:</label>
+    <div class="col-sm-5">
+      {{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=form.dob_formatted}}
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">LAST HOSPITAL ADMIT:</label>
+    <div class="col-sm-5">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+
+    <label class="col-sm-2">LENGTH OF STAY:</label>
+    <div class="col-sm-3">
+      {{input type="text" class="form-control" value=form.primary_drug_frequency autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">HOSPITAL:</label>
+    <div class="col-sm-10">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">TREATING PHYSICIAN:</label>
+    <div class="col-sm-10">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">REASON:</label>
+    <div class="col-sm-10">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">DISH STATUS:</label>
+    <div class="col-sm-5">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+
+    <label class="col-sm-2">DISH DATE:</label>
+    <div class="col-sm-5">
+      {{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=form.dob_formatted}}
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">LAST PHYSICIAN VISIT:</label>
+    <div class="col-sm-5">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">TREATING PHYSICIAN:</label>
+    <div class="col-sm-10">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">REASON:</label>
+    <div class="col-sm-10">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">STATUS:</label>
+    <div class="col-sm-5">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <label class="col-sm-5">LIST ANY CURRENT MEDICATIONS YOU ARE TAKING AND THE REASON FOR SUCH MEDICATION:</label>
+    <div class="col-sm-7">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-5">LIST ANY KNOWN ALERGIES YOU HAVE:</label>
+    <div class="col-sm-7">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-5">CURRENT MEDICAL COMPLAINTS:</label>
+    <div class="col-sm-7">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Other medical history narrative:</label>
+    <div class="col-sm-10">
+      {{textarea class="form-control" value=form.two_pdpf rows="7" maxlength=500}}
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <label class="col-sm-1">&nbsp;</label>
+    <div class="col-md-2 form-group-right-align">
+      <button class="btn btn-primary btn-block" type="submit" autocomplete="off">Next (Page 8)</button>
+    </div>
+    <label class="col-sm-1">&nbsp;</label>
+    <div class="col-md-2 form-group-right-align">
+      <button class="btn btn-primary btn-block" autocomplete="off" {{action "previous"}}>Previous (Page 6)</button>
+    </div>
+  </div>
+</form>

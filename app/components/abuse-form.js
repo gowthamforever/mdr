@@ -10,15 +10,21 @@ const {
 
 export default Component.extend({
   form: undefined,
-  pages: {
-    form1: true,
-    form2: false
-  },
+  pages: undefined,
   setForm: on('init', function() {
     const form  = Form.create();
     const pages = {
       form1: true,
-      form2: false
+      form2: false,
+      form3: false,
+      form4: false,
+      form5: false,
+      form6: false,
+      form7: false,
+      form8: false,
+      form9: false,
+      form10: false,
+      form11: false
     };
 
     this.setProperties({
@@ -29,7 +35,6 @@ export default Component.extend({
 
   showPage(number) {
     const pages = this.get('pages');
-    let form;
 
     for(let key in pages) {
       set(pages, key, false);

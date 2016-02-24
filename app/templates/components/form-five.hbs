@@ -1,0 +1,233 @@
+<form {{action "next" on="submit"}}>
+  <div class="form-group row form-section">
+    <label class="col-sm-2">SECTION SIX</label>
+    <div class="col-sm-10 form-section-title">
+      LEGAL HISTORY
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">NUMBER OF TIMES YOU WERE ARRESTED IN PAST 12 MONTHS:</label>
+    <div class="col-sm-5">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">DATE OF LAST ARREST:</label>
+    <div class="col-sm-5">
+      {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.referral_date_formatted}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">REASON FOR LAST ARREST:</label>
+    <div class="col-sm-5">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">WAS THE LAST ARREST DRUG/ALCOHAL RELATED:</label>
+    <div class="col-sm-5">
+      <div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">TYPE OF DRUG USED IN LAST ARREST:</label>
+    <div class="col-sm-5">
+      {{input-select
+        class="form-control"
+        options=form.primary_drugs
+        selected=model.ethnicity
+        prompt="Select"
+      }}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">EVER HURT ANYONE WHILE USING DRUG/ALCOHAL:</label>
+    <div class="col-sm-5">
+      <div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">ARE YOU CURRENTLY INVOLVED IN THE CRIMAINAL JUSTICE SYSTEM:</label>
+    <div class="col-sm-5">
+      <div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">ARE YOU CURRENTLY UNDER LEGAL SUPERVISION:</label>
+    <div class="col-sm-5">
+      <div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">WERE YOU ON PROBATION AT ARREST:</label>
+    <div class="col-sm-5">
+      <div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">PROBATION OFFICER'S NAME:</label>
+    <div class="col-sm-5">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">PROBATION OFFICER'S PHONE NUMBER:</label>
+    <div class="col-sm-5">
+      {{mdr-phone type="text" class="form-control" value=model.phone1 autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">TYPE OF DRUG USED PRIOR TO LAST ARREST:</label>
+    <div class="col-sm-5">
+      {{input-select
+        class="form-control"
+        options=form.primary_drugs
+        selected=model.ethnicity
+        prompt="Select"
+      }}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">WERE YOU ORDERED TO TX AS A CONDITION OF PROBATION:</label>
+    <div class="col-sm-5">
+      <div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">WERE YOU COURT ORDERED TO TREATMENT:</label>
+    <div class="col-sm-5">
+      <div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">IF SO, BY JUDGE:</label>
+    <div class="col-sm-5">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">IF SO, BY COURT:</label>
+    <div class="col-sm-5">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Other legal history narrative:</label>
+    <div class="col-sm-10">
+      {{textarea class="form-control" value=form.two_pdpf rows="7" maxlength=500}}
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <label class="col-sm-1">&nbsp;</label>
+    <div class="col-md-2 form-group-right-align">
+      <button class="btn btn-primary btn-block" type="submit" autocomplete="off">Next (Page 6)</button>
+    </div>
+    <label class="col-sm-1">&nbsp;</label>
+    <div class="col-md-2 form-group-right-align">
+      <button class="btn btn-primary btn-block" autocomplete="off" {{action "previous"}}>Previous (Page 4)</button>
+    </div>
+  </div>
+</form>

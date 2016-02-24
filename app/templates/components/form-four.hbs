@@ -1,0 +1,422 @@
+<form {{action "next" on="submit"}}>
+  <div class="form-group row form-section">
+    <label class="col-sm-2">SECTION FIVE</label>
+    <div class="col-sm-10 form-section-title">
+      PSYCHIATRIC HISTORY
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">NUMBER OF TIMES YOU WERE ADMITTED TO A BAKER UNIT IN PAST 12 MONTHS:</label>
+    <div class="col-sm-5">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">NUMBER OF TIMES YOU WERE ADMITTED TO A MH TREATMENT PROGRAM IN PAST 24 MONTHS:</label>
+    <div class="col-sm-5">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">EVER COURT ORDERED TO FOR MENTAL TREATMENT:</label>
+    <div class="col-sm-5">
+      <div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">EVER FORCED TO ENROLL IN MENTAL HEALTH TREATMENT:</label>
+    <div class="col-sm-5">
+      <div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <label class="col-sm-3">LAST BAKER ACT ADMIT:</label>
+    <div class="col-sm-4">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+
+    <label class="col-sm-2">LENGTH OF STAY:</label>
+    <div class="col-sm-3">
+      {{input type="text" class="form-control" value=form.primary_drug_frequency autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-3">AGENCY:</label>
+    <div class="col-sm-9">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-3">TREATING PSYCHIATRIC:</label>
+    <div class="col-sm-9">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-3">REASON:</label>
+    <div class="col-sm-9">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-3">DISH STATUS:</label>
+    <div class="col-sm-4">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+
+    <label class="col-sm-2">DISH DATE:</label>
+    <div class="col-sm-3">
+      {{input type="text" class="form-control" value=form.primary_drug_frequency autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <label class="col-sm-3">LAST BAKER ACT ADMIT:</label>
+    <div class="col-sm-4">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+
+    <label class="col-sm-2">LENGTH OF STAY:</label>
+    <div class="col-sm-3">
+      {{input type="text" class="form-control" value=form.primary_drug_frequency autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-3">AGENCY:</label>
+    <div class="col-sm-9">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-3">TREATING PSYCHIATRIC:</label>
+    <div class="col-sm-9">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-3">REASON:</label>
+    <div class="col-sm-9">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-3">DISH STATUS:</label>
+    <div class="col-sm-4">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+
+    <label class="col-sm-2">DISH DATE:</label>
+    <div class="col-sm-3">
+      {{input type="text" class="form-control" value=form.primary_drug_frequency autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">DO YOU HAVE MH CASE MANAGER:</label>
+    <div class="col-sm-5">
+      <div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.two_child_welfare_case value="Yes"}} Yes
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.two_child_welfare_case value="No"}} No
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">ARE YOU CURRENTLY RECEIVING MENTAL HEALTH TREATMENT:</label>
+    <div class="col-sm-5">
+      <div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.two_child_welfare_case value="Yes"}} Yes
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.two_child_welfare_case value="No"}} No
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">DID YOU FIND YOUR MH TREATMENT HELPFUL:</label>
+    <div class="col-sm-5">
+      <div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.two_child_welfare_case value="Yes"}} Yes
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.two_child_welfare_case value="No"}} No
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">DID YOU ATTEND ANY MH COMMUNITY SUPPORT GROUPS:</label>
+    <div class="col-sm-5">
+      <div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.two_child_welfare_case value="Yes"}} Yes
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.two_child_welfare_case value="No"}} No
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">ORIENTATION(time, day, place, year):</label>
+    <div class="col-sm-5">
+
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">COMMUNITY COHERENTLY:</label>
+    <div class="col-sm-5">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">NOTICEABLE PSYCHIATRIC SYMPTOMS:</label>
+    <div class="col-sm-5">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">MOOD/AFFECT (sad, bad, glad, mad):</label>
+    <div class="col-sm-5">
+
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <label class="col-sm-4">ARE YOU CURRENTLY TAKING ANY MENTAL HEALTH MEDICATIONS:</label>
+    <div class="col-sm-8">
+      <div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.two_child_welfare_case value="Yes"}} Yes
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.two_child_welfare_case value="No"}} No
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-4">LIST MENTAL HEALTH MEDICATIONS YOU HAVE TAKEN IN THE PAST 12 MONTHS:</label>
+    <div class="col-sm-8">
+      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">DATE OF LAST SUICIDE ATTEMPT:</label>
+    <div class="col-sm-5">
+      {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.referral_date_formatted}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">SUCIDA IDEATION IN PAST 30 DAYS:</label>
+    <div class="col-sm-5">
+      <div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.two_child_welfare_case value="Yes"}} Yes
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.two_child_welfare_case value="No"}} No
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">ANY FAMILY MEMEBERS WITH HISTORY OF MH PROBLEMS:</label>
+    <div class="col-sm-5">
+      <div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.two_child_welfare_case value="Yes"}} Yes
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.two_child_welfare_case value="No"}} No
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">CURRENTLY REQUIRES MENTAL HEALTH SERVICES:</label>
+    <div class="col-sm-5">
+      <div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.two_child_welfare_case value="Yes"}} Yes
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.two_child_welfare_case value="No"}} No
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">DOES ANYONE ELSE USE DRUGS IN YOUR HOME ENVIRONMENT:</label>
+    <div class="col-sm-5">
+      <div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.two_child_welfare_case value="Yes"}} Yes
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.two_child_welfare_case value="No"}} No
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">DOES YOU HAVE A SUPPORTIVE HOME RECOVERY ENVIRONMENT:</label>
+    <div class="col-sm-5">
+      <div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.two_child_welfare_case value="Yes"}} Yes
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.two_child_welfare_case value="No"}} No
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">DOES YOUR FRIENDS USE DRUGS:</label>
+    <div class="col-sm-5">
+      <div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.two_child_welfare_case value="Yes"}} Yes
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.two_child_welfare_case value="No"}} No
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Other psychiatric history narrative:</label>
+    <div class="col-sm-10">
+      {{textarea class="form-control" value=form.two_pdpf rows="7" maxlength=500}}
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <label class="col-sm-1">&nbsp;</label>
+    <div class="col-md-2 form-group-right-align">
+      <button class="btn btn-primary btn-block" type="submit" autocomplete="off">Next (Page 5)</button>
+    </div>
+    <label class="col-sm-1">&nbsp;</label>
+    <div class="col-md-2 form-group-right-align">
+      <button class="btn btn-primary btn-block" autocomplete="off" {{action "previous"}}>Previous (Page 3)</button>
+    </div>
+  </div>
+</form>

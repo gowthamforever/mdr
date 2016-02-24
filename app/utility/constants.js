@@ -108,9 +108,87 @@ export default {
   RACES: [
     { id: 1, name: 'White' },
     { id: 2, name: 'African American' },
-    { id: 3, name: 'Hispanic' },
-    { id: 4, name: 'Asian/Pacific Islander' },
-    { id: 5, name: 'Other' }
+    { id: 3, name: 'Amer Indian/Alaskan Nat' },
+    { id: 4, name: 'Asian' },
+    { id: 5, name: 'Native Hawaiian or Other' },
+    { id: 6, name: 'Mulit-Racial  ' }
+  ],
+
+  ETHNICITIES: [
+    'Puerto Rican',
+    'Mexican',
+    'Cuban',
+    'Other Hispanic',
+    'Hatian',
+    'Mexican American',
+    'Spanish/Latino',
+    'None of the above'
+  ],
+
+  PRIMARY_DRUGS: [
+    'ALCOHOL',
+    'MORPHINE SULFATE (MSContin)',
+    'METHADONE',
+    'CODEINE',
+    'D-PROPOXYPHENE (Darvon/Darvocet)',
+    'OXYCODONE (Oxycontin)',
+    'CRACK',
+    'MARIJUANA/HASHISH',
+    'HEROIN',
+    'NON-PRESCRIPTION METHADONE'
+  ],
+
+  DRUGS_FREQUENCIES: [
+    'No Past Month Use (no use past 30 days)',
+    '3-6 Times per Week',
+    '1-3 Times in Past Month (30 days)',
+    'Daily, 1-2 Times per Week'
+  ],
+
+  DRUGS_METHODS_OF_ADMIN: [
+    'Oral',
+    'Smoking',
+    'Inhalation',
+    'Injection (IV or Intra-Muscular)',
+    'Other'
+  ],
+
+  EDUCATIONAL_GRADES: [
+    '9th Grade',
+    '10th Grade',
+    '11th Grade',
+    '12th Grade',
+    'Vocational School',
+    'High School Graduate',
+    'Diploma/Degree',
+    '1 or more year College',
+    'Associate Degree (AA, AS, etc.)',
+    'Bachelor Degree (BA, BS, AB, etc.)',
+    'Master Degree (MS, MA, MSW, etc.)',
+    'Prof. Degree (MD, DDS, JD, etc.)',
+    'Doc. Degree (PhD, EDD, etc.)'
+  ],
+
+  EMPLOYMENT_STATUSES: [
+    'Active military - overseas',
+    'Active military - USA',
+    'Full Time',
+    'Unpaid Family Worker',
+    'Part Time',
+    'Leave of Absence',
+    'Retired',
+    'Terminated / unemployed',
+    'Homemaker',
+    'Student'
+  ],
+
+  LIVING_ARRAGEMENTS: [
+    'Independent Living - Alone',
+    'Independent Living - with Relatives',
+    'Independent Living - with Non-Relatives',
+    'Dependent Living - with Relatives',
+    'Dependent Living - with Non-Relatives',
+    'Assisted Ling Facility (ALF), Foster Care/Home'
   ],
 
   LANGAUAGES: [

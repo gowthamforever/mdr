@@ -89,8 +89,8 @@ export default Route.extend(Api, {
       });
     } else {
       promises = {
-        chatsession: undefined,
-        customer: undefined
+        chatsession: self.getChatSession(model),
+        customer: self.getClient(model)
       };
 
       return new Promise((resolve) => {

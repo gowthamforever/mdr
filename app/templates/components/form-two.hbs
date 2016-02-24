@@ -7,36 +7,51 @@
   </div>
 
   <div class="form-group row">
-    <label class="col-sm-2">Primary Drug Used:</label>
+    <label class="col-sm-2">{{upper-case "Primary Drug Used"}}</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{input-select
+        class="form-control"
+        options=form.primary_drugs
+        selected=model.ethnicity
+        prompt="Select"
+      }}
     </div>
 
-    <label class="col-sm-2">Frequency:</label>
+    <label class="col-sm-2">{{upper-case "Frequency"}}</label>
     <div class="col-sm-3">
-      {{input type="text" class="form-control" value=form.primary_drug_frequency autocomplete="off"}}
+      {{input-select
+        class="form-control"
+        options=form.drugs_frequencies
+        selected=model.ethnicity
+        prompt="Select"
+      }}
     </div>
   </div>
 
   <div class="form-group row">
-    <label class="col-sm-2">Method of Admin:</label>
+    <label class="col-sm-2">{{upper-case "Method of Admin"}}</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.primary_drug_method_of_admin autocomplete="off"}}
+      {{input-select
+        class="form-control"
+        options=form.drugs_methods_of_admin
+        selected=model.drugs_methods_of_admin
+        prompt="Select"
+      }}
     </div>
 
-    <label class="col-sm-2">Last Used:</label>
+    <label class="col-sm-2">{{upper-case "Last Used"}}</label>
     <div class="col-sm-3">
       {{input type="text" class="form-control" value=form.primary_drug_last_used autocomplete="off"}}
     </div>
   </div>
 
   <div class="form-group row">
-    <label class="col-sm-2">Age of First Use:</label>
+    <label class="col-sm-2">{{upper-case "Age of First Use"}}</label>
     <div class="col-sm-5">
       {{input type="text" class="form-control" value=form.primary_drug_age_of_first_use autocomplete="off"}}
     </div>
 
-    <label class="col-sm-2">Hours Since Last Use:</label>
+    <label class="col-sm-2">{{upper-case "Hours Since Last Use"}}</label>
     <div class="col-sm-3">
       {{input type="text" class="form-control" value=form.primary_drug_hours_since_last_use autocomplete="off"}}
     </div>
@@ -45,36 +60,51 @@
   <div class="form-group row form-seperator"></div>
 
   <div class="form-group row">
-    <label class="col-sm-2">Secondary Drug Used:</label>
+    <label class="col-sm-2">{{upper-case "Secondary Drug Used"}}</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.secondary_drug_used autocomplete="off"}}
+      {{input-select
+        class="form-control"
+        options=form.primary_drugs
+        selected=model.ethnicity
+        prompt="Select"
+      }}
     </div>
 
-    <label class="col-sm-2">Frequency:</label>
+    <label class="col-sm-2">{{upper-case "Frequency"}}</label>
     <div class="col-sm-3">
-      {{input type="text" class="form-control" value=form.secondary_drug_frequency autocomplete="off"}}
+      {{input-select
+        class="form-control"
+        options=form.drugs_frequencies
+        selected=model.ethnicity
+        prompt="Select"
+      }}
     </div>
   </div>
 
   <div class="form-group row">
-    <label class="col-sm-2">Method of Admin:</label>
+    <label class="col-sm-2">{{upper-case "Method of Admin"}}</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.secondary_drug_method_of_admin autocomplete="off"}}
+      {{input-select
+        class="form-control"
+        options=form.drugs_methods_of_admin
+        selected=model.drugs_methods_of_admin
+        prompt="Select"
+      }}
     </div>
 
-    <label class="col-sm-2">Last Used:</label>
+    <label class="col-sm-2">{{upper-case "Last Used"}}</label>
     <div class="col-sm-3">
       {{input type="text" class="form-control" value=form.secondary_drug_last_used autocomplete="off"}}
     </div>
   </div>
 
   <div class="form-group row">
-    <label class="col-sm-2">Age of First Use:</label>
+    <label class="col-sm-2">{{upper-case "Age of First Use"}}</label>
     <div class="col-sm-5">
       {{input type="text" class="form-control" value=form.secondary_drug_age_of_first_use autocomplete="off"}}
     </div>
 
-    <label class="col-sm-2">Hours Since Last Use:</label>
+    <label class="col-sm-2">{{upper-case "Hours Since Last Use"}}</label>
     <div class="col-sm-3">
       {{input type="text" class="form-control" value=form.secondary_drug_hours_since_last_use autocomplete="off"}}
     </div>
@@ -83,43 +113,58 @@
   <div class="form-group row form-seperator"></div>
 
   <div class="form-group row">
-    <label class="col-sm-2">Tertiary Drug Used:</label>
+    <label class="col-sm-2">{{upper-case "Tertiary Drug Used"}}</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.tertiary_drug_used autocomplete="off"}}
+      {{input-select
+        class="form-control"
+        options=form.primary_drugs
+        selected=model.ethnicity
+        prompt="Select"
+      }}
     </div>
 
-    <label class="col-sm-2">Frequency:</label>
+    <label class="col-sm-2">{{upper-case "Frequency"}}</label>
     <div class="col-sm-3">
-      {{input type="text" class="form-control" value=form.tertiary_drug_frequency autocomplete="off"}}
+      {{input-select
+        class="form-control"
+        options=form.drugs_frequencies
+        selected=model.ethnicity
+        prompt="Select"
+      }}
     </div>
   </div>
 
   <div class="form-group row">
-    <label class="col-sm-2">Method of Admin:</label>
+    <label class="col-sm-2">{{upper-case "Method of Admin"}}</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.tertiary_drug_method_of_admin autocomplete="off"}}
+      {{input-select
+        class="form-control"
+        options=form.drugs_methods_of_admin
+        selected=model.drugs_methods_of_admin
+        prompt="Select"
+      }}
     </div>
 
-    <label class="col-sm-2">Last Used:</label>
+    <label class="col-sm-2">{{upper-case "Last Used"}}</label>
     <div class="col-sm-3">
       {{input type="text" class="form-control" value=form.tertiary_drug_last_used autocomplete="off"}}
     </div>
   </div>
 
   <div class="form-group row">
-    <label class="col-sm-2">Age of First Use:</label>
+    <label class="col-sm-2">{{upper-case "Age of First Use"}}</label>
     <div class="col-sm-5">
       {{input type="text" class="form-control" value=form.tertiary_drug_age_of_first_use autocomplete="off"}}
     </div>
 
-    <label class="col-sm-2">Hours Since Last Use:</label>
+    <label class="col-sm-2">{{upper-case "Hours Since Last Use"}}</label>
     <div class="col-sm-3">
       {{input type="text" class="form-control" value=form.tertiary_drug_hours_since_last_use autocomplete="off"}}
     </div>
   </div>
 
   <div class="form-group row">
-    <label class="col-sm-2">List/Descrbe other drugs you have used:</label>
+    <label class="col-sm-2">{{upper-case "List/Descrbe other drugs you have used"}}</label>
     <div class="col-sm-10">
       {{textarea class="form-control" value=form.three_ldodyhu rows="7" maxlength=500}}
     </div>
@@ -128,7 +173,7 @@
   <div class="form-group row form-seperator"></div>
 
   <div class="form-group row">
-    <label class="col-sm-4">IV Drug User:</label>
+    <label class="col-sm-4">{{upper-case "IV Drug User"}}</label>
     <div class="col-sm-2">
       <div>
         <div class="radio-inline">
@@ -143,7 +188,7 @@
         </div>
       </div>
     </div>
-    <label class="col-sm-4">Habitual Drug User:</label>
+    <label class="col-sm-4">{{upper-case "Habitual Drug User"}}</label>
     <div class="col-sm-2">
       <div>
         <div class="radio-inline">
@@ -161,7 +206,7 @@
   </div>
 
   <div class="form-group row">
-    <label class="col-sm-4">Sees Drug Use as Harmful:</label>
+    <label class="col-sm-4">{{upper-case "Sees Drug Use as Harmful"}}</label>
     <div class="col-sm-2">
       <div>
         <div class="radio-inline">
@@ -176,7 +221,7 @@
         </div>
       </div>
     </div>
-    <label class="col-sm-4">Sees Alchol Use as Harmful:</label>
+    <label class="col-sm-4">{{upper-case "Sees Alchol Use as Harmful"}}</label>
     <div class="col-sm-2">
       <div>
         <div class="radio-inline">
@@ -194,7 +239,7 @@
   </div>
 
   <div class="form-group row">
-    <label class="col-sm-4">Sees Tobacco Use as Harmful:</label>
+    <label class="col-sm-4">{{upper-case "Sees Tobacco Use as Harmful"}}</label>
     <div class="col-sm-2">
       <div>
         <div class="radio-inline">
@@ -209,7 +254,7 @@
         </div>
       </div>
     </div>
-    <label class="col-sm-4">Uses Tobacco:</label>
+    <label class="col-sm-4">{{upper-case "Uses Tobacco"}}</label>
     <div class="col-sm-2">
       <div>
         <div class="radio-inline">
@@ -229,7 +274,7 @@
   <div class="form-group row form-seperator"></div>
 
   <div class="form-group row">
-    <label class="col-sm-10">Ever Used Barbiturates, Opiates or Tranquilizers in Past 24 hours:</label>
+    <label class="col-sm-10">{{upper-case "Ever Used Barbiturates, Opiates or Tranquilizers in Past 24 hours"}}</label>
     <div class="col-sm-2">
       <div>
         <div class="radio-inline">
@@ -247,7 +292,7 @@
   </div>
 
   <div class="form-group row">
-    <label class="col-sm-10">Current Carvings For Drugs or Alchol:</label>
+    <label class="col-sm-10">{{upper-case "Current Carvings For Drugs or Alchol"}}</label>
     <div class="col-sm-2">
       <div>
         <div class="radio-inline">
@@ -265,135 +310,7 @@
   </div>
 
   <div class="form-group row">
-    <label class="col-sm-10">Current Experiencing Withdrawal Symptoms:</label>
-    <div class="col-sm-2">
-      <div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
-          </label>
-        </div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
-          </label>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group row form-seperator"></div>
-
-  <div class="form-group row">
-    <label class="col-sm-10">Anyone Expressed Concerns About Your Drug/Alchol Use:</label>
-    <div class="col-sm-2">
-      <div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
-          </label>
-        </div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
-          </label>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <label class="col-sm-10">Do you Feel you Drink or Use Drugs Too Much:</label>
-    <div class="col-sm-2">
-      <div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
-          </label>
-        </div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
-          </label>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <label class="col-sm-10">Ever Experienced Serious Consequences Due to Drinking or Drug Use:</label>
-    <div class="col-sm-2">
-      <div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
-          </label>
-        </div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
-          </label>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <label class="col-sm-10">Ever Felt that you Lost Control of your Drinking or Drug Use:</label>
-    <div class="col-sm-2">
-      <div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
-          </label>
-        </div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
-          </label>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <label class="col-sm-10">Do you feel that you need to Cut Back or Reduce your Drinking or Drug Use:</label>
-    <div class="col-sm-2">
-      <div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
-          </label>
-        </div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
-          </label>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <label class="col-sm-10">Ever had to seek Medical Treatment dur to your Drinking or Drug Use:</label>
-    <div class="col-sm-2">
-      <div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
-          </label>
-        </div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
-          </label>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <label class="col-sm-10">Ever Arrested due to your Drinking or Drug Use:</label>
+    <label class="col-sm-10">{{upper-case "Current Experiencing Withdrawal Symptoms"}}</label>
     <div class="col-sm-2">
       <div>
         <div class="radio-inline">
@@ -413,7 +330,135 @@
   <div class="form-group row form-seperator"></div>
 
   <div class="form-group row">
-    <label class="col-sm-2">Other narrative information about drug use:</label>
+    <label class="col-sm-10">{{upper-case "Anyone Expressed Concerns About Your Drug/Alchol Use"}}</label>
+    <div class="col-sm-2">
+      <div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-10">{{upper-case "Do you Feel you Drink or Use Drugs Too Much"}}</label>
+    <div class="col-sm-2">
+      <div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-10">{{upper-case "Ever Experienced Serious Consequences Due to Drinking or Drug Use"}}</label>
+    <div class="col-sm-2">
+      <div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-10">{{upper-case "Ever Felt that you Lost Control of your Drinking or Drug Use"}}</label>
+    <div class="col-sm-2">
+      <div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-10">{{upper-case "Do you feel that you need to Cut Back or Reduce your Drinking or Drug Use"}}</label>
+    <div class="col-sm-2">
+      <div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-10">{{upper-case "Ever had to seek Medical Treatment dur to your Drinking or Drug Use"}}</label>
+    <div class="col-sm-2">
+      <div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-10">{{upper-case "Ever Arrested due to your Drinking or Drug Use"}}</label>
+    <div class="col-sm-2">
+      <div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">{{upper-case "Other narrative information about drug use"}}</label>
     <div class="col-sm-10">
       {{textarea class="form-control" value=form.two_pdpf rows="7" maxlength=500}}
     </div>

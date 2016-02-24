@@ -1,37 +1,37 @@
 <form {{action "next" on="submit"}}>
   <div class="form-group row">
-    <label class="col-sm-2">Client Name:</label>
+    <label class="col-sm-2">{{upper-case "Client Name:"}}</label>
     <div class="col-sm-10">
       {{model.customer.first_name}} {{model.customer.last_name}}
     </div>
   </div>
 
   <div class="form-group row">
-    <label class="col-sm-2">Address:</label>
+    <label class="col-sm-2">{{upper-case "Address:"}}</label>
     <div class="col-sm-10">
       {{model.customer.address1}}
     </div>
   </div>
 
   <div class="form-group row">
-    <label class="col-sm-2">City:</label>
+    <label class="col-sm-2">{{upper-case "City:"}}</label>
     <div class="col-sm-4">
       {{model.customer.city1}}
     </div>
 
-    <label class="col-sm-2">State/Zip Code:</label>
+    <label class="col-sm-2">{{upper-case "State/Zip Code:"}}</label>
     <div class="col-sm-4">
       {{model.customer.selected_state_1.name}} {{model.customer.zip1}}
     </div>
   </div>
 
   <div class="form-group row">
-    <label class="col-sm-2">Home Phone:</label>
+    <label class="col-sm-2">{{upper-case "Home Phone:"}}</label>
     <div class="col-sm-4">
       {{model.customer.phone1}}
     </div>
 
-    <label class="col-sm-2">Other Phone:</label>
+    <label class="col-sm-2">{{upper-case "Other Phone:"}}</label>
     <div class="col-sm-4">
       {{model.customer.phone2}}
     </div>
@@ -45,7 +45,7 @@
   </div>
 
   <div class="form-group row">
-    <label class="col-sm-2">Race:</label>
+    <label class="col-sm-2">{{upper-case "Race:"}}</label>
     <div class="col-sm-4">
       {{input-select
         class="form-control"
@@ -58,22 +58,20 @@
       }}
     </div>
 
-    <label class="col-sm-2">Ethnicity:</label>
+    <label class="col-sm-2">{{upper-case "Ethnicity:"}}</label>
     <div class="col-sm-4">
       {{input-select
         class="form-control"
         name="ethnicity"
         options=form.ethnicities
-        labelPath="name"
-        valuePath="id"
-        selected=model.selected_ethnicity
+        selected=model.ethnicity
         prompt="Select"
       }}
     </div>
   </div>
 
   <div class="form-group row">
-    <label class="col-sm-2">Gender:</label>
+    <label class="col-sm-2">{{upper-case "Gender:"}}</label>
     <div class="col-sm-4">
       <div>
         <div class="radio-inline">
@@ -89,19 +87,19 @@
       </div>
     </div>
 
-    <label class="col-sm-2">SSN:</label>
+    <label class="col-sm-2">{{upper-case "SSN:"}}</label>
     <div class="col-sm-4">
       {{mdr-ssn type="text" class="form-control" name="ssn" value=form.one_ssn autocomplete="off"}}
     </div>
   </div>
 
   <div class="form-group row">
-    <label class="col-sm-2">Date of Birth:</label>
+    <label class="col-sm-2">{{upper-case "Date of Birth:"}}</label>
     <div class="col-sm-4">
       {{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=form.dob_formatted}}
     </div>
 
-    <label class="col-sm-2">Age:</label>
+    <label class="col-sm-2">{{upper-case "Age:"}}</label>
     <div class="col-sm-4">
       {{#if form.dob_formatted}}
         {{form.age}}
@@ -117,35 +115,35 @@
   </div>
 
   <div class="form-group row">
-    <label class="col-sm-2">Referal Source:</label>
+    <label class="col-sm-2">{{upper-case "Referal Source:"}}</label>
     <div class="col-sm-10">
       {{input type="text" class="form-control" value=form.two_referral_source autocomplete="off"}}
     </div>
   </div>
 
   <div class="form-group row">
-    <label class="col-sm-2">Referal Contact Name:</label>
+    <label class="col-sm-2">{{upper-case "Referal Contact Name:"}}</label>
     <div class="col-sm-10">
       {{input type="text" class="form-control" value=form.two_referral_contact_name autocomplete="off"}}
     </div>
   </div>
 
   <div class="form-group row">
-    <label class="col-sm-2">Referal Agency Name:</label>
+    <label class="col-sm-2">{{upper-case "Referal Agency Name:"}}</label>
     <div class="col-sm-10">
       {{input type="text" class="form-control" value=form.two_referral_agency_name autocomplete="off"}}
     </div>
   </div>
 
   <div class="form-group row">
-    <label class="col-sm-2">Contact Phone#:</label>
+    <label class="col-sm-2">{{upper-case "Contact Phone#:"}}</label>
     <div class="col-sm-4">
       {{mdr-phone type="text" class="form-control" value=form.two_contact_phone autocomplete="off"}}
     </div>
   </div>
 
   <div class="form-group row">
-    <label class="col-sm-2">Child Welfare Case:</label>
+    <label class="col-sm-2">{{upper-case "Child Welfare Case:"}}</label>
     <div class="col-sm-4">
       <div>
         <div class="radio-inline">
@@ -160,7 +158,7 @@
         </div>
       </div>
     </div>
-    <label class="col-sm-2">Marchman Act Case:</label>
+    <label class="col-sm-2">{{upper-case "Marchman Act Case:"}}</label>
     <div class="col-sm-4">
       <div>
         <div class="radio-inline">
@@ -178,7 +176,7 @@
   </div>
 
   <div class="form-group row">
-    <label class="col-sm-2">Criminal Justice Case:</label>
+    <label class="col-sm-2">{{upper-case "Criminal Justice Case:"}}</label>
     <div class="col-sm-4">
       <div>
         <div class="radio-inline">
@@ -193,7 +191,7 @@
         </div>
       </div>
     </div>
-    <label class="col-sm-2">Drug Court:</label>
+    <label class="col-sm-2">{{upper-case "Drug Court:"}}</label>
     <div class="col-sm-4">
       <div>
         <div class="radio-inline">
@@ -211,38 +209,38 @@
   </div>
 
   <div class="form-group row">
-    <label class="col-sm-2">Referral Date:</label>
+    <label class="col-sm-2">{{upper-case "Referral Date:"}}</label>
     <div class="col-sm-4">
       {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.referral_date_formatted}}
     </div>
 
-    <label class="col-sm-2">Time:</label>
+    <label class="col-sm-2">{{upper-case "Time:"}}</label>
     <div class="col-sm-4">
       {{input-time-picker class="form-control" placeholder="Click to change" readonly="" value=form.two_time}}
     </div>
   </div>
 
   <div class="form-group row">
-    <label class="col-sm-2">Type:</label>
+    <label class="col-sm-2">{{upper-case "Type:"}}</label>
     <div class="col-sm-4">
       {{input type="text" class="form-control" value=form.two_type autocomplete="off"}}
     </div>
 
-    <label class="col-sm-2">Mode:</label>
+    <label class="col-sm-2">{{upper-case "Mode:"}}</label>
     <div class="col-sm-4">
       {{input type="text" class="form-control" value=form.two_mode autocomplete="off"}}
     </div>
   </div>
 
   <div class="form-group row">
-    <label class="col-sm-2">Case Number:</label>
+    <label class="col-sm-2">{{upper-case "Case Number:"}}</label>
     <div class="col-sm-4">
       {{input type="text" class="form-control" value=form.two_case_number autocomplete="off"}}
     </div>
   </div>
 
   <div class="form-group row">
-    <label class="col-sm-2">Referal Reason:</label>
+    <label class="col-sm-2">{{upper-case "Referal Reason:"}}</label>
     <div class="col-sm-10">
       {{input type="text" class="form-control" value=form.two_referral_reason autocomplete="off"}}
     </div>
@@ -251,7 +249,7 @@
   <div class="form-group row form-seperator"></div>
 
   <div class="form-group row">
-    <label class="col-sm-2">Please describe Precipitating Factor(s):</label>
+    <label class="col-sm-2">{{upper-case "Please describe Precipitating Factor(s):"}}</label>
     <div class="col-sm-10">
       {{textarea class="form-control" value=form.two_pdpf rows="7" maxlength=500}}
     </div>
