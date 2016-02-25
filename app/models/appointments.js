@@ -12,8 +12,10 @@ const {
 export default Ember.Object.extend({
   statuses: Constants.REQUEST_STATUSES,
   status: Constants.REQUEST_STATUSES[0],
-  appointments: null,
-  pending: filterBy('appointments', 'status', 'pending'),
-  accepted: filterBy('appointments', 'status', 'accepted'),
-  rejected: filterBy('appointments', 'status', 'rejected')
+  appointments: undefined,
+  pending: filterBy('appointments', 'pending', true),
+  accepted: filterBy('appointments', 'accepted', true),
+  rejected: filterBy('appointments', 'rejected', true),
+  started: filterBy('appointments', 'started', true),
+  completed: filterBy('appointments', 'completed', true)
 });

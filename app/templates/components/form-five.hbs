@@ -9,21 +9,21 @@
   <div class="form-group row">
     <label class="col-sm-7">NUMBER OF TIMES YOU WERE ARRESTED IN PAST 12 MONTHS:</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{input type="text" class="form-control" value=form.six_notywaip12m autocomplete="off"}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">DATE OF LAST ARREST:</label>
     <div class="col-sm-5">
-      {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.referral_date_formatted}}
+      {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.six_date_of_last_arrest_formatted}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">REASON FOR LAST ARREST:</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{input type="text" class="form-control" value=form.six_reason_for_last_arrest autocomplete="off"}}
     </div>
   </div>
 
@@ -33,12 +33,12 @@
       <div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
+            {{input-radio group=form.six_wladar value="Yes"}} Yes
           </label>
         </div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
+            {{input-radio group=form.six_wladar value="No"}} No
           </label>
         </div>
       </div>
@@ -51,7 +51,7 @@
       {{input-select
         class="form-control"
         options=form.primary_drugs
-        selected=model.ethnicity
+        selected=model.six_toduptla
         prompt="Select"
       }}
     </div>
@@ -63,12 +63,12 @@
       <div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
+            {{input-radio group=form.six_ehawuda value="Yes"}} Yes
           </label>
         </div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
+            {{input-radio group=form.six_ehawuda value="No"}} No
           </label>
         </div>
       </div>
@@ -83,12 +83,12 @@
       <div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
+            {{input-radio group=form.six_ayciicjs value="Yes"}} Yes
           </label>
         </div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
+            {{input-radio group=form.six_ayciicjs value="No"}} No
           </label>
         </div>
       </div>
@@ -101,12 +101,12 @@
       <div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
+            {{input-radio group=form.six_ayculs value="Yes"}} Yes
           </label>
         </div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
+            {{input-radio group=form.six_ayculs value="No"}} No
           </label>
         </div>
       </div>
@@ -119,12 +119,12 @@
       <div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
+            {{input-radio group=form.six_wyopaa value="Yes"}} Yes
           </label>
         </div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
+            {{input-radio group=form.six_wyopaa value="No"}} No
           </label>
         </div>
       </div>
@@ -134,14 +134,14 @@
   <div class="form-group row">
     <label class="col-sm-7">PROBATION OFFICER'S NAME:</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{input type="text" class="form-control" value=form.six_pon autocomplete="off"}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">PROBATION OFFICER'S PHONE NUMBER:</label>
     <div class="col-sm-5">
-      {{mdr-phone type="text" class="form-control" value=model.phone1 autocomplete="off"}}
+      {{mdr-phone type="text" class="form-control" value=model.six_popn autocomplete="off"}}
     </div>
   </div>
 
@@ -151,7 +151,7 @@
       {{input-select
         class="form-control"
         options=form.primary_drugs
-        selected=model.ethnicity
+        selected=model.six_toduptla2
         prompt="Select"
       }}
     </div>
@@ -163,12 +163,12 @@
       <div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
+            {{input-radio group=form.six_wyottaacop value="Yes"}} Yes
           </label>
         </div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
+            {{input-radio group=form.six_wyottaacop value="No"}} No
           </label>
         </div>
       </div>
@@ -183,12 +183,12 @@
       <div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
+            {{input-radio group=form.six_wycott value="Yes"}} Yes
           </label>
         </div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
+            {{input-radio group=form.six_wycott value="No"}} No
           </label>
         </div>
       </div>
@@ -198,14 +198,14 @@
   <div class="form-group row">
     <label class="col-sm-7">IF SO, BY JUDGE:</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{input type="text" class="form-control" value=form.six_isbj autocomplete="off"}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">IF SO, BY COURT:</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{input type="text" class="form-control" value=form.six_isbc autocomplete="off"}}
     </div>
   </div>
 
@@ -214,7 +214,7 @@
   <div class="form-group row">
     <label class="col-sm-2">Other legal history narrative:</label>
     <div class="col-sm-10">
-      {{textarea class="form-control" value=form.two_pdpf rows="7" maxlength=500}}
+      {{textarea class="form-control" value=form.six_olhn rows="7" maxlength=500}}
     </div>
   </div>
 

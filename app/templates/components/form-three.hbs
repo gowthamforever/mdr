@@ -9,14 +9,14 @@
   <div class="form-group row">
     <label class="col-sm-10">NUMBER OF TIMES YOU WERE ADMITTED TO A DETOX UNIT IN PAST 12 MONTHS:</label>
     <div class="col-sm-2">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{input type="text" class="form-control" value=form.four_notywataduip12m autocomplete="off"}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-10">NUMBER OF TIMES YOU WERE ADMITTED TO A SA TREATMENT PROGRAM IN PAST 24 MONTHS:</label>
     <div class="col-sm-2">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{input type="text" class="form-control" value=form.four_notywatstpip24m autocomplete="off"}}
     </div>
   </div>
 
@@ -26,12 +26,12 @@
       <div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
+            {{input-radio group=form.four_ecott value="Yes"}} Yes
           </label>
         </div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
+            {{input-radio group=form.four_ecott value="No"}} No
           </label>
         </div>
       </div>
@@ -44,12 +44,12 @@
       <div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
+            {{input-radio group=form.four_efteit value="Yes"}} Yes
           </label>
         </div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
+            {{input-radio group=form.four_efteit value="No"}} No
           </label>
         </div>
       </div>
@@ -60,39 +60,39 @@
 
   <div class="form-group row">
     <label class="col-sm-2">LAST DETOX ADMIT:</label>
-    <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    <div class="col-sm-4">
+      {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.four_last_detox_admit_formatted}}
     </div>
 
     <label class="col-sm-2">LENGTH OF STAY:</label>
-    <div class="col-sm-3">
-      {{input type="text" class="form-control" value=form.primary_drug_frequency autocomplete="off"}}
+    <div class="col-sm-4">
+      {{input type="text" class="form-control" value=form.four_last_detox_admit_lentgh_of_stay autocomplete="off"}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-2">TREATING AGENCY:</label>
     <div class="col-sm-10">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{input type="text" class="form-control" value=form.four_treating_agency autocomplete="off"}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-2">DRUG DETOXED FROM:</label>
-    <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    <div class="col-sm-4">
+      {{input type="text" class="form-control" value=form.four_drug_detoxed_from autocomplete="off"}}
     </div>
 
     <label class="col-sm-2">DISH DATE:</label>
-    <div class="col-sm-3">
-      {{input type="text" class="form-control" value=form.primary_drug_frequency autocomplete="off"}}
+    <div class="col-sm-4">
+      {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.four_drug_detoxed_from_disch_date_formatted}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-2">DISH STATUS:</label>
-    <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    <div class="col-sm-4">
+      {{input type="text" class="form-control" value=form.four_detox_disch_status autocomplete="off"}}
     </div>
   </div>
 
@@ -100,39 +100,39 @@
 
   <div class="form-group row">
     <label class="col-sm-2">LAST SA TX ADMIT:</label>
-    <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    <div class="col-sm-4">
+      {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.four_last_sa_tx_admit_formatted}}
     </div>
 
     <label class="col-sm-2">LENGTH OF STAY:</label>
-    <div class="col-sm-3">
-      {{input type="text" class="form-control" value=form.primary_drug_frequency autocomplete="off"}}
+    <div class="col-sm-4">
+      {{input type="text" class="form-control" value=form.four_last_sa_tx_admit_length_of_stay autocomplete="off"}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-2">TREATING AGENCY:</label>
     <div class="col-sm-10">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{input type="text" class="form-control" value=form.four_last_sa_tx_admit_treating_agency autocomplete="off"}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-2">ADMIT REASON:</label>
-    <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+    <div class="col-sm-4">
+      {{input type="text" class="form-control" value=form.four_admit_reason autocomplete="off"}}
     </div>
 
     <label class="col-sm-2">DISH DATE:</label>
-    <div class="col-sm-3">
-      {{input type="text" class="form-control" value=form.primary_drug_frequency autocomplete="off"}}
+    <div class="col-sm-4">
+      {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.four_last_sa_tx_disch_date_formatted}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-2">DISH STATUS:</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{input type="text" class="form-control" value=form.four_last_sa_tx_disch_status autocomplete="off"}}
     </div>
   </div>
 
@@ -141,7 +141,7 @@
   <div class="form-group row">
     <label class="col-sm-8">AVERAGE CLEAN TIME BETWEEN SA TX DISCHARGES:</label>
     <div class="col-sm-4">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{input type="text" class="form-control" value=form.four_actbstd autocomplete="off"}}
     </div>
   </div>
 
@@ -151,12 +151,12 @@
       <div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="Yes"}} Yes
+            {{input-radio group=form.four_dyfth value="Yes"}} Yes
           </label>
         </div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="No"}} No
+            {{input-radio group=form.four_dyfth value="No"}} No
           </label>
         </div>
       </div>
@@ -166,7 +166,7 @@
   <div class="form-group row">
     <label class="col-sm-8">LAST TIME YOU ATTENDED AA/NA:</label>
     <div class="col-sm-4">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.four_ltyaan_formatted}}
     </div>
   </div>
 
@@ -178,12 +178,12 @@
       <div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="Yes"}} Yes
+            {{input-radio group=form.four_dyhadoap value="Yes"}} Yes
           </label>
         </div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="No"}} No
+            {{input-radio group=form.four_dyhadoap value="No"}} No
           </label>
         </div>
       </div>
@@ -196,12 +196,12 @@
       <div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="Yes"}} Yes
+            {{input-radio group=form.four_dybynhwydodu value="Yes"}} Yes
           </label>
         </div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="No"}} No
+            {{input-radio group=form.four_dybynhwydodu value="No"}} No
           </label>
         </div>
       </div>
@@ -214,12 +214,12 @@
       <div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="Yes"}} Yes
+            {{input-radio group=form.four_dybstchy value="Yes"}} Yes
           </label>
         </div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="No"}} No
+            {{input-radio group=form.four_dybstchy value="No"}} No
           </label>
         </div>
       </div>
@@ -231,14 +231,14 @@
   <div class="form-group row">
     <label class="col-sm-8">HOW DO YOU DESCRIBE YOUR LEVEL OF MOTIVATION FOR RECOVERY:</label>
     <div class="col-sm-4">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{input type="text" class="form-control" value=form.four_hwydylomfr autocomplete="off"}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-8">IF ADMITTED TO TREATMENT HOW LIKELY ARE YOU TO COMPLETE:</label>
     <div class="col-sm-4">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{input type="text" class="form-control" value=form.four_iatthlaytc autocomplete="off"}}
     </div>
   </div>
 
@@ -248,12 +248,12 @@
       <div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="Yes"}} Yes
+            {{input-radio group=form.four_wylhwydodp value="Yes"}} Yes
           </label>
         </div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="No"}} No
+            {{input-radio group=form.four_wylhwydodp value="No"}} No
           </label>
         </div>
       </div>
@@ -268,12 +268,12 @@
       <div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="Yes"}} Yes
+            {{input-radio group=form.four_daeudiyhe value="Yes"}} Yes
           </label>
         </div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="No"}} No
+            {{input-radio group=form.four_daeudiyhe value="No"}} No
           </label>
         </div>
       </div>
@@ -286,12 +286,12 @@
       <div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="Yes"}} Yes
+            {{input-radio group=form.four_dyhashre value="Yes"}} Yes
           </label>
         </div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="No"}} No
+            {{input-radio group=form.four_dyhashre value="No"}} No
           </label>
         </div>
       </div>
@@ -304,12 +304,12 @@
       <div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="Yes"}} Yes
+            {{input-radio group=form.four_dyfud value="Yes"}} Yes
           </label>
         </div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="No"}} No
+            {{input-radio group=form.four_dyfud value="No"}} No
           </label>
         </div>
       </div>
@@ -321,7 +321,7 @@
   <div class="form-group row">
     <label class="col-sm-2">Other treatment history narrative:</label>
     <div class="col-sm-10">
-      {{textarea class="form-control" value=form.two_pdpf rows="7" maxlength=500}}
+      {{textarea class="form-control" value=form.four_othn rows="7" maxlength=500}}
     </div>
   </div>
 

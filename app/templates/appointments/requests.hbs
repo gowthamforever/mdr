@@ -1,16 +1,38 @@
 <section class="appointments-request-block">
-  <ul class="nav nav-tabs">
-    {{#link-to "appointments.requests.pending" tagName="li"}}
-      <a href="{{view.href}}">Pending</a>
-    {{/link-to}}
-    {{#link-to "appointments.requests.accepted" tagName="li"}}
-      <a href="{{view.href}}">Accepted</a>
-    {{/link-to}}
-    {{#link-to "appointments.requests.rejected" tagName="li"}}
-      <a href="{{view.href}}">Rejected</a>
-    {{/link-to}}
-	</ul>
-  <section class="tabs-container appointment-tab">
-    {{liquid-outlet}}
-	</section>
+  {{#if model.appointments}}
+    <ul class="nav nav-tabs">
+      {{#if model.pending}}
+        {{#link-to "appointments.requests.pending" tagName="li"}}
+          <a href="{{view.href}}">Pending</a>
+        {{/link-to}}
+      {{/if}}
+      {{#if model.accepted}}
+        {{#link-to "appointments.requests.accepted" tagName="li"}}
+          <a href="{{view.href}}">Accepted</a>
+        {{/link-to}}
+      {{/if}}
+      {{#if model.rejected}}
+        {{#link-to "appointments.requests.rejected" tagName="li"}}
+          <a href="{{view.href}}">Rejected</a>
+        {{/link-to}}
+      {{/if}}
+      {{#if model.started}}
+        {{#link-to "appointments.requests.started" tagName="li"}}
+          <a href="{{view.href}}">Started</a>
+        {{/link-to}}
+      {{/if}}
+      {{#if model.completed}}
+        {{#link-to "appointments.requests.completed" tagName="li"}}
+          <a href="{{view.href}}">Completed</a>
+        {{/link-to}}
+      {{/if}}
+  	</ul>
+    <section class="tabs-container appointment-tab">
+      {{liquid-outlet}}
+  	</section>
+  {{else}}
+    <div class="alert alert-info">
+      No appointments for you.
+    </div>
+  {{/if}}
 </section>

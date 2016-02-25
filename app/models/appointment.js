@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import Constants from 'mdr/utility/constants';
 
 const {
   computed
@@ -9,15 +10,18 @@ const {
 } = computed;
 
 export default Ember.Object.extend({
-  status: null,
-  pending: equal('status', 'pending'),
-  accepted: equal('status', 'accepted'),
-  rejected: equal('status', 'rejected'),
-  ts_request: null,
+  status: undefined,
+  form_status: undefined,
+  pending: equal('status', Constants.REQUEST_STATUS.PENDING),
+  accepted: computed('status', 'notstarted', function() {
+    return this.get('status') === Constants.REQUEST_STATUS.ACCEPTED && this.get('notstarted');
+  }),
+  rejected: equal('status', Constants.REQUEST_STATUS.REJECTED),
+  ts_request: undefined,
   ts_request_moment: computed('ts_request', function() {
     return moment(this.get('ts_request'), 'MM-DD-YYYY HH:mm');
   }),
-  ts_request_endtime: null,
+  ts_request_endtime: undefined,
   ts_request_endtime_moment: computed('ts_request_endtime', function() {
     return moment(this.get('ts_request_endtime'), 'MM-DD-YYYY HH:mm');
   }),
@@ -27,9 +31,11 @@ export default Ember.Object.extend({
     const today_date = moment();
     return end_date.isBefore(today_date);
   }),
-  form_status: 'not-started',
-  notstarted: equal('form_status', 'not-started'),
-  started: equal('form_status', 'started'),
-  completed: equal('form_status', 'completed'),
+  notstarted: computed('form_status', function() {
+    const form_status = this.getWithDefault('form_status', Constants.FORM_STATUS.NOT_STARTED);
+    return form_status === Constants.FORM_STATUS.NOT_STARTED;
+  }),
+  started: equal('form_status', Constants.FORM_STATUS.STARTED),
+  completed: equal('form_status', Constants.FORM_STATUS.COMPLETED),
   last_updated_page: undefined
 });

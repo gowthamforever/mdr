@@ -69,7 +69,10 @@ Router.map(function() {
         this.route('pending', { path: '/' });
         this.route('accepted');
         this.route('rejected');
+        this.route('started');
+        this.route('completed');
       });
+      this.route('abuse-form', { path: '/:id/forms' });
       this.route('details', { path: '/:id' });
       this.route('create', { path: '/create/:customer_id' });
     });

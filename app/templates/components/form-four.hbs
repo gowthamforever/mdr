@@ -9,14 +9,14 @@
   <div class="form-group row">
     <label class="col-sm-7">NUMBER OF TIMES YOU WERE ADMITTED TO A BAKER UNIT IN PAST 12 MONTHS:</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{input type="text" class="form-control" value=form.five_notywatabauip12m autocomplete="off"}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">NUMBER OF TIMES YOU WERE ADMITTED TO A MH TREATMENT PROGRAM IN PAST 24 MONTHS:</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{input type="text" class="form-control" value=form.five_notywatmtpip24m autocomplete="off"}}
     </div>
   </div>
 
@@ -26,12 +26,12 @@
       <div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
+            {{input-radio group=form.five_ecotfmt value="Yes"}} Yes
           </label>
         </div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
+            {{input-radio group=form.five_ecotfmt value="No"}} No
           </label>
         </div>
       </div>
@@ -44,12 +44,12 @@
       <div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
+            {{input-radio group=form.five_efteimht value="Yes"}} Yes
           </label>
         </div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
+            {{input-radio group=form.five_efteimht value="No"}} No
           </label>
         </div>
       </div>
@@ -59,94 +59,94 @@
   <div class="form-group row form-seperator"></div>
 
   <div class="form-group row">
-    <label class="col-sm-3">LAST BAKER ACT ADMIT:</label>
+    <label class="col-sm-2">LAST BAKER ACT ADMIT:</label>
     <div class="col-sm-4">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.five_last_baker_act_admit_formatted}}
     </div>
 
     <label class="col-sm-2">LENGTH OF STAY:</label>
-    <div class="col-sm-3">
-      {{input type="text" class="form-control" value=form.primary_drug_frequency autocomplete="off"}}
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <label class="col-sm-3">AGENCY:</label>
-    <div class="col-sm-9">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <label class="col-sm-3">TREATING PSYCHIATRIC:</label>
-    <div class="col-sm-9">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <label class="col-sm-3">REASON:</label>
-    <div class="col-sm-9">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <label class="col-sm-3">DISH STATUS:</label>
     <div class="col-sm-4">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{input type="text" class="form-control" value=form.five_length_of_stay autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">AGENCY:</label>
+    <div class="col-sm-10">
+      {{input type="text" class="form-control" value=form.five_agency autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">TREATING PSYCHIATRIC:</label>
+    <div class="col-sm-10">
+      {{input type="text" class="form-control" value=form.five_treating_psychiatrist autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">REASON:</label>
+    <div class="col-sm-10">
+      {{input type="text" class="form-control" value=form.five_reason autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">DISH STATUS:</label>
+    <div class="col-sm-4">
+      {{input type="text" class="form-control" value=form.five_disch_status autocomplete="off"}}
     </div>
 
     <label class="col-sm-2">DISH DATE:</label>
-    <div class="col-sm-3">
-      {{input type="text" class="form-control" value=form.primary_drug_frequency autocomplete="off"}}
+    <div class="col-sm-4">
+      {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.five_disch_date_formatted}}
     </div>
   </div>
 
   <div class="form-group row form-seperator"></div>
 
   <div class="form-group row">
-    <label class="col-sm-3">LAST BAKER ACT ADMIT:</label>
+    <label class="col-sm-2">LAST BAKER ACT ADMIT:</label>
     <div class="col-sm-4">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.five_last_baker_act_admit2_formatted}}
     </div>
 
     <label class="col-sm-2">LENGTH OF STAY:</label>
-    <div class="col-sm-3">
-      {{input type="text" class="form-control" value=form.primary_drug_frequency autocomplete="off"}}
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <label class="col-sm-3">AGENCY:</label>
-    <div class="col-sm-9">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <label class="col-sm-3">TREATING PSYCHIATRIC:</label>
-    <div class="col-sm-9">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <label class="col-sm-3">REASON:</label>
-    <div class="col-sm-9">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <label class="col-sm-3">DISH STATUS:</label>
     <div class="col-sm-4">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{input type="text" class="form-control" value=form.five_length_of_stay2 autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">AGENCY:</label>
+    <div class="col-sm-10">
+      {{input type="text" class="form-control" value=form.five_agency2 autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">TREATING PSYCHIATRIC:</label>
+    <div class="col-sm-10">
+      {{input type="text" class="form-control" value=form.five_treating_psychiatrist2 autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">REASON:</label>
+    <div class="col-sm-10">
+      {{input type="text" class="form-control" value=form.five_reason2 autocomplete="off"}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">DISH STATUS:</label>
+    <div class="col-sm-4">
+      {{input type="text" class="form-control" value=form.five_disch_status2 autocomplete="off"}}
     </div>
 
     <label class="col-sm-2">DISH DATE:</label>
-    <div class="col-sm-3">
-      {{input type="text" class="form-control" value=form.primary_drug_frequency autocomplete="off"}}
+    <div class="col-sm-4">
+      {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.five_disch_date2_formatted}}
     </div>
   </div>
 
@@ -158,12 +158,12 @@
       <div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="Yes"}} Yes
+            {{input-radio group=form.five_dyhmcm value="Yes"}} Yes
           </label>
         </div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="No"}} No
+            {{input-radio group=form.five_dyhmcm value="No"}} No
           </label>
         </div>
       </div>
@@ -176,12 +176,12 @@
       <div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="Yes"}} Yes
+            {{input-radio group=form.five_aycrmht value="Yes"}} Yes
           </label>
         </div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="No"}} No
+            {{input-radio group=form.five_aycrmht value="No"}} No
           </label>
         </div>
       </div>
@@ -194,12 +194,12 @@
       <div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="Yes"}} Yes
+            {{input-radio group=form.five_dyfymth value="Yes"}} Yes
           </label>
         </div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="No"}} No
+            {{input-radio group=form.five_dyfymth value="No"}} No
           </label>
         </div>
       </div>
@@ -212,12 +212,12 @@
       <div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="Yes"}} Yes
+            {{input-radio group=form.five_dyaamcsg value="Yes"}} Yes
           </label>
         </div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="No"}} No
+            {{input-radio group=form.five_dyaamcsg value="No"}} No
           </label>
         </div>
       </div>
@@ -227,28 +227,38 @@
   <div class="form-group row">
     <label class="col-sm-7">ORIENTATION(time, day, place, year):</label>
     <div class="col-sm-5">
-
+      {{input-select
+        class="form-control"
+        options=form.orientations
+        selected=model.five_orientation
+        prompt="Select"
+      }}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">COMMUNITY COHERENTLY:</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{input type="text" class="form-control" value=form.five_cc autocomplete="off"}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">NOTICEABLE PSYCHIATRIC SYMPTOMS:</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{input type="text" class="form-control" value=form.five_nps autocomplete="off"}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">MOOD/AFFECT (sad, bad, glad, mad):</label>
     <div class="col-sm-5">
-
+      {{input-select
+        class="form-control"
+        options=form.moods
+        selected=model.five_mood_affect
+        prompt="Select"
+      }}
     </div>
   </div>
 
@@ -260,12 +270,12 @@
       <div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="Yes"}} Yes
+            {{input-radio group=form.five_actamhm value="Yes"}} Yes
           </label>
         </div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="No"}} No
+            {{input-radio group=form.five_actamhm value="No"}} No
           </label>
         </div>
       </div>
@@ -275,7 +285,7 @@
   <div class="form-group row">
     <label class="col-sm-4">LIST MENTAL HEALTH MEDICATIONS YOU HAVE TAKEN IN THE PAST 12 MONTHS:</label>
     <div class="col-sm-8">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{input type="text" class="form-control" value=form.five_lmhmyhtip12m autocomplete="off"}}
     </div>
   </div>
 
@@ -284,7 +294,7 @@
   <div class="form-group row">
     <label class="col-sm-7">DATE OF LAST SUICIDE ATTEMPT:</label>
     <div class="col-sm-5">
-      {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.referral_date_formatted}}
+      {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.five_dolsa_formatted}}
     </div>
   </div>
 
@@ -294,12 +304,12 @@
       <div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="Yes"}} Yes
+            {{input-radio group=form.five_siip30d value="Yes"}} Yes
           </label>
         </div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="No"}} No
+            {{input-radio group=form.five_siip30d value="No"}} No
           </label>
         </div>
       </div>
@@ -312,12 +322,12 @@
       <div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="Yes"}} Yes
+            {{input-radio group=form.five_afmwhomp value="Yes"}} Yes
           </label>
         </div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="No"}} No
+            {{input-radio group=form.five_afmwhomp value="No"}} No
           </label>
         </div>
       </div>
@@ -330,12 +340,12 @@
       <div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="Yes"}} Yes
+            {{input-radio group=form.five_crmhs value="Yes"}} Yes
           </label>
         </div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="No"}} No
+            {{input-radio group=form.five_crmhs value="No"}} No
           </label>
         </div>
       </div>
@@ -350,12 +360,12 @@
       <div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="Yes"}} Yes
+            {{input-radio group=form.five_daeudiyhe value="Yes"}} Yes
           </label>
         </div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="No"}} No
+            {{input-radio group=form.five_daeudiyhe value="No"}} No
           </label>
         </div>
       </div>
@@ -368,12 +378,12 @@
       <div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="Yes"}} Yes
+            {{input-radio group=form.five_duhashre value="Yes"}} Yes
           </label>
         </div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="No"}} No
+            {{input-radio group=form.five_duhashre value="No"}} No
           </label>
         </div>
       </div>
@@ -386,12 +396,12 @@
       <div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="Yes"}} Yes
+            {{input-radio group=form.five_dyfud value="Yes"}} Yes
           </label>
         </div>
         <div class="radio-inline">
           <label>
-            {{input-radio group=form.two_child_welfare_case value="No"}} No
+            {{input-radio group=form.five_dyfud value="No"}} No
           </label>
         </div>
       </div>
@@ -403,7 +413,7 @@
   <div class="form-group row">
     <label class="col-sm-2">Other psychiatric history narrative:</label>
     <div class="col-sm-10">
-      {{textarea class="form-control" value=form.two_pdpf rows="7" maxlength=500}}
+      {{textarea class="form-control" value=form.five_ophn rows="7" maxlength=500}}
     </div>
   </div>
 

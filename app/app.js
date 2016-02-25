@@ -38,6 +38,7 @@ Route.reopen({
       'appointments.day': {title: 'Appointments'},
       'appointments.create': { title: 'Create Appointment' },
       'appointments.details': { title: 'Appointment Details' },
+      'appointments.abuse-form': { title: 'Assessment Form' },
       'appointments.requests.pending': { title: 'Appointments' },
       'appointments.requests.accepted': { title: 'Appointments' },
       'appointments.requests.rejected': { title: 'Appointments' },

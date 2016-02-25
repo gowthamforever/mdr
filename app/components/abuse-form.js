@@ -11,6 +11,8 @@ const {
 export default Component.extend({
   form: undefined,
   pages: undefined,
+  noneditable: false,
+
   setForm: on('init', function() {
     const form  = Form.create();
     const pages = {

@@ -47,62 +47,84 @@
   <div class="form-group row">
     <label class="col-sm-2">{{upper-case "Race:"}}</label>
     <div class="col-sm-4">
-      {{input-select
-        class="form-control"
-        name="race"
-        options=form.races
-        labelPath="name"
-        valuePath="id"
-        selected=model.selected_race
-        prompt="Select"
-      }}
+      {{#if noneditable}}
+        {{model.one_race}}
+      {{else}}
+        {{input-select
+          class="form-control"
+          name="race"
+          options=form.races
+          selected=model.one_race
+          prompt="Select"
+        }}
+      {{/if}}
     </div>
 
     <label class="col-sm-2">{{upper-case "Ethnicity:"}}</label>
     <div class="col-sm-4">
-      {{input-select
-        class="form-control"
-        name="ethnicity"
-        options=form.ethnicities
-        selected=model.ethnicity
-        prompt="Select"
-      }}
+      {{#if noneditable}}
+        {{model.one_ethnicity}}
+      {{else}}
+        {{input-select
+          class="form-control"
+          name="ethnicity"
+          options=form.ethnicities
+          selected=model.one_ethnicity
+          prompt="Select"
+        }}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-2">{{upper-case "Gender:"}}</label>
     <div class="col-sm-4">
-      <div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio name="gender" group=form.one_gender value="Male"}} Male
-          </label>
+      {{#if noneditable}}
+        {{model.one_gender}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio name="gender" group=form.one_gender value="Male"}} Male
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio name="gender" group=form.one_gender value="Female"}} Female
+            </label>
+          </div>
         </div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio name="gender" group=form.one_gender value="Female"}} Female
-          </label>
-        </div>
-      </div>
+      {{/if}}
     </div>
 
     <label class="col-sm-2">{{upper-case "SSN:"}}</label>
     <div class="col-sm-4">
-      {{mdr-ssn type="text" class="form-control" name="ssn" value=form.one_ssn autocomplete="off"}}
+      {{#if noneditable}}
+        {{model.one_ssn}}
+      {{else}}
+        {{mdr-ssn type="text" class="form-control" name="ssn" value=form.one_ssn autocomplete="off"}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-2">{{upper-case "Date of Birth:"}}</label>
     <div class="col-sm-4">
-      {{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=form.dob_formatted}}
+      {{#if noneditable}}
+        {{date-format model.one_dob "YYYY-MM-DD" "MMM DD YYYY"}}
+      {{else}}
+        {{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=form.one_dob_formatted}}
+      {{/if}}
     </div>
 
     <label class="col-sm-2">{{upper-case "Age:"}}</label>
     <div class="col-sm-4">
-      {{#if form.dob_formatted}}
-        {{form.age}}
+      {{#if noneditable}}
+        {{model.one_race}}
+      {{else}}
+        {{#if form.one_dob_formatted}}
+          {{form.one_age}}
+        {{/if}}
       {{/if}}
     </div>
   </div>
@@ -117,132 +139,188 @@
   <div class="form-group row">
     <label class="col-sm-2">{{upper-case "Referal Source:"}}</label>
     <div class="col-sm-10">
-      {{input type="text" class="form-control" value=form.two_referral_source autocomplete="off"}}
+      {{#if noneditable}}
+        {{model.two_referral_source}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.two_referral_source autocomplete="off"}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-2">{{upper-case "Referal Contact Name:"}}</label>
     <div class="col-sm-10">
-      {{input type="text" class="form-control" value=form.two_referral_contact_name autocomplete="off"}}
+      {{#if noneditable}}
+        {{model.two_referral_contact_name}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.two_referral_contact_name autocomplete="off"}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-2">{{upper-case "Referal Agency Name:"}}</label>
     <div class="col-sm-10">
-      {{input type="text" class="form-control" value=form.two_referral_agency_name autocomplete="off"}}
+      {{#if noneditable}}
+        {{model.two_referral_agency_name}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.two_referral_agency_name autocomplete="off"}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-2">{{upper-case "Contact Phone#:"}}</label>
     <div class="col-sm-4">
-      {{mdr-phone type="text" class="form-control" value=form.two_contact_phone autocomplete="off"}}
+      {{#if noneditable}}
+        {{model.two_contact_phone}}
+      {{else}}
+        {{mdr-phone type="text" class="form-control" value=form.two_contact_phone autocomplete="off"}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-2">{{upper-case "Child Welfare Case:"}}</label>
     <div class="col-sm-4">
-      <div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.two_child_welfare_case value="Yes"}} Yes
-          </label>
+      {{#if noneditable}}
+        {{model.two_child_welfare_case}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.two_child_welfare_case value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.two_child_welfare_case value="No"}} No
+            </label>
+          </div>
         </div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.two_child_welfare_case value="No"}} No
-          </label>
-        </div>
-      </div>
+      {{/if}}
     </div>
     <label class="col-sm-2">{{upper-case "Marchman Act Case:"}}</label>
     <div class="col-sm-4">
-      <div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.two_marchman_act_case value="Yes"}} Yes
-          </label>
+      {{#if noneditable}}
+        {{model.two_marchman_act_case}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.two_marchman_act_case value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.two_marchman_act_case value="No"}} No
+            </label>
+          </div>
         </div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.two_marchman_act_case value="No"}} No
-          </label>
-        </div>
-      </div>
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-2">{{upper-case "Criminal Justice Case:"}}</label>
     <div class="col-sm-4">
-      <div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.two_criminal_justice_case value="Yes"}} Yes
-          </label>
+      {{#if noneditable}}
+        {{model.two_criminal_justice_case}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.two_criminal_justice_case value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.two_criminal_justice_case value="No"}} No
+            </label>
+          </div>
         </div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.two_criminal_justice_case value="No"}} No
-          </label>
-        </div>
-      </div>
+      {{/if}}
     </div>
     <label class="col-sm-2">{{upper-case "Drug Court:"}}</label>
     <div class="col-sm-4">
-      <div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.two_drug_court value="Yes"}} Yes
-          </label>
+      {{#if noneditable}}
+        {{model.two_drug_court}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.two_drug_court value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.two_drug_court value="No"}} No
+            </label>
+          </div>
         </div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.two_drug_court value="No"}} No
-          </label>
-        </div>
-      </div>
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-2">{{upper-case "Referral Date:"}}</label>
     <div class="col-sm-4">
-      {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.referral_date_formatted}}
+      {{#if noneditable}}
+        {{date-format model.two_referral_date "YYYY-MM-DD" "MMM DD YYYY"}}
+      {{else}}
+        {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.two_referral_date_formatted}}
+      {{/if}}
     </div>
 
     <label class="col-sm-2">{{upper-case "Time:"}}</label>
     <div class="col-sm-4">
-      {{input-time-picker class="form-control" placeholder="Click to change" readonly="" value=form.two_time}}
+      {{#if noneditable}}
+        {{model.two_time}}
+      {{else}}
+        {{input-time-picker class="form-control" placeholder="Click to change" readonly="" value=form.two_time}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-2">{{upper-case "Type:"}}</label>
     <div class="col-sm-4">
-      {{input type="text" class="form-control" value=form.two_type autocomplete="off"}}
+      {{#if noneditable}}
+        {{model.two_type}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.two_type autocomplete="off"}}
+      {{/if}}
     </div>
 
     <label class="col-sm-2">{{upper-case "Mode:"}}</label>
     <div class="col-sm-4">
-      {{input type="text" class="form-control" value=form.two_mode autocomplete="off"}}
+      {{#if noneditable}}
+        {{model.two_mode}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.two_mode autocomplete="off"}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-2">{{upper-case "Case Number:"}}</label>
     <div class="col-sm-4">
-      {{input type="text" class="form-control" value=form.two_case_number autocomplete="off"}}
+      {{#if noneditable}}
+        {{model.two_case_number}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.two_case_number autocomplete="off"}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-2">{{upper-case "Referal Reason:"}}</label>
     <div class="col-sm-10">
-      {{input type="text" class="form-control" value=form.two_referral_reason autocomplete="off"}}
+      {{#if noneditable}}
+        {{model.two_referral_reason}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.two_referral_reason autocomplete="off"}}
+      {{/if}}
     </div>
   </div>
 
@@ -251,7 +329,11 @@
   <div class="form-group row">
     <label class="col-sm-2">{{upper-case "Please describe Precipitating Factor(s):"}}</label>
     <div class="col-sm-10">
-      {{textarea class="form-control" value=form.two_pdpf rows="7" maxlength=500}}
+      {{#if noneditable}}
+        {{model.two_pdpf}}
+      {{else}}
+        {{textarea class="form-control" value=form.two_pdpf rows="7" maxlength=500}}
+      {{/if}}
     </div>
   </div>
 

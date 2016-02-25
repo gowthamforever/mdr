@@ -1,16 +1,82 @@
 import Ember from 'ember';
+import Api from 'mdr/mixins/api';
 
 const {
-  Component
+  Component,
+  inject
 } = Ember;
 
-export default Component.extend({
+const {
+  service
+} = inject;
+
+export default Component.extend(Api, {
+  appointments: service(),
+
   actions: {
     next() {
-      const page = this.get('page');
-      if (page) {
-        page(3);
-      }
+      const self        = this;
+      const appointment = self.get('model');
+      const page        = this.get('page');
+      const form        = this.get('form');
+      let data;
+
+      data = _.pick(form, [
+        'three_primary_drug_used',
+        'three_frequency',
+        'three_method_of_admin',
+        'three_last_used',
+        'three_age_of_first_use',
+        'three_hours_since_last_use',
+        'three_secondary_drug_used',
+        'three_frequence_2',
+        'three_method_of_admin_2',
+        'three_last_used_2',
+        'three_age_of_first_use_2',
+        'three_hours_since_last_use_2',
+        'three_tertiary_drug_used',
+        'three_frequence_3',
+        'three_method_of_admin_3',
+        'three_last_used_3',
+        'three_age_of_first_use_3',
+        'three_hours_since_last_use_3',
+        'three_ldodyhu',
+        'three_iv_drug_user',
+        'three_habitual_drug_user',
+        'three_sees_drug_use_as_harmful',
+        'three_sees_alcohol_use_as_harmful',
+        'three_sees_tobacco_use_as_harmful',
+        'three_uses_tobacco',
+        'three_eubootip24h',
+        'three_ccfdoa',
+        'three_cews',
+        'three_aecaydau',
+        'three_dyfydoudtm',
+        'three_eescdtdodu',
+        'three_eftylcoydodu',
+        'three_dyftyntcborydodu',
+        'three_ehtsmtdtydodu',
+        'three_eadtydodu',
+        'three_oniadu'
+      ]);
+
+      data.three_last_used = moment(form.get('three_last_used_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+      data.three_last_used_2 = moment(form.get('three_last_used_2_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+      data.three_last_used_3 = moment(form.get('three_last_used_3_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+
+      self.ajax({
+        id: 'assessmentformpost',
+        path: {
+          id: appointment.get('id'),
+          pageNo: 2
+        },
+        data
+      }).then(() => {
+        self.set('appointments.cache', false);
+        if (page) {
+          page(3);
+        }
+      }).catch(Ember.K);
     },
 
     previous() {

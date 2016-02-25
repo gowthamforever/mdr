@@ -18,6 +18,12 @@ export default {
     INACTIVE: 3
   },
 
+  FORM_STATUS: {
+    NOT_STARTED: 'not-started',
+    STARTED: 'started',
+    COMPLETED: 'completed'
+  },
+
   REQUEST_STATUS: {
     PENDING: 'pending',
     ACCEPTED: 'accepted',
@@ -114,6 +120,15 @@ export default {
     { id: 6, name: 'Mulit-Racial  ' }
   ],
 
+  RACES_NAMES: [
+    'White',
+    'African American',
+    'Amer Indian/Alaskan Nat',
+    'Asian',
+    'Native Hawaiian or Other',
+    'Mulit-Racial'
+  ],
+
   ETHNICITIES: [
     'Puerto Rican',
     'Mexican',
@@ -189,6 +204,20 @@ export default {
     'Dependent Living - with Relatives',
     'Dependent Living - with Non-Relatives',
     'Assisted Ling Facility (ALF), Foster Care/Home'
+  ],
+
+  FORM_ORIENTATIONS: [
+    'time',
+    'day',
+    'place',
+    'year'
+  ],
+
+  FORM_MOODS: [
+    'sad',
+    'bad',
+    'glad',
+    'mad'
   ],
 
   LANGAUAGES: [
