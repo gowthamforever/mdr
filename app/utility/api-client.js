@@ -32,7 +32,7 @@ export default {
   },
 
   addappointment: {
-    path: 'appointment',
+    path: 'appointment.json',
     method: 'POST'
   },
 
@@ -53,6 +53,11 @@ export default {
 
   contact: {
     path: 'contact-admin.json',
+    method: 'GET'
+  },
+
+  assessmentformpost: {
+    path: 'appointment.json',
     method: 'GET'
   }
 };

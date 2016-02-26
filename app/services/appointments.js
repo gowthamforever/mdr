@@ -78,7 +78,9 @@ export default Service.extend(Api, {
       'service_charge',
       'status',
       'ts_request',
-      'ts_request_endtime'
+      'ts_request_endtime',
+      'form_status',
+      'last_updated_page'
     ];
     let result = Appointment.create(_.pick(response, data));
 

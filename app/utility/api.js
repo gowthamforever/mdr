@@ -144,5 +144,10 @@ export default {
   assessmentformpost: {
     path: 'appointment/{id}/form/page/{pageNo}',
     method: 'POST'
+  },
+
+  assessmentformget: {
+    path: 'appointment/{id}/form',
+    method: 'GET'
   }
 };

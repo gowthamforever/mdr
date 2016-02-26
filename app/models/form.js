@@ -272,6 +272,138 @@ export default EmberObject.extend({
   six_isbc: undefined,
   six_olhn: undefined,
 
+  // Page Six
+  // Section Seven
+  seven_hgc: undefined,
+  seven_dyhacdoc: undefined,
+  seven_es: undefined,
+  seven_psoi: undefined,
+  seven_api: undefined,
+  seven_afi: undefined,
+  seven_ses: undefined,
+  seven_nsoh: undefined,
+  seven_aythoh: undefined,
+  seven_ms: undefined,
+  seven_noc: undefined,
+  seven_nodc: undefined,
+  seven_ytoar: undefined,
+  seven_cla: undefined,
+  seven_aych: undefined,
+  seven_dyphadoap: undefined,
+  seven_afmcsst: undefined,
+  seven_afmwtsyr: undefined,
+  seven_fmeacaydu: undefined,
+  seven_ayofmiwcw: undefined,
+  seven_ofhn: undefined,
+
+  // Page Seven
+  // Section Eight
+  eight_nothip24m: undefined,
+  eight_ehdtdoa: undefined,
+  eight_nosip24m: undefined,
+  eight_nopad: undefined,
+  eight_gbip12m: undefined,
+  eight_cp: undefined,
+  eight_iphmm: undefined,
+  eight_lpe: undefined,
+  eight_lpe_formatted: computed('eight_lpe', function() {
+    const eight_lpe = this.get('eight_lpe');
+    if (eight_lpe) {
+      return moment(eight_lpe, 'YYYY-MM-DD', true).format('MMM DD YYYY');
+    }
+  }),
+  eight_lpv: undefined,
+  eight_lpv_formatted: computed('eight_lpv', function() {
+    const eight_lpv = this.get('eight_lpv');
+    if (eight_lpv) {
+      return moment(eight_lpv, 'YYYY-MM-DD', true).format('MMM DD YYYY');
+    }
+  }),
+  eight_lbe: undefined,
+  eight_lbe_formatted: computed('eight_lbe', function() {
+    const eight_lbe = this.get('eight_lbe');
+    if (eight_lbe) {
+      return moment(eight_lbe, 'YYYY-MM-DD', true).format('MMM DD YYYY');
+    }
+  }),
+  eight_lps: undefined,
+  eight_lbs_formatted: computed('eight_lps', function() {
+    const eight_lps = this.get('eight_lps');
+    if (eight_lps) {
+      return moment(eight_lps, 'YYYY-MM-DD', true).format('MMM DD YYYY');
+    }
+  }),
+  eight_dyhapp: undefined,
+  eight_dyhhi: undefined,
+  eight_lttfh: undefined,
+  eight_lttfh_formatted: computed('eight_lttfh', function() {
+    const eight_lttfh = this.get('eight_lttfh');
+    if (eight_lttfh) {
+      return moment(eight_lttfh, 'YYYY-MM-DD', true).format('MMM DD YYYY');
+    }
+  }),
+  eight_lha: undefined,
+  eight_lha_formatted: computed('eight_lha', function() {
+    const eight_lha = this.get('eight_lha');
+    if (eight_lha) {
+      return moment(eight_lha, 'YYYY-MM-DD', true).format('MMM DD YYYY');
+    }
+  }),
+  eight_los: undefined,
+  eight_hospital: undefined,
+  eight_tp: undefined,
+  eight_reason: undefined,
+  eight_disch_status: undefined,
+  eight_disch_date: undefined,
+  eight_disch_date_formatted: computed('eight_disch_date', function() {
+    const eight_disch_date = this.get('eight_disch_date');
+    if (eight_disch_date) {
+      return moment(eight_disch_date, 'YYYY-MM-DD', true).format('MMM DD YYYY');
+    }
+  }),
+  eight_lpv2: undefined,
+  eight_lpv2_formatted: computed('eight_lpv2', function() {
+    const eight_lpv2 = this.get('eight_lpv2');
+    if (eight_lpv2) {
+      return moment(eight_lpv2, 'YYYY-MM-DD', true).format('MMM DD YYYY');
+    }
+  }),
+  eight_tp2: undefined,
+  eight_reason2: undefined,
+  eight_status: undefined,
+  eight_lacmyatatrfsm: undefined,
+  eight_lakayh: undefined,
+  eight_cmc: undefined,
+  eight_omhn: undefined,
+
+  // Page Eight
+  // Section Nine
+  nine_pd: undefined,
+  nine_sd: undefined,
+  nine_dir: undefined,
+
+  // Page Nine
+  // Section Ten
+  ten_dim1: undefined,
+  ten_dim2: undefined,
+  ten_dim3: undefined,
+  ten_dim4: undefined,
+  ten_dim5: undefined,
+  ten_dim6: undefined,
+
+  // Page Ten
+  // Section Eleven
+  eleven_pr: undefined,
+  eleven_disposition: undefined,
+  eleven_rs: undefined,
+  eleven_ai: undefined,
+  eleven_at: undefined,
+  eleven_atdate: undefined,
+  eleven_s: undefined,
+  eleven_s_date: undefined,
+  eleven_eis: 'No',
+  eleven_eis_date: undefined,
+
   educational_grades: Constants.EDUCATIONAL_GRADES,
   employment_statuses: Constants.EMPLOYMENT_STATUSES,
   living_arrangements: Constants.LIVING_ARRAGEMENTS,

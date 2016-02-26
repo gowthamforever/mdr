@@ -9,153 +9,209 @@
   <div class="form-group row">
     <label class="col-sm-7">NUMBER OF TIMES HOSPITALIZED IN PAST 24 MONTHS:</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{#if noneditable}}
+        {{form.eight_nothip24m}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.eight_nothip24m autocomplete="off"}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">EVER HOSPITALIZED DUE TO DRUGS OR ALCOHOL:</label>
     <div class="col-sm-5">
-      <div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
-          </label>
+      {{#if noneditable}}
+        {{form.eight_ehdtdoa}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.eight_ehdtdoa value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.eight_ehdtdoa value="No"}} No
+            </label>
+          </div>
         </div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
-          </label>
-        </div>
-      </div>
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">NUMBER OF SURGERIES IN PAST 24 MONTHS:</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{#if noneditable}}
+        {{form.eight_nosip24m}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.eight_nosip24m autocomplete="off"}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">NUMBER OF PREGANANCIES AND DELIVERIES:</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{#if noneditable}}
+        {{form.eight_nopad}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.eight_nopad autocomplete="off"}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">GIVEN BIRTH IN PAST 12 MONTHS:</label>
     <div class="col-sm-5">
-      <div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
-          </label>
+      {{#if noneditable}}
+        {{form.eight_gbip12m}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.eight_gbip12m value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.eight_gbip12m value="No"}} No
+            </label>
+          </div>
         </div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
-          </label>
-        </div>
-      </div>
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">CURRENTLY PREGNANT:</label>
     <div class="col-sm-5">
-      <div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
-          </label>
+      {{#if noneditable}}
+        {{form.eight_cp}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.eight_cp value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.eight_cp value="No"}} No
+            </label>
+          </div>
         </div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
-          </label>
-        </div>
-      </div>
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">IF PREGANANT, HOW MANY MONTHS:</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{#if noneditable}}
+        {{form.eight_iphmm}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.eight_iphmm autocomplete="off"}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">LAST PHYSICAL EXAM:</label>
     <div class="col-sm-5">
-      {{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=form.dob_formatted}}
+      {{#if noneditable}}
+        {{date-format form.eight_lpe "YYYY-MM-DD" "MMM DD YYYY"}}
+      {{else}}
+        {{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=form.eight_lpe_formatted}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">LAST PHYSICIAN VISIT:</label>
     <div class="col-sm-5">
-      {{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=form.dob_formatted}}
+      {{#if noneditable}}
+        {{date-format form.eight_lpv "YYYY-MM-DD" "MMM DD YYYY"}}
+      {{else}}
+        {{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=form.eight_lpv_formatted}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">LAST BREAK EXAM:</label>
     <div class="col-sm-5">
-      {{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=form.dob_formatted}}
+      {{#if noneditable}}
+        {{date-format form.eight_lbe "YYYY-MM-DD" "MMM DD YYYY"}}
+      {{else}}
+        {{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=form.eight_lbe_formatted}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">LAST PAP SMEAR:</label>
     <div class="col-sm-5">
-      {{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=form.dob_formatted}}
+      {{#if noneditable}}
+        {{date-format form.eight_lps "YYYY-MM-DD" "MMM DD YYYY"}}
+      {{else}}
+        {{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=form.eight_lps_formatted}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">DO HAVE A PRIMARY PHYSICIAN:</label>
     <div class="col-sm-5">
-      <div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
-          </label>
+      {{#if noneditable}}
+        {{form.eight_dyhapp}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.eight_dyhapp value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.eight_dyhapp value="No"}} No
+            </label>
+          </div>
         </div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
-          </label>
-        </div>
-      </div>
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">DO YOU HAVE A HEALTH INSURANCE:</label>
     <div class="col-sm-5">
-      <div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
-          </label>
+      {{#if noneditable}}
+        {{form.eight_dyhhi}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.eight_dyhhi value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.eight_dyhhi value="No"}} No
+            </label>
+          </div>
         </div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
-          </label>
-        </div>
-      </div>
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">LAST TIME TESTED FOR HIV/AIDS:</label>
     <div class="col-sm-5">
-      {{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=form.dob_formatted}}
+      {{#if noneditable}}
+        {{date-format form.eight_lttfh "YYYY-MM-DD" "MMM DD YYYY"}}
+      {{else}}
+        {{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=form.eight_lttfh_formatted}}
+      {{/if}}
     </div>
   </div>
 
@@ -164,45 +220,73 @@
   <div class="form-group row">
     <label class="col-sm-2">LAST HOSPITAL ADMIT:</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{#if noneditable}}
+        {{date-format form.eight_lha "YYYY-MM-DD" "MMM DD YYYY"}}
+      {{else}}
+        {{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=form.eight_lha_formatted}}
+      {{/if}}
     </div>
 
     <label class="col-sm-2">LENGTH OF STAY:</label>
     <div class="col-sm-3">
-      {{input type="text" class="form-control" value=form.primary_drug_frequency autocomplete="off"}}
+      {{#if noneditable}}
+        {{form.eight_los}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.eight_los autocomplete="off"}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-2">HOSPITAL:</label>
     <div class="col-sm-10">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{#if noneditable}}
+        {{form.eight_hospital}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.eight_hospital autocomplete="off"}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-2">TREATING PHYSICIAN:</label>
     <div class="col-sm-10">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{#if noneditable}}
+        {{form.eight_tp}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.eight_tp autocomplete="off"}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-2">REASON:</label>
     <div class="col-sm-10">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{#if noneditable}}
+        {{form.eight_reason}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.eight_reason autocomplete="off"}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-2">DISH STATUS:</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{#if noneditable}}
+        {{form.eight_disch_status}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.eight_disch_status autocomplete="off"}}
+      {{/if}}
     </div>
 
     <label class="col-sm-2">DISH DATE:</label>
     <div class="col-sm-5">
-      {{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=form.dob_formatted}}
+      {{#if noneditable}}
+        {{date-format form.eight_disch_date "YYYY-MM-DD" "MMM DD YYYY"}}
+      {{else}}
+        {{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=form.eight_disch_date_formatted}}
+      {{/if}}
     </div>
   </div>
 
@@ -211,28 +295,44 @@
   <div class="form-group row">
     <label class="col-sm-2">LAST PHYSICIAN VISIT:</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{#if noneditable}}
+        {{date-format form.eight_lpv2 "YYYY-MM-DD" "MMM DD YYYY"}}
+      {{else}}
+        {{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=form.eight_lpv2_formatted}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-2">TREATING PHYSICIAN:</label>
     <div class="col-sm-10">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{#if noneditable}}
+        {{form.eight_tp2}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.eight_tp2 autocomplete="off"}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-2">REASON:</label>
     <div class="col-sm-10">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{#if noneditable}}
+        {{form.eight_reason2}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.eight_reason2 autocomplete="off"}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-2">STATUS:</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{#if noneditable}}
+        {{form.eight_status}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.eight_status autocomplete="off"}}
+      {{/if}}
     </div>
   </div>
 
@@ -241,21 +341,33 @@
   <div class="form-group row">
     <label class="col-sm-5">LIST ANY CURRENT MEDICATIONS YOU ARE TAKING AND THE REASON FOR SUCH MEDICATION:</label>
     <div class="col-sm-7">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{#if noneditable}}
+        {{form.eight_lacmyatatrfsm}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.eight_lacmyatatrfsm autocomplete="off"}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-5">LIST ANY KNOWN ALERGIES YOU HAVE:</label>
     <div class="col-sm-7">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{#if noneditable}}
+        {{form.eight_lakayh}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.eight_lakayh autocomplete="off"}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-5">CURRENT MEDICAL COMPLAINTS:</label>
     <div class="col-sm-7">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{#if noneditable}}
+        {{form.eight_cmc}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.eight_cmc autocomplete="off"}}
+      {{/if}}
     </div>
   </div>
 
@@ -264,7 +376,11 @@
   <div class="form-group row">
     <label class="col-sm-2">Other medical history narrative:</label>
     <div class="col-sm-10">
-      {{textarea class="form-control" value=form.two_pdpf rows="7" maxlength=500}}
+      {{#if noneditable}}
+        {{form.eight_omhn}}
+      {{else}}
+        {{textarea class="form-control" value=form.eight_omhn rows="7" maxlength=500}}
+      {{/if}}
     </div>
   </div>
 
@@ -273,7 +389,7 @@
   <div class="form-group row">
     <label class="col-sm-1">&nbsp;</label>
     <div class="col-md-2 form-group-right-align">
-      <button class="btn btn-primary btn-block" type="submit" autocomplete="off">Next (Page 8)</button>
+      <button class="btn btn-primary btn-block" type="submit" autocomplete="off">{{if model.completed 'Next' 'Save & Continue'}}</button>
     </div>
     <label class="col-sm-1">&nbsp;</label>
     <div class="col-md-2 form-group-right-align">

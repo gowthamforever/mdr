@@ -1,4 +1,4 @@
-<section class="assessment-form">
+<section class="assessment-form-block">
   <div>
     <div class="col-md-12">
       {{#ember-wormhole to="fixed-block" renderInPlace=opentok.fullscreen}}
@@ -9,7 +9,7 @@
     </div>
     {{#if (or session.role_doctor session.role_assessor)}}
       {{#unless opentok.fullscreen}}
-        {{abuse-form model=model class="form-block col-md-12"}}
+        {{abuse-form model=model class="form-block col-md-12" noneditable=model.completed}}
       {{/unless}}
     {{/if}}
   </div>

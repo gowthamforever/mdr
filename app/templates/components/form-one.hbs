@@ -48,13 +48,13 @@
     <label class="col-sm-2">{{upper-case "Race:"}}</label>
     <div class="col-sm-4">
       {{#if noneditable}}
-        {{model.one_race}}
+        {{form.one_race}}
       {{else}}
         {{input-select
           class="form-control"
           name="race"
           options=form.races
-          selected=model.one_race
+          selected=form.one_race
           prompt="Select"
         }}
       {{/if}}
@@ -63,13 +63,13 @@
     <label class="col-sm-2">{{upper-case "Ethnicity:"}}</label>
     <div class="col-sm-4">
       {{#if noneditable}}
-        {{model.one_ethnicity}}
+        {{form.one_ethnicity}}
       {{else}}
         {{input-select
           class="form-control"
           name="ethnicity"
           options=form.ethnicities
-          selected=model.one_ethnicity
+          selected=form.one_ethnicity
           prompt="Select"
         }}
       {{/if}}
@@ -80,7 +80,7 @@
     <label class="col-sm-2">{{upper-case "Gender:"}}</label>
     <div class="col-sm-4">
       {{#if noneditable}}
-        {{model.one_gender}}
+        {{form.one_gender}}
       {{else}}
         <div>
           <div class="radio-inline">
@@ -100,7 +100,7 @@
     <label class="col-sm-2">{{upper-case "SSN:"}}</label>
     <div class="col-sm-4">
       {{#if noneditable}}
-        {{model.one_ssn}}
+        {{form.one_ssn}}
       {{else}}
         {{mdr-ssn type="text" class="form-control" name="ssn" value=form.one_ssn autocomplete="off"}}
       {{/if}}
@@ -111,7 +111,7 @@
     <label class="col-sm-2">{{upper-case "Date of Birth:"}}</label>
     <div class="col-sm-4">
       {{#if noneditable}}
-        {{date-format model.one_dob "YYYY-MM-DD" "MMM DD YYYY"}}
+        {{date-format form.one_dob "YYYY-MM-DD" "MMM DD YYYY"}}
       {{else}}
         {{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=form.one_dob_formatted}}
       {{/if}}
@@ -120,7 +120,7 @@
     <label class="col-sm-2">{{upper-case "Age:"}}</label>
     <div class="col-sm-4">
       {{#if noneditable}}
-        {{model.one_race}}
+        {{form.one_race}}
       {{else}}
         {{#if form.one_dob_formatted}}
           {{form.one_age}}
@@ -140,7 +140,7 @@
     <label class="col-sm-2">{{upper-case "Referal Source:"}}</label>
     <div class="col-sm-10">
       {{#if noneditable}}
-        {{model.two_referral_source}}
+        {{form.two_referral_source}}
       {{else}}
         {{input type="text" class="form-control" value=form.two_referral_source autocomplete="off"}}
       {{/if}}
@@ -151,7 +151,7 @@
     <label class="col-sm-2">{{upper-case "Referal Contact Name:"}}</label>
     <div class="col-sm-10">
       {{#if noneditable}}
-        {{model.two_referral_contact_name}}
+        {{form.two_referral_contact_name}}
       {{else}}
         {{input type="text" class="form-control" value=form.two_referral_contact_name autocomplete="off"}}
       {{/if}}
@@ -162,7 +162,7 @@
     <label class="col-sm-2">{{upper-case "Referal Agency Name:"}}</label>
     <div class="col-sm-10">
       {{#if noneditable}}
-        {{model.two_referral_agency_name}}
+        {{form.two_referral_agency_name}}
       {{else}}
         {{input type="text" class="form-control" value=form.two_referral_agency_name autocomplete="off"}}
       {{/if}}
@@ -173,7 +173,7 @@
     <label class="col-sm-2">{{upper-case "Contact Phone#:"}}</label>
     <div class="col-sm-4">
       {{#if noneditable}}
-        {{model.two_contact_phone}}
+        {{form.two_contact_phone}}
       {{else}}
         {{mdr-phone type="text" class="form-control" value=form.two_contact_phone autocomplete="off"}}
       {{/if}}
@@ -184,7 +184,7 @@
     <label class="col-sm-2">{{upper-case "Child Welfare Case:"}}</label>
     <div class="col-sm-4">
       {{#if noneditable}}
-        {{model.two_child_welfare_case}}
+        {{form.two_child_welfare_case}}
       {{else}}
         <div>
           <div class="radio-inline">
@@ -203,7 +203,7 @@
     <label class="col-sm-2">{{upper-case "Marchman Act Case:"}}</label>
     <div class="col-sm-4">
       {{#if noneditable}}
-        {{model.two_marchman_act_case}}
+        {{form.two_marchman_act_case}}
       {{else}}
         <div>
           <div class="radio-inline">
@@ -225,7 +225,7 @@
     <label class="col-sm-2">{{upper-case "Criminal Justice Case:"}}</label>
     <div class="col-sm-4">
       {{#if noneditable}}
-        {{model.two_criminal_justice_case}}
+        {{form.two_criminal_justice_case}}
       {{else}}
         <div>
           <div class="radio-inline">
@@ -244,7 +244,7 @@
     <label class="col-sm-2">{{upper-case "Drug Court:"}}</label>
     <div class="col-sm-4">
       {{#if noneditable}}
-        {{model.two_drug_court}}
+        {{form.two_drug_court}}
       {{else}}
         <div>
           <div class="radio-inline">
@@ -266,7 +266,7 @@
     <label class="col-sm-2">{{upper-case "Referral Date:"}}</label>
     <div class="col-sm-4">
       {{#if noneditable}}
-        {{date-format model.two_referral_date "YYYY-MM-DD" "MMM DD YYYY"}}
+        {{date-format form.two_referral_date "YYYY-MM-DD" "MMM DD YYYY"}}
       {{else}}
         {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.two_referral_date_formatted}}
       {{/if}}
@@ -275,7 +275,7 @@
     <label class="col-sm-2">{{upper-case "Time:"}}</label>
     <div class="col-sm-4">
       {{#if noneditable}}
-        {{model.two_time}}
+        {{form.two_time}}
       {{else}}
         {{input-time-picker class="form-control" placeholder="Click to change" readonly="" value=form.two_time}}
       {{/if}}
@@ -286,7 +286,7 @@
     <label class="col-sm-2">{{upper-case "Type:"}}</label>
     <div class="col-sm-4">
       {{#if noneditable}}
-        {{model.two_type}}
+        {{form.two_type}}
       {{else}}
         {{input type="text" class="form-control" value=form.two_type autocomplete="off"}}
       {{/if}}
@@ -295,7 +295,7 @@
     <label class="col-sm-2">{{upper-case "Mode:"}}</label>
     <div class="col-sm-4">
       {{#if noneditable}}
-        {{model.two_mode}}
+        {{form.two_mode}}
       {{else}}
         {{input type="text" class="form-control" value=form.two_mode autocomplete="off"}}
       {{/if}}
@@ -306,7 +306,7 @@
     <label class="col-sm-2">{{upper-case "Case Number:"}}</label>
     <div class="col-sm-4">
       {{#if noneditable}}
-        {{model.two_case_number}}
+        {{form.two_case_number}}
       {{else}}
         {{input type="text" class="form-control" value=form.two_case_number autocomplete="off"}}
       {{/if}}
@@ -317,7 +317,7 @@
     <label class="col-sm-2">{{upper-case "Referal Reason:"}}</label>
     <div class="col-sm-10">
       {{#if noneditable}}
-        {{model.two_referral_reason}}
+        {{form.two_referral_reason}}
       {{else}}
         {{input type="text" class="form-control" value=form.two_referral_reason autocomplete="off"}}
       {{/if}}
@@ -330,7 +330,7 @@
     <label class="col-sm-2">{{upper-case "Please describe Precipitating Factor(s):"}}</label>
     <div class="col-sm-10">
       {{#if noneditable}}
-        {{model.two_pdpf}}
+        {{form.two_pdpf}}
       {{else}}
         {{textarea class="form-control" value=form.two_pdpf rows="7" maxlength=500}}
       {{/if}}
@@ -341,7 +341,7 @@
 
   <div class="form-group row">
     <div class="col-md-2 form-group-right-align">
-      <button class="btn btn-primary btn-block" type="submit" autocomplete="off">Next (Page 2)</button>
+      <button class="btn btn-primary btn-block" type="submit" autocomplete="off">{{if model.completed 'Next' 'Save & Continue'}}</button>
     </div>
   </div>
 </form>

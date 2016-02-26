@@ -9,14 +9,22 @@
   <div class="form-group row">
     <label class="col-sm-7">PRIMARY RECOMMENDATION:</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{#if noneditable}}
+        {{form.eleven_pr}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.eleven_pr autocomplete="off"}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">DISPOSITION:</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{#if noneditable}}
+        {{form.eleven_disposition}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.eleven_disposition autocomplete="off"}}
+      {{/if}}
     </div>
   </div>
 
@@ -25,7 +33,11 @@
   <div class="form-group row">
     <label class="col-sm-3">REFERRAL SOURCE:</label>
     <div class="col-sm-9">
-      {{textarea class="form-control" value=form.two_pdpf rows="7" maxlength=500}}
+      {{#if noneditable}}
+        {{form.eleven_rs}}
+      {{else}}
+        {{textarea class="form-control" value=form.eleven_rs rows="7" maxlength=500}}
+      {{/if}}
     </div>
   </div>
 
@@ -34,7 +46,11 @@
   <div class="form-group row">
     <label class="col-sm-3">Additional Information:</label>
     <div class="col-sm-9">
-      {{textarea class="form-control" value=form.two_pdpf rows="15" maxlength=500}}
+      {{#if noneditable}}
+        {{form.eleven_ai}}
+      {{else}}
+        {{textarea class="form-control" value=form.eleven_ai rows="15" maxlength=500}}
+      {{/if}}
     </div>
   </div>
 
@@ -43,37 +59,61 @@
   <div class="form-group row">
     <label class="col-sm-3">ASSESSMENT THERAPIST:</label>
     <div class="col-sm-5">
-      {{model.doctor.first_name}} {{model.doctor.last_name}}
-      {{model.assessor.first_name}} {{model.assessor.last_name}}
+      {{#if noneditable}}
+        {{form.eleven_at}}
+      {{else}}
+        {{model.doctor.first_name}} {{model.doctor.last_name}}
+        {{model.assessor.first_name}} {{model.assessor.last_name}}
+      {{/if}}
     </div>
 
     <label class="col-sm-2">DATE:</label>
     <div class="col-sm-2">
-      {{assessment_date}}
+      {{#if noneditable}}
+        {{date-format form.eleven_atdate "YYYY-MM-DD" "MMM DD YYYY"}}
+      {{else}}
+        {{date-format-to assessment_date}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-3">SUPERVISOR:</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{#if noneditable}}
+        {{form.eleven_s}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.eleven_s autocomplete="off"}}
+      {{/if}}
     </div>
 
     <label class="col-sm-2">DATE:</label>
     <div class="col-sm-2">
-      {{assessment_date}}
+      {{#if noneditable}}
+        {{date-format form.eleven_s_date "YYYY-MM-DD" "MMM DD YYYY"}}
+      {{else}}
+        {{date-format-to assessment_date}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-3">ENTERED INTO SYSTEM:</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{#if noneditable}}
+        {{if model.completed 'Yes' 'No'}}
+      {{else}}
+        No
+      {{/if}}
     </div>
 
     <label class="col-sm-2">DATE:</label>
     <div class="col-sm-2">
-      {{assessment_date}}
+      {{#if noneditable}}
+        {{date-format form.eleven_eis_date "YYYY-MM-DD" "MMM DD YYYY"}}
+      {{else}}
+        {{date-format-to assessment_date}}
+      {{/if}}
     </div>
   </div>
 

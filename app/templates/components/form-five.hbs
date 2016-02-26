@@ -9,69 +9,93 @@
   <div class="form-group row">
     <label class="col-sm-7">NUMBER OF TIMES YOU WERE ARRESTED IN PAST 12 MONTHS:</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.six_notywaip12m autocomplete="off"}}
+      {{#if noneditable}}
+        {{form.six_notywaip12m}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.six_notywaip12m autocomplete="off"}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">DATE OF LAST ARREST:</label>
     <div class="col-sm-5">
-      {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.six_date_of_last_arrest_formatted}}
+      {{#if noneditable}}
+        {{date-format form.six_date_of_last_arrest "YYYY-MM-DD" "MMM DD YYYY"}}
+      {{else}}
+        {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.six_date_of_last_arrest_formatted}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">REASON FOR LAST ARREST:</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.six_reason_for_last_arrest autocomplete="off"}}
+      {{#if noneditable}}
+        {{form.six_reason_for_last_arrest}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.six_reason_for_last_arrest autocomplete="off"}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">WAS THE LAST ARREST DRUG/ALCOHAL RELATED:</label>
     <div class="col-sm-5">
-      <div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.six_wladar value="Yes"}} Yes
-          </label>
+      {{#if noneditable}}
+        {{form.six_wladar}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.six_wladar value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.six_wladar value="No"}} No
+            </label>
+          </div>
         </div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.six_wladar value="No"}} No
-          </label>
-        </div>
-      </div>
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">TYPE OF DRUG USED IN LAST ARREST:</label>
     <div class="col-sm-5">
-      {{input-select
-        class="form-control"
-        options=form.primary_drugs
-        selected=model.six_toduptla
-        prompt="Select"
-      }}
+      {{#if noneditable}}
+        {{form.six_toduptla}}
+      {{else}}
+        {{input-select
+          class="form-control"
+          options=form.primary_drugs
+          selected=form.six_toduptla
+          prompt="Select"
+        }}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">EVER HURT ANYONE WHILE USING DRUG/ALCOHAL:</label>
     <div class="col-sm-5">
-      <div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.six_ehawuda value="Yes"}} Yes
-          </label>
+      {{#if noneditable}}
+        {{form.six_ehawuda}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.six_ehawuda value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.six_ehawuda value="No"}} No
+            </label>
+          </div>
         </div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.six_ehawuda value="No"}} No
-          </label>
-        </div>
-      </div>
+      {{/if}}
     </div>
   </div>
 
@@ -80,98 +104,126 @@
   <div class="form-group row">
     <label class="col-sm-7">ARE YOU CURRENTLY INVOLVED IN THE CRIMAINAL JUSTICE SYSTEM:</label>
     <div class="col-sm-5">
-      <div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.six_ayciicjs value="Yes"}} Yes
-          </label>
+      {{#if noneditable}}
+        {{form.six_ayciicjs}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.six_ayciicjs value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.six_ayciicjs value="No"}} No
+            </label>
+          </div>
         </div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.six_ayciicjs value="No"}} No
-          </label>
-        </div>
-      </div>
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">ARE YOU CURRENTLY UNDER LEGAL SUPERVISION:</label>
     <div class="col-sm-5">
-      <div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.six_ayculs value="Yes"}} Yes
-          </label>
+      {{#if noneditable}}
+        {{form.six_ayculs}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.six_ayculs value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.six_ayculs value="No"}} No
+            </label>
+          </div>
         </div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.six_ayculs value="No"}} No
-          </label>
-        </div>
-      </div>
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">WERE YOU ON PROBATION AT ARREST:</label>
     <div class="col-sm-5">
-      <div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.six_wyopaa value="Yes"}} Yes
-          </label>
+      {{#if noneditable}}
+        {{form.six_wyopaa}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.six_wyopaa value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.six_wyopaa value="No"}} No
+            </label>
+          </div>
         </div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.six_wyopaa value="No"}} No
-          </label>
-        </div>
-      </div>
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">PROBATION OFFICER'S NAME:</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.six_pon autocomplete="off"}}
+      {{#if noneditable}}
+        {{form.six_pon}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.six_pon autocomplete="off"}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">PROBATION OFFICER'S PHONE NUMBER:</label>
     <div class="col-sm-5">
-      {{mdr-phone type="text" class="form-control" value=model.six_popn autocomplete="off"}}
+      {{#if noneditable}}
+        {{form.six_popn}}
+      {{else}}
+        {{mdr-phone type="text" class="form-control" value=form.six_popn autocomplete="off"}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">TYPE OF DRUG USED PRIOR TO LAST ARREST:</label>
     <div class="col-sm-5">
-      {{input-select
-        class="form-control"
-        options=form.primary_drugs
-        selected=model.six_toduptla2
-        prompt="Select"
-      }}
+      {{#if noneditable}}
+        {{form.six_toduptla2}}
+      {{else}}
+        {{input-select
+          class="form-control"
+          options=form.primary_drugs
+          selected=form.six_toduptla2
+          prompt="Select"
+        }}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">WERE YOU ORDERED TO TX AS A CONDITION OF PROBATION:</label>
     <div class="col-sm-5">
-      <div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.six_wyottaacop value="Yes"}} Yes
-          </label>
+      {{#if noneditable}}
+        {{form.six_wyottaacop}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.six_wyottaacop value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.six_wyottaacop value="No"}} No
+            </label>
+          </div>
         </div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.six_wyottaacop value="No"}} No
-          </label>
-        </div>
-      </div>
+      {{/if}}
     </div>
   </div>
 
@@ -180,32 +232,44 @@
   <div class="form-group row">
     <label class="col-sm-7">WERE YOU COURT ORDERED TO TREATMENT:</label>
     <div class="col-sm-5">
-      <div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.six_wycott value="Yes"}} Yes
-          </label>
+      {{#if noneditable}}
+        {{form.six_wycott}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.six_wycott value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.six_wycott value="No"}} No
+            </label>
+          </div>
         </div>
-        <div class="radio-inline">
-          <label>
-            {{input-radio group=form.six_wycott value="No"}} No
-          </label>
-        </div>
-      </div>
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">IF SO, BY JUDGE:</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.six_isbj autocomplete="off"}}
+      {{#if noneditable}}
+        {{form.six_isbj}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.six_isbj autocomplete="off"}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">IF SO, BY COURT:</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.six_isbc autocomplete="off"}}
+      {{#if noneditable}}
+        {{form.six_isbc}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.six_isbc autocomplete="off"}}
+      {{/if}}
     </div>
   </div>
 
@@ -214,7 +278,11 @@
   <div class="form-group row">
     <label class="col-sm-2">Other legal history narrative:</label>
     <div class="col-sm-10">
-      {{textarea class="form-control" value=form.six_olhn rows="7" maxlength=500}}
+      {{#if noneditable}}
+        {{form.six_olhn}}
+      {{else}}
+        {{textarea class="form-control" value=form.six_olhn rows="7" maxlength=500}}
+      {{/if}}
     </div>
   </div>
 
@@ -223,7 +291,7 @@
   <div class="form-group row">
     <label class="col-sm-1">&nbsp;</label>
     <div class="col-md-2 form-group-right-align">
-      <button class="btn btn-primary btn-block" type="submit" autocomplete="off">Next (Page 6)</button>
+      <button class="btn btn-primary btn-block" type="submit" autocomplete="off">{{if model.completed 'Next' 'Save & Continue'}}</button>
     </div>
     <label class="col-sm-1">&nbsp;</label>
     <div class="col-md-2 form-group-right-align">

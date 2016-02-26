@@ -15,7 +15,8 @@ export default Ember.Object.extend({
   appointments: undefined,
   pending: filterBy('appointments', 'pending', true),
   accepted: filterBy('appointments', 'accepted', true),
+  notstarted: filterBy('appointments', 'notstarted', true),
   rejected: filterBy('appointments', 'rejected', true),
-  started: filterBy('appointments', 'started', true),
+  started: filterBy('appointments', 'started_appointment', true),
   completed: filterBy('appointments', 'completed', true)
 });

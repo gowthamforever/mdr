@@ -67,6 +67,8 @@ export default Route.extend(Api, {
     const self         = this;
     const currentTime  = moment();
     const endTime      = moment().endOf('day');
+    const completed    = appointment.get('completed');
+    const started      = appointment.get('started_appointment');
     let ts_request_moment;
     let ts_request_endtime_moment;
     let promises;
@@ -93,9 +95,13 @@ export default Route.extend(Api, {
         customer: self.getClient(model)
       };
 
+      if (started || completed) {
+        promises.form = self.getForm(model);
+      }
+
       return new Promise((resolve) => {
         hash(promises).then((promises) => {
-          const { chatsession, customer } = promises;
+          const { chatsession, customer, form } = promises;
           if (chatsession) {
             model.setProperties(_.pick(chatsession, [
               'sessionId',
@@ -107,10 +113,42 @@ export default Route.extend(Api, {
           if (customer) {
             model.set('customer', customer);
           }
+
+          if (form) {
+            model.set('abuse_form', form);
+          }
+
           resolve();
         });
       });
     }
+  },
+
+  getForm(model) {
+    const self = this;
+    const form  = Form.create();
+
+    return new Promise((resolve) => {
+      self.ajax({
+        id: 'assessmentformget',
+        path: {
+          id: model.get('id')
+        }
+      }).then((response) => {
+        let section;
+
+        for (let count = 1; count <= 10; count ++) {
+          section = response[`assessmentFormSection${count}`];
+          if (section) {
+            form.setProperties(section);
+          }
+
+          resolve(form);
+        }
+      }).catch(() => {
+        resolve(form);
+      });
+    });
   },
 
   getChatSession(model) {

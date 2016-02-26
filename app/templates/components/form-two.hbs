@@ -10,12 +10,12 @@
     <label class="col-sm-2">{{upper-case "Primary Drug Used"}}</label>
     <div class="col-sm-4">
       {{#if noneditable}}
-        {{model.three_primary_drug_used}}
+        {{form.three_primary_drug_used}}
       {{else}}
         {{input-select
           class="form-control"
           options=form.primary_drugs
-          selected=model.three_primary_drug_used
+          selected=form.three_primary_drug_used
           prompt="Select"
         }}
       {{/if}}
@@ -24,12 +24,12 @@
     <label class="col-sm-2">{{upper-case "Frequency"}}</label>
     <div class="col-sm-4">
       {{#if noneditable}}
-        {{model.three_frequency}}
+        {{form.three_frequency}}
       {{else}}
         {{input-select
           class="form-control"
           options=form.drugs_frequencies
-          selected=model.three_frequency
+          selected=form.three_frequency
           prompt="Select"
         }}
       {{/if}}
@@ -40,12 +40,12 @@
     <label class="col-sm-2">{{upper-case "Method of Admin"}}</label>
     <div class="col-sm-4">
       {{#if noneditable}}
-        {{model.three_method_of_admin}}
+        {{form.three_method_of_admin}}
       {{else}}
         {{input-select
           class="form-control"
           options=form.drugs_methods_of_admin
-          selected=model.three_method_of_admin
+          selected=form.three_method_of_admin
           prompt="Select"
         }}
       {{/if}}
@@ -54,7 +54,7 @@
     <label class="col-sm-2">{{upper-case "Last Used"}}</label>
     <div class="col-sm-4">
       {{#if noneditable}}
-        {{date-format model.three_last_used "YYYY-MM-DD" "MMM DD YYYY"}}
+        {{date-format form.three_last_used "YYYY-MM-DD" "MMM DD YYYY"}}
       {{else}}
         {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.three_last_used_formatted}}
       {{/if}}
@@ -65,7 +65,7 @@
     <label class="col-sm-2">{{upper-case "Age of First Use"}}</label>
     <div class="col-sm-4">
       {{#if noneditable}}
-        {{model.three_age_of_first_use}}
+        {{form.three_age_of_first_use}}
       {{else}}
         {{input type="text" class="form-control" value=form.three_age_of_first_use autocomplete="off"}}
       {{/if}}
@@ -74,7 +74,7 @@
     <label class="col-sm-2">{{upper-case "Hours Since Last Use"}}</label>
     <div class="col-sm-4">
       {{#if noneditable}}
-        {{model.three_hours_since_last_use}}
+        {{form.three_hours_since_last_use}}
       {{else}}
         {{input type="text" class="form-control" value=form.three_hours_since_last_use autocomplete="off"}}
       {{/if}}
@@ -87,12 +87,12 @@
     <label class="col-sm-2">{{upper-case "Secondary Drug Used"}}</label>
     <div class="col-sm-4">
       {{#if noneditable}}
-        {{model.three_secondary_drug_used}}
+        {{form.three_secondary_drug_used}}
       {{else}}
         {{input-select
           class="form-control"
           options=form.primary_drugs
-          selected=model.three_secondary_drug_used
+          selected=form.three_secondary_drug_used
           prompt="Select"
         }}
       {{/if}}
@@ -101,12 +101,12 @@
     <label class="col-sm-2">{{upper-case "Frequency"}}</label>
     <div class="col-sm-4">
       {{#if noneditable}}
-        {{model.three_frequence_2}}
+        {{form.three_frequence_2}}
       {{else}}
         {{input-select
           class="form-control"
           options=form.drugs_frequencies
-          selected=model.three_frequence_2
+          selected=form.three_frequence_2
           prompt="Select"
         }}
       {{/if}}
@@ -117,12 +117,12 @@
     <label class="col-sm-2">{{upper-case "Method of Admin"}}</label>
     <div class="col-sm-4">
       {{#if noneditable}}
-        {{model.three_method_of_admin_2}}
+        {{form.three_method_of_admin_2}}
       {{else}}
         {{input-select
           class="form-control"
           options=form.drugs_methods_of_admin
-          selected=model.three_method_of_admin_2
+          selected=form.three_method_of_admin_2
           prompt="Select"
         }}
       {{/if}}
@@ -131,7 +131,7 @@
     <label class="col-sm-2">{{upper-case "Last Used"}}</label>
     <div class="col-sm-4">
       {{#if noneditable}}
-        {{date-format model.three_last_used_2 "YYYY-MM-DD" "MMM DD YYYY"}}
+        {{date-format form.three_last_used_2 "YYYY-MM-DD" "MMM DD YYYY"}}
       {{else}}
         {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.three_last_used_2_formatted}}
       {{/if}}
@@ -142,7 +142,7 @@
     <label class="col-sm-2">{{upper-case "Age of First Use"}}</label>
     <div class="col-sm-4">
       {{#if noneditable}}
-        {{model.three_age_of_first_use_2}}
+        {{form.three_age_of_first_use_2}}
       {{else}}
         {{input type="text" class="form-control" value=form.three_age_of_first_use_2 autocomplete="off"}}
       {{/if}}
@@ -151,7 +151,7 @@
     <label class="col-sm-2">{{upper-case "Hours Since Last Use"}}</label>
     <div class="col-sm-4">
       {{#if noneditable}}
-        {{model.three_hours_since_last_use_2}}
+        {{form.three_hours_since_last_use_2}}
       {{else}}
         {{input type="text" class="form-control" value=form.three_hours_since_last_use_2 autocomplete="off"}}
       {{/if}}
@@ -164,12 +164,12 @@
     <label class="col-sm-2">{{upper-case "Tertiary Drug Used"}}</label>
     <div class="col-sm-4">
       {{#if noneditable}}
-        {{model.three_tertiary_drug_used}}
+        {{form.three_tertiary_drug_used}}
       {{else}}
         {{input-select
           class="form-control"
           options=form.primary_drugs
-          selected=model.three_tertiary_drug_used
+          selected=form.three_tertiary_drug_used
           prompt="Select"
         }}
       {{/if}}
@@ -178,12 +178,12 @@
     <label class="col-sm-2">{{upper-case "Frequency"}}</label>
     <div class="col-sm-4">
       {{#if noneditable}}
-        {{model.three_frequence_3}}
+        {{form.three_frequence_3}}
       {{else}}
         {{input-select
           class="form-control"
           options=form.drugs_frequencies
-          selected=model.three_frequence_3
+          selected=form.three_frequence_3
           prompt="Select"
         }}
       {{/if}}
@@ -194,12 +194,12 @@
     <label class="col-sm-2">{{upper-case "Method of Admin"}}</label>
     <div class="col-sm-4">
       {{#if noneditable}}
-        {{model.three_method_of_admin_3}}
+        {{form.three_method_of_admin_3}}
       {{else}}
         {{input-select
           class="form-control"
           options=form.drugs_methods_of_admin
-          selected=model.three_method_of_admin_3
+          selected=form.three_method_of_admin_3
           prompt="Select"
         }}
       {{/if}}
@@ -208,7 +208,7 @@
     <label class="col-sm-2">{{upper-case "Last Used"}}</label>
     <div class="col-sm-3">
       {{#if noneditable}}
-        {{date-format model.three_last_used_3 "YYYY-MM-DD" "MMM DD YYYY"}}
+        {{date-format form.three_last_used_3 "YYYY-MM-DD" "MMM DD YYYY"}}
       {{else}}
         {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.three_last_used_3_formatted}}
       {{/if}}
@@ -219,7 +219,7 @@
     <label class="col-sm-2">{{upper-case "Age of First Use"}}</label>
     <div class="col-sm-4">
       {{#if noneditable}}
-        {{model.three_age_of_first_use_3}}
+        {{form.three_age_of_first_use_3}}
       {{else}}
         {{input type="text" class="form-control" value=form.three_age_of_first_use_3 autocomplete="off"}}
       {{/if}}
@@ -228,7 +228,7 @@
     <label class="col-sm-2">{{upper-case "Hours Since Last Use"}}</label>
     <div class="col-sm-3">
       {{#if noneditable}}
-        {{model.three_hours_since_last_use_3}}
+        {{form.three_hours_since_last_use_3}}
       {{else}}
         {{input type="text" class="form-control" value=form.three_hours_since_last_use_3 autocomplete="off"}}
       {{/if}}
@@ -239,7 +239,7 @@
     <label class="col-sm-2">{{upper-case "List/Descrbe other drugs you have used"}}</label>
     <div class="col-sm-10">
       {{#if noneditable}}
-        {{model.three_ldodyhu}}
+        {{form.three_ldodyhu}}
       {{else}}
         {{textarea class="form-control" value=form.three_ldodyhu rows="7" maxlength=500}}
       {{/if}}
@@ -252,7 +252,7 @@
     <label class="col-sm-4">{{upper-case "IV Drug User"}}</label>
     <div class="col-sm-2">
       {{#if noneditable}}
-        {{model.three_iv_drug_user}}
+        {{form.three_iv_drug_user}}
       {{else}}
         <div>
           <div class="radio-inline">
@@ -271,7 +271,7 @@
     <label class="col-sm-4">{{upper-case "Habitual Drug User"}}</label>
     <div class="col-sm-2">
       {{#if noneditable}}
-        {{model.three_habitual_drug_user}}
+        {{form.three_habitual_drug_user}}
       {{else}}
         <div>
           <div class="radio-inline">
@@ -293,7 +293,7 @@
     <label class="col-sm-4">{{upper-case "Sees Drug Use as Harmful"}}</label>
     <div class="col-sm-2">
       {{#if noneditable}}
-        {{model.three_sees_drug_use_as_harmful}}
+        {{form.three_sees_drug_use_as_harmful}}
       {{else}}
         <div>
           <div class="radio-inline">
@@ -312,7 +312,7 @@
     <label class="col-sm-4">{{upper-case "Sees Alchol Use as Harmful"}}</label>
     <div class="col-sm-2">
       {{#if noneditable}}
-        {{model.three_sees_alcohol_use_as_harmful}}
+        {{form.three_sees_alcohol_use_as_harmful}}
       {{else}}
         <div>
           <div class="radio-inline">
@@ -334,7 +334,7 @@
     <label class="col-sm-4">{{upper-case "Sees Tobacco Use as Harmful"}}</label>
     <div class="col-sm-2">
       {{#if noneditable}}
-        {{model.three_sees_tobacco_use_as_harmful}}
+        {{form.three_sees_tobacco_use_as_harmful}}
       {{else}}
         <div>
           <div class="radio-inline">
@@ -353,7 +353,7 @@
     <label class="col-sm-4">{{upper-case "Uses Tobacco"}}</label>
     <div class="col-sm-2">
       {{#if noneditable}}
-        {{model.three_uses_tobacco}}
+        {{form.three_uses_tobacco}}
       {{else}}
         <div>
           <div class="radio-inline">
@@ -377,7 +377,7 @@
     <label class="col-sm-10">{{upper-case "Ever Used Barbiturates, Opiates or Tranquilizers in Past 24 hours"}}</label>
     <div class="col-sm-2">
       {{#if noneditable}}
-        {{model.three_eubootip24h}}
+        {{form.three_eubootip24h}}
       {{else}}
         <div>
           <div class="radio-inline">
@@ -399,7 +399,7 @@
     <label class="col-sm-10">{{upper-case "Current Carvings For Drugs or Alchol"}}</label>
     <div class="col-sm-2">
       {{#if noneditable}}
-        {{model.three_ccfdoa}}
+        {{form.three_ccfdoa}}
       {{else}}
         <div>
           <div class="radio-inline">
@@ -421,7 +421,7 @@
     <label class="col-sm-10">{{upper-case "Current Experiencing Withdrawal Symptoms"}}</label>
     <div class="col-sm-2">
       {{#if noneditable}}
-        {{model.three_cews}}
+        {{form.three_cews}}
       {{else}}
         <div>
           <div class="radio-inline">
@@ -445,7 +445,7 @@
     <label class="col-sm-10">{{upper-case "Anyone Expressed Concerns About Your Drug/Alchol Use"}}</label>
     <div class="col-sm-2">
       {{#if noneditable}}
-        {{model.three_aecaydau}}
+        {{form.three_aecaydau}}
       {{else}}
         <div>
           <div class="radio-inline">
@@ -467,7 +467,7 @@
     <label class="col-sm-10">{{upper-case "Do you Feel you Drink or Use Drugs Too Much"}}</label>
     <div class="col-sm-2">
       {{#if noneditable}}
-        {{model.three_dyfydoudtm}}
+        {{form.three_dyfydoudtm}}
       {{else}}
         <div>
           <div class="radio-inline">
@@ -489,7 +489,7 @@
     <label class="col-sm-10">{{upper-case "Ever Experienced Serious Consequences Due to Drinking or Drug Use"}}</label>
     <div class="col-sm-2">
       {{#if noneditable}}
-        {{model.three_eescdtdodu}}
+        {{form.three_eescdtdodu}}
       {{else}}
         <div>
           <div class="radio-inline">
@@ -511,7 +511,7 @@
     <label class="col-sm-10">{{upper-case "Ever Felt that you Lost Control of your Drinking or Drug Use"}}</label>
     <div class="col-sm-2">
       {{#if noneditable}}
-        {{model.three_eftylcoydodu}}
+        {{form.three_eftylcoydodu}}
       {{else}}
         <div>
           <div class="radio-inline">
@@ -533,7 +533,7 @@
     <label class="col-sm-10">{{upper-case "Do you feel that you need to Cut Back or Reduce your Drinking or Drug Use"}}</label>
     <div class="col-sm-2">
       {{#if noneditable}}
-        {{model.three_dyftyntcborydodu}}
+        {{form.three_dyftyntcborydodu}}
       {{else}}
         <div>
           <div class="radio-inline">
@@ -555,7 +555,7 @@
     <label class="col-sm-10">{{upper-case "Ever had to seek Medical Treatment dur to your Drinking or Drug Use"}}</label>
     <div class="col-sm-2">
       {{#if noneditable}}
-        {{model.three_ehtsmtdtydodu}}
+        {{form.three_ehtsmtdtydodu}}
       {{else}}
         <div>
           <div class="radio-inline">
@@ -577,7 +577,7 @@
     <label class="col-sm-10">{{upper-case "Ever Arrested due to your Drinking or Drug Use"}}</label>
     <div class="col-sm-2">
       {{#if noneditable}}
-        {{model.three_eadtydodu}}
+        {{form.three_eadtydodu}}
       {{else}}
         <div>
           <div class="radio-inline">
@@ -601,7 +601,7 @@
     <label class="col-sm-2">{{upper-case "Other narrative information about drug use"}}</label>
     <div class="col-sm-10">
       {{#if noneditable}}
-        {{model.three_oniadu}}
+        {{form.three_oniadu}}
       {{else}}
         {{textarea class="form-control" value=form.three_oniadu rows="7" maxlength=500}}
       {{/if}}
@@ -613,7 +613,7 @@
   <div class="form-group row">
     <label class="col-sm-1">&nbsp;</label>
     <div class="col-md-2 form-group-right-align">
-      <button class="btn btn-primary btn-block" type="submit" autocomplete="off">Next (Page 3)</button>
+      <button class="btn btn-primary btn-block" type="submit" autocomplete="off">{{if model.completed 'Next' 'Save & Continue'}}</button>
     </div>
     <label class="col-sm-1">&nbsp;</label>
     <div class="col-md-2 form-group-right-align">

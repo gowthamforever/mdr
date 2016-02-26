@@ -19,9 +19,5 @@ export default Route.extend({
     }
 
     this.transitionTo('appointments.requests.pending');
-  },
-
-  afterModel(model) {
-    console.log(model);
   }
 });

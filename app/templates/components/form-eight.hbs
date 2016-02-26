@@ -9,14 +9,22 @@
   <div class="form-group row">
     <label class="col-sm-7">PRIMARY DIAGNOSIS:</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{#if noneditable}}
+        {{form.nine_pd}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.nine_pd autocomplete="off"}}
+      {{/if}}
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-7">SECONDARY DIAGNOSIS:</label>
     <div class="col-sm-5">
-      {{input type="text" class="form-control" value=form.primary_drug_used autocomplete="off"}}
+      {{#if noneditable}}
+        {{form.nine_sd}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.nine_sd autocomplete="off"}}
+      {{/if}}
     </div>
   </div>
 
@@ -25,7 +33,11 @@
   <div class="form-group row">
     <label class="col-sm-2">Diagnostic Impression Rationale:</label>
     <div class="col-sm-10">
-      {{textarea class="form-control" value=form.two_pdpf rows="15" maxlength=500}}
+      {{#if noneditable}}
+        {{form.nine_dir}}
+      {{else}}
+        {{textarea class="form-control" value=form.nine_dir rows="15" maxlength=500}}
+      {{/if}}
     </div>
   </div>
 
@@ -34,7 +46,7 @@
   <div class="form-group row">
     <label class="col-sm-1">&nbsp;</label>
     <div class="col-md-2 form-group-right-align">
-      <button class="btn btn-primary btn-block" type="submit" autocomplete="off">Next (Page 9)</button>
+      <button class="btn btn-primary btn-block" type="submit" autocomplete="off">{{if model.completed 'Next' 'Save & Continue'}}</button>
     </div>
     <label class="col-sm-1">&nbsp;</label>
     <div class="col-md-2 form-group-right-align">
