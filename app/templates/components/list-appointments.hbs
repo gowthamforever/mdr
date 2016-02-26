@@ -35,7 +35,7 @@
       {{#if date}}
         No appointments for {{date}}.
       {{else}}
-        No <strong>{{if pending 'pending'}} {{if accepted 'accepted'}} {{if rejected 'rejected'}}</strong> appointments <strong>{{if started_appointment 'started'}} {{if completed 'completed'}}</strong>.
+        No <strong>{{if pending 'pending'}} {{if accepted 'accepted'}} {{if rejected 'rejected'}}</strong> appointments <strong>{{if form_started 'started'}} {{if completed 'completed'}}</strong>.
       {{/if}}
     </div>
   {{/each}}

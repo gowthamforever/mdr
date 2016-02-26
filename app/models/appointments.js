@@ -17,6 +17,6 @@ export default Ember.Object.extend({
   accepted: filterBy('appointments', 'accepted', true),
   notstarted: filterBy('appointments', 'notstarted', true),
   rejected: filterBy('appointments', 'rejected', true),
-  started: filterBy('appointments', 'started_appointment', true),
+  started: filterBy('appointments', 'form_started', true),
   completed: filterBy('appointments', 'completed', true)
 });

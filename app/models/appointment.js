@@ -34,7 +34,7 @@ export default Ember.Object.extend({
     const form_status = this.getWithDefault('form_status', Constants.FORM_STATUS.NOT_STARTED);
     return form_status === Constants.FORM_STATUS.NOT_STARTED && this.get('accepted');
   }),
-  started_appointment: equal('form_status', Constants.FORM_STATUS.STARTED),
+  form_started: equal('form_status', Constants.FORM_STATUS.STARTED),
   completed: equal('form_status', Constants.FORM_STATUS.COMPLETED),
   last_updated_page: undefined
 });

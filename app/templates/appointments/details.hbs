@@ -56,7 +56,7 @@
           <div class="col-sm-8">{{model.alt_info}}</div>
         </div>
 
-        {{#if (and (or session.role_doctor session.role_assessor) (or model.started_appointment model.completed))}}
+        {{#if (and (or session.role_doctor session.role_assessor) (or model.form_started model.completed))}}
           <div class="form-group row">
             <div class="col-sm-12">
               {{#link-to "appointments.abuse-form" model}}

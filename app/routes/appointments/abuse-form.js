@@ -50,7 +50,7 @@ export default Route.extend(Api, {
     const self              = this;
     const appointment       = model;
     const completed         = appointment.get('completed');
-    const started           = appointment.get('started_appointment');
+    const started           = appointment.get('form_started');
     let promises;
 
     promises = {

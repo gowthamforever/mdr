@@ -68,7 +68,7 @@ export default Route.extend(Api, {
     const currentTime  = moment();
     const endTime      = moment().endOf('day');
     const completed    = appointment.get('completed');
-    const started      = appointment.get('started_appointment');
+    const started      = appointment.get('form_started');
     let ts_request_moment;
     let ts_request_endtime_moment;
     let promises;
