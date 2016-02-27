@@ -64,28 +64,34 @@ export default Component.extend(Api, {
       const form        = this.get('form');
       let data;
 
-      data = _.pick(form, self.get('props'));
-
-      data.four_last_detox_admit = moment(form.get('four_last_detox_admit_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-      data.four_drug_detoxed_from_disch_date = moment(form.get('four_drug_detoxed_from_disch_date_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-      data.four_last_sa_tx_admit = moment(form.get('four_last_sa_tx_admit_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-      data.four_last_sa_tx_disch_date = moment(form.get('four_last_sa_tx_disch_date_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-      data.four_ltyaan = moment(form.get('four_ltyaan_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-
-      self.ajax({
-        id: 'assessmentformpost',
-        path: {
-          id: appointment.get('id'),
-          pageNo: 3
-        },
-        data
-      }).then(() => {
-        self.set('appointments.cache', false);
-        self.set_form(form, self.get('form_model'));
+      if (appointment.get('completed')) {
         if (page) {
           page(4);
         }
-      }).catch(Ember.K);
+      } else {
+        data = _.pick(form, self.get('props'));
+
+        data.four_last_detox_admit = moment(form.get('four_last_detox_admit_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+        data.four_drug_detoxed_from_disch_date = moment(form.get('four_drug_detoxed_from_disch_date_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+        data.four_last_sa_tx_admit = moment(form.get('four_last_sa_tx_admit_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+        data.four_last_sa_tx_disch_date = moment(form.get('four_last_sa_tx_disch_date_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+        data.four_ltyaan = moment(form.get('four_ltyaan_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+
+        self.ajax({
+          id: 'assessmentformpost',
+          path: {
+            id: appointment.get('id'),
+            pageNo: 3
+          },
+          data
+        }).then(() => {
+          self.set('appointments.cache', false);
+          self.set_form(form, self.get('form_model'));
+          if (page) {
+            page(4);
+          }
+        }).catch(Ember.K);
+      }
     },
 
     previous() {

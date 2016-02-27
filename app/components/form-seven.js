@@ -64,31 +64,37 @@ export default Component.extend(Api, {
       const form        = this.get('form');
       let data;
 
-      data = _.pick(form, self.get('props'));
-
-      data.eight_lpe = moment(form.get('eight_lpe_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-      data.eight_lpv = moment(form.get('eight_lpv_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-      data.eight_lbe = moment(form.get('eight_lbe_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-      data.eight_lbs = moment(form.get('eight_lbs_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-      data.eight_lttfh = moment(form.get('eight_lttfh_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-      data.eight_lha = moment(form.get('eight_lha_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-      data.eight_disch_date = moment(form.get('eight_disch_date_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-      data.eight_lpv2 = moment(form.get('eight_lpv2_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-
-      self.ajax({
-        id: 'assessmentformpost',
-        path: {
-          id: appointment.get('id'),
-          pageNo: 7
-        },
-        data
-      }).then(() => {
-        self.set('appointments.cache', false);
-        self.set_form(form, self.get('form_model'));
+      if (appointment.get('completed')) {
         if (page) {
           page(8);
         }
-      }).catch(Ember.K);
+      } else {
+        data = _.pick(form, self.get('props'));
+
+        data.eight_lpe = moment(form.get('eight_lpe_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+        data.eight_lpv = moment(form.get('eight_lpv_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+        data.eight_lbe = moment(form.get('eight_lbe_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+        data.eight_lbs = moment(form.get('eight_lbs_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+        data.eight_lttfh = moment(form.get('eight_lttfh_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+        data.eight_lha = moment(form.get('eight_lha_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+        data.eight_disch_date = moment(form.get('eight_disch_date_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+        data.eight_lpv2 = moment(form.get('eight_lpv2_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+
+        self.ajax({
+          id: 'assessmentformpost',
+          path: {
+            id: appointment.get('id'),
+            pageNo: 7
+          },
+          data
+        }).then(() => {
+          self.set('appointments.cache', false);
+          self.set_form(form, self.get('form_model'));
+          if (page) {
+            page(8);
+          }
+        }).catch(Ember.K);
+      }
     },
 
     previous() {

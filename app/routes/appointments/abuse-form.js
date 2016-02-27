@@ -69,6 +69,7 @@ export default Route.extend(Api, {
           model.set('customer', customer);
         }
 
+        model.set('abuse_form',  Form.create());
         if (form) {
           model.set('abuse_form', form);
         }
@@ -96,9 +97,9 @@ export default Route.extend(Api, {
           if (section) {
             form.setProperties(section);
           }
-
-          resolve(form);
         }
+
+        resolve(form);
       }).catch(() => {
         resolve(form);
       });

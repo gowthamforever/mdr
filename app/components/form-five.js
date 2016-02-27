@@ -53,25 +53,31 @@ export default Component.extend(Api, {
       const form        = this.get('form');
       let data;
 
-      data = _.pick(form, self.get('props'));
-
-      data.six_date_of_last_arrest = moment(form.get('six_date_of_last_arrest_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-      data.six_popn = retainNumbers(form.get('six_popn'));
-
-      self.ajax({
-        id: 'assessmentformpost',
-        path: {
-          id: appointment.get('id'),
-          pageNo: 5
-        },
-        data
-      }).then(() => {
-        self.set('appointments.cache', false);
-        self.set_form(form, self.get('form_model'));
+      if (appointment.get('completed')) {
         if (page) {
           page(6);
         }
-      }).catch(Ember.K);
+      } else {
+        data = _.pick(form, self.get('props'));
+
+        data.six_date_of_last_arrest = moment(form.get('six_date_of_last_arrest_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+        data.six_popn = retainNumbers(form.get('six_popn'));
+
+        self.ajax({
+          id: 'assessmentformpost',
+          path: {
+            id: appointment.get('id'),
+            pageNo: 5
+          },
+          data
+        }).then(() => {
+          self.set('appointments.cache', false);
+          self.set_form(form, self.get('form_model'));
+          if (page) {
+            page(6);
+          }
+        }).catch(Ember.K);
+      }
     },
 
     previous() {

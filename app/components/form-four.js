@@ -71,28 +71,34 @@ export default Component.extend(Api, {
       const form        = this.get('form');
       let data;
 
-      data = _.pick(form, self.get('props'));
-
-      data.five_last_baker_act_admit = moment(form.get('five_last_baker_act_admit_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-      data.five_disch_date = moment(form.get('five_disch_date_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-      data.five_last_baker_act_admit2 = moment(form.get('five_last_baker_act_admit2_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-      data.five_disch_date2 = moment(form.get('five_disch_date2_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-      data.five_dolsa = moment(form.get('five_dolsa_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-
-      self.ajax({
-        id: 'assessmentformpost',
-        path: {
-          id: appointment.get('id'),
-          pageNo: 4
-        },
-        data
-      }).then(() => {
-        self.set('appointments.cache', false);
-        self.set_form(form, self.get('form_model'));
+      if (appointment.get('completed')) {
         if (page) {
           page(5);
         }
-      }).catch(Ember.K);
+      } else {
+        data = _.pick(form, self.get('props'));
+
+        data.five_last_baker_act_admit = moment(form.get('five_last_baker_act_admit_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+        data.five_disch_date = moment(form.get('five_disch_date_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+        data.five_last_baker_act_admit2 = moment(form.get('five_last_baker_act_admit2_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+        data.five_disch_date2 = moment(form.get('five_disch_date2_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+        data.five_dolsa = moment(form.get('five_dolsa_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+
+        self.ajax({
+          id: 'assessmentformpost',
+          path: {
+            id: appointment.get('id'),
+            pageNo: 4
+          },
+          data
+        }).then(() => {
+          self.set('appointments.cache', false);
+          self.set_form(form, self.get('form_model'));
+          if (page) {
+            page(5);
+          }
+        }).catch(Ember.K);
+      }
     },
 
     previous() {

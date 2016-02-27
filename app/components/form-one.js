@@ -56,27 +56,33 @@ export default Component.extend(Api, {
       const form        = this.get('form');
       let data;
 
-      data = _.pick(form, self.get('props'));
-
-      data.one_age = form.get('one_age');
-      data.one_dob = moment(form.get('one_dob_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-      data.two_referral_date = moment(form.get('two_referral_date_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-      data.two_contact_phone = retainNumbers(form.get('two_contact_phone'));
-
-      self.ajax({
-        id: 'assessmentformpost',
-        path: {
-          id: appointment.get('id'),
-          pageNo: 1
-        },
-        data
-      }).then(() => {
-        self.set('appointments.cache', false);
-        self.set_form(form, self.get('form_model'));
+      if (appointment.get('completed')) {
         if (page) {
           page(2);
         }
-      }).catch(Ember.K);
+      } else {
+        data = _.pick(form, self.get('props'));
+
+        data.one_age = form.get('one_age');
+        data.one_dob = moment(form.get('one_dob_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+        data.two_referral_date = moment(form.get('two_referral_date_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+        data.two_contact_phone = retainNumbers(form.get('two_contact_phone'));
+
+        self.ajax({
+          id: 'assessmentformpost',
+          path: {
+            id: appointment.get('id'),
+            pageNo: 1
+          },
+          data
+        }).then(() => {
+          self.set('appointments.cache', false);
+          self.set_form(form, self.get('form_model'));
+          if (page) {
+            page(2);
+          }
+        }).catch(Ember.K);
+      }
     }
   }
 });

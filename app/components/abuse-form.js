@@ -30,7 +30,7 @@ export default Component.extend(Api, {
   initForm: on('didInitAttrs', function() {
     const appointment       = this.get('model');
     const completed         = appointment.get('completed');
-    let last_updated_page   = appointment.getWithDefault('last_updated_page', 1);
+    let last_updated_page   = appointment.getWithDefault('last_updated_page', 0);
     let pages;
 
     pages = {

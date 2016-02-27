@@ -67,8 +67,8 @@ export default Route.extend(Api, {
     const self         = this;
     const currentTime  = moment();
     const endTime      = moment().endOf('day');
-    const completed    = appointment.get('completed');
-    const started      = appointment.get('form_started');
+    const completed    = model.get('completed');
+    const started      = model.get('form_started');
     let ts_request_moment;
     let ts_request_endtime_moment;
     let promises;
@@ -114,6 +114,7 @@ export default Route.extend(Api, {
             model.set('customer', customer);
           }
 
+          model.set('abuse_form',  Form.create());
           if (form) {
             model.set('abuse_form', form);
           }
@@ -142,9 +143,9 @@ export default Route.extend(Api, {
           if (section) {
             form.setProperties(section);
           }
-
-          resolve(form);
         }
+
+        resolve(form);
       }).catch(() => {
         resolve(form);
       });

@@ -206,7 +206,7 @@
     </div>
 
     <label class="col-sm-2">{{upper-case "Last Used"}}</label>
-    <div class="col-sm-3">
+    <div class="col-sm-4">
       {{#if noneditable}}
         {{date-format form.three_last_used_3 "YYYY-MM-DD" "MMM DD YYYY"}}
       {{else}}
@@ -226,7 +226,7 @@
     </div>
 
     <label class="col-sm-2">{{upper-case "Hours Since Last Use"}}</label>
-    <div class="col-sm-3">
+    <div class="col-sm-4">
       {{#if noneditable}}
         {{form.three_hours_since_last_use_3}}
       {{else}}
@@ -613,7 +613,7 @@
   <div class="form-group row">
     <label class="col-sm-1">&nbsp;</label>
     <div class="col-md-2 form-group-right-align">
-      <button class="btn btn-primary btn-block" type="submit" autocomplete="off">{{if model.completed 'Next' 'Save & Continue'}}</button>
+      <button class="btn btn-primary btn-block" type="submit" autocomplete="off">{{if model.completed 'Next (Page 3)' 'Save & Continue'}}</button>
     </div>
     <label class="col-sm-1">&nbsp;</label>
     <div class="col-md-2 form-group-right-align">

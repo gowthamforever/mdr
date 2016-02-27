@@ -71,26 +71,32 @@ export default Component.extend(Api, {
       const form        = this.get('form');
       let data;
 
-      data = _.pick(form, self.get('props'));
-
-      data.three_last_used = moment(form.get('three_last_used_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-      data.three_last_used_2 = moment(form.get('three_last_used_2_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-      data.three_last_used_3 = moment(form.get('three_last_used_3_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-
-      self.ajax({
-        id: 'assessmentformpost',
-        path: {
-          id: appointment.get('id'),
-          pageNo: 2
-        },
-        data
-      }).then(() => {
-        self.set('appointments.cache', false);
-        self.set_form(form, self.get('form_model'));
+      if (appointment.get('completed')) {
         if (page) {
           page(3);
         }
-      }).catch(Ember.K);
+      } else {
+        data = _.pick(form, self.get('props'));
+
+        data.three_last_used = moment(form.get('three_last_used_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+        data.three_last_used_2 = moment(form.get('three_last_used_2_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+        data.three_last_used_3 = moment(form.get('three_last_used_3_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+
+        self.ajax({
+          id: 'assessmentformpost',
+          path: {
+            id: appointment.get('id'),
+            pageNo: 2
+          },
+          data
+        }).then(() => {
+          self.set('appointments.cache', false);
+          self.set_form(form, self.get('form_model'));
+          if (page) {
+            page(3);
+          }
+        }).catch(Ember.K);
+      }
     },
 
     previous() {

@@ -219,7 +219,7 @@
 
   <div class="form-group row">
     <label class="col-sm-2">LAST HOSPITAL ADMIT:</label>
-    <div class="col-sm-5">
+    <div class="col-sm-4">
       {{#if noneditable}}
         {{date-format form.eight_lha "YYYY-MM-DD" "MMM DD YYYY"}}
       {{else}}
@@ -228,7 +228,7 @@
     </div>
 
     <label class="col-sm-2">LENGTH OF STAY:</label>
-    <div class="col-sm-3">
+    <div class="col-sm-4">
       {{#if noneditable}}
         {{form.eight_los}}
       {{else}}
@@ -272,7 +272,7 @@
 
   <div class="form-group row">
     <label class="col-sm-2">DISH STATUS:</label>
-    <div class="col-sm-5">
+    <div class="col-sm-4">
       {{#if noneditable}}
         {{form.eight_disch_status}}
       {{else}}
@@ -281,7 +281,7 @@
     </div>
 
     <label class="col-sm-2">DISH DATE:</label>
-    <div class="col-sm-5">
+    <div class="col-sm-4">
       {{#if noneditable}}
         {{date-format form.eight_disch_date "YYYY-MM-DD" "MMM DD YYYY"}}
       {{else}}
@@ -294,7 +294,7 @@
 
   <div class="form-group row">
     <label class="col-sm-2">LAST PHYSICIAN VISIT:</label>
-    <div class="col-sm-5">
+    <div class="col-sm-4">
       {{#if noneditable}}
         {{date-format form.eight_lpv2 "YYYY-MM-DD" "MMM DD YYYY"}}
       {{else}}
@@ -327,7 +327,7 @@
 
   <div class="form-group row">
     <label class="col-sm-2">STATUS:</label>
-    <div class="col-sm-5">
+    <div class="col-sm-4">
       {{#if noneditable}}
         {{form.eight_status}}
       {{else}}
@@ -389,7 +389,7 @@
   <div class="form-group row">
     <label class="col-sm-1">&nbsp;</label>
     <div class="col-md-2 form-group-right-align">
-      <button class="btn btn-primary btn-block" type="submit" autocomplete="off">{{if model.completed 'Next' 'Save & Continue'}}</button>
+      <button class="btn btn-primary btn-block" type="submit" autocomplete="off">{{if model.completed 'Next (Page 8)' 'Save & Continue'}}</button>
     </div>
     <label class="col-sm-1">&nbsp;</label>
     <div class="col-md-2 form-group-right-align">

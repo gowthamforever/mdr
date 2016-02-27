@@ -1,7 +1,6 @@
 import Ember from 'ember';
 import Form from 'mdr/models/form';
 import Api from 'mdr/mixins/api';
-import { retainNumbers } from 'mdr/utility/utils';
 
 const {
   Component,
@@ -47,34 +46,36 @@ export default Component.extend(Api, {
       const form        = this.get('form');
       let data;
 
-      data = _.pick(form, self.get('props'));
+      if (!appointment.get('completed')) {
+        data = _.pick(form, self.get('props'));
 
-      data.eleven_atdate = self.get('assessment_date').format('YYYY-MM-DD');
-      data.eleven_s_date = self.get('assessment_date').format('YYYY-MM-DD');
-      data.eleven_eis_date = self.get('assessment_date').format('YYYY-MM-DD');
+        data.eleven_atdate = self.get('assessment_date').format('YYYY-MM-DD');
+        data.eleven_s_date = self.get('assessment_date').format('YYYY-MM-DD');
+        data.eleven_eis_date = self.get('assessment_date').format('YYYY-MM-DD');
 
-      if (appointment.get('doctor')) {
-        data.eleven_at = `${appointment.get('doctor.first_name')} ${appointment.get('doctor.last_name')}`;
-      } else if (appointment.get('assessor')) {
-        data.eleven_at = `${appointment.get('assessor.first_name')} ${appointment.get('assessor.last_name')}`;
-      }
-
-      data.eleven_eis = 'Yes';
-
-      self.ajax({
-        id: 'assessmentformpost',
-        path: {
-          id: appointment.get('id'),
-          pageNo: 10
-        },
-        data
-      }).then(() => {
-        self.set('appointments.cache', false);
-        self.set_form(form, self.get('form_model'));
-        if (page) {
-          page(11);
+        if (appointment.get('doctor')) {
+          data.eleven_at = `${appointment.get('doctor.first_name')} ${appointment.get('doctor.last_name')}`;
+        } else if (appointment.get('assessor')) {
+          data.eleven_at = `${appointment.get('assessor.first_name')} ${appointment.get('assessor.last_name')}`;
         }
-      }).catch(Ember.K);
+
+        data.eleven_eis = 'Yes';
+
+        self.ajax({
+          id: 'assessmentformpost',
+          path: {
+            id: appointment.get('id'),
+            pageNo: 10
+          },
+          data
+        }).then(() => {
+          self.set('appointments.cache', false);
+          self.set_form(form, self.get('form_model'));
+          if (page) {
+            page(11);
+          }
+        }).catch(Ember.K);
+      }
     },
 
     previous() {

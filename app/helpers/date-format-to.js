@@ -4,8 +4,7 @@ const { Helper } = Ember;
 
 export default Helper.helper(function(params) {
   const value = params[0];
-  const to    = params[1] || 'MMM DD YYYY';
-  let result;
+  const to    = params[1] || 'MMM DD YYYY';  
 
   if (!value) {
     return;
