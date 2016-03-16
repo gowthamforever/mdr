@@ -1,0 +1,24 @@
+section.assessment-form-block {
+  div.form-block {
+    .form-group {
+      label {
+        text-align: right;
+      }
+    }
+
+    .form-section {
+      background-color: #90a4ae;
+      color: #fff;
+      padding-top: 6px;
+      font-weight: bold;
+    }
+
+    .height-adjustment {
+      height: 200px;
+    }
+
+    .form-seperator {
+      border: 1px solid #90a4ae;
+    }
+  }
+}

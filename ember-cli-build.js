@@ -9,10 +9,6 @@ module.exports = function(defaults) {
     // Add options here
     emberCliFontAwesome: {
       useScss: true
-    },
-
-    fingerprint: {
-      exclude: ['img']
     }
   });
 
@@ -28,7 +24,7 @@ module.exports = function(defaults) {
   // modules that you would like to import into your application
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
-  app.import('bower_components/lodash/lodash.min.js');
+  app.import('bower_components/lodash/dist/lodash.min.js');
   app.import('bower_components/moment/min/moment.min.js');
   app.import('bower_components/bootstrap/dist/js/bootstrap.js');
   app.import('bower_components/bootstrap/dist/js/bootstrap.js');
@@ -36,6 +32,7 @@ module.exports = function(defaults) {
   app.import('bower_components/pickadate/lib/picker.date.js');
   app.import('bower_components/pickadate/lib/picker.time.js');
   app.import('bower_components/fullcalendar/dist/fullcalendar.js');
+  app.import('bower_components/bootstrap-switch/dist/js/bootstrap-switch.js');
 
   app.import('bower_components/bootstrap/dist/css/bootstrap.css');
   //app.import('bower_components/bootstrap/dist/css/bootstrap-theme.css');
@@ -44,6 +41,7 @@ module.exports = function(defaults) {
   app.import('bower_components/pickadate/lib/themes/classic.date.css');
   app.import('bower_components/pickadate/lib/themes/classic.time.css');
   app.import('bower_components/fullcalendar/dist/fullcalendar.css');
+  app.import('bower_components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css');
 
   app.import('vendor/opentok.js');
 

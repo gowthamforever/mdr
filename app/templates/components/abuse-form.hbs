@@ -1,0 +1,51 @@
+<section class="col-md-12">
+  {{#if fetched}}
+    <div class="panel panel-primary abuse-mental-form">
+      <div class="panel-heading text-center">SUBSTANCE ABUSE &amp; MENTAL HEALTH ASSESSMENT MANUAL FORM</div>
+      {{#if pages.form1}}
+        {{form-one model=model form_model=model.abuse_form class="panel-body" page=(action "page") noneditable=noneditable}}
+      {{/if}}
+
+      {{#if pages.form2}}
+        {{form-two model=model form_model=model.abuse_form class="panel-body" page=(action "page") noneditable=noneditable}}
+      {{/if}}
+
+      {{#if pages.form3}}
+        {{form-three model=model form_model=model.abuse_form class="panel-body" page=(action "page") noneditable=noneditable}}
+      {{/if}}
+
+      {{#if pages.form4}}
+        {{form-four model=model form_model=model.abuse_form class="panel-body" page=(action "page") noneditable=noneditable}}
+      {{/if}}
+
+      {{#if pages.form5}}
+        {{form-five model=model form_model=model.abuse_form class="panel-body" page=(action "page") noneditable=noneditable}}
+      {{/if}}
+
+      {{#if pages.form6}}
+        {{form-six model=model form_model=model.abuse_form class="panel-body" page=(action "page") noneditable=noneditable}}
+      {{/if}}
+
+      {{#if pages.form7}}
+        {{form-seven model=model form_model=model.abuse_form class="panel-body" page=(action "page") noneditable=noneditable}}
+      {{/if}}
+
+      {{#if pages.form8}}
+        {{form-eight model=model form_model=model.abuse_form class="panel-body" page=(action "page") noneditable=noneditable}}
+      {{/if}}
+
+      {{#if pages.form9}}
+        {{form-nine model=model form_model=model.abuse_form class="panel-body" page=(action "page") noneditable=noneditable}}
+      {{/if}}
+
+      {{#if pages.form10}}
+        {{form-ten model=model form_model=model.abuse_form class="panel-body" page=(action "page") noneditable=noneditable}}
+      {{/if}}
+
+      {{#if pages.form11}}
+        {{form-eleven model=model form_model=model.abuse_form class="panel-body" page=(action "page") noneditable=noneditable}}
+      {{/if}}
+    </div>
+  {{/if}}
+  <div class="height-adjustment">&nbsp;</div>
+</section>

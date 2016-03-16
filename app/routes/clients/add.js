@@ -3,17 +3,24 @@ import EmberValidator from 'ember-validator';
 import Client from 'mdr/models/client';
 import FamilyMemeber from 'mdr/models/family-member';
 import Api from 'mdr/mixins/api';
-import { animateTo } from 'mdr/utility/utils';
+import { animateTo, retainNumbers } from 'mdr/utility/utils';
 
 const {
   Route,
   RSVP,
-  isEmpty
+  isEmpty,
+  inject
 } = Ember;
+
+const {
+  service
+} = inject;
 
 const { Promise } = RSVP;
 
 export default Route.extend(EmberValidator, Api, {
+  clients: service(),
+
   beforeModel() {
     const session = this.get('session');
 
@@ -21,14 +28,15 @@ export default Route.extend(EmberValidator, Api, {
       this.transitionTo('home');
     }
   },
-  
+
   model() {
     return Client.create();
   },
 
-  _validations(model) {
+  _validations(/*model*/) {
     return {
       last_name: {
+        required: 'Last Name is required.',
         length: {
           maximum: 50,
           message: 'Must be 50 characters or less.'
@@ -36,7 +44,7 @@ export default Route.extend(EmberValidator, Api, {
       },
 
       first_name: {
-        required: 'First name is required.',
+        required: 'First Name is required.',
         length: {
           minimum: 3,
           maximum: 50,
@@ -48,15 +56,16 @@ export default Route.extend(EmberValidator, Api, {
       },
 
       email_id: {
+        required: 'Email Address is required',
         length: {
           maximum: 50,
           message: 'Must be 50 characters or less.'
         },
-        email: 'Email id is not valid.'
+        email: 'Email Address is not valid.'
       },
 
       dob: {
-        required: 'DOB is required.',
+        required: 'Date of Birth is required.',
       },
 
       selected_language: {
@@ -64,17 +73,17 @@ export default Route.extend(EmberValidator, Api, {
       },
 
       phone1: {
-        required: 'Phone no is required',
+        required: 'Phone Number is required',
         phone: {
-          format9: true,
-          message: 'Phone no is not valid(NNNNNNNNNN).'
+          format2: true,
+          message: 'Phone Number is not valid (NNN) NNN-NNNN.'
         }
       },
 
       phone2: {
         phone: {
-          format9: true,
-          message: 'Phone no is not valid(NNNNNNNNNN).'
+          format2: true,
+          message: 'Confirm Phone Number is not valid (NNN) NNN-NNNN.'
         }
       },
 
@@ -90,12 +99,12 @@ export default Route.extend(EmberValidator, Api, {
         required: 'State is required.'
       },
 
-      selected_city_1: {
+      city1: {
         required: 'City is required.'
       },
 
       zip1: {
-        required: 'Zip is required',
+        required: 'Zip Code is required',
         zip: 'Zip is not valid(NNNNN or NNNNN-NNNN).'
       },
 
@@ -108,14 +117,14 @@ export default Route.extend(EmberValidator, Api, {
 
       pcd_phone: {
         phone: {
-          format9: true,
+          format2: true,
           message: 'Phone no is not valid(NNNNNNNNNN).'
         }
       },
 
       selected_insurance_plan: {
         required: 'Insurance plan is required'
-      },
+      }/*,
 
       card_full_name: {
         required: 'Full name is required.',
@@ -176,7 +185,7 @@ export default Route.extend(EmberValidator, Api, {
         unless: model.get('billing_is_primary'),
         required: 'Zip is required',
         zip: 'Zip is not valid(NNNNN or NNNNN-NNNN).'
-      }
+      }*/
     };
   },
 
@@ -219,14 +228,6 @@ export default Route.extend(EmberValidator, Api, {
       const promises    = {};
       let data          = {};
       let valid         = true;
-
-
-      // TODO: Remove after integrating City API
-      model.set('selected_city_1', { name: 'Charlotte' });
-      // TODO: Remove after integrating City API
-      if (!model.get('is_cash_payment')) {
-        model.set('selected_card_city', { name: 'Charlotte' });
-      }
 
       model.set('validationResult', null);
 
@@ -274,16 +275,17 @@ export default Route.extend(EmberValidator, Api, {
           'last_name',
           'first_name',
           'gender',
-          'phone1',
-          'phone2',
           'address1',
           'zip1',
-          'memebership_name'
+          'city1',
+          'memebership_name',
+          'email_id'
         ]);
 
-        data.dob = moment(model.get('dob'), 'MMM DD YYYY').format('MM-DD-YYYY');
+        data.phone1 = retainNumbers(model.get('phone1'));
+        data.phone2 = retainNumbers(model.get('phone2'));
+        data.dob = moment(model.get('dob'), 'MMM DD YYYY').format('YYYY-MM-DD');
         data.state1 = model.get('selected_state_1.id');
-        data.city1 = model.get('selected_city_1.name');
         data.country1 = 'US';
         data.insurance_plan = model.get('selected_insurance_plan.id');
 
@@ -303,7 +305,7 @@ export default Route.extend(EmberValidator, Api, {
           data.pcd_phone = model.get('pcd_phone');
         }
 
-        data = _.extend(data, _.pick(model, [
+        data = _.assignIn(data, _.pick(model, [
           'card_full_name',
           'card_type',
           'card_no',
@@ -313,7 +315,7 @@ export default Route.extend(EmberValidator, Api, {
         data.expiry_month = model.get('selected_expiry_month.id');
         data.expiry_year = model.get('expiry_year');
 
-        data = _.extend(data, _.pick(model, [
+        data = _.assignIn(data, _.pick(model, [
           'card_address',
           'card_zip'
         ]));
@@ -337,6 +339,7 @@ export default Route.extend(EmberValidator, Api, {
           self.refresh().then(() => {
             const model = self.get('controller.model');
             model.set('created', true);
+            self.set('clients.cache', false);
           });
         }).catch(() => {
 

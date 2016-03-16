@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import EmberValidator from 'ember-validator';
+import EmberValidator, { inlineValidator }  from 'ember-validator';
 import { animateTo } from 'mdr/utility/utils';
 
 const {
@@ -69,7 +69,21 @@ export default Component.extend(EmberValidator, {
             target: new Date()
           },
           message: 'Start date must be after current date.'
-        }
+        },
+
+        custom: inlineValidator(function(model) {
+          const today = moment();
+          const start_date_moment = model.get('start_date_moment');
+          const start_date_with_duration = model.get('start_date_with_duration');
+          const max_appointment_time  = model.get('max_appointment_time');
+          if (today.year() === start_date_moment.year() &&
+            today.month() === start_date_moment.month() &&
+            today.date() === start_date_moment.date()) {
+            if (start_date_with_duration.isAfter(max_appointment_time)) {
+              return 'It is not possible to schedule an appointment with given date and duration as the maximum cuttoff is upto 12AM.';
+            }
+          }
+        })
       }
     };
   },

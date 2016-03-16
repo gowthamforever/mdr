@@ -1,0 +1,25 @@
+<section class="request-account-block">
+  <section class="register-block">
+    <div class="panel panel-primary">
+      <div class="panel-heading">ONLINE ACCOUNT ENROLLMENT</div>
+      <div class="panel-body">
+        <p>Please enter your Agency id and other required information below into the text fields on the Online Account Enrollment screen.</p>
+        <p>If you need assistance enrolling into MDRealtime, please contact your Agency Administrator for assistance.</p>
+        <ul class="nav nav-tabs">
+          {{#link-to "enrollment.agent" tagName="li"}}
+            <a href="{{view.href}}">Agency Staff</a>
+          {{/link-to}}
+          {{#link-to "enrollment.doctor" tagName="li"}}
+            <a href="{{view.href}}">Doctor</a>
+          {{/link-to}}
+          {{#link-to "enrollment.assessor" tagName="li"}}
+            <a href="{{view.href}}">Assessor</a>
+          {{/link-to}}
+        </ul>
+        <section class="tabs-container">
+          {{liquid-outlet}}
+        </section>
+      </div>
+    </div>
+  </section>
+</section>

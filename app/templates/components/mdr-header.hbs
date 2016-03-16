@@ -1,8 +1,9 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="logo-wrap">
-      {{#link-to (if header.session.isAuthenticated 'home' 'welcome') class="logo"}}
-        <img src="./assets/img/brand2.png" width="250" height="50">
+      {{#link-to (if header.session.isAuthenticated 'home' 'store-front') class="logo"}}
+        <img src="./assets/img/logo.png" class="image_full">
+        <img src="./assets/img/logo-mobile.png" class="image_mobile">
       {{/link-to}}
     </div>
     <div id="navbar" class="pull-right">

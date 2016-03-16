@@ -1,0 +1,372 @@
+<form {{action "next" on="submit"}}>
+  <div class="form-group row form-section">
+    <label class="col-sm-2">SECTION SEVEN</label>
+    <div class="col-sm-10 form-section-title">
+      SCHOOL HISTORY
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">HIGHEST GRADE COMPLETED:</label>
+    <div class="col-sm-5">
+      {{#if noneditable}}
+        {{form.seven_hgc}}
+      {{else}}
+        {{input-select
+          class="form-control"
+          options=form.educational_grades
+          selected=form.seven_hgc
+          prompt="Select"
+        }}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">DO YOU HOLD ANY COLLEGE DEGREE OR CERTIFICATIONS:</label>
+    <div class="col-sm-5">
+      {{#if noneditable}}
+        {{form.seven_dyhacdoc}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.seven_dyhacdoc value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.seven_dyhacdoc value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">EMPLOYMENT STATUS:</label>
+    <div class="col-sm-5">
+      {{#if noneditable}}
+        {{form.seven_es}}
+      {{else}}
+        {{input-select
+          class="form-control"
+          options=form.employment_statuses
+          selected=form.seven_es
+          prompt="Select"
+        }}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">PRIMARY SOURCE OF INCOME:</label>
+    <div class="col-sm-5">
+      {{#if noneditable}}
+        {{form.seven_psoi}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.seven_psoi autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">ANNUAL PERSONAL INCOME:</label>
+    <div class="col-sm-5">
+      {{#if noneditable}}
+        {{form.seven_api}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.seven_api autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">ANNUAL FAMILY INCOME:</label>
+    <div class="col-sm-5">
+      {{#if noneditable}}
+        {{form.seven_afi}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.seven_afi autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">SOCIO-ECONOMIC STATUS:</label>
+    <div class="col-sm-5">
+      {{#if noneditable}}
+        {{form.seven_ses}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.seven_ses autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">NUMBER/SIZE OF HOUSEHOLD:</label>
+    <div class="col-sm-5">
+      {{#if noneditable}}
+        {{form.seven_nsoh}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.seven_nsoh autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">ARE YOU THE HEAD OF HOUSEHOLD:</label>
+    <div class="col-sm-5">
+      {{#if noneditable}}
+        {{form.seven_aythoh}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.seven_aythoh value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.seven_aythoh value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">MARTIAL STATUS:</label>
+    <div class="col-sm-5">
+      {{#if noneditable}}
+        {{form.seven_ms}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.seven_ms value="Yes"}} Single
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.seven_ms value="No"}} Married
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">NUMBER OF CHILDREN:</label>
+    <div class="col-sm-5">
+      {{#if noneditable}}
+        {{form.seven_noc}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.seven_noc autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">NUMBER OF DEPENDENT CHILDREN:</label>
+    <div class="col-sm-5">
+      {{#if noneditable}}
+        {{form.seven_nodc}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.seven_nodc autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">YOUNGEST TO OLDEST AGE RANGE:</label>
+    <div class="col-sm-5">
+      {{#if noneditable}}
+        {{form.seven_ytoar}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.seven_ytoar autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">CURRENT LIVING ARRANGEMENT:</label>
+    <div class="col-sm-5">
+      {{#if noneditable}}
+        {{form.seven_cla}}
+      {{else}}
+        {{input-select
+          class="form-control"
+          options=form.living_arrangements
+          selected=form.seven_cla
+          prompt="Select"
+        }}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">ARE YOU CURRENTLY HOMELESS:</label>
+    <div class="col-sm-5">
+      {{#if noneditable}}
+        {{form.seven_aych}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.seven_aych value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.seven_aych value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">DO YOUR PARENTS HAVE A DRUG OR ALCOHOL PROBLEM:</label>
+    <div class="col-sm-5">
+      {{#if noneditable}}
+        {{form.seven_dyphadoap}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.seven_dyphadoap value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.seven_dyphadoap value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">ANY FAMILY MEMBERS CURRENTLY SEEKING SA TREATMENT:</label>
+    <div class="col-sm-5">
+      {{#if noneditable}}
+        {{form.seven_afmcsst}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.seven_afmcsst value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.seven_afmcsst value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">ARE FAMILY MEMEBERS WILLING TO SUPPORT YOUR RECOVERY:</label>
+    <div class="col-sm-5">
+      {{#if noneditable}}
+        {{form.seven_afmwtsyr}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.seven_afmwtsyr value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.seven_afmwtsyr value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">FAMILY MEMEBERS EXPRESS A CONCERN ABOUT YOUR DRUG USE:</label>
+    <div class="col-sm-5">
+      {{#if noneditable}}
+        {{form.seven_fmeacaydu}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.seven_fmeacaydu value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.seven_fmeacaydu value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-7">ARE YOU OR FAMILY MEMEBERS INVOLVED WITH CHILD WELFARE:</label>
+    <div class="col-sm-5">
+      {{#if noneditable}}
+        {{form.five_length_of_stay}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.seven_ayofmiwcw value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.seven_ayofmiwcw value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Other family history narrative:</label>
+    <div class="col-sm-10">
+      {{#if noneditable}}
+        {{form.seven_ofhn}}
+      {{else}}
+        {{textarea class="form-control" value=form.seven_ofhn rows="7" maxlength=500}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <label class="col-sm-1">&nbsp;</label>
+    <div class="col-md-2 form-group-right-align">
+      <button class="btn btn-primary btn-block" type="submit" autocomplete="off">{{if model.completed 'Next (Page 7)' 'Save & Continue'}}</button>
+    </div>
+    <label class="col-sm-1">&nbsp;</label>
+    <div class="col-md-2 form-group-right-align">
+      <button class="btn btn-primary btn-block" autocomplete="off" {{action "previous"}}>Previous (Page 5)</button>
+    </div>
+  </div>
+</form>

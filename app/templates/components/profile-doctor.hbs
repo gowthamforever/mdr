@@ -1,23 +1,45 @@
 <div class="panel-group">
-  {{#if approved}}
+  {{#if rejected}}
     <div class="panel panel-primary">
       <div class="panel-body">
         <section class="col-md-12">
-          <div class="alert alert-success no-margin">
-            <strong><i class="fa fa-2 fa-check"></i></strong> Request accepted. Doctor is now active.
+          <div class="alert alert-danger no-margin">
+            <strong><i class="fa fa-2 fa-check"></i></strong> Request rejected.
           </div>
         </section>
       </div>
     </div>
   {{/if}}
 
-  {{#if (and (not approved) (not model.isActive) (or session.role_admin session.role_super_admin session.role_regional_admin session.role_global_admin))}}
+  {{#if (and (not approved) model.requested (or session.role_admin session.role_super_admin session.role_regional_admin session.role_global_admin))}}
     <div class="panel panel-primary">
       <div class="panel-body">
         <section class="col-md-12">
           <div class="row">
             <div class="col-md-6">
-              Activate this doctor <button type="button" class="btn btn-success" {{action "approve"}}>Activate</button>
+              <button type="button" class="btn btn-success" {{action "approve"}}>Approve</button>
+              <button type="button" class="btn btn-danger" {{action "reject"}}>Reject</button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  {{/if}}
+
+  {{#if (or model.available model.inactive)}}
+    <div class="panel panel-primary">
+      <div class="panel-body">
+        <section class="col-md-12">
+          <div class="row">
+            <div class="col-md-6">
+              {{bs-switch name="my-bs-switch"
+                btnSize="small"
+                onText="Active"
+                offText="Inactive"
+                onColor='success'
+                offColor='danger'
+                status=model.available
+                callback="status"}}
             </div>
           </div>
         </section>
@@ -38,13 +60,13 @@
     </div>
     {{#liquid-if personal_open use="crossFade"}}
       <div class="panel-body">
-        <form role="form" novalidate {{action "add" on="submit"}} autocomplete="off">
+        <form role="form" novalidate {{action "personal" on="submit"}} autocomplete="off">
           <section class="col-md-12">
             <div class="row">
               <div class="form-group col-md-6 {{if model.validationResult.npi.hasError 'has-error'}}">
                 <label class="control-label" for="npi">NPI</label>
                 {{#if edit_personal}}
-                  {{input type="text" class="form-control" name="npi" value=model.npi maxlength=50 autocomplete="off"}}
+                  {{input type="text" class="form-control" name="npi" value=model.npi maxlength=10 autocomplete="off"}}
                   {{mdr-field-error client=model.validationResult.npi}}
                 {{else}}
                   <div class="form-control-static">{{dash-for-empty model.npi}}</div>
@@ -52,7 +74,7 @@
               </div>
 
               <div class="form-group col-md-6 {{if model.validationResult.email_id.hasError 'has-error'}}">
-                <label class="control-label" for="email-id">Email address</label>
+                <label class="control-label" for="email-id">Email Address</label>
                 {{#if edit_personal}}
                   {{input type="text" class="form-control" name="email-id" value=model.email_id maxlength=50 autocomplete="off"}}
                   {{mdr-field-error client=model.validationResult.email_id}}
@@ -66,7 +88,7 @@
               <div class="form-group col-md-6 {{if model.validationResult.medicaid_number.hasError 'has-error'}}">
                 <label class="control-label" for="medicaid_number">Medicaid Number</label>
                 {{#if edit_personal}}
-                  {{input type="text" class="form-control" name="medicaid_number" value=model.medicaid_number maxlength=50 autocomplete="off"}}
+                  {{input type="text" class="form-control" name="medicaid_number" value=model.medicaid_number maxlength=10 autocomplete="off"}}
                   {{mdr-field-error client=model.validationResult.medicaid_number}}
                 {{else}}
                   <div class="form-control-static">{{dash-for-empty model.medicaid_number}}</div>
@@ -75,7 +97,7 @@
               <div class="form-group col-md-6 {{if model.validationResult.medicare_number.hasError 'has-error'}}">
                 <label class="control-label" for="medicare_number">Medicare Number</label>
                 {{#if edit_personal}}
-                  {{input type="text" class="form-control" name="npi" value=model.medicare_number maxlength=50 autocomplete="off"}}
+                  {{input type="text" class="form-control" name="npi" value=model.medicare_number maxlength=10 autocomplete="off"}}
                   {{mdr-field-error client=model.validationResult.medicare_number}}
                 {{else}}
                   <div class="form-control-static">{{dash-for-empty model.medicare_number}}</div>
@@ -85,7 +107,7 @@
 
             <div class="row">
               <div class="form-group col-md-6 {{if model.validationResult.first_name.hasError 'has-error'}}">
-                <label class="control-label" for="first-name">First name</label>
+                <label class="control-label" for="first-name">First Name</label>
                 {{#if edit_personal}}
                   {{input type="text" class="form-control" name="first-name" value=model.first_name maxlength=50 autocomplete="off"}}
                   {{mdr-field-error client=model.validationResult.first_name}}
@@ -95,7 +117,7 @@
               </div>
 
               <div class="form-group col-md-6 {{if model.validationResult.last_name.hasError 'has-error'}}">
-                <label class="control-label" for="first-name">Last name</label>
+                <label class="control-label" for="first-name">Last Name</label>
                 {{#if edit_personal}}
                   {{input type="text" class="form-control" name="last-name" value=model.last_name maxlength=50 autocomplete="off"}}
                   {{mdr-field-error client=model.validationResult.last_name}}
@@ -106,11 +128,11 @@
             </div>
 
             <div class="row">
-              <div class="form-group col-md-6  {{if model.validationResult.dob.hasError 'has-error'}}">
-                <label class="control-label" for="dob">Date of birth</label>
+              <div class="form-group col-md-6  {{if model.validationResult.dob_formatted.hasError 'has-error'}}">
+                <label class="control-label" for="dob">Date of Birth</label>
                 {{#if edit_personal}}
-                  {{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=(date-format model.dob "YYYY-MM-DD" "MMM DD YYYY")}}
-                  {{mdr-field-error client=model.validationResult.dob}}
+                  {{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=model.dob_formatted}}
+                  {{mdr-field-error client=model.validationResult.dob_formatted}}
                 {{else}}
                   <div class="form-control-static">{{date-format model.dob "YYYY-MM-DD" "MMM DD YYYY"}}</div>
                 {{/if}}
@@ -121,12 +143,12 @@
       						<div>
       							<div class="radio-inline">
       								<label>
-      									{{input-radio name="gender" group=model.gender value="MALE"}} Male
+      									{{input-radio name="gender" group=model.gender value="Male"}} Male
       								</label>
       							</div>
       							<div class="radio-inline">
       								<label>
-      									{{input-radio name="gender" group=model.gender value="FEMALE"}} Female
+      									{{input-radio name="gender" group=model.gender value="Female"}} Female
       								</label>
       							</div>
       						</div>
@@ -187,7 +209,7 @@
                     options=model.specialities
                     labelPath="name"
                     valuePath="id"
-                    selected=model.primary_speciality
+                    selected=model.primary_speciality_obj
                     prompt="Doctor Speciality"
                   }}
                   {{mdr-field-error client=model.validationResult.primary_speciality}}
@@ -199,7 +221,7 @@
 
             <div class="row">
               <div class="form-group col-md-6 {{if model.validationResult.practice_type.hasError 'has-error'}}">
-                <label class="control-label" for="practice_type">Practice type</label>
+                <label class="control-label" for="practice_type">Practice Type</label>
                 {{#if edit_personal}}
                   {{input-select
                     class="form-control"
@@ -207,7 +229,7 @@
                     options=model.practice_types
                     labelPath="name"
                     valuePath="id"
-                    selected=model.practice_type
+                    selected=model.practice_type_obj
                     prompt="Select"
                   }}
                   {{mdr-field-error client=model.validationResult.practice_type}}
@@ -217,7 +239,7 @@
               </div>
 
               <div class="form-group col-md-6 {{if model.validationResult.practice_years.hasError 'has-error'}}">
-                <label class="control-label" for="practice_years">Practice years<small>(optional)</small></label>
+                <label class="control-label" for="practice_years">Practice Years<small>(optional)</small></label>
                 {{#if edit_personal}}
                   {{input type="text" class="form-control" name="practice_years" value=model.practice_years maxlength=2 autocomplete="off"}}
                   {{mdr-field-error client=model.validationResult.practice_years}}
@@ -244,20 +266,30 @@
               </div>
 
               <div class="form-group col-md-6 {{if model.validationResult.graduation_year.hasError 'has-error'}}">
-                <label class="control-label" for="graduation_year">Graduation year</label>
+                <label class="control-label" for="graduation_year">Graduation Year</label>
                 {{#if edit_personal}}
                   {{input-select
                     class="form-control"
                     name="graduation_year"
-                    options=model.graduation_year
-                    labelPath="name"
-                    valuePath="id"
-                    selected=model.graduation_years
+                    options=model.graduation_years
+                    selected=model.graduation_year
                     prompt="Select"
                   }}
                   {{mdr-field-error client=model.validationResult.graduation_year}}
                 {{else}}
                   <div class="form-control-static">{{dash-for-empty model.graduation_year}}</div>
+                {{/if}}
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group col-md-3  {{if model.validationResult.service_charge.hasError 'has-error'}}">
+                <label class="control-label" for="service_charge">Service Charge</label>
+                {{#if edit_personal}}
+                  {{input type="text" class="form-control" name="service_charge" value=model.service_charge autocomplete="off"}}
+                  {{mdr-field-error client=model.validationResult.service_charge}}
+                {{else}}
+                  <div class="form-control-static">{{dash-for-empty model.service_charge}}</div>
                 {{/if}}
               </div>
             </div>
@@ -288,25 +320,25 @@
     </div>
     {{#liquid-if contact_open use="crossFade"}}
       <div class="panel-body">
-        <form role="form" novalidate {{action "add" on="submit"}} autocomplete="off">
+        <form role="form" novalidate {{action "contact" on="submit"}} autocomplete="off">
           <section class="col-md-12">
             <div class="row">
               <div class="form-group col-md-6  {{if model.validationResult.phone1.hasError 'has-error'}}">
-                <label class="control-label" for="phone1">Phone number</label>
+                <label class="control-label" for="phone1">Phone Number</label>
                 {{#if edit_contact}}
-                  {{input type="text" class="form-control" name="phone1" value=model.phone1 maxlength=10 autocomplete="off"}}
+                  {{mdr-phone type="text" class="form-control" name="phone1" value=model.phone1 autocomplete="off"}}
                   {{mdr-field-error client=model.validationResult.phone1}}
                 {{else}}
-                  <div class="form-control-static">{{dash-for-empty model.phone1}}</div>
+                  <div class="form-control-static">{{phone-number model.phone1}}</div>
                 {{/if}}
               </div>
               <div class="form-group col-md-6  {{if model.validationResult.phone2.hasError 'has-error'}}">
-                <label class="control-label" for="phone2">Alternate phone number <small>(optional)</small></label>
+                <label class="control-label" for="phone2">Alternate Phone Number <small>(optional)</small></label>
                 {{#if edit_contact}}
-                  {{input type="text" class="form-control" name="phone2" value=model.phone2 maxlength=10 autocomplete="off"}}
+                  {{mdr-phone type="text" class="form-control" name="phone2" value=model.phone2 autocomplete="off"}}
                   {{mdr-field-error client=model.validationResult.phone2}}
                 {{else}}
-                  <div class="form-control-static">{{dash-for-empty model.phone2}}</div>
+                  <div class="form-control-static">{{phone-number model.phone2}}</div>
                 {{/if}}
               </div>
             </div>
@@ -314,13 +346,19 @@
             {{#if edit_contact}}
               <div class="row">
                 <div class="form-group col-md-8  {{if model.validationResult.address1.hasError 'has-error'}}">
-                  <label class="control-label" for="address1">Primary address</label>
+                  <label class="control-label" for="address1">Primary Address</label>
                   {{input type="text" class="form-control" name="address1" value=model.address1 maxlength=250 autocomplete="off"}}
                   {{mdr-field-error client=model.validationResult.address1}}
                 </div>
               </div>
 
               <div class="row">
+                <div class="form-group col-md-6  {{if model.validationResult.city1.hasError 'has-error'}}">
+                  <label class="control-label" for="city1">City</label>
+                  {{input type="text" class="form-control" name="city1" value=model.city1 autocomplete="off"}}
+                  {{mdr-field-error client=model.validationResult.city1}}
+                </div>
+
                 <div class="form-group col-md-6  {{if model.validationResult.selected_state_1.hasError 'has-error'}}">
                   <label class="control-label" for="state1">State</label>
                   {{input-select
@@ -333,19 +371,6 @@
                     prompt="Select"
                   }}
                   {{mdr-field-error client=model.validationResult.selected_state_1}}
-                </div>
-                <div class="form-group col-md-6  {{if model.validationResult.selected_city_1.hasError 'has-error'}}">
-                  <label class="control-label" for="city1">City</label>
-                  {{input-select
-                    class="form-control"
-                    name="city1"
-                    options=model.cities1
-                    labelPath="name"
-                    valuePath="id"
-                    selected=model.selected_city_1
-                    prompt="Select"
-                  }}
-                  {{mdr-field-error client=model.validationResult.selected_city_1}}
                 </div>
               </div>
 
@@ -371,7 +396,7 @@
                   <label class="control-label" for="address1">Primary location</label>
                   <div class="form-control-static">
                     {{#if model.address1}}
-                      {{model.city1}}, {{model.state1}} ({{model.zip1}})
+                      {{model.city1}}, {{model.selected_state_1.id}} ({{model.zip1}})
                     {{else}}
                       &ndash;
                     {{/if}}
@@ -408,18 +433,6 @@
       <div class="panel-body">
         <form role="form" novalidate {{action "add" on="submit"}} autocomplete="off">
           <section class="col-md-12">
-            <div class="row">
-              <div class="form-group col-md-3  {{if model.validationResult.service_charge.hasError 'has-error'}}">
-                <label class="control-label" for="service_charge">Service Charge</label>
-                {{#if edit_work}}
-                  {{input type="text" class="form-control" name="service_charge" value=model.service_charge autocomplete="off"}}
-                  {{mdr-field-error client=model.validationResult.service_charge}}
-                {{else}}
-                  <div class="form-control-static">{{dash-for-empty model.service_charge}}</div>
-                {{/if}}
-              </div>
-            </div>
-
             <div class="row">
               <div class="form-group col-md-6">
                 <label class="control-label">Insurance Plans supported</label>

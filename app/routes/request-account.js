@@ -2,7 +2,7 @@ import Ember from 'ember';
 import EmberValidator from 'ember-validator';
 import RequestAccount from 'mdr/models/request-account';
 import Api from 'mdr/mixins/api';
-import { animateTo } from 'mdr/utility/utils';
+import { animateTo, retainNumbers } from 'mdr/utility/utils';
 
 const {
   Route
@@ -16,9 +16,10 @@ export default Route.extend(EmberValidator, Api, {
   _validations() {
     return {
       agency_name: {
-        required: 'Agency name is required'
+        required: 'Agency Name is required'
       },
       last_name: {
+        required: 'Last Name is required.',
         length: {
           maximum: 50,
           message: 'Must be 50 characters or less.'
@@ -26,7 +27,7 @@ export default Route.extend(EmberValidator, Api, {
       },
 
       first_name: {
-        required: 'First name is required.',
+        required: 'First Name is required.',
         length: {
           minimum: 3,
           maximum: 50,
@@ -38,20 +39,24 @@ export default Route.extend(EmberValidator, Api, {
       },
 
       email_id: {
-        required: 'Email id is required.',
+        required: 'Email Address is required.',
         length: {
           maximum: 50,
           message: 'Must be 50 characters or less.'
         },
-        email: 'Email id is not valid.'
+        email: 'Email Address is not valid.'
       },
 
       phone1: {
-        required: 'Phone no is required',
+        required: 'Phone Number is required',
         phone: {
-          format9: true,
-          message: 'Phone no is not valid(NNNNNNNNNN).'
+          format2: true,
+          message: 'Phone Number is not valid (NNN) NNN-NNNN.'
         }
+      },
+
+      comments: {
+        required: 'Comments is required'
       }
     };
   },
@@ -61,11 +66,22 @@ export default Route.extend(EmberValidator, Api, {
       const self        = this;
       const model       = self.get('controller.model');
       const validations = this._validations();
-      const data        = {};
+      let data;
 
       model.set('validationResult', null);
+
       animateTo();
       self.validateMap({ model, validations }).then(() => {
+        data = _.pick(model, [
+          'agency_name',
+          'first_name',
+          'last_name',
+          'email_id',
+          'comments'
+        ]);
+
+        data.phone1 = retainNumbers(model.get('phone1'));
+
         self.ajax({
           id: 'addclient',
           data

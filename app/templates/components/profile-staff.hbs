@@ -11,13 +11,26 @@
     </div>
   {{/if}}
 
-  {{#if (and (not approved) (not model.isActive) (or session.role_admin session.role_super_admin session.role_regional_admin session.role_global_admin))}}
+  {{#if rejected}}
+    <div class="panel panel-primary">
+      <div class="panel-body">
+        <section class="col-md-12">
+          <div class="alert alert-danger no-margin">
+            <strong><i class="fa fa-2 fa-check"></i></strong> Request rejected.
+          </div>
+        </section>
+      </div>
+    </div>
+  {{/if}}
+
+  {{#if (and (not approved) model.requested (or session.role_admin session.role_super_admin session.role_regional_admin session.role_global_admin))}}
     <div class="panel panel-primary">
       <div class="panel-body">
         <section class="col-md-12">
           <div class="row">
             <div class="col-md-6">
-              Activate this staff <button type="button" class="btn btn-success" {{action "approve"}}>Activate</button>
+              <button type="button" class="btn btn-success" {{action "approve"}}>Approve</button>
+              <button type="button" class="btn btn-success" {{action "reject"}}>Reject</button>
             </div>
           </div>
         </section>
@@ -62,11 +75,11 @@
           </div>
 
           <div class="row">
-            <div class="form-group col-md-6  {{if model.validationResult.dob.hasError 'has-error'}}">
+            <div class="form-group col-md-6  {{if model.validationResult.dob_formatted.hasError 'has-error'}}">
               <label class="control-label" for="dob">Date of birth</label>
               {{#if edit_personal}}
-                {{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=(date-format model.dob "YYYY-MM-DD" "MMM DD YYYY")}}
-                {{mdr-field-error client=model.validationResult.dob}}
+                {{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=model.dob_formatted}}
+                {{mdr-field-error client=model.validationResult.dob_formatted}}
               {{else}}
                 <div class="form-control-static">{{date-format model.dob "YYYY-MM-DD" "MMM DD YYYY"}}</div>
               {{/if}}
@@ -77,12 +90,12 @@
     						<div>
     							<div class="radio-inline">
     								<label>
-    									{{input-radio name="gender" group=model.gender value="MALE"}} Male
+    									{{input-radio name="gender" group=model.gender value="Male"}} Male
     								</label>
     							</div>
     							<div class="radio-inline">
     								<label>
-    									{{input-radio name="gender" group=model.gender value="FEMALE"}} Female
+    									{{input-radio name="gender" group=model.gender value="Female"}} Female
     								</label>
     							</div>
     						</div>
@@ -144,19 +157,19 @@
             <div class="form-group col-md-6  {{if model.validationResult.phone1.hasError 'has-error'}}">
               <label class="control-label" for="phone1">Phone number</label>
               {{#if edit_contact}}
-                {{input type="text" class="form-control" name="phone1" value=model.phone1 maxlength=10 autocomplete="off"}}
+                {{mdr-phone type="text" class="form-control" name="phone1" value=model.phone1 autocomplete="off"}}
                 {{mdr-field-error client=model.validationResult.phone1}}
               {{else}}
-                <div class="form-control-static">{{dash-for-empty model.phone1}}</div>
+                <div class="form-control-static">{{phone-number model.phone1}}</div>
               {{/if}}
             </div>
             <div class="form-group col-md-6  {{if model.validationResult.phone2.hasError 'has-error'}}">
               <label class="control-label" for="phone2">Alternate phone number <small>(optional)</small></label>
               {{#if edit_contact}}
-                {{input type="text" class="form-control" name="phone2" value=model.phone2 maxlength=10 autocomplete="off"}}
+                {{mdr-phone type="text" class="form-control" name="phone2" value=model.phone2 autocomplete="off"}}
                 {{mdr-field-error client=model.validationResult.phone2}}
               {{else}}
-                <div class="form-control-static">{{dash-for-empty model.phone2}}</div>
+                <div class="form-control-static">{{phone-number model.phone2}}</div>
               {{/if}}
             </div>
           </div>
@@ -221,7 +234,7 @@
                 <label class="control-label" for="address1">Primary location</label>
                 <div class="form-control-static">
                   {{#if model.address1}}
-                    {{model.city1}}, {{model.state1}} ({{model.zip1}})
+                    {{model.city1}}, {{model.selected_state_1.id}} ({{model.zip1}})
                   {{else}}
                     &ndash;
                   {{/if}}

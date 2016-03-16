@@ -18,17 +18,19 @@ const { service } = inject;
 export default Service.extend(Api, {
   clients: service(),
   doctors: service(),
+  assessors: service(),
   appointments: null,
   cache: false,
 
-  getAppointments() {
+  getAppointments(background) {
     const self = this;
     return new Promise((resolve) => {
       if (self.get('cache')) {
         resolve(self.get('appointments'));
       } else {
         self.ajax({
-          id: 'appointments'
+          id: 'appointments',
+          background
         }).then((response) => {
           self.setProperties({
             appointments: self.createAppointments(response),
@@ -76,7 +78,9 @@ export default Service.extend(Api, {
       'service_charge',
       'status',
       'ts_request',
-      'ts_request_endtime'
+      'ts_request_endtime',
+      'form_status',
+      'last_updated_page'
     ];
     let result = Appointment.create(_.pick(response, data));
 
@@ -86,6 +90,10 @@ export default Service.extend(Api, {
 
     if (response.doctor) {
       result.set('doctor', this.get('doctors').createDoctor(response.doctor));
+    }
+
+    if (response.assessor) {
+      result.set('assessor', this.get('assessors').createAssessor(response.assessor));
     }
 
     return result;

@@ -6,11 +6,12 @@
 @import "mixins/search-header.scss";
 @import "mixins/list-wrapper.scss";
 
+@import "layout/form.scss";
 @import "layout/main.scss";
 @import "layout/common.scss";
 
 @import "vendor/traits.scss";
-@import "layout/welcome.scss";
+@import "layout/store-front.scss";
 @import "layout/account.scss";
 @import "layout/signin.scss";
 @import "layout/request-account.scss";
@@ -30,5 +31,6 @@
 @import "layout/chat.scss";
 @import "layout/chat-list.scss";
 @import "layout/full-page-error.scss";
+@import "layout/forget-password.scss";
 
 @import "layout/breadcrumb.scss";

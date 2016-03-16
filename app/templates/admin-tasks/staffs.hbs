@@ -1,1 +1,7 @@
-{{list-staffs class="staffs-list-block" model=model hideSearch=true}}
+{{#if model.staffs}}
+  {{list-staffs class="staffs-list-block" model=model hideSearch=true}}
+{{else}}
+  <div class="alert alert-danger">
+    No any enrollment request received from staff.
+  </div>
+{{/if}}

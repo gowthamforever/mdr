@@ -79,5 +79,75 @@ export default {
   patchappointment: {
     path: 'appointment/{id}',
     method: 'PATCH'
+  },
+
+  doctordetails: {
+    path: 'doctor/{id}',
+    method: 'GET'
+  },
+
+  clientdetails: {
+    path: 'client/{id}',
+    method: 'GET'
+  },
+
+  assessordetails: {
+    path: 'assessor/{id}',
+    method: 'GET'
+  },
+
+  staffdetails: {
+    path: 'agencystaff/{id}',
+    method: 'GET'
+  },
+
+  updatedoctorinfo: {
+    path: 'doctor/{id}/info',
+    method: 'PATCH'
+  },
+
+  updatedoctorcontact: {
+    path: 'doctor/{id}/contact',
+    method: 'PATCH'
+  },
+
+  updateassessorinfo: {
+    path: 'assessor/{id}/info',
+    method: 'PATCH'
+  },
+
+  updateassessorcontact: {
+    path: 'assessor/{id}/contact',
+    method: 'PATCH'
+  },
+
+  updateclientinfo: {
+    path: 'client/{id}/info',
+    method: 'PATCH'
+  },
+
+  updateclientcontact: {
+    path: 'client/{id}/contact',
+    method: 'PATCH'
+  },
+
+  updateadmininfo: {
+    path: 'agencyadmin/{id}/info',
+    method: 'PATCH'
+  },
+
+  updateadmincontact: {
+    path: 'agencyadmin/{id}/contact',
+    method: 'PATCH'
+  },
+
+  assessmentformpost: {
+    path: 'appointment/{id}/form/page/{pageNo}',
+    method: 'POST'
+  },
+
+  assessmentformget: {
+    path: 'appointment/{id}/form',
+    method: 'GET'
   }
 };

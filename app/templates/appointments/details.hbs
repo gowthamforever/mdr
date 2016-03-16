@@ -38,12 +38,12 @@
 
         <div class="form-group row">
           <label class="col-sm-4">Start Time:</label>
-          <div class="col-sm-8">{{date-format model.ts_request "MM-DD-YYYY HH:mm" "dddd, MMM DD YYYY HH:mm"}}</div>
+          <div class="col-sm-8">{{date-format model.ts_request "MM-DD-YYYY HH:mm" "dddd, MMM DD YYYY hh:mm A"}}</div>
         </div>
 
         <div class="form-group row">
           <label class="col-sm-4">End Time:</label>
-          <div class="col-sm-8">{{date-format model.ts_request_endtime "MM-DD-YYYY HH:mm" "dddd, MMM DD YYYY HH:mm"}}</div>
+          <div class="col-sm-8">{{date-format model.ts_request_endtime "MM-DD-YYYY HH:mm" "dddd, MMM DD YYYY hh:mm A"}}</div>
         </div>
 
         <div class="form-group row">
@@ -56,7 +56,25 @@
           <div class="col-sm-8">{{model.alt_info}}</div>
         </div>
 
-        {{#if (and model.pending (or session.role_doctor role_assessor))}}
+        {{#if (and (or session.role_doctor session.role_assessor) (or model.form_started model.completed))}}
+          <div class="form-group row">
+            <div class="col-sm-12">
+              {{#link-to "appointments.abuse-form" model}}
+                {{if model.completed 'View Form' 'Continue filling the Form'}}
+              {{/link-to}}
+            </div>
+          </div>
+        {{/if}}
+
+        {{#if (and model.pending model.date_past (or session.role_doctor session.role_assessor))}}
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <p class="text-danger"><i class="fa fa-exclamation-triangle"></i> Appointment date is already past and so this appointment can't be accepted or rejected.</p>
+            </div>
+          </div>
+        {{/if}}
+
+        {{#if (and model.pending (not model.date_past) (or session.role_doctor session.role_assessor))}}
           <div class="form-group row">
             <div class="col-sm-12">
               <button class="btn btn-success" {{action "accept"}}><i class="fa fa-check-circle"></i> Accept</button>

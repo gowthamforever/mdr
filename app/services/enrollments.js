@@ -21,11 +21,12 @@ export default Service.extend(Api, {
   assessors: service(),
   staffs: service(),
 
-  getPendingProspects() {
+  getPendingProspects(background) {
     const self = this;
     return new Promise((resolve) => {
       self.ajax({
-        id: 'pendingprospect'
+        id: 'pendingprospect',
+        background
       }).then((response) => {
         resolve(self.createEnrollmentRequests(response));
       }).catch(() => {

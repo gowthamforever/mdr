@@ -1,6 +1,4 @@
 import Ember from 'ember';
-import Duration from 'mdr/models/duration';
-import Constants from 'mdr/utility/constants';
 import { animateTo } from 'mdr/utility/utils';
 
 const {
@@ -21,30 +19,7 @@ const {
 export default Component.extend({
   dialog: service(),
   appointment: null,
-  duration: alias('appointment.duration'),
-  date: alias('appointment.start_date'),
-  durations: computed('duration', function() {
-    const duration  = this.get('duration.value');
-    const date      = this.get('date');
-    const durations = Ember.A();
-    let start;
-    let end;
-
-    for (let count = Constants.APPOINTMENT_MINS.MIN; count < Constants.APPOINTMENT_MINS.MAX - 1; count = count + duration) {
-      start = count;
-      end = count + duration;
-
-      if (end <= Constants.APPOINTMENT_MINS.MAX) {
-        durations.push(Duration.create({
-          date,
-          start: count,
-          end: count + duration
-        }));
-      }
-    }
-
-    return durations;
-  }),
+  durations: alias('appointment.durations'),
   selected_duration: computed('durations.[]', function() {
     return this.get('durations.firstObject');
   }),

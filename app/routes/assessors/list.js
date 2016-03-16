@@ -28,7 +28,7 @@ export default Route.extend({
     return new Promise((resolve) => {
       self.get('assessors').getAssessors().then((assessors) => {
         resolve(Assessors.create({
-          assessors
+          assessors: assessors.filter((assessor) => assessor.get('available') || assessor.get('inactive'))
         }));
       });
     });

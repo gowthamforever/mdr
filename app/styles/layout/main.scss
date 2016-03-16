@@ -29,6 +29,15 @@
   margin: 0;
   padding-left: 15px;
   padding-top: 60px;
+  @media (max-width: 768px) {
+    padding-top: 54px;
+  }
+  @media (max-width: 650px) {
+    padding-top: 54px;
+  }
+  @media (max-width: 450px) {
+    padding-top: 52px;
+  }
 }
 
 .dashboard-nav .list-group-item {

@@ -7,7 +7,7 @@ const contentSecurityPolicy = {
   'font-src': "'self' devapi-mdrealtime.elasticbeanstalk.com static.opentok.com hlg.tokbox.com anvil.opentok.com mantis003-nyj.tokbox.com wss://mantis005-sjc.tokbox.com/rumorwebsocketsv2",
   'connect-src': "'self' devapi-mdrealtime.elasticbeanstalk.com static.opentok.com hlg.tokbox.com anvil.opentok.com mantis003-nyj.tokbox.com wss://mantis005-sjc.tokbox.com/rumorwebsocketsv2",
   'img-src': "'self' devapi-mdrealtime.elasticbeanstalk.com static.opentok.com hlg.tokbox.com anvil.opentok.com mantis003-nyj.tokbox.com wss://mantis005-sjc.tokbox.com/rumorwebsocketsv2",
-  'style-src': "'self' devapi-mdrealtime.elasticbeanstalk.com static.opentok.com hlg.tokbox.com anvil.opentok.com mantis003-nyj.tokbox.com wss://mantis005-sjc.tokbox.com/rumorwebsocketsv2",
+  'style-src': "'self' 'unsafe-inline' devapi-mdrealtime.elasticbeanstalk.com static.opentok.com hlg.tokbox.com anvil.opentok.com mantis003-nyj.tokbox.com wss://mantis005-sjc.tokbox.com/rumorwebsocketsv2",
   'media-src': "'self' devapi-mdrealtime.elasticbeanstalk.com static.opentok.com hlg.tokbox.com anvil.opentok.com mantis003-nyj.tokbox.com wss://mantis005-sjc.tokbox.com/rumorwebsocketsv2",
   'frame-src': "'self' devapi-mdrealtime.elasticbeanstalk.com static.opentok.com hlg.tokbox.com anvil.opentok.com mantis003-nyj.tokbox.com wss://mantis005-sjc.tokbox.com/rumorwebsocketsv2"
 }

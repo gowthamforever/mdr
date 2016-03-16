@@ -21,7 +21,7 @@ export default Service.extend({
   },
 
   showDialog(props = {}) {
-    this.setProperties(_.extend({
+    this.setProperties(_.assignIn({
       show: true,
     }, props));
 
@@ -39,7 +39,7 @@ export default Service.extend({
       name: null,
       model: null,
       hideAction: "hideDialog",
-      containerClassNames: null
+      containerClassNames: []
     });
     toggleScrollBar(true);
   }

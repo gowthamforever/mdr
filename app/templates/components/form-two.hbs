@@ -1,0 +1,623 @@
+<form {{action "next" on="submit"}}>
+  <div class="form-group row form-section">
+    <label class="col-sm-2">SECTION THREE</label>
+    <div class="col-sm-10 form-section-title">
+      DRUG USE HISTORY
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">{{upper-case "Primary Drug Used"}}</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.three_primary_drug_used}}
+      {{else}}
+        {{input-select
+          class="form-control"
+          options=form.primary_drugs
+          selected=form.three_primary_drug_used
+          prompt="Select"
+        }}
+      {{/if}}
+    </div>
+
+    <label class="col-sm-2">{{upper-case "Frequency"}}</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.three_frequency}}
+      {{else}}
+        {{input-select
+          class="form-control"
+          options=form.drugs_frequencies
+          selected=form.three_frequency
+          prompt="Select"
+        }}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">{{upper-case "Method of Admin"}}</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.three_method_of_admin}}
+      {{else}}
+        {{input-select
+          class="form-control"
+          options=form.drugs_methods_of_admin
+          selected=form.three_method_of_admin
+          prompt="Select"
+        }}
+      {{/if}}
+    </div>
+
+    <label class="col-sm-2">{{upper-case "Last Used"}}</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{date-format form.three_last_used "YYYY-MM-DD" "MMM DD YYYY"}}
+      {{else}}
+        {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.three_last_used_formatted}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">{{upper-case "Age of First Use"}}</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.three_age_of_first_use}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.three_age_of_first_use autocomplete="off"}}
+      {{/if}}
+    </div>
+
+    <label class="col-sm-2">{{upper-case "Hours Since Last Use"}}</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.three_hours_since_last_use}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.three_hours_since_last_use autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">{{upper-case "Secondary Drug Used"}}</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.three_secondary_drug_used}}
+      {{else}}
+        {{input-select
+          class="form-control"
+          options=form.primary_drugs
+          selected=form.three_secondary_drug_used
+          prompt="Select"
+        }}
+      {{/if}}
+    </div>
+
+    <label class="col-sm-2">{{upper-case "Frequency"}}</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.three_frequence_2}}
+      {{else}}
+        {{input-select
+          class="form-control"
+          options=form.drugs_frequencies
+          selected=form.three_frequence_2
+          prompt="Select"
+        }}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">{{upper-case "Method of Admin"}}</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.three_method_of_admin_2}}
+      {{else}}
+        {{input-select
+          class="form-control"
+          options=form.drugs_methods_of_admin
+          selected=form.three_method_of_admin_2
+          prompt="Select"
+        }}
+      {{/if}}
+    </div>
+
+    <label class="col-sm-2">{{upper-case "Last Used"}}</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{date-format form.three_last_used_2 "YYYY-MM-DD" "MMM DD YYYY"}}
+      {{else}}
+        {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.three_last_used_2_formatted}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">{{upper-case "Age of First Use"}}</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.three_age_of_first_use_2}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.three_age_of_first_use_2 autocomplete="off"}}
+      {{/if}}
+    </div>
+
+    <label class="col-sm-2">{{upper-case "Hours Since Last Use"}}</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.three_hours_since_last_use_2}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.three_hours_since_last_use_2 autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">{{upper-case "Tertiary Drug Used"}}</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.three_tertiary_drug_used}}
+      {{else}}
+        {{input-select
+          class="form-control"
+          options=form.primary_drugs
+          selected=form.three_tertiary_drug_used
+          prompt="Select"
+        }}
+      {{/if}}
+    </div>
+
+    <label class="col-sm-2">{{upper-case "Frequency"}}</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.three_frequence_3}}
+      {{else}}
+        {{input-select
+          class="form-control"
+          options=form.drugs_frequencies
+          selected=form.three_frequence_3
+          prompt="Select"
+        }}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">{{upper-case "Method of Admin"}}</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.three_method_of_admin_3}}
+      {{else}}
+        {{input-select
+          class="form-control"
+          options=form.drugs_methods_of_admin
+          selected=form.three_method_of_admin_3
+          prompt="Select"
+        }}
+      {{/if}}
+    </div>
+
+    <label class="col-sm-2">{{upper-case "Last Used"}}</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{date-format form.three_last_used_3 "YYYY-MM-DD" "MMM DD YYYY"}}
+      {{else}}
+        {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.three_last_used_3_formatted}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">{{upper-case "Age of First Use"}}</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.three_age_of_first_use_3}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.three_age_of_first_use_3 autocomplete="off"}}
+      {{/if}}
+    </div>
+
+    <label class="col-sm-2">{{upper-case "Hours Since Last Use"}}</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.three_hours_since_last_use_3}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.three_hours_since_last_use_3 autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">{{upper-case "List/Descrbe other drugs you have used"}}</label>
+    <div class="col-sm-10">
+      {{#if noneditable}}
+        {{form.three_ldodyhu}}
+      {{else}}
+        {{textarea class="form-control" value=form.three_ldodyhu rows="7" maxlength=500}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <label class="col-sm-4">{{upper-case "IV Drug User"}}</label>
+    <div class="col-sm-2">
+      {{#if noneditable}}
+        {{form.three_iv_drug_user}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.three_iv_drug_user value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.three_iv_drug_user value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+    <label class="col-sm-4">{{upper-case "Habitual Drug User"}}</label>
+    <div class="col-sm-2">
+      {{#if noneditable}}
+        {{form.three_habitual_drug_user}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.three_habitual_drug_user value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.three_habitual_drug_user value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-4">{{upper-case "Sees Drug Use as Harmful"}}</label>
+    <div class="col-sm-2">
+      {{#if noneditable}}
+        {{form.three_sees_drug_use_as_harmful}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.three_sees_drug_use_as_harmful value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.three_sees_drug_use_as_harmful value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+    <label class="col-sm-4">{{upper-case "Sees Alchol Use as Harmful"}}</label>
+    <div class="col-sm-2">
+      {{#if noneditable}}
+        {{form.three_sees_alcohol_use_as_harmful}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.three_sees_alcohol_use_as_harmful value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.three_sees_alcohol_use_as_harmful value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-4">{{upper-case "Sees Tobacco Use as Harmful"}}</label>
+    <div class="col-sm-2">
+      {{#if noneditable}}
+        {{form.three_sees_tobacco_use_as_harmful}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.three_sees_tobacco_use_as_harmful value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.three_sees_tobacco_use_as_harmful value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+    <label class="col-sm-4">{{upper-case "Uses Tobacco"}}</label>
+    <div class="col-sm-2">
+      {{#if noneditable}}
+        {{form.three_uses_tobacco}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.three_uses_tobacco value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.three_uses_tobacco value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <label class="col-sm-10">{{upper-case "Ever Used Barbiturates, Opiates or Tranquilizers in Past 24 hours"}}</label>
+    <div class="col-sm-2">
+      {{#if noneditable}}
+        {{form.three_eubootip24h}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.three_eubootip24h value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.three_eubootip24h value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-10">{{upper-case "Current Carvings For Drugs or Alchol"}}</label>
+    <div class="col-sm-2">
+      {{#if noneditable}}
+        {{form.three_ccfdoa}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.three_ccfdoa value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.three_ccfdoa value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-10">{{upper-case "Current Experiencing Withdrawal Symptoms"}}</label>
+    <div class="col-sm-2">
+      {{#if noneditable}}
+        {{form.three_cews}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.three_cews value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.three_cews value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <label class="col-sm-10">{{upper-case "Anyone Expressed Concerns About Your Drug/Alchol Use"}}</label>
+    <div class="col-sm-2">
+      {{#if noneditable}}
+        {{form.three_aecaydau}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.three_aecaydau value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.three_aecaydau value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-10">{{upper-case "Do you Feel you Drink or Use Drugs Too Much"}}</label>
+    <div class="col-sm-2">
+      {{#if noneditable}}
+        {{form.three_dyfydoudtm}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.three_dyfydoudtm value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.three_dyfydoudtm value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-10">{{upper-case "Ever Experienced Serious Consequences Due to Drinking or Drug Use"}}</label>
+    <div class="col-sm-2">
+      {{#if noneditable}}
+        {{form.three_eescdtdodu}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.three_eescdtdodu value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.three_eescdtdodu value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-10">{{upper-case "Ever Felt that you Lost Control of your Drinking or Drug Use"}}</label>
+    <div class="col-sm-2">
+      {{#if noneditable}}
+        {{form.three_eftylcoydodu}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.three_eftylcoydodu value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.three_eftylcoydodu value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-10">{{upper-case "Do you feel that you need to Cut Back or Reduce your Drinking or Drug Use"}}</label>
+    <div class="col-sm-2">
+      {{#if noneditable}}
+        {{form.three_dyftyntcborydodu}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.three_dyftyntcborydodu value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.three_dyftyntcborydodu value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-10">{{upper-case "Ever had to seek Medical Treatment dur to your Drinking or Drug Use"}}</label>
+    <div class="col-sm-2">
+      {{#if noneditable}}
+        {{form.three_ehtsmtdtydodu}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.three_ehtsmtdtydodu value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.three_ehtsmtdtydodu value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-10">{{upper-case "Ever Arrested due to your Drinking or Drug Use"}}</label>
+    <div class="col-sm-2">
+      {{#if noneditable}}
+        {{form.three_eadtydodu}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.three_eadtydodu value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.three_eadtydodu value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">{{upper-case "Other narrative information about drug use"}}</label>
+    <div class="col-sm-10">
+      {{#if noneditable}}
+        {{form.three_oniadu}}
+      {{else}}
+        {{textarea class="form-control" value=form.three_oniadu rows="7" maxlength=500}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <label class="col-sm-1">&nbsp;</label>
+    <div class="col-md-2 form-group-right-align">
+      <button class="btn btn-primary btn-block" type="submit" autocomplete="off">{{if model.completed 'Next (Page 3)' 'Save & Continue'}}</button>
+    </div>
+    <label class="col-sm-1">&nbsp;</label>
+    <div class="col-md-2 form-group-right-align">
+      <button class="btn btn-primary btn-block" autocomplete="off" {{action "previous"}}>Previous (Page 1)</button>
+    </div>
+  </div>
+</form>

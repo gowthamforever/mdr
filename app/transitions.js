@@ -6,6 +6,12 @@ export default function() {
   );
 
   this.transition(
+    this.withinRoute(['enrollment.agent', 'enrollment.doctor', 'enrollment.assessor']),
+    this.use('crossFade', { duration }),
+    this.reverse('crossFade', { duration })
+  );
+
+  this.transition(
     this.withinRoute(['appointments.requests.pending', 'appointments.requests.accepted', 'appointments.requests.rejected']),
     this.use('crossFade', { duration }),
     this.reverse('crossFade', { duration })

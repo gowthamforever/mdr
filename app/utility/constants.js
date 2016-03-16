@@ -1,17 +1,27 @@
 export default {
   APPOINTMENT_MINS: {
     MIN: 360, // 6AM
-    MAX: 1320 // 10PM
+    MAX: 1440, // 10PM
+    MAX_HOUR: 24,
+    MIN_HOUR: 6
   },
 
   GENDER: {
-    MALE: 'Male',
-    FEMALE: 'Female'
+    Male: 'Male',
+    Female: 'Female'
   },
 
   STATUS: {
-    ACTIVE: 0,
-    INACTIVE: 1
+    REQUESTED: 0,
+    ACTIVE: 1,
+    REJECTED: 2,
+    INACTIVE: 3
+  },
+
+  FORM_STATUS: {
+    NOT_STARTED: 'not-started',
+    STARTED: 'started',
+    COMPLETED: 'completed'
   },
 
   REQUEST_STATUS: {
@@ -75,35 +85,15 @@ export default {
   ],
 
   TIME_ZONES: [
-    { id: 'America/Adak', name: 'Adak' },
-    { id: 'America/Anchorage', name: 'Anchorage' },
-    { id: 'America/Boise', name: 'Boise' },
-    { id: 'America/Chicago', name: 'Chicago' },
-    { id: 'America/Denver', name: 'Denver' },
-    { id: 'America/Detroit', name: 'Detroit' },
-    { id: 'America/Indiana/Indianapolis', name: 'Indiana/Indianapolis' },
-    { id: 'America/Indiana/Knox', name: 'Indiana/Knox' },
-    { id: 'America/Indiana/Marengo', name: 'Indiana/Marengo' },
-    { id: 'America/Indiana/Petersburg', name: 'Indiana/Petersburg' },
-    { id: 'America/Indiana/Tell_City', name: 'Indiana/Tell_City' },
-    { id: 'America/Indiana/Vevay', name: 'Indiana/Vevay' },
-    { id: 'America/Indiana/Vincennes', name: 'Indiana/Vincennes' },
-    { id: 'America/Indiana/Winamac', name: 'Indiana/Winamac' },
-    { id: 'America/Juneau', name: 'Juneau' },
-    { id: 'America/Kentucky/Louisville', name: 'Kentucky/Louisville' },
-    { id: 'America/Kentucky/Monticello', name: 'Kentucky/Monticello' },
-    { id: 'America/Los_Angeles', name: 'Los_Angeles' },
-    { id: 'America/Menominee', name: 'Menominee' },
-    { id: 'America/Metlakatla', name: 'Metlakatla' },
-    { id: 'America/New_York', name: 'New_York' },
-    { id: 'America/Nome', name: 'Nome' },
-    { id: 'America/North_Dakota/Beulah', name: 'North_Dakota/Beulah' },
-    { id: 'America/North_Dakota/Center', name: 'North_Dakota/Center' },
-    { id: 'America/North_Dakota/New_Salem', name: 'North_Dakota/New_Salem' },
-    { id: 'America/Phoenix', name: 'Phoenix' },
-    { id: 'America/Sitka', name: 'Sitka' },
-    { id: 'America/Yakutat', name: 'Yakutat' },
-    { id: 'Pacific/Honolulu', name: 'Pacific/Honolulu' }
+    { id: 'Samoa', name: 'Samoa' },
+    { id: 'Hawaii–Aleutian', name: 'Hawaii–Aleutian' },
+    { id: 'Alaska', name: 'Alaska' },
+    { id: 'Pacific', name: 'Pacific' },
+    { id: 'Mountain', name: 'Mountain' },
+    { id: 'Central', name: 'Central' },
+    { id: 'Eastern', name: 'Eastern' },
+    { id: 'Atlantic', name: 'Atlantic' },
+    { id: 'Chamorro', name: 'Chamorro' }
   ],
 
   MONTHS: [
@@ -124,9 +114,110 @@ export default {
   RACES: [
     { id: 1, name: 'White' },
     { id: 2, name: 'African American' },
-    { id: 3, name: 'Hispanic' },
-    { id: 4, name: 'Asian/Pacific Islander' },
-    { id: 5, name: 'Other' }
+    { id: 3, name: 'Amer Indian/Alaskan Nat' },
+    { id: 4, name: 'Asian' },
+    { id: 5, name: 'Native Hawaiian or Other' },
+    { id: 6, name: 'Mulit-Racial  ' }
+  ],
+
+  RACES_NAMES: [
+    'White',
+    'African American',
+    'Amer Indian/Alaskan Nat',
+    'Asian',
+    'Native Hawaiian or Other',
+    'Mulit-Racial'
+  ],
+
+  ETHNICITIES: [
+    'Puerto Rican',
+    'Mexican',
+    'Cuban',
+    'Other Hispanic',
+    'Hatian',
+    'Mexican American',
+    'Spanish/Latino',
+    'None of the above'
+  ],
+
+  PRIMARY_DRUGS: [
+    'ALCOHOL',
+    'MORPHINE SULFATE (MSContin)',
+    'METHADONE',
+    'CODEINE',
+    'D-PROPOXYPHENE (Darvon/Darvocet)',
+    'OXYCODONE (Oxycontin)',
+    'CRACK',
+    'MARIJUANA/HASHISH',
+    'HEROIN',
+    'NON-PRESCRIPTION METHADONE'
+  ],
+
+  DRUGS_FREQUENCIES: [
+    'No Past Month Use (no use past 30 days)',
+    '3-6 Times per Week',
+    '1-3 Times in Past Month (30 days)',
+    'Daily, 1-2 Times per Week'
+  ],
+
+  DRUGS_METHODS_OF_ADMIN: [
+    'Oral',
+    'Smoking',
+    'Inhalation',
+    'Injection (IV or Intra-Muscular)',
+    'Other'
+  ],
+
+  EDUCATIONAL_GRADES: [
+    '9th Grade',
+    '10th Grade',
+    '11th Grade',
+    '12th Grade',
+    'Vocational School',
+    'High School Graduate',
+    'Diploma/Degree',
+    '1 or more year College',
+    'Associate Degree (AA, AS, etc.)',
+    'Bachelor Degree (BA, BS, AB, etc.)',
+    'Master Degree (MS, MA, MSW, etc.)',
+    'Prof. Degree (MD, DDS, JD, etc.)',
+    'Doc. Degree (PhD, EDD, etc.)'
+  ],
+
+  EMPLOYMENT_STATUSES: [
+    'Active military - overseas',
+    'Active military - USA',
+    'Full Time',
+    'Unpaid Family Worker',
+    'Part Time',
+    'Leave of Absence',
+    'Retired',
+    'Terminated / unemployed',
+    'Homemaker',
+    'Student'
+  ],
+
+  LIVING_ARRAGEMENTS: [
+    'Independent Living - Alone',
+    'Independent Living - with Relatives',
+    'Independent Living - with Non-Relatives',
+    'Dependent Living - with Relatives',
+    'Dependent Living - with Non-Relatives',
+    'Assisted Ling Facility (ALF), Foster Care/Home'
+  ],
+
+  FORM_ORIENTATIONS: [
+    'time',
+    'day',
+    'place',
+    'year'
+  ],
+
+  FORM_MOODS: [
+    'sad',
+    'bad',
+    'glad',
+    'mad'
   ],
 
   LANGAUAGES: [

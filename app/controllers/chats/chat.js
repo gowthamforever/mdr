@@ -11,5 +11,6 @@ const {
 
 export default Controller.extend({
   opentok: service(),
+  session: service(),
   supported_browser: true
 });

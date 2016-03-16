@@ -12,7 +12,7 @@
         {{input-select
           class="form-control"
           name="durations"
-          options=durations
+          options=appointment.durations
           labelPath="start_end"
           valuePath="start_end"
           selected=selected_duration
@@ -39,7 +39,9 @@
               <i class="fa fa-user fa-2 {{if assessor.isActive 'success-color' 'danger-color'}}"></i>
               {{assessor.first_name}} {{assessor.last_name}}
             </h4>
-            <p><i class="fa fa-envelope"></i> {{dash-for-empty assessor.email_id}}</p>
+            <ul class="list-unstyled">
+              <li><i class="fa fa-envelope"></i> {{dash-for-empty assessor.email_id}}</li>
+            </ul>
           </div>
         </section>
       </li>

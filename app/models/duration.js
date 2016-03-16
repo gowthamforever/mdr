@@ -36,7 +36,9 @@ export default EmberObject.extend({
       let result  = am_pm === 0 ? '12' : prepend(am_pm);
       result += `:${prepend(min)}`;
 
-      if (hour >= 12) {
+      if (hour === 24) {
+        result += ' AM';
+      } else if (hour >= 12) {
         result += ' PM';
       } else {
         result += ' AM';
@@ -59,7 +61,9 @@ export default EmberObject.extend({
       let result  = am_pm === 0 ? '12' : prepend(am_pm);
       result += `:${prepend(min)}`;
 
-      if (hour >= 12) {
+      if (hour === 24) {
+        result += ' AM';
+      } else if (hour >= 12) {
         result += ' PM';
       } else {
         result += ' AM';
@@ -72,17 +76,31 @@ export default EmberObject.extend({
 
     return end_result;
   }),
-  start_date_time: computed('date', 'start_time', function() {
-    return `${this.get('date')} ${this.get('start_time')}`;
+  start_date_time: computed('start_date_time_moment', function() {
+    return moment(this.get('start_date_time_moment')).format('MMM DD YYYY hh:mm A');
   }),
-  end_date_time: computed('date', 'end_time', function() {
-    return `${this.get('date')} ${this.get('end_time')}`;
+  end_date_time: computed('end_date_time_moment', function() {
+    return moment(this.get('end_date_time_moment')).format('MMM DD YYYY hh:mm A');
   }),
-  start_date_time_moment: computed('start_date_time', function() {
-    return moment(this.get('start_date_time'), 'MMM DD YYYY HH:mm A', true);
+  start_date_time_moment: computed('date', 'start_time', function() {
+    let date = this.get('date');
+    let time = this.get('start_time');
+
+    if (time === '12:00 AM') {
+      return moment(date, 'MMM DD YYYY', true).add(1, 'days');
+    } else {
+      return moment(`${date} ${time}`, 'MMM DD YYYY hh:mm A', true);
+    }
   }),
-  end_date_time_moment: computed('end_date_time', function() {
-    return moment(this.get('end_date_time'), 'MMM DD YYYY HH:mm A', true);
+  end_date_time_moment: computed('date', 'end_time', function() {
+    let date = this.get('date');
+    let time = this.get('end_time');
+
+    if (time === '12:00 AM') {
+      return moment(date, 'MMM DD YYYY', true).add(1, 'days');
+    } else {
+      return moment(`${date} ${time}`, 'MMM DD YYYY hh:mm A', true);
+    }
   }),
   start_end: computed('start_time', 'end_time', function() {
     return `${this.get('start_time')} to ${this.get('end_time')}`;

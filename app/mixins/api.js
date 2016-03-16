@@ -68,7 +68,9 @@ export default Mixin.create({
       }
 
       settings.beforeSend = () => {
-        self.get('session').showProgressBar();
+        if (!request.background) {
+          self.get('session').showProgressBar();
+        }
       };
 
       Ember.$.ajax(settings).done((...args) => {
@@ -82,23 +84,27 @@ export default Mixin.create({
           resolve(...args);
         }
       }).fail((...args) => {
-        const handled = self.handleFail(...args);
-        if (!handled) {
-          reject(...args);
+        if (!request.background) {
+          self.handleFail(request, ...args);
         }
+        reject(...args);
       }).always(() => {
-        self.get('session').hideProgressBar();
+        if (!request.background) {
+          self.get('session').hideProgressBar();
+        }
       });
     });
   },
 
-  handleFail(xhr) {
+  handleFail(request, xhr) {
     const self          = this;
     const errorhandler  = self.get('errorhandler');
     const status        = typeof(xhr.status) === 'number' ? xhr.status : 0;
 
     if (/[4]\d\d/.test(status) && status === 401) {
-      errorhandler.unauthorized();
+      if (request.id !== 'logout') {
+        errorhandler.unauthorized();
+      }
       return true;
     }
 

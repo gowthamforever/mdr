@@ -1,4 +1,4 @@
-<section class="ongoing-chat-block">
+<section class="assessment-form-block">
   <div>
     <div class="col-md-12">
       {{#ember-wormhole to="fixed-block" renderInPlace=opentok.fullscreen}}
@@ -7,84 +7,10 @@
         </section>
       {{/ember-wormhole}}
     </div>
-    {{#unless opentok.fullscreen}}
-      <div class="col-md-12">
-        <section class="col-md-12">
-          <div class="row col-md-12">
-            <div class="center-align">
-              <h3>Substance Abuse & Mental Health Assessment Manual Form</h3>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="form-group col-md-6 {{if model.validationResult.npi.hasError 'has-error'}}">
-              <label class="control-label" for="client_name">Client Name</label>
-              {{input type="text" class="form-control" name="client_name" value=model.client_name maxlength=50 autocomplete="off"}}
-              {{mdr-field-error client=model.validationResult.client_name}}
-            </div>
-
-            <div class="form-group col-md-6 {{if model.validationResult.npi.hasError 'has-error'}}">
-              <label class="control-label" for="client_name">Query#</label>
-              {{input type="text" class="form-control" name="client_name" value=model.client_name maxlength=50 autocomplete="off"}}
-              {{mdr-field-error client=model.validationResult.client_name}}
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="form-group col-md-6 {{if model.validationResult.phone1.hasError 'has-error'}}">
-              <label class="control-label" for="phone1">Phone number</label>
-              {{input type="text" class="form-control" name="phone1" value=model.phone1 maxlength=10 autocomplete="off"}}
-              {{mdr-field-error client=model.validationResult.phone1}}
-            </div>
-
-            <div class="form-group col-md-6 {{if model.validationResult.phone2.hasError 'has-error'}}">
-              <label class="control-label" for="phone2">Alternate phone number <small>(optional)</small></label>
-              {{input type="text" class="form-control" name="phone2" value=model.phone2 maxlength=10 autocomplete="off"}}
-              {{mdr-field-error client=model.validationResult.phone2}}
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="form-group col-md-6 {{if model.validationResult.address1.hasError 'has-error'}}">
-              <label class="control-label" for="address1">Address</label>
-              {{input type="text" class="form-control" name="address1" value=model.address1 maxlength=250 autocomplete="off"}}
-              {{mdr-field-error client=model.validationResult.address1}}
-            </div>
-
-            <div class="form-group col-md-6 {{if model.validationResult.selected_state_1.hasError 'has-error'}}">
-              <label class="control-label" for="state1">State</label>
-              {{input-select
-                class="form-control"
-                name="state1"
-                options=model.states
-                labelPath="name"
-                valuePath="id"
-                selected=model.selected_state_1
-                prompt="Select"
-              }}
-              {{mdr-field-error client=model.validationResult.selected_state_1}}
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="form-group col-md-6 {{if model.validationResult.city1.hasError 'has-error'}}">
-              <label class="control-label" for="city1">City</label>
-              {{input type="text" class="form-control" name="city1" value=model.city1 maxlength=250 autocomplete="off"}}
-              {{mdr-field-error client=model.validationResult.city1}}
-            </div>
-
-            <div class="form-group col-md-6 {{if model.validationResult.zip1.hasError 'has-error'}}">
-              <label class="control-label" for="zip1">Zip code</label>
-              {{input type="text" class="form-control" name="zip1" value=model.zip1 autocomplete="off"}}
-              {{mdr-field-error client=model.validationResult.zip1}}
-            </div>
-          </div>
-
-          <div class="row">
-            <button class="btn btn-primary" type="submit" autocomplete="off">Continue</button>
-          </div>
-        </section>
-      </div>
-    {{/unless}}
+    {{#if (or session.role_doctor session.role_assessor)}}
+      {{#unless opentok.fullscreen}}
+        {{abuse-form model=model class="form-block col-md-12" noneditable=model.completed}}
+      {{/unless}}
+    {{/if}}
   </div>
 </section>

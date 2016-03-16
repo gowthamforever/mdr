@@ -6,9 +6,18 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('welcome');
+  this.route('store-front');
   this.route('forget-password');
   this.route('request-account');
+
+  this.resource('enrollment', function() {
+    this.route('register', { path: '/' });
+    this.route('agent');
+    this.route('doctor');
+    this.route('assessor');
+  });
+
+  this.route('enrollment-confirmation');
 
   this.resource('authenticated', { path: '/' }, function() {
     this.resource('home');
@@ -53,13 +62,17 @@ Router.map(function() {
     });
 
     this.resource('appointments', function() {
-      this.route('calendar', { path: '/' });
+      this.route('index',  { path: '/' });
+      this.route('calendar');
       this.route('day', { path: '/day/:date' });
       this.route('requests', function() {
         this.route('pending', { path: '/' });
         this.route('accepted');
         this.route('rejected');
+        this.route('started');
+        this.route('completed');
       });
+      this.route('abuse-form', { path: '/:id/forms' });
       this.route('details', { path: '/:id' });
       this.route('create', { path: '/create/:customer_id' });
     });
@@ -70,7 +83,7 @@ Router.map(function() {
     });
   });
 
-  this.route('full-page-error', { path: '/error' });
+  this.route('full-page-error');
   this.route('missing', { path: '/*path' });
 });
 

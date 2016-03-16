@@ -185,13 +185,13 @@ export default Component.extend({
 
       if (book_appointment_with === 'Assessor') {
         self.get('assessors').getAssessors().then((assessors) => {
-          _assessors = Assessors.create({ assessors });
+          _assessors = Assessors.create({ assessors: assessors.filter((assessor) => assessor.get('available') || assessor.get('inactive')) });
           appointment.set('assessors', _assessors);
           self.next(self.get('three'));
         });
       } else {
         self.get('doctors').getDoctors().then((doctors) => {
-          _doctors = Doctors.create({ doctors });
+          _doctors = Doctors.create({ doctors: doctors.filter((doctor) => doctor.get('available') || doctor.get('inactive')) });
           appointment.set('doctors', _doctors);
           self.next(self.get('three'));
         });

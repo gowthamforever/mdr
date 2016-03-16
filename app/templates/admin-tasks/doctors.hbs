@@ -1,1 +1,7 @@
-{{list-doctors class="doctors-list-block" model=model hideSearch=true}}
+{{#if model.doctors}}
+  {{list-doctors class="doctors-list-block" model=model hideSearch=true}}
+{{else}}
+  <div class="alert alert-danger">
+    No any enrollment request received from doctor.
+  </div>
+{{/if}}

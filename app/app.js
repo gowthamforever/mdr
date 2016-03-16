@@ -38,6 +38,7 @@ Route.reopen({
       'appointments.day': {title: 'Appointments'},
       'appointments.create': { title: 'Create Appointment' },
       'appointments.details': { title: 'Appointment Details' },
+      'appointments.abuse-form': { title: 'Assessment Form' },
       'appointments.requests.pending': { title: 'Appointments' },
       'appointments.requests.accepted': { title: 'Appointments' },
       'appointments.requests.rejected': { title: 'Appointments' },
@@ -56,6 +57,8 @@ Route.reopen({
     this._super(...arguments);
 
     schedule('afterRender', () => {
+      let height = Ember.$(window).height() + 50;
+      let eleheight = Ember.$('.resizeable-container').outerHeight();
       let title       = 'MDR';
       let mappings    = {};
       let mapping;
@@ -74,8 +77,11 @@ Route.reopen({
       }
       document.title = title;
 
-      Ember.$('.wrapper-main').css('min-height', Ember.$(window).height());
+      Ember.$('.wrapper-main').css('min-height', height);
 
+      if (height > eleheight) {
+        Ember.$('.resizeable-container').css('min-height', height);
+      }
     });
 
     this.get('dialog').hideDialog();

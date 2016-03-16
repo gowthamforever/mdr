@@ -15,11 +15,12 @@ const {
 
 const {
   later,
-  cancel
+  cancel,
+  scheduleOnce
 } = run;
 
 export default Component.extend({
-  start_time: oneWay('appointment.ts_added_moment'),
+  start_time: oneWay('appointment.ts_request_moment'),
   started: alias('appointment.started'),
   starts_in_next: null,
   timer: null,
@@ -53,9 +54,11 @@ export default Component.extend({
   },
 
   calculateRemainingTime: on('didInsertElement', function() {
-    if (!this.get('started')) {
-      this.clock();
-    }
+    scheduleOnce('afterRender', this, function() {
+      if (!this.get('started')) {
+        this.clock();
+      }
+    });
   }),
 
   clearTimer: on('willDestroyElement', function() {

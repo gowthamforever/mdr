@@ -92,7 +92,7 @@ export default Service.extend({
           }
 
           if (!isEmpty(assessors)) {
-            staffs.forEach((assessor) => {
+            assessors.forEach((assessor) => {
               notifications.push({ assessor: true, model: assessor });
             });
           }
@@ -113,7 +113,7 @@ export default Service.extend({
 
     service.set('cache', false);
     return new Promise((resolve) => {
-      service.getAppointments().then((appointments) => {
+      service.getAppointments(true).then((appointments) => {
         resolve(Appointments.create({
           appointments
         }));
@@ -127,7 +127,7 @@ export default Service.extend({
 
     service.set('cache', false);
     return new Promise((resolve) => {
-      service.getPendingProspects().then((enrollments) => {
+      service.getPendingProspects(true).then((enrollments) => {
         resolve(enrollments);
       });
     });

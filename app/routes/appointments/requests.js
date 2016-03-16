@@ -4,7 +4,8 @@ import Appointments from 'mdr/models/appointments';
 const {
   Route,
   RSVP,
-  inject
+  inject,
+  isEmpty
 } = Ember;
 
 const {
@@ -36,6 +37,28 @@ export default Route.extend({
         }));
       });
     });
+  },
+
+  redirect(model) {
+    if (!isEmpty(model.get('pending'))) {
+      return this.transitionTo('appointments.requests.pending');
+    }
+
+    if (!isEmpty(model.get('accepted'))) {
+      return this.transitionTo('appointments.requests.accepted');
+    }
+
+    if (!isEmpty(model.get('rejected'))) {
+      return this.transitionTo('appointments.requests.rejected');
+    }
+
+    if (!isEmpty(model.get('started'))) {
+      return this.transitionTo('appointments.requests.started');
+    }
+
+    if (!isEmpty(model.get('completed'))) {
+      return this.transitionTo('appointments.requests.completed');
+    }
   },
 
   deactivate() {
