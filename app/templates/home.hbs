@@ -1,6 +1,6 @@
 <div class="home-block">
   <div class="row ">
-    <div class="col-md-6 col-sm-6 col-xs-12 home-widget appointment-wg">
+    <div class="col-md-4 col-sm-4 col-xs-12 home-widget appointment-wg">
       {{#link-to 'appointments.requests.pending'}}
         <div class="fa-wrapper hidden-xs">
           <i class="fa fa-calendar"></i>
@@ -21,7 +21,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-6 col-sm-6 col-xs-12 home-widget chat-wg">
+    <div class="col-md-4 col-sm-4 col-xs-12 home-widget chat-wg">
       {{#link-to 'chats'}}
         <div class="fa-wrapper hidden-xs">
           <i class="fa fa-weixin"></i>
@@ -40,6 +40,28 @@
         <h3 class="widget-meta">{{model.video_sessions.length}} Video Sessions</h3>
         <div class="widget-footer hidden-xs">
           {{#link-to 'chats'}}More Info <span class="right-arrow"></span>{{/link-to}}
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-4 col-xs-12 home-widget assessments-wg">
+      {{#link-to 'assessments'}}
+        <div class="fa-wrapper hidden-xs">
+          <i class="fa fa-file-text"></i>
+        </div>
+      {{/link-to}}
+      <div class="widget-body">
+        {{#link-to 'assessments'}}
+          <div class="big-r-arrow-overlay visible-xs-inline-block"></div>
+
+          <div class="big-r-arrow visible-xs-inline-block"></div>
+          <div class="fa-xs-wrapper visible-xs-inline-block">
+            <i class="fa fa-file-text"></i>
+          </div>
+        {{/link-to}}
+        <h4 class="widget-title">ASSESSMENTS</h4>
+        <h3 class="widget-meta">{{model.assessments.form_notstarted.length}} Forms to start.</h3>
+        <div class="widget-footer hidden-xs">
+          {{#link-to 'assessments'}}More Info <span class="right-arrow"></span>{{/link-to}}
         </div>
       </div>
     </div>

@@ -149,5 +149,10 @@ export default {
   assessmentformget: {
     path: 'appointment/{id}/form',
     method: 'GET'
+  },
+
+  assessments: {
+    path: 'assessment',
+    method: 'GET'
   }
 };

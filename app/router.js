@@ -81,6 +81,12 @@ Router.map(function() {
       this.route('list', { path: '/' });
       this.route('chat', { path: '/:id' });
     });
+
+    this.resource('assessments', function() {
+      this.route('not-started', { path: '/' });
+      this.route('started');
+      this.route('completed');
+    });
   });
 
   this.route('full-page-error');

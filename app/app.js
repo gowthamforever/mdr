@@ -46,7 +46,10 @@ Route.reopen({
       'admin-tasks.doctors': { title: 'Doctors Requests' },
       'admin-tasks.assessors': { title: 'Assessors Requests' },
       'chats.list': { title: 'Chats' },
-      'chats.chat': { title: 'Chat' }
+      'chats.chat': { title: 'Chat' },
+      'assessments.not-started': { title: 'Assessments' },
+      'assessments.started': { title: 'Assessments' },
+      'assessments.completed': { title: 'Assessments' }
     };
     let title = titles[routeName] || 'MDRealtime';
 

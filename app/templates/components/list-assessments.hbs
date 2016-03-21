@@ -1,0 +1,26 @@
+<ul class="list-unstyled clearfix">
+  {{#each assessments as |assessment|}}
+    <li class="assessment-list-item col-md-4 clickable">
+      <section class="assessment-wrapper clearfix">
+        <div class="main clearfix">
+          <h4>
+            <i class="fa fa-user fa-2 {{if assessment.form_notstarted 'not-started'}} {{if assessment.form_started 'started'}} {{if assessment.form_completed 'completed'}}"></i>
+            {{assessment.customer.first_name}} {{assessment.customer.last_name}}
+          </h4>
+          <ul class="list-unstyled clearfix small-font">
+            <li>
+              <i class="fa fa-file-text"></i> {{assessment.form_name}}
+            </li>
+            <li>
+              <i class="fa fa-hourglass-start"></i> {{date-format assessment.ts_request "MM-DD-YYYY HH:mm" "dddd, MMM DD YYYY hh:mm A"}}
+            </li>
+          </ul>
+        </div>
+      </section>
+    </li>
+  {{else}}
+    <div class="alert alert-danger">
+      No assessment forms.
+    </div>
+  {{/each}}
+</ul>
