@@ -9,6 +9,7 @@
   <div class="form-group row">
     <label class="col-sm-7">NUMBER OF TIMES HOSPITALIZED IN PAST 24 MONTHS:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.eight_nothip24m}}
       {{#if noneditable}}
         {{form.eight_nothip24m}}
       {{else}}
@@ -20,6 +21,7 @@
   <div class="form-group row">
     <label class="col-sm-7">EVER HOSPITALIZED DUE TO DRUGS OR ALCOHOL:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.eight_ehdtdoa}}
       {{#if noneditable}}
         {{form.eight_ehdtdoa}}
       {{else}}
@@ -42,6 +44,7 @@
   <div class="form-group row">
     <label class="col-sm-7">NUMBER OF SURGERIES IN PAST 24 MONTHS:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.eight_nosip24m}}
       {{#if noneditable}}
         {{form.eight_nosip24m}}
       {{else}}
@@ -53,6 +56,7 @@
   <div class="form-group row">
     <label class="col-sm-7">NUMBER OF PREGANANCIES AND DELIVERIES:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.eight_nopad}}
       {{#if noneditable}}
         {{form.eight_nopad}}
       {{else}}
@@ -64,6 +68,7 @@
   <div class="form-group row">
     <label class="col-sm-7">GIVEN BIRTH IN PAST 12 MONTHS:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.eight_gbip12m}}
       {{#if noneditable}}
         {{form.eight_gbip12m}}
       {{else}}
@@ -86,6 +91,7 @@
   <div class="form-group row">
     <label class="col-sm-7">CURRENTLY PREGNANT:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.eight_cp}}
       {{#if noneditable}}
         {{form.eight_cp}}
       {{else}}
@@ -108,6 +114,7 @@
   <div class="form-group row">
     <label class="col-sm-7">IF PREGANANT, HOW MANY MONTHS:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.eight_iphmm}}
       {{#if noneditable}}
         {{form.eight_iphmm}}
       {{else}}
@@ -119,6 +126,7 @@
   <div class="form-group row">
     <label class="col-sm-7">LAST PHYSICAL EXAM:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.eight_lpe_formatted}}
       {{#if noneditable}}
         {{date-format form.eight_lpe "YYYY-MM-DD" "MMM DD YYYY"}}
       {{else}}
@@ -130,6 +138,7 @@
   <div class="form-group row">
     <label class="col-sm-7">LAST PHYSICIAN VISIT:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.eight_lpv_formatted}}
       {{#if noneditable}}
         {{date-format form.eight_lpv "YYYY-MM-DD" "MMM DD YYYY"}}
       {{else}}
@@ -141,6 +150,7 @@
   <div class="form-group row">
     <label class="col-sm-7">LAST BREAK EXAM:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.eight_lbe_formatted}}
       {{#if noneditable}}
         {{date-format form.eight_lbe "YYYY-MM-DD" "MMM DD YYYY"}}
       {{else}}
@@ -152,6 +162,7 @@
   <div class="form-group row">
     <label class="col-sm-7">LAST PAP SMEAR:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.eight_lps_formatted}}
       {{#if noneditable}}
         {{date-format form.eight_lps "YYYY-MM-DD" "MMM DD YYYY"}}
       {{else}}
@@ -163,6 +174,7 @@
   <div class="form-group row">
     <label class="col-sm-7">DO HAVE A PRIMARY PHYSICIAN:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.eight_dyhapp}}
       {{#if noneditable}}
         {{form.eight_dyhapp}}
       {{else}}
@@ -185,6 +197,7 @@
   <div class="form-group row">
     <label class="col-sm-7">DO YOU HAVE A HEALTH INSURANCE:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.eight_dyhhi}}
       {{#if noneditable}}
         {{form.eight_dyhhi}}
       {{else}}
@@ -207,6 +220,7 @@
   <div class="form-group row">
     <label class="col-sm-7">LAST TIME TESTED FOR HIV/AIDS:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.eight_lttfh_formatted}}
       {{#if noneditable}}
         {{date-format form.eight_lttfh "YYYY-MM-DD" "MMM DD YYYY"}}
       {{else}}
@@ -220,6 +234,7 @@
   <div class="form-group row">
     <label class="col-sm-2">LAST HOSPITAL ADMIT:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.eight_lha_formatted}}
       {{#if noneditable}}
         {{date-format form.eight_lha "YYYY-MM-DD" "MMM DD YYYY"}}
       {{else}}
@@ -229,6 +244,7 @@
 
     <label class="col-sm-2">LENGTH OF STAY:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.eight_los}}
       {{#if noneditable}}
         {{form.eight_los}}
       {{else}}
@@ -240,6 +256,7 @@
   <div class="form-group row">
     <label class="col-sm-2">HOSPITAL:</label>
     <div class="col-sm-10">
+      {{field-error field=form.validationResult.eight_hospital}}
       {{#if noneditable}}
         {{form.eight_hospital}}
       {{else}}
@@ -251,6 +268,7 @@
   <div class="form-group row">
     <label class="col-sm-2">TREATING PHYSICIAN:</label>
     <div class="col-sm-10">
+      {{field-error field=form.validationResult.eight_tp}}
       {{#if noneditable}}
         {{form.eight_tp}}
       {{else}}
@@ -262,6 +280,7 @@
   <div class="form-group row">
     <label class="col-sm-2">REASON:</label>
     <div class="col-sm-10">
+      {{field-error field=form.validationResult.eight_reason}}
       {{#if noneditable}}
         {{form.eight_reason}}
       {{else}}
@@ -273,6 +292,7 @@
   <div class="form-group row">
     <label class="col-sm-2">DISH STATUS:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.eight_disch_status}}
       {{#if noneditable}}
         {{form.eight_disch_status}}
       {{else}}
@@ -282,6 +302,7 @@
 
     <label class="col-sm-2">DISH DATE:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.eight_disch_date_formatted}}
       {{#if noneditable}}
         {{date-format form.eight_disch_date "YYYY-MM-DD" "MMM DD YYYY"}}
       {{else}}
@@ -295,6 +316,7 @@
   <div class="form-group row">
     <label class="col-sm-2">LAST PHYSICIAN VISIT:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.eight_lpv2_formatted}}
       {{#if noneditable}}
         {{date-format form.eight_lpv2 "YYYY-MM-DD" "MMM DD YYYY"}}
       {{else}}
@@ -306,6 +328,7 @@
   <div class="form-group row">
     <label class="col-sm-2">TREATING PHYSICIAN:</label>
     <div class="col-sm-10">
+      {{field-error field=form.validationResult.eight_tp2}}
       {{#if noneditable}}
         {{form.eight_tp2}}
       {{else}}
@@ -317,6 +340,7 @@
   <div class="form-group row">
     <label class="col-sm-2">REASON:</label>
     <div class="col-sm-10">
+      {{field-error field=form.validationResult.eight_reason2}}
       {{#if noneditable}}
         {{form.eight_reason2}}
       {{else}}
@@ -328,6 +352,7 @@
   <div class="form-group row">
     <label class="col-sm-2">STATUS:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.eight_status}}
       {{#if noneditable}}
         {{form.eight_status}}
       {{else}}
@@ -341,6 +366,7 @@
   <div class="form-group row">
     <label class="col-sm-5">LIST ANY CURRENT MEDICATIONS YOU ARE TAKING AND THE REASON FOR SUCH MEDICATION:</label>
     <div class="col-sm-7">
+      {{field-error field=form.validationResult.eight_lacmyatatrfsm}}
       {{#if noneditable}}
         {{form.eight_lacmyatatrfsm}}
       {{else}}
@@ -352,6 +378,7 @@
   <div class="form-group row">
     <label class="col-sm-5">LIST ANY KNOWN ALERGIES YOU HAVE:</label>
     <div class="col-sm-7">
+      {{field-error field=form.validationResult.eight_lakayh}}
       {{#if noneditable}}
         {{form.eight_lakayh}}
       {{else}}
@@ -363,6 +390,7 @@
   <div class="form-group row">
     <label class="col-sm-5">CURRENT MEDICAL COMPLAINTS:</label>
     <div class="col-sm-7">
+      {{field-error field=form.validationResult.eight_cmc}}
       {{#if noneditable}}
         {{form.eight_cmc}}
       {{else}}
@@ -376,6 +404,7 @@
   <div class="form-group row">
     <label class="col-sm-2">Other medical history narrative:</label>
     <div class="col-sm-10">
+      {{field-error field=form.validationResult.eight_omhn}}
       {{#if noneditable}}
         {{form.eight_omhn}}
       {{else}}
