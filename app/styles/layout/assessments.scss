@@ -1,0 +1,27 @@
+section.assessments-request-block {
+  .assessment-tab {
+    padding-top: 10px;
+  }
+
+  li.assessment-list-item {
+    padding: 10px;
+
+    .assessment-wrapper {
+      @include list-wrapper();
+
+      .main {
+        .started {
+          color: #f0ad4e;
+        }
+
+        .completed {
+          color: #5cb85c;
+        }
+
+        .not-started {
+          color: #d9534f;
+        }
+      }
+    }
+  }
+}

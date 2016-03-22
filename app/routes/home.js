@@ -22,13 +22,15 @@ export default Route.extend(Api, {
   doctors: service(),
   assessors: service(),
   appointments: service(),
+  assessments: service(),
 
   model() {
     const self     = this;
     const session  = self.get('session');
     const promises = {
       clients: self.get('clients').getClients(),
-      appointments: self.get('appointments').getAppointments()
+      appointments: self.get('appointments').getAppointments(),
+      assessments: self.get('assessments').getAssessments()
     };
 
     if (session.get('role_admin') || session.get('role_super_admin') ||
@@ -39,12 +41,15 @@ export default Route.extend(Api, {
 
     return new Promise((resolve) => {
       hash(promises).then((promises) => {
-        resolve(HomeModel.create(_.pick(promises, [
+        const model = HomeModel.create(_.pick(promises, [
           'clients',
           'appointments',
           'doctors',
-          'assessors'
-        ])));
+          'assessors',
+          'assessments'
+        ]));
+
+        resolve(model);
       });
     });
   },
