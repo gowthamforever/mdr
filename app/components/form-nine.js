@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import Form from 'mdr/models/form';
 import Api from 'mdr/mixins/api';
+import EmberValidator from 'ember-validator';
 
 const {
   Component,
@@ -12,7 +13,7 @@ const {
   service
 } = inject;
 
-export default Component.extend(Api, {
+export default Component.extend(Api, EmberValidator, {
   appointments: service(),
 
   props: [
@@ -33,35 +34,65 @@ export default Component.extend(Api, {
     this.set_form(this.get('form_model'), Form.create());
   }),
 
+  validations(model) {
+    return {
+      ten_dim1: {
+        required: 'This field is required'
+      },
+      ten_dim2: {
+        required: 'This field is required'
+      },
+      ten_dim3: {
+        required: 'This field is required'
+      },
+      ten_dim4: {
+        required: 'This field is required'
+      },
+      ten_dim5: {
+        required: 'This field is required'
+      },
+      ten_dim6: {
+        required: 'This field is required'
+      }
+    };
+  },
+
   actions: {
     next() {
       const self        = this;
       const appointment = self.get('model');
       const page        = this.get('page');
-      const form        = this.get('form');
+      let form          = this.get('form');
+      const validations = this.validations(form);
       let data;
+
+      form.set('validationResult', null);
 
       if (appointment.get('completed')) {
         if (page) {
           page(10);
         }
       } else {
-        data = _.pick(form, self.get('props'));
+        self.validateMap({ form, validations }).then(() => {
+          data = _.pick(form, self.get('props'));
 
-        self.ajax({
-          id: 'assessmentformpost',
-          path: {
-            id: appointment.get('id'),
-            pageNo: 9
-          },
-          data
-        }).then(() => {
-          self.set('appointments.cache', false);
-          self.set_form(form, self.get('form_model'));
-          if (page) {
-            page(10);
-          }
-        }).catch(Ember.K);
+          self.ajax({
+            id: 'assessmentformpost',
+            path: {
+              id: appointment.get('id'),
+              pageNo: 9
+            },
+            data
+          }).then(() => {
+            self.set('appointments.cache', false);
+            self.set_form(form, self.get('form_model'));
+            if (page) {
+              page(10);
+            }
+          }).catch(Ember.K);
+        }).catch((validationResult) => {
+          form.set('validationResult', validationResult);
+        });
       }
     },
 
