@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import Form from 'mdr/models/form';
 import Api from 'mdr/mixins/api';
+import EmberValidator from 'ember-validator';
 
 const {
   Component,
@@ -12,7 +13,7 @@ const {
   service
 } = inject;
 
-export default Component.extend(Api, {
+export default Component.extend(Api, EmberValidator, {
   appointments: service(),
 
   props: [
@@ -63,41 +64,161 @@ export default Component.extend(Api, {
     this.set_form(this.get('form_model'), Form.create());
   }),
 
+  validations(model) {
+    return {
+      five_notywatabauip12m: {
+        required: 'This field is required'
+      },
+      five_notywatmtpip24m: {
+        required: 'This field is required'
+      },
+      five_ecotfmt: {
+        required: 'This field is required'
+      },
+      five_efteimht: {
+        required: 'This field is required'
+      },
+      five_last_baker_act_admit: {
+        required: 'This field is required'
+      },
+      five_length_of_stay: {
+        required: 'This field is required'
+      },
+      five_agency: {
+        required: 'This field is required'
+      },
+      five_treating_psychiatrist: {
+        required: 'This field is required'
+      },
+      five_reason: {
+        required: 'This field is required'
+      },
+      five_disch_status: {
+        required: 'This field is required'
+      },
+      five_disch_date: {
+        required: 'This field is required'
+      },
+      five_last_baker_act_admit2: {
+        required: 'This field is required'
+      },
+      five_length_of_stay2: {
+        required: 'This field is required'
+      },
+      five_agency2: {
+        required: 'This field is required'
+      },
+      five_treating_psychiatrist2: {
+        required: 'This field is required'
+      },
+      five_reason2: {
+        required: 'This field is required'
+      },
+      five_disch_status2: {
+        required: 'This field is required'
+      },
+      five_disch_date2: {
+        required: 'This field is required'
+      },
+      five_dyhmcm: {
+        required: 'This field is required'
+      },
+      five_aycrmht: {
+        required: 'This field is required'
+      },
+      five_dyfymth: {
+        required: 'This field is required'
+      },
+      five_dyaamcsg: {
+        required: 'This field is required'
+      },
+      five_orientation: {
+        required: 'This field is required'
+      },
+      five_cc: {
+        required: 'This field is required'
+      },
+      five_nps: {
+        required: 'This field is required'
+      },
+      five_mood_affect: {
+        required: 'This field is required'
+      },
+      five_actamhm: {
+        required: 'This field is required'
+      },
+      five_lmhmyhtip12m: {
+        required: 'This field is required'
+      },
+      five_dolsa: {
+        required: 'This field is required'
+      },
+      five_siip30d: {
+        required: 'This field is required'
+      },
+      five_afmwhomp: {
+        required: 'This field is required'
+      },
+      five_crmhs: {
+        required: 'This field is required'
+      },
+      five_daeudiyhe: {
+        required: 'This field is required'
+      },
+      five_duhashre: {
+        required: 'This field is required'
+      },
+      five_dyfud: {
+        required: 'This field is required'
+      },
+      five_ophn: {
+        required: 'This field is required'
+      }
+    };
+  },
+
   actions: {
     next() {
       const self        = this;
       const appointment = self.get('model');
       const page        = this.get('page');
       const form        = this.get('form');
+      const validations = this.validations(form);
       let data;
+
+      form.set('validationResult', null);
 
       if (appointment.get('completed')) {
         if (page) {
           page(5);
         }
       } else {
-        data = _.pick(form, self.get('props'));
+        self.validateMap({ form, validations }).then(() => {
+          data = _.pick(form, self.get('props'));
 
-        data.five_last_baker_act_admit = moment(form.get('five_last_baker_act_admit_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-        data.five_disch_date = moment(form.get('five_disch_date_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-        data.five_last_baker_act_admit2 = moment(form.get('five_last_baker_act_admit2_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-        data.five_disch_date2 = moment(form.get('five_disch_date2_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-        data.five_dolsa = moment(form.get('five_dolsa_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+          data.five_last_baker_act_admit = moment(form.get('five_last_baker_act_admit_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+          data.five_disch_date = moment(form.get('five_disch_date_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+          data.five_last_baker_act_admit2 = moment(form.get('five_last_baker_act_admit2_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+          data.five_disch_date2 = moment(form.get('five_disch_date2_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+          data.five_dolsa = moment(form.get('five_dolsa_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
 
-        self.ajax({
-          id: 'assessmentformpost',
-          path: {
-            id: appointment.get('id'),
-            pageNo: 4
-          },
-          data
-        }).then(() => {
-          self.set('appointments.cache', false);
-          self.set_form(form, self.get('form_model'));
-          if (page) {
-            page(5);
-          }
-        }).catch(Ember.K);
+          self.ajax({
+            id: 'assessmentformpost',
+            path: {
+              id: appointment.get('id'),
+              pageNo: 4
+            },
+            data
+          }).then(() => {
+            self.set('appointments.cache', false);
+            self.set_form(form, self.get('form_model'));
+            if (page) {
+              page(5);
+            }
+          }).catch(Ember.K);
+        }).catch((validationResult) => {
+          form.set('validationResult', validationResult);
+        });
       }
     },
 

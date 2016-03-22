@@ -9,6 +9,7 @@
   <div class="form-group row">
     <label class="col-sm-7">NUMBER OF TIMES YOU WERE ADMITTED TO A BAKER UNIT IN PAST 12 MONTHS:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.five_notywatabauip12m}}
       {{#if noneditable}}
         {{form.five_notywatabauip12m}}
       {{else}}
@@ -20,6 +21,7 @@
   <div class="form-group row">
     <label class="col-sm-7">NUMBER OF TIMES YOU WERE ADMITTED TO A MH TREATMENT PROGRAM IN PAST 24 MONTHS:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.five_notywatmtpip24m}}
       {{#if noneditable}}
         {{form.five_notywatmtpip24m}}
       {{else}}
@@ -31,6 +33,7 @@
   <div class="form-group row">
     <label class="col-sm-7">EVER COURT ORDERED TO FOR MENTAL TREATMENT:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.five_ecotfmt}}
       {{#if noneditable}}
         {{form.five_ecotfmt}}
       {{else}}
@@ -53,6 +56,7 @@
   <div class="form-group row">
     <label class="col-sm-7">EVER FORCED TO ENROLL IN MENTAL HEALTH TREATMENT:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.five_efteimht}}
       {{#if noneditable}}
         {{form.five_efteimht}}
       {{else}}
@@ -77,6 +81,7 @@
   <div class="form-group row">
     <label class="col-sm-2">LAST BAKER ACT ADMIT:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.five_last_baker_act_admit_formatted}}
       {{#if noneditable}}
         {{date-format form.five_last_baker_act_admit "YYYY-MM-DD" "MMM DD YYYY"}}
       {{else}}
@@ -86,6 +91,7 @@
 
     <label class="col-sm-2">LENGTH OF STAY:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.five_length_of_stay}}
       {{#if noneditable}}
         {{form.five_length_of_stay}}
       {{else}}
@@ -97,6 +103,7 @@
   <div class="form-group row">
     <label class="col-sm-2">AGENCY:</label>
     <div class="col-sm-10">
+      {{field-error field=form.validationResult.five_agency}}
       {{#if noneditable}}
         {{form.five_agency}}
       {{else}}
@@ -108,6 +115,7 @@
   <div class="form-group row">
     <label class="col-sm-2">TREATING PSYCHIATRIC:</label>
     <div class="col-sm-10">
+      {{field-error field=form.validationResult.five_treating_psychiatrist}}
       {{#if noneditable}}
         {{form.five_treating_psychiatrist}}
       {{else}}
@@ -119,6 +127,7 @@
   <div class="form-group row">
     <label class="col-sm-2">REASON:</label>
     <div class="col-sm-10">
+      {{field-error field=form.validationResult.five_reason}}
       {{#if noneditable}}
         {{form.five_reason}}
       {{else}}
@@ -130,6 +139,7 @@
   <div class="form-group row">
     <label class="col-sm-2">DISH STATUS:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.five_disch_status}}
       {{#if noneditable}}
         {{form.five_disch_status}}
       {{else}}
@@ -139,6 +149,7 @@
 
     <label class="col-sm-2">DISH DATE:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.five_disch_date_formatted}}
       {{#if noneditable}}
         {{date-format form.five_disch_date "YYYY-MM-DD" "MMM DD YYYY"}}
       {{else}}
@@ -152,6 +163,7 @@
   <div class="form-group row">
     <label class="col-sm-2">LAST BAKER ACT ADMIT:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.five_last_baker_act_admit2_formatted}}
       {{#if noneditable}}
         {{date-format form.five_last_baker_act_admit2 "YYYY-MM-DD" "MMM DD YYYY"}}
       {{else}}
@@ -161,6 +173,7 @@
 
     <label class="col-sm-2">LENGTH OF STAY:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.five_length_of_stay2}}
       {{#if noneditable}}
         {{form.five_length_of_stay2}}
       {{else}}
@@ -172,6 +185,7 @@
   <div class="form-group row">
     <label class="col-sm-2">AGENCY:</label>
     <div class="col-sm-10">
+      {{field-error field=form.validationResult.five_agency2}}
       {{#if noneditable}}
         {{form.five_agency2}}
       {{else}}
@@ -183,6 +197,7 @@
   <div class="form-group row">
     <label class="col-sm-2">TREATING PSYCHIATRIC:</label>
     <div class="col-sm-10">
+      {{field-error field=form.validationResult.five_treating_psychiatrist2}}
       {{#if noneditable}}
         {{form.five_treating_psychiatrist2}}
       {{else}}
@@ -194,6 +209,7 @@
   <div class="form-group row">
     <label class="col-sm-2">REASON:</label>
     <div class="col-sm-10">
+      {{field-error field=form.validationResult.five_reason2}}
       {{#if noneditable}}
         {{form.five_reason2}}
       {{else}}
@@ -205,6 +221,7 @@
   <div class="form-group row">
     <label class="col-sm-2">DISH STATUS:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.five_disch_status2}}
       {{#if noneditable}}
         {{form.five_disch_status2}}
       {{else}}
@@ -214,6 +231,7 @@
 
     <label class="col-sm-2">DISH DATE:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.five_disch_date2_formatted}}
       {{#if noneditable}}
         {{date-format form.five_disch_date2 "YYYY-MM-DD" "MMM DD YYYY"}}
       {{else}}
@@ -227,6 +245,7 @@
   <div class="form-group row">
     <label class="col-sm-7">DO YOU HAVE MH CASE MANAGER:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.five_dyhmcm}}
       {{#if noneditable}}
         {{form.five_dyhmcm}}
       {{else}}
@@ -249,6 +268,7 @@
   <div class="form-group row">
     <label class="col-sm-7">ARE YOU CURRENTLY RECEIVING MENTAL HEALTH TREATMENT:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.five_aycrmht}}
       {{#if noneditable}}
         {{form.five_aycrmht}}
       {{else}}
@@ -271,6 +291,7 @@
   <div class="form-group row">
     <label class="col-sm-7">DID YOU FIND YOUR MH TREATMENT HELPFUL:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.five_dyfymth}}
       {{#if noneditable}}
         {{form.five_dyfymth}}
       {{else}}
@@ -293,6 +314,7 @@
   <div class="form-group row">
     <label class="col-sm-7">DID YOU ATTEND ANY MH COMMUNITY SUPPORT GROUPS:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.five_dyaamcsg}}
       {{#if noneditable}}
         {{form.five_dyaamcsg}}
       {{else}}
@@ -315,6 +337,7 @@
   <div class="form-group row">
     <label class="col-sm-7">ORIENTATION(time, day, place, year):</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.five_orientation}}
       {{#if noneditable}}
         {{form.five_orientation}}
       {{else}}
@@ -331,6 +354,7 @@
   <div class="form-group row">
     <label class="col-sm-7">COMMUNITY COHERENTLY:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.five_cc}}
       {{#if noneditable}}
         {{form.five_cc}}
       {{else}}
@@ -342,6 +366,7 @@
   <div class="form-group row">
     <label class="col-sm-7">NOTICEABLE PSYCHIATRIC SYMPTOMS:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.five_nps}}
       {{#if noneditable}}
         {{form.five_nps}}
       {{else}}
@@ -353,6 +378,7 @@
   <div class="form-group row">
     <label class="col-sm-7">MOOD/AFFECT (sad, bad, glad, mad):</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.five_mood_affect}}
       {{#if noneditable}}
         {{form.five_mood_affect}}
       {{else}}
@@ -371,6 +397,7 @@
   <div class="form-group row">
     <label class="col-sm-4">ARE YOU CURRENTLY TAKING ANY MENTAL HEALTH MEDICATIONS:</label>
     <div class="col-sm-8">
+      {{field-error field=form.validationResult.five_actamhm}}
       {{#if noneditable}}
         {{form.five_actamhm}}
       {{else}}
@@ -393,6 +420,7 @@
   <div class="form-group row">
     <label class="col-sm-4">LIST MENTAL HEALTH MEDICATIONS YOU HAVE TAKEN IN THE PAST 12 MONTHS:</label>
     <div class="col-sm-8">
+      {{field-error field=form.validationResult.five_lmhmyhtip12m}}
       {{#if noneditable}}
         {{form.five_lmhmyhtip12m}}
       {{else}}
@@ -406,6 +434,7 @@
   <div class="form-group row">
     <label class="col-sm-7">DATE OF LAST SUICIDE ATTEMPT:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.five_dolsa_formatted}}
       {{#if noneditable}}
         {{date-format form.five_dolsa "YYYY-MM-DD" "MMM DD YYYY"}}
       {{else}}
@@ -417,6 +446,7 @@
   <div class="form-group row">
     <label class="col-sm-7">SUCIDA IDEATION IN PAST 30 DAYS:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.five_siip30d}}
       {{#if noneditable}}
         {{form.five_siip30d}}
       {{else}}
@@ -439,6 +469,7 @@
   <div class="form-group row">
     <label class="col-sm-7">ANY FAMILY MEMEBERS WITH HISTORY OF MH PROBLEMS:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.five_afmwhomp}}
       {{#if noneditable}}
         {{form.five_afmwhomp}}
       {{else}}
@@ -461,6 +492,7 @@
   <div class="form-group row">
     <label class="col-sm-7">CURRENTLY REQUIRES MENTAL HEALTH SERVICES:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.five_crmhs}}
       {{#if noneditable}}
         {{form.five_crmhs}}
       {{else}}
@@ -485,6 +517,7 @@
   <div class="form-group row">
     <label class="col-sm-7">DOES ANYONE ELSE USE DRUGS IN YOUR HOME ENVIRONMENT:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.five_daeudiyhe}}
       {{#if noneditable}}
         {{form.five_daeudiyhe}}
       {{else}}
@@ -507,6 +540,7 @@
   <div class="form-group row">
     <label class="col-sm-7">DOES YOU HAVE A SUPPORTIVE HOME RECOVERY ENVIRONMENT:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.five_duhashre}}
       {{#if noneditable}}
         {{form.five_duhashre}}
       {{else}}
@@ -529,6 +563,7 @@
   <div class="form-group row">
     <label class="col-sm-7">DOES YOUR FRIENDS USE DRUGS:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.five_dyfud}}
       {{#if noneditable}}
         {{form.five_dyfud}}
       {{else}}
@@ -553,6 +588,7 @@
   <div class="form-group row">
     <label class="col-sm-2">Other psychiatric history narrative:</label>
     <div class="col-sm-10">
+      {{field-error field=form.validationResult.five_ophn}}
       {{#if noneditable}}
         {{form.five_ophn}}
       {{else}}
