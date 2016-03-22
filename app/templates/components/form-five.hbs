@@ -9,6 +9,7 @@
   <div class="form-group row">
     <label class="col-sm-7">NUMBER OF TIMES YOU WERE ARRESTED IN PAST 12 MONTHS:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.six_notywaip12m}}
       {{#if noneditable}}
         {{form.six_notywaip12m}}
       {{else}}
@@ -20,6 +21,7 @@
   <div class="form-group row">
     <label class="col-sm-7">DATE OF LAST ARREST:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.six_date_of_last_arrest_formatted}}
       {{#if noneditable}}
         {{date-format form.six_date_of_last_arrest "YYYY-MM-DD" "MMM DD YYYY"}}
       {{else}}
@@ -31,6 +33,7 @@
   <div class="form-group row">
     <label class="col-sm-7">REASON FOR LAST ARREST:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.six_reason_for_last_arrest}}
       {{#if noneditable}}
         {{form.six_reason_for_last_arrest}}
       {{else}}
@@ -42,6 +45,7 @@
   <div class="form-group row">
     <label class="col-sm-7">WAS THE LAST ARREST DRUG/ALCOHAL RELATED:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.six_wladar}}
       {{#if noneditable}}
         {{form.six_wladar}}
       {{else}}
@@ -64,6 +68,7 @@
   <div class="form-group row">
     <label class="col-sm-7">TYPE OF DRUG USED IN LAST ARREST:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.six_toduptla}}
       {{#if noneditable}}
         {{form.six_toduptla}}
       {{else}}
@@ -80,6 +85,7 @@
   <div class="form-group row">
     <label class="col-sm-7">EVER HURT ANYONE WHILE USING DRUG/ALCOHAL:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.six_ehawuda}}
       {{#if noneditable}}
         {{form.six_ehawuda}}
       {{else}}
@@ -104,6 +110,7 @@
   <div class="form-group row">
     <label class="col-sm-7">ARE YOU CURRENTLY INVOLVED IN THE CRIMAINAL JUSTICE SYSTEM:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.six_ayciicjs}}
       {{#if noneditable}}
         {{form.six_ayciicjs}}
       {{else}}
@@ -126,6 +133,7 @@
   <div class="form-group row">
     <label class="col-sm-7">ARE YOU CURRENTLY UNDER LEGAL SUPERVISION:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.six_ayculs}}
       {{#if noneditable}}
         {{form.six_ayculs}}
       {{else}}
@@ -148,6 +156,7 @@
   <div class="form-group row">
     <label class="col-sm-7">WERE YOU ON PROBATION AT ARREST:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.six_wyopaa}}
       {{#if noneditable}}
         {{form.six_wyopaa}}
       {{else}}
@@ -170,6 +179,7 @@
   <div class="form-group row">
     <label class="col-sm-7">PROBATION OFFICER'S NAME:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.six_pon}}
       {{#if noneditable}}
         {{form.six_pon}}
       {{else}}
@@ -181,6 +191,7 @@
   <div class="form-group row">
     <label class="col-sm-7">PROBATION OFFICER'S PHONE NUMBER:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.six_popn}}
       {{#if noneditable}}
         {{form.six_popn}}
       {{else}}
@@ -192,6 +203,7 @@
   <div class="form-group row">
     <label class="col-sm-7">TYPE OF DRUG USED PRIOR TO LAST ARREST:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.six_toduptla2}}
       {{#if noneditable}}
         {{form.six_toduptla2}}
       {{else}}
@@ -208,6 +220,7 @@
   <div class="form-group row">
     <label class="col-sm-7">WERE YOU ORDERED TO TX AS A CONDITION OF PROBATION:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.six_wyottaacop}}
       {{#if noneditable}}
         {{form.six_wyottaacop}}
       {{else}}
@@ -232,6 +245,7 @@
   <div class="form-group row">
     <label class="col-sm-7">WERE YOU COURT ORDERED TO TREATMENT:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.six_wycott}}
       {{#if noneditable}}
         {{form.six_wycott}}
       {{else}}
@@ -254,6 +268,7 @@
   <div class="form-group row">
     <label class="col-sm-7">IF SO, BY JUDGE:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.six_isbj}}
       {{#if noneditable}}
         {{form.six_isbj}}
       {{else}}
@@ -265,6 +280,7 @@
   <div class="form-group row">
     <label class="col-sm-7">IF SO, BY COURT:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.six_isbc}}
       {{#if noneditable}}
         {{form.six_isbc}}
       {{else}}
@@ -278,6 +294,7 @@
   <div class="form-group row">
     <label class="col-sm-2">Other legal history narrative:</label>
     <div class="col-sm-10">
+      {{field-error field=form.validationResult.six_olhn}}
       {{#if noneditable}}
         {{form.six_olhn}}
       {{else}}
