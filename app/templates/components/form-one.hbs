@@ -47,6 +47,7 @@
   <div class="form-group row">
     <label class="col-sm-2">{{upper-case "Race:"}}</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.one_race}}
       {{#if noneditable}}
         {{form.one_race}}
       {{else}}
@@ -62,6 +63,7 @@
 
     <label class="col-sm-2">{{upper-case "Ethnicity:"}}</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.one_ethnicity}}
       {{#if noneditable}}
         {{form.one_ethnicity}}
       {{else}}
@@ -79,6 +81,7 @@
   <div class="form-group row">
     <label class="col-sm-2">{{upper-case "Gender:"}}</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.one_gender}}
       {{#if noneditable}}
         {{form.one_gender}}
       {{else}}
@@ -99,6 +102,7 @@
 
     <label class="col-sm-2">{{upper-case "SSN:"}}</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.one_ssn}}
       {{#if noneditable}}
         {{form.one_ssn}}
       {{else}}
@@ -110,6 +114,7 @@
   <div class="form-group row">
     <label class="col-sm-2">{{upper-case "Date of Birth:"}}</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.one_dob_formatted}}
       {{#if noneditable}}
         {{date-format form.one_dob "YYYY-MM-DD" "MMM DD YYYY"}}
       {{else}}
@@ -139,6 +144,7 @@
   <div class="form-group row">
     <label class="col-sm-2">{{upper-case "Referal Source:"}}</label>
     <div class="col-sm-10">
+      {{field-error field=form.validationResult.two_referral_source}}
       {{#if noneditable}}
         {{form.two_referral_source}}
       {{else}}
@@ -150,6 +156,7 @@
   <div class="form-group row">
     <label class="col-sm-2">{{upper-case "Referal Contact Name:"}}</label>
     <div class="col-sm-10">
+      {{field-error field=form.validationResult.two_referral_contact_name}}
       {{#if noneditable}}
         {{form.two_referral_contact_name}}
       {{else}}
@@ -161,6 +168,7 @@
   <div class="form-group row">
     <label class="col-sm-2">{{upper-case "Referal Agency Name:"}}</label>
     <div class="col-sm-10">
+      {{field-error field=form.validationResult.two_referral_agency_name}}
       {{#if noneditable}}
         {{form.two_referral_agency_name}}
       {{else}}
@@ -172,6 +180,7 @@
   <div class="form-group row">
     <label class="col-sm-2">{{upper-case "Contact Phone#:"}}</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.two_contact_phone}}
       {{#if noneditable}}
         {{form.two_contact_phone}}
       {{else}}
@@ -183,6 +192,7 @@
   <div class="form-group row">
     <label class="col-sm-2">{{upper-case "Child Welfare Case:"}}</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.two_child_welfare_case}}
       {{#if noneditable}}
         {{form.two_child_welfare_case}}
       {{else}}
@@ -202,6 +212,7 @@
     </div>
     <label class="col-sm-2">{{upper-case "Marchman Act Case:"}}</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.two_marchman_act_case}}
       {{#if noneditable}}
         {{form.two_marchman_act_case}}
       {{else}}
@@ -224,6 +235,7 @@
   <div class="form-group row">
     <label class="col-sm-2">{{upper-case "Criminal Justice Case:"}}</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.two_criminal_justice_case}}
       {{#if noneditable}}
         {{form.two_criminal_justice_case}}
       {{else}}
@@ -243,6 +255,7 @@
     </div>
     <label class="col-sm-2">{{upper-case "Drug Court:"}}</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.two_drug_court}}
       {{#if noneditable}}
         {{form.two_drug_court}}
       {{else}}
@@ -265,6 +278,7 @@
   <div class="form-group row">
     <label class="col-sm-2">{{upper-case "Referral Date:"}}</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.two_referral_date_formatted}}
       {{#if noneditable}}
         {{date-format form.two_referral_date "YYYY-MM-DD" "MMM DD YYYY"}}
       {{else}}
@@ -274,6 +288,7 @@
 
     <label class="col-sm-2">{{upper-case "Time:"}}</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.two_time}}
       {{#if noneditable}}
         {{form.two_time}}
       {{else}}
@@ -285,6 +300,7 @@
   <div class="form-group row">
     <label class="col-sm-2">{{upper-case "Type:"}}</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.two_type}}
       {{#if noneditable}}
         {{form.two_type}}
       {{else}}
@@ -294,6 +310,7 @@
 
     <label class="col-sm-2">{{upper-case "Mode:"}}</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.two_mode}}
       {{#if noneditable}}
         {{form.two_mode}}
       {{else}}
@@ -305,6 +322,7 @@
   <div class="form-group row">
     <label class="col-sm-2">{{upper-case "Case Number:"}}</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.two_case_number}}
       {{#if noneditable}}
         {{form.two_case_number}}
       {{else}}
@@ -316,6 +334,7 @@
   <div class="form-group row">
     <label class="col-sm-2">{{upper-case "Referal Reason:"}}</label>
     <div class="col-sm-10">
+      {{field-error field=form.validationResult.two_referral_reason}}
       {{#if noneditable}}
         {{form.two_referral_reason}}
       {{else}}
@@ -329,6 +348,7 @@
   <div class="form-group row">
     <label class="col-sm-2">{{upper-case "Please describe Precipitating Factor(s):"}}</label>
     <div class="col-sm-10">
+      {{field-error field=form.validationResult.two_pdpf}}
       {{#if noneditable}}
         {{form.two_pdpf}}
       {{else}}
