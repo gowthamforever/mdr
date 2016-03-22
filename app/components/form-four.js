@@ -182,7 +182,7 @@ export default Component.extend(Api, EmberValidator, {
       const self        = this;
       const appointment = self.get('model');
       const page        = this.get('page');
-      const form        = this.get('form');
+      let form          = this.get('form');
       const validations = this.validations(form);
       let data;
 
