@@ -1,0 +1,18 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Forms</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each model as |form|}}
+      <tr>
+        <td>
+          {{#link-to form.route}}
+            {{form.name}}
+          {{/link-to}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
