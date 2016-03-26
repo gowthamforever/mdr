@@ -9,7 +9,7 @@
     </div>
     {{#if (or session.role_doctor session.role_assessor)}}
       {{#unless opentok.fullscreen}}
-        {{abuse-form model=model class="form-block col-md-12" noneditable=model.completed}}
+        {{abuse-form model=model class="form-block col-md-12" noneditable=model.form_completed}}
       {{/unless}}
     {{/if}}
   </div>

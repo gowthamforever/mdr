@@ -83,9 +83,12 @@ Router.map(function() {
     });
 
     this.resource('assessments', function() {
-      this.route('not-started', { path: '/' });
-      this.route('started');
-      this.route('completed');
+      this.route('status', { path: '/' }, function() {
+        this.route('started', { path: '/' });
+        this.route('completed');
+      });
+
+      this.route('samha-form', { path: '/:id/forms' });
     });
   });
 

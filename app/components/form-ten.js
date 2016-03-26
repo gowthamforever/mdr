@@ -14,6 +14,7 @@ const {
 
 export default Component.extend(Api, {
   appointments: service(),
+  assessments: service(),
   assessment_date: moment(),
 
   props: [
@@ -46,7 +47,7 @@ export default Component.extend(Api, {
       const form        = this.get('form');
       let data;
 
-      if (!appointment.get('completed')) {
+      if (!appointment.get('form_completed')) {
         data = _.pick(form, self.get('props'));
 
         data.eleven_atdate = self.get('assessment_date').format('YYYY-MM-DD');
@@ -70,6 +71,7 @@ export default Component.extend(Api, {
           data
         }).then(() => {
           self.set('appointments.cache', false);
+          self.set('assessments.cache', false);
           self.set_form(form, self.get('form_model'));
           if (page) {
             page(11);

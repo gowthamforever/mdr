@@ -56,11 +56,11 @@
           <div class="col-sm-8">{{model.alt_info}}</div>
         </div>
 
-        {{#if (and (or session.role_doctor session.role_assessor) (or model.form_started model.completed))}}
+        {{#if (and (or session.role_doctor session.role_assessor) (or model.form_started model.form_completed))}}
           <div class="form-group row">
             <div class="col-sm-12">
               {{#link-to "appointments.abuse-form" model}}
-                {{if model.completed 'View Form' 'Continue filling the Form'}}
+                {{if model.form_completed 'View Form' 'Continue filling the Form'}}
               {{/link-to}}
             </div>
           </div>

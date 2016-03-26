@@ -15,6 +15,7 @@ const {
 
 export default Component.extend(Api, {
   appointments: service(),
+  assessments: service(),
 
   props: [
     'one_race',
@@ -56,7 +57,7 @@ export default Component.extend(Api, {
       const form        = this.get('form');
       let data;
 
-      if (appointment.get('completed')) {
+      if (appointment.get('form_completed')) {
         if (page) {
           page(2);
         }
@@ -77,6 +78,7 @@ export default Component.extend(Api, {
           data
         }).then(() => {
           self.set('appointments.cache', false);
+          self.set('assessments.cache', false);
           self.set_form(form, self.get('form_model'));
           if (page) {
             page(2);
