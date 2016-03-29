@@ -9,6 +9,7 @@
   <div class="form-group row">
     <label class="col-sm-10">NUMBER OF TIMES YOU WERE ADMITTED TO A DETOX UNIT IN PAST 12 MONTHS:</label>
     <div class="col-sm-2">
+      {{field-error field=form.validationResult.four_notywataduip12m}}
       {{#if noneditable}}
         {{form.four_notywataduip12m}}
       {{else}}
@@ -20,6 +21,7 @@
   <div class="form-group row">
     <label class="col-sm-10">NUMBER OF TIMES YOU WERE ADMITTED TO A SA TREATMENT PROGRAM IN PAST 24 MONTHS:</label>
     <div class="col-sm-2">
+      {{field-error field=form.validationResult.four_notywatstpip24m}}
       {{#if noneditable}}
         {{form.four_notywatstpip24m}}
       {{else}}
@@ -31,6 +33,7 @@
   <div class="form-group row">
     <label class="col-sm-10">EVER COURT ORDERED TO TREATMENT:</label>
     <div class="col-sm-2">
+      {{field-error field=form.validationResult.four_ecott}}
       {{#if noneditable}}
         {{form.four_ecott}}
       {{else}}
@@ -53,6 +56,7 @@
   <div class="form-group row">
     <label class="col-sm-10">EVER FORCED TO ENROLL IN TREATMENT:</label>
     <div class="col-sm-2">
+      {{field-error field=form.validationResult.four_efteit}}
       {{#if noneditable}}
         {{form.four_efteit}}
       {{else}}
@@ -77,6 +81,7 @@
   <div class="form-group row">
     <label class="col-sm-2">LAST DETOX ADMIT:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.four_last_detox_admit_formatted}}
       {{#if noneditable}}
         {{date-format form.four_last_detox_admit "YYYY-MM-DD" "MMM DD YYYY"}}
       {{else}}
@@ -86,6 +91,7 @@
 
     <label class="col-sm-2">LENGTH OF STAY:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.four_last_detox_admit_lentgh_of_stay}}
       {{#if noneditable}}
         {{form.four_last_detox_admit_lentgh_of_stay}}
       {{else}}
@@ -97,6 +103,7 @@
   <div class="form-group row">
     <label class="col-sm-2">TREATING AGENCY:</label>
     <div class="col-sm-10">
+      {{field-error field=form.validationResult.four_treating_agency}}
       {{#if noneditable}}
         {{form.four_treating_agency}}
       {{else}}
@@ -108,6 +115,7 @@
   <div class="form-group row">
     <label class="col-sm-2">DRUG DETOXED FROM:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.four_drug_detoxed_from}}
       {{#if noneditable}}
         {{form.four_drug_detoxed_from}}
       {{else}}
@@ -117,6 +125,7 @@
 
     <label class="col-sm-2">DISH DATE:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.four_drug_detoxed_from_disch_date_formatted}}
       {{#if noneditable}}
         {{date-format form.four_drug_detoxed_from_disch_date "YYYY-MM-DD" "MMM DD YYYY"}}
       {{else}}
@@ -128,6 +137,7 @@
   <div class="form-group row">
     <label class="col-sm-2">DISH STATUS:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.four_detox_disch_status}}
       {{#if noneditable}}
         {{form.four_detox_disch_status}}
       {{else}}
@@ -141,6 +151,7 @@
   <div class="form-group row">
     <label class="col-sm-2">LAST SA TX ADMIT:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.four_last_sa_tx_admit_formatted}}
       {{#if noneditable}}
         {{date-format form.four_last_sa_tx_admit "YYYY-MM-DD" "MMM DD YYYY"}}
       {{else}}
@@ -150,6 +161,7 @@
 
     <label class="col-sm-2">LENGTH OF STAY:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.four_last_sa_tx_admit_length_of_stay}}
       {{#if noneditable}}
         {{form.four_last_sa_tx_admit_length_of_stay}}
       {{else}}
@@ -161,6 +173,7 @@
   <div class="form-group row">
     <label class="col-sm-2">TREATING AGENCY:</label>
     <div class="col-sm-10">
+      {{field-error field=form.validationResult.four_last_sa_tx_admit_treating_agency}}
       {{#if noneditable}}
         {{form.four_last_sa_tx_admit_treating_agency}}
       {{else}}
@@ -172,6 +185,7 @@
   <div class="form-group row">
     <label class="col-sm-2">ADMIT REASON:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.four_admit_reason}}
       {{#if noneditable}}
         {{form.four_admit_reason}}
       {{else}}
@@ -181,6 +195,7 @@
 
     <label class="col-sm-2">DISH DATE:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.four_last_sa_tx_disch_date_formatted}}
       {{#if noneditable}}
         {{date-format form.four_last_sa_tx_disch_date "YYYY-MM-DD" "MMM DD YYYY"}}
       {{else}}
@@ -192,6 +207,7 @@
   <div class="form-group row">
     <label class="col-sm-2">DISH STATUS:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.four_last_sa_tx_disch_status}}
       {{#if noneditable}}
         {{form.four_last_sa_tx_disch_status}}
       {{else}}
@@ -205,6 +221,7 @@
   <div class="form-group row">
     <label class="col-sm-8">AVERAGE CLEAN TIME BETWEEN SA TX DISCHARGES:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.four_actbstd}}
       {{#if noneditable}}
         {{form.four_actbstd}}
       {{else}}
@@ -216,6 +233,7 @@
   <div class="form-group row">
     <label class="col-sm-8">DID YOU FIND TREATMENT HELPFUL:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.four_dyfth}}
       {{#if noneditable}}
         {{form.four_dyfth}}
       {{else}}
@@ -238,6 +256,7 @@
   <div class="form-group row">
     <label class="col-sm-8">LAST TIME YOU ATTENDED AA/NA:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.four_ltyaan_formatted}}
       {{#if noneditable}}
         {{date-format form.four_ltyaan "YYYY-MM-DD" "MMM DD YYYY"}}
       {{else}}
@@ -251,6 +270,7 @@
   <div class="form-group row">
     <label class="col-sm-8">DID YOU HAVE A DRUG OR ALCHOL PROBLEM:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.four_dyhadoap}}
       {{#if noneditable}}
         {{form.four_dyhadoap}}
       {{else}}
@@ -273,6 +293,7 @@
   <div class="form-group row">
     <label class="col-sm-8">DID YOU BELIEVE YOU NEED HELP WITH YOUR DRINGING OR DRUG USE:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.four_dybynhwydodu}}
       {{#if noneditable}}
         {{form.four_dybynhwydodu}}
       {{else}}
@@ -295,6 +316,7 @@
   <div class="form-group row">
     <label class="col-sm-8">DID YOU BELIEVE SA TREATMENT CAN HELP YOU:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.four_dybstchy}}
       {{#if noneditable}}
         {{form.four_dybstchy}}
       {{else}}
@@ -319,6 +341,7 @@
   <div class="form-group row">
     <label class="col-sm-8">HOW DO YOU DESCRIBE YOUR LEVEL OF MOTIVATION FOR RECOVERY:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.four_hwydylomfr}}
       {{#if noneditable}}
         {{form.four_hwydylomfr}}
       {{else}}
@@ -330,6 +353,7 @@
   <div class="form-group row">
     <label class="col-sm-8">IF ADMITTED TO TREATMENT HOW LIKELY ARE YOU TO COMPLETE:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.four_iatthlaytc}}
       {{#if noneditable}}
         {{form.four_iatthlaytc}}
       {{else}}
@@ -341,6 +365,7 @@
   <div class="form-group row">
     <label class="col-sm-8">WOULD YOU LIKE HELP WITH YOUR DRINGKING OR DRUG PROBLEM:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.four_wylhwydodp}}
       {{#if noneditable}}
         {{form.four_wylhwydodp}}
       {{else}}
@@ -365,6 +390,7 @@
   <div class="form-group row">
     <label class="col-sm-8">DOES ANYONE ELSE USE DRUGS IN YOUR HOME ENVIRONMENT:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.four_daeudiyhe}}
       {{#if noneditable}}
         {{form.four_daeudiyhe}}
       {{else}}
@@ -387,6 +413,7 @@
   <div class="form-group row">
     <label class="col-sm-8">DID YOU HAVE A SUPPORTIVE HOME RECOVERY ENVIRONMENT:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.four_dyhashre}}
       {{#if noneditable}}
         {{form.four_dyhashre}}
       {{else}}
@@ -409,6 +436,7 @@
   <div class="form-group row">
     <label class="col-sm-8">DO YOUR FRIENDS USE DRUGS:</label>
     <div class="col-sm-4">
+      {{field-error field=form.validationResult.four_dyfud}}
       {{#if noneditable}}
         {{form.four_dyfud}}
       {{else}}
@@ -433,6 +461,7 @@
   <div class="form-group row">
     <label class="col-sm-2">Other treatment history narrative:</label>
     <div class="col-sm-10">
+      {{field-error field=form.validationResult.four_othn}}
       {{#if noneditable}}
         {{form.four_othn}}
       {{else}}

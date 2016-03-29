@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import Form from 'mdr/models/form';
 import Api from 'mdr/mixins/api';
+import EmberValidator from 'ember-validator';
 
 const {
   Component,
@@ -12,7 +13,7 @@ const {
   service
 } = inject;
 
-export default Component.extend(Api, {
+export default Component.extend(Api, EmberValidator, {
   appointments: service(),
   assessments: service(),
 
@@ -31,12 +32,27 @@ export default Component.extend(Api, {
     this.set_form(this.get('form_model'), Form.create());
   }),
 
+  validations(model) {
+    return {
+      nine_pd: {
+        required: 'This field is required'
+      },
+      nine_sd: {
+        required: 'This field is required'
+      },
+      nine_dir: {
+        required: 'This field is required'
+      }
+    };
+  },
+
   actions: {
     next() {
       const self        = this;
       const appointment = self.get('model');
       const page        = this.get('page');
-      const form        = this.get('form');
+      let form          = this.get('form');
+      const validations = this.validations(form);
       let data;
 
       if (appointment.get('form_completed')) {
@@ -44,7 +60,8 @@ export default Component.extend(Api, {
           page(9);
         }
       } else {
-        data = _.pick(form, self.get('props'));
+        self.validateMap({ form, validations }).then(() => {
+          data = _.pick(form, self.get('props'));
 
         self.ajax({
           id: 'assessmentformpost',
@@ -61,6 +78,23 @@ export default Component.extend(Api, {
             page(9);
           }
         }).catch(Ember.K);
+          self.ajax({
+            id: 'assessmentformpost',
+            path: {
+              id: appointment.get('id'),
+              pageNo: 8
+            },
+            data
+          }).then(() => {
+            self.set('appointments.cache', false);
+            self.set_form(form, self.get('form_model'));
+            if (page) {
+              page(9);
+            }
+          }).catch(Ember.K);
+        }).catch((validationResult) => {
+          form.set('validationResult', validationResult);
+        });
       }
     },
 

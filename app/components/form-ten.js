@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import Form from 'mdr/models/form';
 import Api from 'mdr/mixins/api';
+import EmberValidator from 'ember-validator';
 
 const {
   Component,
@@ -12,7 +13,7 @@ const {
   service
 } = inject;
 
-export default Component.extend(Api, {
+export default Component.extend(Api, EmberValidator, {
   appointments: service(),
   assessments: service(),
   assessment_date: moment(),
@@ -39,13 +40,51 @@ export default Component.extend(Api, {
     this.set_form(this.get('form_model'), Form.create());
   }),
 
+  validations(model) {
+    return {
+      eleven_pr: {
+        required: 'This field is required'
+      },
+      eleven_disposition: {
+        required: 'This field is required'
+      },
+      eleven_rs: {
+        required: 'This field is required'
+      },
+      eleven_ai: {
+        required: 'This field is required'
+      },
+      eleven_at: {
+        required: 'This field is required'
+      },
+      eleven_atdate: {
+        required: 'This field is required'
+      },
+      eleven_s: {
+        required: 'This field is required'
+      },
+      eleven_s_date: {
+        required: 'This field is required'
+      },
+      eleven_eis: {
+        required: 'This field is required'
+      },
+      eleven_eis_date: {
+        required: 'This field is required'
+      }
+    };
+  },
+
   actions: {
     next() {
       const self        = this;
       const appointment = self.get('model');
       const page        = this.get('page');
-      const form        = this.get('form');
+      let form          = this.get('form');
+      const validations = this.validations(form);
       let data;
+
+      form.set('validationResult', null);
 
       if (!appointment.get('form_completed')) {
         data = _.pick(form, self.get('props'));
@@ -62,21 +101,26 @@ export default Component.extend(Api, {
 
         data.eleven_eis = 'Yes';
 
-        self.ajax({
-          id: 'assessmentformpost',
-          path: {
-            id: appointment.get('id'),
-            pageNo: 10
-          },
-          data
-        }).then(() => {
-          self.set('appointments.cache', false);
-          self.set('assessments.cache', false);
-          self.set_form(form, self.get('form_model'));
-          if (page) {
-            page(11);
-          }
-        }).catch(Ember.K);
+        self.validateMap({ form, validations }).then(() => {
+          data = _.pick(form, self.get('props'));
+
+          self.ajax({
+            id: 'assessmentformpost',
+            path: {
+              id: appointment.get('id'),
+              pageNo: 10
+            },
+            data
+          }).then(() => {
+            self.set('appointments.cache', false);
+            self.set_form(form, self.get('form_model'));
+            if (page) {
+              page(11);
+            }
+          }).catch(Ember.K);
+        }).catch((validationResult) => {
+          form.set('validationResult', validationResult);
+        });
       }
     },
 

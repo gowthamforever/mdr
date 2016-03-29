@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import Form from 'mdr/models/form';
 import Api from 'mdr/mixins/api';
+import EmberValidator from 'ember-validator';
 
 const {
   Component,
@@ -12,7 +13,7 @@ const {
   service
 } = inject;
 
-export default Component.extend(Api, {
+export default Component.extend(Api, EmberValidator, {
   appointments: service(),
   assessments: service(),
 
@@ -57,29 +58,125 @@ export default Component.extend(Api, {
     this.set_form(this.get('form_model'), Form.create());
   }),
 
+  validations(model) {
+    return {
+      eight_nothip24m: {
+        required: 'This field is required'
+      },
+      eight_ehdtdoa: {
+        required: 'This field is required'
+      },
+      eight_nosip24m: {
+        required: 'This field is required'
+      },
+      eight_nopad: {
+        required: 'This field is required'
+      },
+      eight_gbip12m: {
+        required: 'This field is required'
+      },
+      eight_cp: {
+        required: 'This field is required'
+      },
+      eight_iphmm: {
+        required: 'This field is required'
+      },
+      eight_lpe: {
+        required: 'This field is required'
+      },
+      eight_lpv: {
+        required: 'This field is required'
+      },
+      eight_lbe: {
+        required: 'This field is required'
+      },
+      eight_lps: {
+        required: 'This field is required'
+      },
+      eight_dyhapp: {
+        required: 'This field is required'
+      },
+      eight_dyhhi: {
+        required: 'This field is required'
+      },
+      eight_lttfh: {
+        required: 'This field is required'
+      },
+      eight_lha: {
+        required: 'This field is required'
+      },
+      eight_los: {
+        required: 'This field is required'
+      },
+      eight_hospital: {
+        required: 'This field is required'
+      },
+      eight_tp: {
+        required: 'This field is required'
+      },
+      eight_reason: {
+        required: 'This field is required'
+      },
+      eight_disch_status: {
+        required: 'This field is required'
+      },
+      eight_disch_date: {
+        required: 'This field is required'
+      },
+      eight_lpv2: {
+        required: 'This field is required'
+      },
+      eight_tp2: {
+        required: 'This field is required'
+      },
+      eight_reason2: {
+        required: 'This field is required'
+      },
+      eight_status: {
+        required: 'This field is required'
+      },
+      eight_lacmyatatrfsm: {
+        required: 'This field is required'
+      },
+      eight_lakayh: {
+        required: 'This field is required'
+      },
+      eight_cmc: {
+        required: 'This field is required'
+      },
+      eight_omhn: {
+        required: 'This field is required'
+      }
+    };
+  },
+
   actions: {
     next() {
       const self        = this;
       const appointment = self.get('model');
       const page        = this.get('page');
-      const form        = this.get('form');
+      let form          = this.get('form');
+      const validations = this.validations(form);
       let data;
+
+      form.set('validationResult', null);
 
       if (appointment.get('form_completed')) {
         if (page) {
           page(8);
         }
       } else {
-        data = _.pick(form, self.get('props'));
+        self.validateMap({ form, validations }).then(() => {
+          data = _.pick(form, self.get('props'));
 
-        data.eight_lpe = moment(form.get('eight_lpe_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-        data.eight_lpv = moment(form.get('eight_lpv_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-        data.eight_lbe = moment(form.get('eight_lbe_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-        data.eight_lbs = moment(form.get('eight_lbs_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-        data.eight_lttfh = moment(form.get('eight_lttfh_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-        data.eight_lha = moment(form.get('eight_lha_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-        data.eight_disch_date = moment(form.get('eight_disch_date_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-        data.eight_lpv2 = moment(form.get('eight_lpv2_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+          data.eight_lpe = moment(form.get('eight_lpe_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+          data.eight_lpv = moment(form.get('eight_lpv_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+          data.eight_lbe = moment(form.get('eight_lbe_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+          data.eight_lbs = moment(form.get('eight_lbs_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+          data.eight_lttfh = moment(form.get('eight_lttfh_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+          data.eight_lha = moment(form.get('eight_lha_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+          data.eight_disch_date = moment(form.get('eight_disch_date_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+          data.eight_lpv2 = moment(form.get('eight_lpv2_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
 
         self.ajax({
           id: 'assessmentformpost',
