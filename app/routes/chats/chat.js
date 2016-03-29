@@ -67,7 +67,7 @@ export default Route.extend(Api, {
     const self         = this;
     const currentTime  = moment();
     const endTime      = moment().endOf('day');
-    const completed    = model.get('completed');
+    const completed    = model.get('form_completed');
     const started      = model.get('form_started');
     let ts_request_moment;
     let ts_request_endtime_moment;

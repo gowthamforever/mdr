@@ -15,6 +15,7 @@ const {
 
 export default Component.extend(Api, EmberValidator, {
   appointments: service(),
+  assessments: service(),
   assessment_date: moment(),
 
   props: [
@@ -85,7 +86,7 @@ export default Component.extend(Api, EmberValidator, {
 
       form.set('validationResult', null);
 
-      if (!appointment.get('completed')) {
+      if (!appointment.get('form_completed')) {
         data = _.pick(form, self.get('props'));
 
         data.eleven_atdate = self.get('assessment_date').format('YYYY-MM-DD');

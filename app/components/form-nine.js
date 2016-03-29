@@ -15,6 +15,7 @@ const {
 
 export default Component.extend(Api, EmberValidator, {
   appointments: service(),
+  assessments: service(),
 
   props: [
     'ten_dim1',
@@ -68,7 +69,7 @@ export default Component.extend(Api, EmberValidator, {
 
       form.set('validationResult', null);
 
-      if (appointment.get('completed')) {
+      if (appointment.get('form_completed')) {
         if (page) {
           page(10);
         }
@@ -76,23 +77,21 @@ export default Component.extend(Api, EmberValidator, {
         self.validateMap({ form, validations }).then(() => {
           data = _.pick(form, self.get('props'));
 
-          self.ajax({
-            id: 'assessmentformpost',
-            path: {
-              id: appointment.get('id'),
-              pageNo: 9
-            },
-            data
-          }).then(() => {
-            self.set('appointments.cache', false);
-            self.set_form(form, self.get('form_model'));
-            if (page) {
-              page(10);
-            }
-          }).catch(Ember.K);
-        }).catch((validationResult) => {
-          form.set('validationResult', validationResult);
-        });
+        self.ajax({
+          id: 'assessmentformpost',
+          path: {
+            id: appointment.get('id'),
+            pageNo: 9
+          },
+          data
+        }).then(() => {
+          self.set('appointments.cache', false);
+          self.set('assessments.cache', false);
+          self.set_form(form, self.get('form_model'));
+          if (page) {
+            page(10);
+          }
+        }).catch(Ember.K);
       }
     },
 

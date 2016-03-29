@@ -16,6 +16,7 @@ const {
 
 export default Component.extend(Api, EmberValidator, {
   appointments: service(),
+  assessments: service(),
 
   props: [
     'six_notywaip12m',
@@ -111,9 +112,7 @@ export default Component.extend(Api, EmberValidator, {
       const validations = this.validations(form);
       let data;
 
-      form.set('validationResult', null);
-
-      if (appointment.get('completed')) {
+      if (appointment.get('form_completed')) {
         if (page) {
           page(6);
         }
@@ -124,23 +123,21 @@ export default Component.extend(Api, EmberValidator, {
           data.six_date_of_last_arrest = moment(form.get('six_date_of_last_arrest_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
           data.six_popn = retainNumbers(form.get('six_popn'));
 
-          self.ajax({
-            id: 'assessmentformpost',
-            path: {
-              id: appointment.get('id'),
-              pageNo: 5
-            },
-            data
-          }).then(() => {
-            self.set('appointments.cache', false);
-            self.set_form(form, self.get('form_model'));
-            if (page) {
-              page(6);
-            }
-          }).catch(Ember.K);
-        }).catch((validationResult) => {
-          form.set('validationResult', validationResult);
-        });
+        self.ajax({
+          id: 'assessmentformpost',
+          path: {
+            id: appointment.get('id'),
+            pageNo: 5
+          },
+          data
+        }).then(() => {
+          self.set('appointments.cache', false);
+          self.set('assessments.cache', false);
+          self.set_form(form, self.get('form_model'));
+          if (page) {
+            page(6);
+          }
+        }).catch(Ember.K);
       }
     },
 

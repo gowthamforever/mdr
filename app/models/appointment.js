@@ -35,6 +35,6 @@ export default Ember.Object.extend({
     return form_status === Constants.FORM_STATUS.NOT_STARTED && this.get('accepted');
   }),
   form_started: equal('form_status', Constants.FORM_STATUS.STARTED),
-  completed: equal('form_status', Constants.FORM_STATUS.COMPLETED),
+  form_completed: equal('form_status', Constants.FORM_STATUS.COMPLETED),
   last_updated_page: undefined
 });

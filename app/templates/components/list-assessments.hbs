@@ -1,6 +1,6 @@
 <ul class="list-unstyled clearfix">
   {{#each assessments as |assessment|}}
-    <li class="assessment-list-item col-md-4 clickable">
+    {{#link-to 'assessments.samha-form' assessment tagName="li" class="assessment-list-item col-md-4 clickable"}}
       <section class="assessment-wrapper clearfix">
         <div class="main clearfix">
           <h4>
@@ -17,7 +17,7 @@
           </ul>
         </div>
       </section>
-    </li>
+    {{/link-to}}
   {{else}}
     <div class="alert alert-danger">
       No assessment forms.

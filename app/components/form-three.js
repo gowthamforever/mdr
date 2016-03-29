@@ -15,6 +15,7 @@ const {
 
 export default Component.extend(Api, EmberValidator, {
   appointments: service(),
+  assessments: service(),
 
   props: [
     'four_notywataduip12m',
@@ -160,7 +161,7 @@ export default Component.extend(Api, EmberValidator, {
 
       form.set('validationResult', null);
 
-      if (appointment.get('completed')) {
+      if (appointment.get('form_completed')) {
         if (page) {
           page(4);
         }
@@ -174,23 +175,21 @@ export default Component.extend(Api, EmberValidator, {
           data.four_last_sa_tx_disch_date = moment(form.get('four_last_sa_tx_disch_date_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
           data.four_ltyaan = moment(form.get('four_ltyaan_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
 
-          self.ajax({
-            id: 'assessmentformpost',
-            path: {
-              id: appointment.get('id'),
-              pageNo: 3
-            },
-            data
-          }).then(() => {
-            self.set('appointments.cache', false);
-            self.set_form(form, self.get('form_model'));
-            if (page) {
-              page(4);
-            }
-          }).catch(Ember.K);
-        }).catch((validationResult) => {
-          form.set('validationResult', validationResult);
-        });
+        self.ajax({
+          id: 'assessmentformpost',
+          path: {
+            id: appointment.get('id'),
+            pageNo: 3
+          },
+          data
+        }).then(() => {
+          self.set('appointments.cache', false);
+          self.set('assessments.cache', false);
+          self.set_form(form, self.get('form_model'));
+          if (page) {
+            page(4);
+          }
+        }).catch(Ember.K);
       }
     },
 

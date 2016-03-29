@@ -1,0 +1,13 @@
+<section class="assessments-request-block">
+  <ul class="nav nav-tabs">
+    {{#link-to "assessments.status.started" tagName="li"}}
+      <a href="{{view.href}}">In Complete</a>
+    {{/link-to}}
+    {{#link-to "assessments.status.completed" tagName="li"}}
+      <a href="{{view.href}}">Completed</a>
+    {{/link-to}}
+	</ul>
+  <section class="tabs-container assessment-tab">
+    {{liquid-outlet}}
+	</section>
+</section>

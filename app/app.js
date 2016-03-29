@@ -47,9 +47,12 @@ Route.reopen({
       'admin-tasks.assessors': { title: 'Assessors Requests' },
       'chats.list': { title: 'Chats' },
       'chats.chat': { title: 'Chat' },
-      'assessments.not-started': { title: 'Assessments' },
-      'assessments.started': { title: 'Assessments' },
-      'assessments.completed': { title: 'Assessments' }
+      'assessments.status.not-started': { title: 'Assessments' },
+      'assessments.status.started': { title: 'Assessments' },
+      'assessments.status.completed': { title: 'Assessments' },
+      'assessments.samha-form': { title: 'Samha Form' },
+      'assessments.forms.list': { title: 'Forms' },
+      'assessments.forms.rtq': { title: 'RTQ Form' }
     };
     let title = titles[routeName] || 'MDRealtime';
 

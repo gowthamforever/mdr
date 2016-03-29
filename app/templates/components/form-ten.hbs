@@ -106,7 +106,7 @@
     <label class="col-sm-3">ENTERED INTO SYSTEM:</label>
     <div class="col-sm-5">
       {{#if noneditable}}
-        {{if model.completed 'Yes' 'No'}}
+        {{if model.form_completed 'Yes' 'No'}}
       {{else}}
         No
       {{/if}}
@@ -125,7 +125,7 @@
   <div class="form-group row form-seperator"></div>
 
   <div class="form-group row">
-    {{#unless model.completed}}
+    {{#unless model.form_completed}}
       <label class="col-sm-1">&nbsp;</label>
       <div class="col-md-2 form-group-right-align">
         <button class="btn btn-primary btn-block" type="submit" autocomplete="off">Submit</button>

@@ -15,6 +15,7 @@ const {
 
 export default Component.extend(Api, EmberValidator, {
   appointments: service(),
+  assessments: service(),
 
   props: [
     'eight_nothip24m',
@@ -160,7 +161,7 @@ export default Component.extend(Api, EmberValidator, {
 
       form.set('validationResult', null);
 
-      if (appointment.get('completed')) {
+      if (appointment.get('form_completed')) {
         if (page) {
           page(8);
         }
@@ -177,23 +178,21 @@ export default Component.extend(Api, EmberValidator, {
           data.eight_disch_date = moment(form.get('eight_disch_date_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
           data.eight_lpv2 = moment(form.get('eight_lpv2_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
 
-          self.ajax({
-            id: 'assessmentformpost',
-            path: {
-              id: appointment.get('id'),
-              pageNo: 7
-            },
-            data
-          }).then(() => {
-            self.set('appointments.cache', false);
-            self.set_form(form, self.get('form_model'));
-            if (page) {
-              page(8);
-            }
-          }).catch(Ember.K);
-        }).catch((validationResult) => {
-          form.set('validationResult', validationResult);
-        });
+        self.ajax({
+          id: 'assessmentformpost',
+          path: {
+            id: appointment.get('id'),
+            pageNo: 7
+          },
+          data
+        }).then(() => {
+          self.set('appointments.cache', false);
+          self.set('assessments.cache', false);
+          self.set_form(form, self.get('form_model'));
+          if (page) {
+            page(8);
+          }
+        }).catch(Ember.K);
       }
     },
 
