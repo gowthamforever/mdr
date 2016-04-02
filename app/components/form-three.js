@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import Form from 'mdr/models/form';
 import Api from 'mdr/mixins/api';
+import EmberValidator from 'ember-validator';
 
 const {
   Component,
@@ -12,7 +13,7 @@ const {
   service
 } = inject;
 
-export default Component.extend(Api, {
+export default Component.extend(Api, EmberValidator, {
   appointments: service(),
   assessments: service(),
 
@@ -57,26 +58,122 @@ export default Component.extend(Api, {
     this.set_form(this.get('form_model'), Form.create());
   }),
 
+  validations(model) {
+    return {
+      four_notywataduip12m: {
+        required: 'This field is required'
+      },
+      four_notywatstpip24m: {
+        required: 'This field is required'
+      },
+      four_ecott: {
+        required: 'This field is required'
+      },
+      four_efteit: {
+        required: 'This field is required'
+      },
+      four_last_detox_admit: {
+        required: 'This field is required'
+      },
+      four_last_detox_admit_lentgh_of_stay: {
+        required: 'This field is required'
+      },
+      four_treating_agency: {
+        required: 'This field is required'
+      },
+      four_drug_detoxed_from: {
+        required: 'This field is required'
+      },
+      four_drug_detoxed_from_disch_date: {
+        required: 'This field is required'
+      },
+      four_detox_disch_status: {
+        required: 'This field is required'
+      },
+      four_last_sa_tx_admit: {
+        required: 'This field is required'
+      },
+      four_last_sa_tx_admit_length_of_stay: {
+        required: 'This field is required'
+      },
+      four_last_sa_tx_admit_treating_agency: {
+        required: 'This field is required'
+      },
+      four_admit_reason: {
+        required: 'This field is required'
+      },
+      four_last_sa_tx_disch_date: {
+        required: 'This field is required'
+      },
+      four_last_sa_tx_disch_status: {
+        required: 'This field is required'
+      },
+      four_actbstd: {
+        required: 'This field is required'
+      },
+      four_dyfth: {
+        required: 'This field is required'
+      },
+      four_ltyaan: {
+        required: 'This field is required'
+      },
+      four_dyhadoap: {
+        required: 'This field is required'
+      },
+      four_dybynhwydodu: {
+        required: 'This field is required'
+      },
+      four_dybstchy: {
+        required: 'This field is required'
+      },
+      four_hwydylomfr: {
+        required: 'This field is required'
+      },
+      four_iatthlaytc: {
+        required: 'This field is required'
+      },
+      four_wylhwydodp: {
+        required: 'This field is required'
+      },
+      four_daeudiyhe: {
+        required: 'This field is required'
+      },
+      four_dyhashre: {
+        required: 'This field is required'
+      },
+      four_dyfud: {
+        required: 'This field is required'
+      },
+      four_othn: {
+        required: 'This field is required'
+      }
+    };
+  },
+
   actions: {
     next() {
       const self        = this;
       const appointment = self.get('model');
       const page        = this.get('page');
-      const form        = this.get('form');
+      let form          = this.get('form');
+      const validations = this.validations(form);
       let data;
+
+      form.set('validationResult', null);
 
       if (appointment.get('form_completed')) {
         if (page) {
           page(4);
         }
       } else {
-        data = _.pick(form, self.get('props'));
+        self.validateMap({ form, validations }).then(() => {
+          data = _.pick(form, self.get('props'));
 
-        data.four_last_detox_admit = moment(form.get('four_last_detox_admit_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-        data.four_drug_detoxed_from_disch_date = moment(form.get('four_drug_detoxed_from_disch_date_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-        data.four_last_sa_tx_admit = moment(form.get('four_last_sa_tx_admit_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-        data.four_last_sa_tx_disch_date = moment(form.get('four_last_sa_tx_disch_date_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
-        data.four_ltyaan = moment(form.get('four_ltyaan_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+          data.four_last_detox_admit = moment(form.get('four_last_detox_admit_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+          data.four_drug_detoxed_from_disch_date = moment(form.get('four_drug_detoxed_from_disch_date_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+          data.four_last_sa_tx_admit = moment(form.get('four_last_sa_tx_admit_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+          data.four_last_sa_tx_disch_date = moment(form.get('four_last_sa_tx_disch_date_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
+          data.four_ltyaan = moment(form.get('four_ltyaan_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
 
         self.ajax({
           id: 'assessmentformpost',

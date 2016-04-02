@@ -9,6 +9,7 @@
   <div class="form-group row">
     <label class="col-sm-7">PRIMARY RECOMMENDATION:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.eleven_pr}}
       {{#if noneditable}}
         {{form.eleven_pr}}
       {{else}}
@@ -20,6 +21,7 @@
   <div class="form-group row">
     <label class="col-sm-7">DISPOSITION:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.eleven_disposition}}
       {{#if noneditable}}
         {{form.eleven_disposition}}
       {{else}}
@@ -33,6 +35,7 @@
   <div class="form-group row">
     <label class="col-sm-3">REFERRAL SOURCE:</label>
     <div class="col-sm-9">
+      {{field-error field=form.validationResult.eleven_rs}}
       {{#if noneditable}}
         {{form.eleven_rs}}
       {{else}}
@@ -46,6 +49,7 @@
   <div class="form-group row">
     <label class="col-sm-3">Additional Information:</label>
     <div class="col-sm-9">
+      {{field-error field=form.validationResult.eleven_ai}}
       {{#if noneditable}}
         {{form.eleven_ai}}
       {{else}}
@@ -80,6 +84,7 @@
   <div class="form-group row">
     <label class="col-sm-3">SUPERVISOR:</label>
     <div class="col-sm-5">
+      {{field-error field=form.validationResult.eleven_s}}
       {{#if noneditable}}
         {{form.eleven_s}}
       {{else}}

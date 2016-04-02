@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import Form from 'mdr/models/form';
 import Api from 'mdr/mixins/api';
+import EmberValidator from 'ember-validator';
 
 const {
   Component,
@@ -12,7 +13,7 @@ const {
   service
 } = inject;
 
-export default Component.extend(Api, {
+export default Component.extend(Api, EmberValidator, {
   appointments: service(),
   assessments: service(),
 
@@ -49,20 +50,98 @@ export default Component.extend(Api, {
     this.set_form(this.get('form_model'), Form.create());
   }),
 
+  validations(model) {
+    return {
+      seven_hgc: {
+        required: 'This field is required'
+      },
+      seven_dyhacdoc: {
+        required: 'This field is required'
+      },
+      seven_es: {
+        required: 'This field is required'
+      },
+      seven_psoi: {
+        required: 'This field is required'
+      },
+      seven_api: {
+        required: 'This field is required'
+      },
+      seven_afi: {
+        required: 'This field is required'
+      },
+      seven_ses: {
+        required: 'This field is required'
+      },
+      seven_nsoh: {
+        required: 'This field is required'
+      },
+      seven_aythoh: {
+        required: 'This field is required'
+      },
+      seven_ms: {
+        required: 'This field is required'
+      },
+      seven_noc: {
+        required: 'This field is required'
+      },
+      seven_nodc: {
+        required: 'This field is required'
+      },
+      seven_ytoar: {
+        required: 'This field is required'
+      },
+      seven_cla: {
+        required: 'This field is required'
+      },
+      seven_aych: {
+        required: 'This field is required'
+      },
+      seven_dyphadoap: {
+        required: 'This field is required'
+      },
+      seven_afmcsst: {
+        required: 'This field is required'
+      },
+      seven_afmwtsyr: {
+        required: 'This field is required'
+      },
+      seven_fmeacaydu: {
+        required: 'This field is required'
+      },
+      seven_ayofmiwcw: {
+        required: 'This field is required'
+      },
+      seven_ofhn: {
+        required: 'This field is required'
+      }
+    };
+  },
+
   actions: {
     next() {
       const self        = this;
       const appointment = self.get('model');
       const page        = this.get('page');
-      const form        = this.get('form');
+      let form          = this.get('form');
+      const validations = this.validations(form);
       let data;
 
+<<<<<<< .mine
+      form.set('validationResult', null);
+
+      if (appointment.get('completed')) {
+=======
       if (appointment.get('form_completed')) {
+
+
+>>>>>>> .theirs
         if (page) {
           page(7);
         }
       } else {
-        data = _.pick(form, self.get('props'));
+        self.validateMap({ form, validations }).then(() => {
+          data = _.pick(form, self.get('props'));
 
         self.ajax({
           id: 'assessmentformpost',
