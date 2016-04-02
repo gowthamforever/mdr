@@ -72,6 +72,13 @@ export default Route.extend(EmberValidator, Api, {
         required: 'Language is required.',
       },
 
+      ssn: {
+        required: 'SSN is required',
+        ssn: {
+          format1: 'SSN is not valid NNN-NN-NNNN'
+        }
+      },
+
       phone1: {
         required: 'Phone Number is required',
         phone: {
@@ -279,7 +286,8 @@ export default Route.extend(EmberValidator, Api, {
           'zip1',
           'city1',
           'memebership_name',
-          'email_id'
+          'email_id',
+          'ssn'
         ]);
 
         data.phone1 = retainNumbers(model.get('phone1'));

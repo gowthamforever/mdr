@@ -53,6 +53,12 @@
 						</div>
 
 						<div class="row">
+							<div class="form-group col-md-6  {{if model.validationResult.ssn.hasError 'has-error'}}">
+								<label class="control-label" for="ssn">SSN</label>
+								{{mdr-ssn class="form-control" name="ssn" value=model.ssn autocomplete="off"}}
+								{{mdr-field-error client=model.validationResult.ssn}}
+							</div>
+
 							<div class="form-group col-md-6  {{if model.validationResult.selected_language.hasError 'has-error'}}">
 								<label class="control-label" for="language">Preferred Language</label>
 								{{input-select
@@ -66,6 +72,9 @@
 								}}
 								{{mdr-field-error client=model.validationResult.selected_language}}
 							</div>
+						</div>
+
+						<div class="row">
 							<div class="form-group col-md-6">
 								<label class="control-label" for="race">Race <small>(optional)</small></label>
 								{{input-select
@@ -75,6 +84,17 @@
 									labelPath="name"
 									valuePath="id"
 									selected=model.selected_race
+									prompt="Select"
+								}}
+							</div>
+
+							<div class="form-group col-md-6">
+								<label class="control-label" for="race">Ethnicity</label>
+								{{input-select
+									class="form-control"
+									name="ethnicity"
+									options=model.ethnicities
+									selected=model.ethnicity
 									prompt="Select"
 								}}
 							</div>

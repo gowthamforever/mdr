@@ -65,6 +65,71 @@
   				</div>
 
           <div class="row">
+            <div class="form-group col-md-6  {{if model.validationResult.ssn.hasError 'has-error'}}">
+              <label class="control-label" for="dob">SSN</label>
+              {{#if edit_personal}}
+                {{mdr-ssn class="form-control" name="ssn" value=model.ssn autocomplete="off"}}
+                {{mdr-field-error client=model.validationResult.ssn}}
+              {{else}}
+                <div class="form-control-static">{{dash-for-empty model.ssn}}</div>
+              {{/if}}
+            </div>
+
+
+            <div class="form-group col-md-6  {{if model.validationResult.language_obj.hasError 'has-error'}}">
+              <label class="control-label" for="language">Preferred Language</label>
+              {{#if edit_personal}}
+                {{input-select
+                  class="form-control"
+                  name="language"
+                  options=model.languages
+                  labelPath="name"
+                  valuePath="id"
+                  selected=model.language_obj
+                  prompt="Select"
+                }}
+                {{mdr-field-error client=model.validationResult.language_obj}}
+              {{else}}
+                <div class="form-control-static">{{dash-for-empty model.language_obj.name}}</div>
+              {{/if}}
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label class="control-label" for="race">Race <small>(optional)</small></label>
+              {{#if edit_personal}}
+                {{input-select
+                  class="form-control"
+                  name="race"
+                  options=model.races
+                  labelPath="name"
+                  valuePath="id"
+                  selected=model.race_obj
+                  prompt="Select"
+                }}
+              {{else}}
+                <div class="form-control-static">{{dash-for-empty model.race_obj.name}}</div>
+              {{/if}}
+            </div>
+
+            <div class="form-group col-md-6">
+              <label class="control-label" for="race">Ethnicity</label>
+              {{#if edit_personal}}
+                {{input-select
+                  class="form-control"
+                  name="ethnicity"
+                  options=model.ethnicities
+                  selected=model.ethnicity
+                  prompt="Select"
+                }}
+              {{else}}
+                <div class="form-control-static">{{dash-for-empty model.ethnicity}}</div>
+              {{/if}}
+            </div>
+          </div>
+
+          <div class="row">
             <div class="form-group col-md-6 {{if model.validationResult.pcd_name.hasError 'has-error'}}">
               <label class="control-label" for="pcd-name">Primary Physician Name <small>(optional)</small></label>
               {{#if edit_personal}}

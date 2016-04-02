@@ -37,10 +37,18 @@ export default Ember.Object.extend(AppointmentFlags, {
     return Constants.INSURANCE_PLANS.findBy('id', insurance_plan);
   }),
   language: null,
+  language_obj: computed('language', function() {
+    const language = this.get('language');
+    return Constants.LANGAUAGES.findBy('id', language);
+  }),
   last_name: null,
   pcd_name: null,
   photo: null,
   race: null,
+  race_obj: computed('race', function() {
+    const race = this.get('race');
+    return Constants.RACES.findBy('id', race);
+  }),
   insurance: computed('insurance_plan', function() {
     return Constants.INSURANCE_PLANS.findBy('id', this.get('insurance_plan'));
   }),
@@ -50,6 +58,7 @@ export default Ember.Object.extend(AppointmentFlags, {
   timezones: Constants.TIME_ZONES,
   months: Constants.MONTHS,
   races: Constants.RACES,
+  ethnicities: Constants.ETHNICITIES,
   languages: Constants.LANGAUAGES,
   insurance_plans: Constants.INSURANCE_PLANS,
 

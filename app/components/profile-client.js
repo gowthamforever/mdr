@@ -64,6 +64,13 @@ export default Component.extend(Api, EmberValidator, {
         }
       },
 
+      ssn: {
+        required: 'SSN is required',
+        ssn: {
+          format1: 'SSN is not valid NNN-NN-NNNN'
+        }
+      },
+
       pcd_phone: {
         phone: {
           format2: true,
@@ -146,7 +153,11 @@ export default Component.extend(Api, EmberValidator, {
       'card_city',
       'card_zip',
       'card_country',
-      'customer_id'
+      'customer_id',
+      'race',
+      'ethnicity',
+      'language',
+      'ssn'
     ]));
 
     this.set('model', client);
@@ -185,11 +196,15 @@ export default Component.extend(Api, EmberValidator, {
           'gender',
           'pcd_name',
           'pcd_phone',
-          'email_id'
+          'email_id',
+          'ssn',
+          'ethnicity'
         ]);
 
         data.dob = moment(model.get('dob_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
         data.insurance_plan = model.get('insurance_plan_obj.id');
+        data.race = model.get('race_obj.id');
+        data.language = model.get('language_obj.id');
 
         data = omitNoValue(data);
 

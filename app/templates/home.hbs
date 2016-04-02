@@ -21,28 +21,6 @@
         </div>
       </div>
     </div>
-    <div class="col-md-4 col-sm-4 col-xs-12 home-widget chat-wg">
-      {{#link-to 'chats'}}
-        <div class="fa-wrapper hidden-xs">
-          <i class="fa fa-weixin"></i>
-        </div>
-      {{/link-to}}
-      <div class="widget-body">
-        {{#link-to 'chats'}}
-          <div class="big-r-arrow-overlay visible-xs-inline-block"></div>
-
-          <div class="big-r-arrow visible-xs-inline-block"></div>
-          <div class="fa-xs-wrapper visible-xs-inline-block">
-            <i class="fa fa-weixin"></i>
-          </div>
-        {{/link-to}}
-        <h4 class="widget-title">CONSULTING ROOM</h4>
-        <h3 class="widget-meta">{{model.video_sessions.length}} Video Sessions</h3>
-        <div class="widget-footer hidden-xs">
-          {{#link-to 'chats'}}More Info <span class="right-arrow"></span>{{/link-to}}
-        </div>
-      </div>
-    </div>
     <div class="col-md-4 col-sm-4 col-xs-12 home-widget assessments-wg">
       {{#link-to 'assessments'}}
         <div class="fa-wrapper hidden-xs">
@@ -62,6 +40,28 @@
         <h3 class="widget-meta">{{model.assessments.form_notstarted.length}} Forms to start.</h3>
         <div class="widget-footer hidden-xs">
           {{#link-to 'assessments'}}More Info <span class="right-arrow"></span>{{/link-to}}
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-4 col-xs-12 home-widget chat-wg">
+      {{#link-to 'chats'}}
+        <div class="fa-wrapper hidden-xs">
+          <i class="fa fa-weixin"></i>
+        </div>
+      {{/link-to}}
+      <div class="widget-body">
+        {{#link-to 'chats'}}
+          <div class="big-r-arrow-overlay visible-xs-inline-block"></div>
+
+          <div class="big-r-arrow visible-xs-inline-block"></div>
+          <div class="fa-xs-wrapper visible-xs-inline-block">
+            <i class="fa fa-weixin"></i>
+          </div>
+        {{/link-to}}
+        <h4 class="widget-title">CONSULTING ROOM</h4>
+        <h3 class="widget-meta">{{model.video_sessions.length}} Video Sessions</h3>
+        <div class="widget-footer hidden-xs">
+          {{#link-to 'chats'}}More Info <span class="right-arrow"></span>{{/link-to}}
         </div>
       </div>
     </div>
@@ -90,29 +90,6 @@
           </div>
         </div>
       </div>
-    {{/if}}
-    <div class="col-md-4 col-sm-6 col-xs-12 home-widget client-wg">
-      {{#link-to 'clients'}}
-        <div class="fa-wrapper hidden-xs">
-          <i class="fa fa-users"></i>
-        </div>
-      {{/link-to}}
-      <div class="widget-body">
-        {{#link-to 'clients'}}
-          <div class="big-r-arrow-overlay visible-xs-inline-block"></div>
-          <div class="big-r-arrow visible-xs-inline-block"></div>
-          <div class="fa-xs-wrapper visible-xs-inline-block">
-            <i class="fa fa-users"></i>
-          </div>
-        {{/link-to}}
-        <h4 class="widget-title">CLIENTS</h4>
-        <h3 class="widget-meta">{{model.clients.length}} Active</h3>
-        <div class="widget-footer hidden-xs">
-          {{#link-to 'clients'}}More Info <span class="right-arrow"></span>{{/link-to}}
-        </div>
-      </div>
-    </div>
-    {{#if (or session.role_admin session.role_super_admin session.role_regional_admin session.role_global_admin)}}
       <div class="col-md-4 col-sm-6 col-xs-12 home-widget assessor-wg">
         {{#link-to 'assessors'}}
           <div class="fa-wrapper hidden-xs">
@@ -135,5 +112,26 @@
         </div>
       </div>
     {{/if}}
+    <div class="col-md-4 col-sm-6 col-xs-12 home-widget client-wg">
+      {{#link-to 'clients'}}
+        <div class="fa-wrapper hidden-xs">
+          <i class="fa fa-users"></i>
+        </div>
+      {{/link-to}}
+      <div class="widget-body">
+        {{#link-to 'clients'}}
+          <div class="big-r-arrow-overlay visible-xs-inline-block"></div>
+          <div class="big-r-arrow visible-xs-inline-block"></div>
+          <div class="fa-xs-wrapper visible-xs-inline-block">
+            <i class="fa fa-users"></i>
+          </div>
+        {{/link-to}}
+        <h4 class="widget-title">CLIENTS</h4>
+        <h3 class="widget-meta">{{model.clients.length}} Active</h3>
+        <div class="widget-footer hidden-xs">
+          {{#link-to 'clients'}}More Info <span class="right-arrow"></span>{{/link-to}}
+        </div>
+      </div>
+    </div>
   </div>
 </div>
