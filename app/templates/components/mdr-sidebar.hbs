@@ -18,15 +18,19 @@
       <i class="fa fa-user-md fa-2"></i><span class="visible-lg-inline visible-md-inline">Doctors</span>
     {{/link-to}}
   {{/if}}
-  {{#link-to "appointments" class="list-group-item"}}
-    <i class="fa fa-calendar fa-2"></i><span class="visible-lg-inline visible-md-inline">Appointments</span>
-  {{/link-to}}
+  {{#unless session.role_nurse}}
+    {{#link-to "appointments" class="list-group-item"}}
+      <i class="fa fa-calendar fa-2"></i><span class="visible-lg-inline visible-md-inline">Appointments</span>
+    {{/link-to}}
+  {{/unless}}
   {{#link-to "assessments" class="list-group-item"}}
     <i class="fa fa-file-text fa-2"></i><span class="visible-lg-inline visible-md-inline">Assessments</span>
   {{/link-to}}
-  {{#link-to "chats" class="list-group-item"}}
-    <i class="fa fa-weixin fa-2"></i><span class="visible-lg-inline visible-md-inline">Consulting Room</span>
-  {{/link-to}}
+  {{#unless session.role_nurse}}
+    {{#link-to "chats" class="list-group-item"}}
+      <i class="fa fa-weixin fa-2"></i><span class="visible-lg-inline visible-md-inline">Consulting Room</span>
+    {{/link-to}}
+  {{/unless}}
   {{#link-to "profile" class="list-group-item"}}
     <i class="fa fa-user fa-2"></i><span class="visible-lg-inline visible-md-inline">My Profile</span>
   {{/link-to}}

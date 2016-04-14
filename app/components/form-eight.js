@@ -32,7 +32,7 @@ export default Component.extend(Api, EmberValidator, {
     this.set_form(this.get('form_model'), Form.create());
   }),
 
-  validations(model) {
+  validations() {
     return {
       nine_pd: {
         required: 'This field is required'

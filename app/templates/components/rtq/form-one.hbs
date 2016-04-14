@@ -1,0 +1,423 @@
+<form {{action "next" on="submit"}}>
+  <div class="form-group row form-section">
+    <label class="col-sm-2">SECTION ONE</label>
+    <div class="col-sm-10 form-section-title">
+      CLIENT ADDRESS
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">First Name:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.first_name}}
+      {{#if noneditable}}
+        {{form.first_name}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.first_name autocomplete="off"}}
+      {{/if}}
+    </div>
+
+    <label class="col-sm-2">Last Name:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.last_name}}
+      {{#if noneditable}}
+        {{form.last_name}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.last_name autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Address:</label>
+    <div class="col-sm-10">
+      {{field-error field=form.validationResult.address}}
+      {{#if noneditable}}
+        {{form.address}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.address autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">City:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.city}}
+      {{#if noneditable}}
+        {{form.city}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.city autocomplete="off"}}
+      {{/if}}
+    </div>
+
+    <label class="col-sm-2">State:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.selected_state}}
+      {{#if noneditable}}
+        {{form.selected_state_1.id}}
+      {{else}}
+        {{input-select
+          class="form-control"
+          name="state1"
+          options=form.states
+          labelPath="name"
+          valuePath="id"
+          selected=model.selected_state
+          prompt="Select"
+        }}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Zip Code:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.zip}}
+      {{#if noneditable}}
+        {{form.zip}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.zip autocomplete="off"}}
+      {{/if}}
+    </div>
+
+    <label class="col-sm-2">Country:</label>
+    <div class="col-sm-4">
+      {{form.country}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Phone Number:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.phone1}}
+      {{#if noneditable}}
+        {{form.phone1}}
+      {{else}}
+        {{mdr-phone class="form-control" value=form.phone1 autocomplete="off"}}
+      {{/if}}
+    </div>
+
+    <label class="col-sm-2">Alternate Phone Number:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.phone2}}
+      {{#if noneditable}}
+        {{form.phone2}}
+      {{else}}
+        {{mdr-phone class="form-control" value=form.phone2 autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row form-section">
+    <label class="col-sm-2">SECTION TWO</label>
+    <div class="col-sm-10 form-section-title">
+      DEMOGRAPHY
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Race:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.race_obj}}
+      {{#if noneditable}}
+        {{form.race_obj.name}}
+      {{else}}
+        {{input-select
+          class="form-control"
+          name="race"
+          options=form.races
+          labelPath="name"
+          valuePath="id"
+          selected=model.race_obj
+          prompt="Select"
+        }}
+      {{/if}}
+    </div>
+
+
+    <label class="col-sm-2">Gender:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.gender}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.gender value="Male"}} Male
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.gender value="Female"}} Female
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Date of Birth:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.dob_formatted}}
+      {{#if noneditable}}
+        {{date-format form.dob "YYYY-MM-DD" "MMM DD YYYY"}}
+      {{else}}
+        {{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=form.dob_formatted}}
+      {{/if}}
+    </div>
+
+    <label class="col-sm-2">{{upper-case "Age:"}}</label>
+    <div class="col-sm-4">
+      {{#if (or noneditable form.dob_formatted)}}
+        {{form.age}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Ethnicity:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.ethnicity}}
+      {{#if noneditable}}
+        {{form.ethnicity}}
+      {{else}}
+        {{input-select
+          class="form-control"
+          name="ethnicity"
+          options=form.ethnicities
+          selected=form.ethnicity
+          prompt="Select"
+        }}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Social Security Number:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.ssn}}
+      {{#if noneditable}}
+        {{form.ssn}}
+      {{else}}
+        {{mdr-ssn class="form-control" name="ssn" value=form.ssn autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row form-section">
+    <label class="col-sm-2">SECTION THREE</label>
+    <div class="col-sm-10 form-section-title">
+      REFERRAL/ ACKNOWLEDGEMENT
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">RTQ Performed on:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.rtq_date_formatted}}
+      {{#if noneditable}}
+        {{date-format form.rtq_date "YYYY-MM-DD" "MMM DD YYYY"}}
+      {{else}}
+        {{form.rtq_date}}
+      {{/if}}
+    </div>
+
+    <label class="col-sm-2">Time:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.rtq_time}}
+      {{form.rtq_time}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Staff Completing RTQ?:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.staff_completing_rtq}}
+      {{else}}
+        {{form.staff.first_name}} {{form.staff.last_name}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Referral Source:</label>
+    <div class="col-sm-10">
+      {{field-error field=form.validationResult.referral_source}}
+      {{#if noneditable}}
+        {{form.referral_source}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.referral_source autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Reason for Referral:</label>
+    <div class="col-sm-10">
+      {{field-error field=form.validationResult.referral_reason}}
+      {{#if noneditable}}
+        {{form.referral_reason}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.referral_reason autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Referred Marchman Act Court:</label>
+    <div class="col-sm-10">
+      {{field-error field=form.validationResult.marchman_court_referral}}
+      {{#if noneditable}}
+        {{form.marchman_court_referral}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.marchman_court_referral autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Referred By Drug Court:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.drug_court_referral}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.drug_court_referral value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.drug_court_referral value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+
+    <label class="col-sm-2">DCF/ Child Welfare Referral:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.child_welfare_referral}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.child_welfare_referral value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.child_welfare_referral value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Client signed sign-in log:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.cssl}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.client_signed value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.client_signed value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Date of Client Arrival:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.client_arrival}}
+      {{#if noneditable}}
+        {{date-format form.client_arrival "YYYY-MM-DD" "MMM DD YYYY"}}
+      {{else}}
+        {{form.client_arrival}}
+      {{/if}}
+    </div>
+
+    <label class="col-sm-2">Time of Client Arrival:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.client_arrival_time}}
+      {{form.client_arrival_time}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Transport Source/Agency:</label>
+    <div class="col-sm-10">
+      {{field-error field=form.validationResult.transport_source}}
+      {{#if noneditable}}
+        {{form.transport_source}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.transport_source autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Transport Personnel Name:</label>
+    <div class="col-sm-10">
+      {{field-error field=form.validationResult.transport_person}}
+      {{#if noneditable}}
+        {{form.transport_person}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.transport_person autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Current Living Status:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.living_status}}
+      {{#if noneditable}}
+        {{form.living_status}}
+      {{else}}
+        {{input-select
+          class="form-control"
+          options=form.living_arrangements
+          selected=form.living_status
+          prompt="Select"
+        }}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Precipitating Factor:</label>
+    <div class="col-sm-10">
+      {{field-error field=form.validationResult.precipitating_factor}}
+      {{#if noneditable}}
+        {{form.precipitating_factor}}
+      {{else}}
+        {{textarea class="form-control" value=form.precipitating_factor rows="7" maxlength=500}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <div class="col-md-2 form-group-right-align">
+      <button class="btn btn-primary btn-block" type="submit" autocomplete="off">Next (Page 2)</button>
+    </div>
+  </div>
+</form>

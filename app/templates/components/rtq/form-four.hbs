@@ -1,0 +1,425 @@
+<form {{action "next" on="submit"}}>
+  <div class="form-group row form-section">
+    <label class="col-sm-2">NURSE RTQ - SECTION 1</label>
+    <div class="col-sm-10 form-section-title">
+      REVIEW DRUG USE STATUS
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Reviewed drug use status:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.nurse_drug_use_status}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.nurse_drug_use_status value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.nurse_drug_use_status value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Alcohol Test Results:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.nurse_alcohol_test}}
+      {{#if noneditable}}
+        {{form.nurse_alcohol_test}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.nurse_alcohol_test autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Drug test needed:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.nurse_drug_test_needed}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.nurse_drug_test_needed value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.nurse_drug_test_needed value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Drug Client Detoxing From</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.primary_drug_used}}
+      {{#if noneditable}}
+        {{form.nurse_drug_detoxing_from}}
+      {{else}}
+        {{input-select
+          class="form-control"
+          options=form.drugs
+          selected=form.nurse_drug_detoxing_from
+          prompt="Select"
+        }}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row form-section">
+    <label class="col-sm-2">NURSE RTQ - SECTION 2</label>
+    <div class="col-sm-10 form-section-title">
+      EMERGENCY MEDICAL ASSESSMENT
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Blood Pressure date:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.nurse_blood_pressure_date_formatted}}
+      {{#if noneditable}}
+        {{date-format form.nurse_blood_pressure_date "YYYY-MM-DD" "MMM DD YYYY"}}
+      {{else}}
+        {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.nurse_blood_pressure_date_formatted}}
+      {{/if}}
+    </div>
+
+    <label class="col-sm-2">Time:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.nurse_blood_pressure_time}}
+      {{#if noneditable}}
+        {{form.nurse_blood_pressure_time}}
+      {{else}}
+        {{input-time-picker class="form-control" placeholder="Click to change" readonly="" value=form.nurse_blood_pressure_time}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Systolic:</label>
+    <div class="col-sm-3">
+      {{field-error field=form.validationResult.nurse_systolic}}
+      {{#if noneditable}}
+        {{form.nurse_systolic}}
+      {{else}}
+        {{input-select
+          class="form-control"
+          options=form.systolics
+          selected=form.nurse_systolic
+          prompt="Select"
+        }}
+      {{/if}}
+    </div>
+
+    <label class="col-sm-2">Diastolic:</label>
+    <div class="col-sm-3">
+      {{field-error field=form.validationResult.nurse_diastolic}}
+      {{#if noneditable}}
+        {{form.nurse_diastolic}}
+      {{else}}
+        {{input-select
+          class="form-control"
+          options=form.diastolics
+          selected=form.nurse_diastolic
+          prompt="Select"
+        }}
+      {{/if}}
+    </div>
+
+    <div class="col-sm-2">
+      {{#if (and form.nurse_systolic form.nurse_diastolic)}}
+        {{form.nurse_systolic}}/{{form.nurse_diastolic}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Temperature:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.nurse_temperature}}
+      {{#if noneditable}}
+        {{form.nurse_temperature}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.nurse_temperature autocomplete="off"}}
+      {{/if}}
+    </div>
+
+    <label class="col-sm-2">Pulse:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.nurse_pulse}}
+      {{#if noneditable}}
+        {{form.nurse_pulse}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.nurse_pulse autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row form-section">
+    <label class="col-sm-2">NURSE RTQ - SECTION 3</label>
+    <div class="col-sm-10 form-section-title">
+      RTQ CIWA ASSESSMENT
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">RTQ Performed on:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.nurse_rtq_date_formatted}}
+      {{#if noneditable}}
+        {{date-format form.nurse_rtq_date "YYYY-MM-DD" "MMM DD YYYY"}}
+      {{else}}
+        {{form.nurse_rtq_date}}
+      {{/if}}
+    </div>
+
+    <label class="col-sm-2">Time:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.nurse_rtq_time}}
+      {{form.nurse_rtq_time}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Staff Completing RTQ?:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.nurse_staff_completing_rtq}}
+      {{else}}
+        {{form.nurse.first_name}} {{form.nurse.last_name}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">CIWA Score:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.nurse_ciwa_score}}
+      {{#if noneditable}}
+        {{form.nurse_ciwa_score}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.nurse_ciwa_score autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row form-section">
+    <label class="col-sm-2">NURSE RTQ - SECTION 4</label>
+    <div class="col-sm-10 form-section-title">
+      OTHER MEDICAL
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Is client ambulatory:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.nurse_non_ambulatory}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.nurse_non_ambulatory value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.nurse_non_ambulatory value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Any open wounds:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.nurse_open_wounds}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.nurse_open_wounds value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.nurse_open_wounds value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Current Medications:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.nurse_current_medications}}
+      {{#if noneditable}}
+        {{form.nurse_current_medications}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.nurse_current_medications autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Currently Pregnant:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.nurse_pregnant}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.nurse_pregnant value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.nurse_pregnant value="No"}} No
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.nurse_pregnant value="Male"}} Male
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Current Health Status:</label>
+    <div class="col-sm-3">
+      {{field-error field=form.validationResult.nurse_health_status}}
+      {{#if noneditable}}
+        {{form.nurse_health_status}}
+      {{else}}
+        {{input-select
+          class="form-control"
+          options=form.systolics
+          selected=form.nurse_health_status
+          prompt="Select"
+        }}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Developmentl Disablities:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.nurse_developmentl_disablities}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.nurse_developmentl_disablities value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.nurse_developmentl_disablities value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Physical Disablities:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.nurse_physical_disablities}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.nurse_physical_disablities value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.nurse_physical_disablities value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Current Medical Complaints:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.nurse_medical_complaints}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.nurse_medical_complaints autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row form-section">
+    <label class="col-sm-2">NURSE RTQ - SECTION 5</label>
+    <div class="col-sm-10 form-section-title">
+      OTHER MEDICAL
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Nurse RTQ Disposition:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.nurse_rtq_disposition}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.nurse_rtq_disposition autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Please select a disposition:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.nurse_disposition}}
+      {{else}}
+        {{input-select
+          class="form-control"
+          options=form.dispositions
+          selected=form.nurse_disposition
+          prompt="Select"
+        }}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  {{#unless (eq model.form_status "completed")}}
+    <div class="form-group row">
+      <label class="col-sm-1">&nbsp;</label>
+      <div class="col-md-2 form-group-right-align">
+        <button class="btn btn-primary btn-block" type="submit" autocomplete="off">Submit</button>
+      </div>
+    </div>
+  {{/unless}}
+</form>

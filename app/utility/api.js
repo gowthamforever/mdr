@@ -154,5 +154,20 @@ export default {
   assessments: {
     path: 'assessment',
     method: 'GET'
+  },
+
+  emergency: {
+    path: 'assessment/emergency',
+    method: 'POST'
+  },
+
+  getemergency: {
+    path: 'assessment/emergency/{id}',
+    method: 'GET'
+  },
+
+  updateemergency: {
+    path: 'assessment/emergency/{id}',
+    method: 'PATCH'
   }
 };

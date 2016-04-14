@@ -7,7 +7,9 @@ const {
 export default Route.extend({
   activate() {
     this._super(...arguments);
-    this.get('titlebar').set('right_content', 'create-form');
+    if (!this.get('session.role_nurse')) {
+      this.get('titlebar').set('right_content', 'create-form');
+    }
   },
 
   deactivate() {

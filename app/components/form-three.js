@@ -58,7 +58,7 @@ export default Component.extend(Api, EmberValidator, {
     this.set_form(this.get('form_model'), Form.create());
   }),
 
-  validations(model) {
+  validations() {
     return {
       four_notywataduip12m: {
         required: 'This field is required'
@@ -175,21 +175,22 @@ export default Component.extend(Api, EmberValidator, {
           data.four_last_sa_tx_disch_date = moment(form.get('four_last_sa_tx_disch_date_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
           data.four_ltyaan = moment(form.get('four_ltyaan_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
 
-        self.ajax({
-          id: 'assessmentformpost',
-          path: {
-            id: appointment.get('id'),
-            pageNo: 3
-          },
-          data
-        }).then(() => {
-          self.set('appointments.cache', false);
-          self.set('assessments.cache', false);
-          self.set_form(form, self.get('form_model'));
-          if (page) {
-            page(4);
-          }
-        }).catch(Ember.K);
+          self.ajax({
+            id: 'assessmentformpost',
+            path: {
+              id: appointment.get('id'),
+              pageNo: 3
+            },
+            data
+          }).then(() => {
+            self.set('appointments.cache', false);
+            self.set('assessments.cache', false);
+            self.set_form(form, self.get('form_model'));
+            if (page) {
+              page(4);
+            }
+          }).catch(Ember.K);
+        });
       }
     },
 

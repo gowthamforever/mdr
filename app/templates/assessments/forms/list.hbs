@@ -8,7 +8,7 @@
     {{#each model as |form|}}
       <tr>
         <td>
-          {{#link-to form.route}}
+          {{#link-to form.route form.form}}
             {{form.name}}
           {{/link-to}}
         </td>

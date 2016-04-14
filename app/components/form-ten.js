@@ -40,7 +40,7 @@ export default Component.extend(Api, EmberValidator, {
     this.set_form(this.get('form_model'), Form.create());
   }),
 
-  validations(model) {
+  validations() {
     return {
       eleven_pr: {
         required: 'This field is required'

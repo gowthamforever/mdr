@@ -60,7 +60,8 @@ export default Component.extend(EmberValidator, Api, {
             'email_id',
             'first_name',
             'middle_name',
-            'last_name'
+            'last_name',
+            'assessor_is_nurse'
           ]);
 
           session.isAuthenticated = true;

@@ -1,14 +1,15 @@
 import Ember from 'ember';
-import {
+
+const {
   computed,
   Component
 } = Ember;
 
-import {
+const {
   alias
 } = computed;
 
-export default Ember.Component.extend({
+export default Component.extend({
   tagName: 'span',
   classNames: ['help-block', 'field-error'],
   classNameBindings: ['field.hasError::hide'],

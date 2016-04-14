@@ -108,6 +108,8 @@ App = Application.extend({
     this.inject('route', 'titlebar', 'service:titlebar');
     this.inject('route', 'dialog', 'service:dialog');
     this.inject('route', 'session', 'service:session');
+    this.inject('component', 'session', 'service:session');
+    this.inject('controller', 'session', 'service:session');
     this.inject('service:errorhandler', 'router', 'router:main');
   }
 });

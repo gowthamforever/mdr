@@ -1,6 +1,21 @@
 <section class="col-md-12">
   <div class="panel panel-primary abuse-mental-form">
     <div class="panel-heading text-center">RECEIVING &amp; TRIAGE QUERY ASSESSMENT FORM</div>
+    {{#if pages.form1}}
+      {{rtq/form-one model=model form=model.form class="panel-body" page=(action "page")}}
+    {{/if}}
+
+    {{#if pages.form2}}
+      {{rtq/form-two model=model form=model.form class="panel-body" page=(action "page")}}
+    {{/if}}
+
+    {{#if pages.form3}}
+      {{rtq/form-three model=model form=model.form class="panel-body" page=(action "page")}}
+    {{/if}}
+
+    {{#if pages.form4}}
+      {{rtq/form-four model=model form=model.form class="panel-body" page=(action "page")}}
+    {{/if}}
   </div>
   <div class="height-adjustment">&nbsp;</div>
 </section>

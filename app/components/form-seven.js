@@ -58,7 +58,7 @@ export default Component.extend(Api, EmberValidator, {
     this.set_form(this.get('form_model'), Form.create());
   }),
 
-  validations(model) {
+  validations() {
     return {
       eight_nothip24m: {
         required: 'This field is required'
@@ -178,21 +178,22 @@ export default Component.extend(Api, EmberValidator, {
           data.eight_disch_date = moment(form.get('eight_disch_date_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
           data.eight_lpv2 = moment(form.get('eight_lpv2_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
 
-        self.ajax({
-          id: 'assessmentformpost',
-          path: {
-            id: appointment.get('id'),
-            pageNo: 7
-          },
-          data
-        }).then(() => {
-          self.set('appointments.cache', false);
-          self.set('assessments.cache', false);
-          self.set_form(form, self.get('form_model'));
-          if (page) {
-            page(8);
-          }
-        }).catch(Ember.K);
+          self.ajax({
+            id: 'assessmentformpost',
+            path: {
+              id: appointment.get('id'),
+              pageNo: 7
+            },
+            data
+          }).then(() => {
+            self.set('appointments.cache', false);
+            self.set('assessments.cache', false);
+            self.set_form(form, self.get('form_model'));
+            if (page) {
+              page(8);
+            }
+          }).catch(Ember.K);
+        });
       }
     },
 

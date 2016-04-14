@@ -29,9 +29,12 @@ export default Route.extend(Api, {
     const session  = self.get('session');
     const promises = {
       clients: self.get('clients').getClients(),
-      appointments: self.get('appointments').getAppointments(),
       assessments: self.get('assessments').getAssessments()
     };
+
+    if (!session.get('role_nurse')) {
+      promises.appointments = self.get('appointments').getAppointments();
+    }
 
     if (session.get('role_admin') || session.get('role_super_admin') ||
       session.get('role_regional_admin') || session.get('role_global_admin')) {

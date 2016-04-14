@@ -65,7 +65,7 @@ export default Component.extend(Api, EmberValidator, {
     this.set_form(this.get('form_model'), Form.create());
   }),
 
-  validations(model) {
+  validations() {
     return {
       five_notywatabauip12m: {
         required: 'This field is required'
@@ -201,21 +201,22 @@ export default Component.extend(Api, EmberValidator, {
           data.five_disch_date2 = moment(form.get('five_disch_date2_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
           data.five_dolsa = moment(form.get('five_dolsa_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
 
-        self.ajax({
-          id: 'assessmentformpost',
-          path: {
-            id: appointment.get('id'),
-            pageNo: 4
-          },
-          data
-        }).then(() => {
-          self.set('appointments.cache', false);
-          self.set('assessments.cache', false);
-          self.set_form(form, self.get('form_model'));
-          if (page) {
-            page(5);
-          }
-        }).catch(Ember.K);
+          self.ajax({
+            id: 'assessmentformpost',
+            path: {
+              id: appointment.get('id'),
+              pageNo: 4
+            },
+            data
+          }).then(() => {
+            self.set('appointments.cache', false);
+            self.set('assessments.cache', false);
+            self.set_form(form, self.get('form_model'));
+            if (page) {
+              page(5);
+            }
+          }).catch(Ember.K);
+        });
       }
     },
 

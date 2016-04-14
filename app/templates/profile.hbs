@@ -1,6 +1,6 @@
 {{#if session.role_doctor}}
   {{profile-doctor doctor=model}}
-{{else if session.role_assessor}}
+{{else if (or session.role_assessor session.role_nurse)}}
   {{profile-assessor assessor=model}}
 {{else if session.role_staff}}
   {{profile-staff staff=model}}

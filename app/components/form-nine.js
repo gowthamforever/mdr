@@ -35,7 +35,7 @@ export default Component.extend(Api, EmberValidator, {
     this.set_form(this.get('form_model'), Form.create());
   }),
 
-  validations(model) {
+  validations() {
     return {
       ten_dim1: {
         required: 'This field is required'
@@ -77,21 +77,22 @@ export default Component.extend(Api, EmberValidator, {
         self.validateMap({ form, validations }).then(() => {
           data = _.pick(form, self.get('props'));
 
-        self.ajax({
-          id: 'assessmentformpost',
-          path: {
-            id: appointment.get('id'),
-            pageNo: 9
-          },
-          data
-        }).then(() => {
-          self.set('appointments.cache', false);
-          self.set('assessments.cache', false);
-          self.set_form(form, self.get('form_model'));
-          if (page) {
-            page(10);
-          }
-        }).catch(Ember.K);
+          self.ajax({
+            id: 'assessmentformpost',
+            path: {
+              id: appointment.get('id'),
+              pageNo: 9
+            },
+            data
+          }).then(() => {
+            self.set('appointments.cache', false);
+            self.set('assessments.cache', false);
+            self.set_form(form, self.get('form_model'));
+            if (page) {
+              page(10);
+            }
+          }).catch(Ember.K);
+        });
       }
     },
 

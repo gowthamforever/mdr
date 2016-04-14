@@ -90,7 +90,7 @@ Router.map(function() {
 
       this.route('forms', function() {
         this.route('list', { path: '/' });
-        this.route('rtq');
+        this.route('rtq', { path: '/:id/rtq' });
       });
 
       this.route('samha-form', { path: '/:id/forms' });

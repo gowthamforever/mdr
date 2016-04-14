@@ -50,7 +50,7 @@ export default Component.extend(Api, EmberValidator, {
     this.set_form(this.get('form_model'), Form.create());
   }),
 
-  validations(model) {
+  validations() {
     return {
       one_race: {
         required: 'Race is required'
@@ -98,7 +98,7 @@ export default Component.extend(Api, EmberValidator, {
       two_contact_phone: {
         required: 'Phone number is required',
         phone: {
-          all: true
+          all: true,
           message: "Invalid phone"
         }
       },
@@ -159,21 +159,22 @@ export default Component.extend(Api, EmberValidator, {
           data.two_referral_date = moment(form.get('two_referral_date_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
           data.two_contact_phone = retainNumbers(form.get('two_contact_phone'));
 
-        self.ajax({
-          id: 'assessmentformpost',
-          path: {
-            id: appointment.get('id'),
-            pageNo: 1
-          },
-          data
-        }).then(() => {
-          self.set('appointments.cache', false);
-          self.set('assessments.cache', false);
-          self.set_form(form, self.get('form_model'));
-          if (page) {
-            page(2);
-          }
-        }).catch(Ember.K);
+          self.ajax({
+            id: 'assessmentformpost',
+            path: {
+              id: appointment.get('id'),
+              pageNo: 1
+            },
+            data
+          }).then(() => {
+            self.set('appointments.cache', false);
+            self.set('assessments.cache', false);
+            self.set_form(form, self.get('form_model'));
+            if (page) {
+              page(2);
+            }
+          }).catch(Ember.K);
+        });
       }
     }
   }

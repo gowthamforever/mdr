@@ -27,7 +27,7 @@ export default Route.extend(Api, {
       }).then((response) => {
         if (self.get('session.role_doctor')) {
           resolve(self.get('contact').createDoctor(response));
-        } else if (self.get('session.role_assessor')) {
+        } else if (self.get('session.role_assessor') || self.get('session.role_nurse')) {
           resolve(self.get('contact').createAssessor(response));
         } else if (self.get('session.role_staff')) {
           resolve(self.get('contact').createStaff(response));

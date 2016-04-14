@@ -32,13 +32,16 @@ export default Service.extend(Api, {
         self.ajax({
           id: 'assessments'
         }).then((response) => {
-          const assessments       = Assessments.create();
-          const samha_assessments = self.createAssessments(response.samhassessmentList);
+          const assessments           = Assessments.create();
+          const samha_assessments     = self.createAssessments(response.samhassessmentList);
+          const emergency_assessments = self.createAssessments(response.emergencyssessmentList);
 
           samha_assessments.setEach('form_name', 'SAMHA');
+          emergency_assessments.setEach('form_name', 'EMERGENCY');
 
           assessments.setProperties({
-            samha_assessments
+            samha_assessments,
+            emergency_assessments
           });
 
           self.setProperties({
@@ -69,6 +72,7 @@ export default Service.extend(Api, {
       'alt_info',
       'customer_id',
       'doctor_id',
+      'assessor_id',
       'id',
       'insurance_plan',
       'reason',

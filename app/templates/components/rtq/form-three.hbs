@@ -1,0 +1,307 @@
+<form {{action (if (or session.role_nurse (eq model.form_status "completed")) "next" "submit") on="submit"}}>
+  <div class="form-group row form-section">
+    <label class="col-sm-2">SECTION SEVEN</label>
+    <div class="col-sm-10 form-section-title">
+      MENTAL HEALTH
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Last suicide attempt:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.last_suicide_attempt_formatted}}
+      {{#if noneditable}}
+        {{date-format form.last_suicide_attempt "YYYY-MM-DD" "MMM DD YYYY"}}
+      {{else}}
+        {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.last_suicide_attempt_formatted}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Physical Meds currently taking:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.physical_meds}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.physical_meds autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Last admit to Mental Health Center:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.last_admit_mental_health_center_formatted}}
+      {{#if noneditable}}
+        {{date-format form.last_admit_mental_health_center "YYYY-MM-DD" "MMM DD YYYY"}}
+      {{else}}
+        {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.last_admit_mental_health_center_formatted}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Reason Mental Health Admit:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.reason_mental_health}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.reason_mental_health autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Name of the mental health facility:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.mental_health_facility}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.mental_health_facility autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Treating Psychiatrist Name:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.psuchiatrist_name}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.psuchiatrist_name autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Mental Health Case Manager:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.mental_case_manager}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.mental_case_manager autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Psych Disch in past 21 days:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.psych_disch_21_days}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.psych_disch_21_days value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.psych_disch_21_days value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Current Receive MH services:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.mh_services}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.mh_services value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.mh_services value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Additional Mental Health Info:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.additional_mental_health_info}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.additional_mental_health_info autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row form-section">
+    <label class="col-sm-2">SECTION EIGHT</label>
+    <div class="col-sm-10 form-section-title">
+      PRIOR DETOX AT DAF
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Will accept residential TX:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.accept_residential_tx}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.accept_residential_tx value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.accept_residential_tx value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Have Rejected Past Treatment:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.rejected_past_treatment}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.rejected_past_treatment value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.rejected_past_treatment value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Last DAF-Detox Outcome:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.daf_detox_outcome}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.daf_detox_outcome autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Living Status After Detox:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.living_status_after_detox}}
+      {{#if noneditable}}
+        {{form.living_status_after_detox}}
+      {{else}}
+        {{input-select
+          class="form-control"
+          options=form.living_arrangements
+          selected=form.living_status_after_detox
+          prompt="Select"
+        }}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row form-section">
+    <label class="col-sm-2">SECTION NINE</label>
+    <div class="col-sm-10 form-section-title">
+      HEALTH INSURANCE
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Client has health insurance:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.has_health_insurance}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.has_health_insurance value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.has_health_insurance value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row form-section">
+    <label class="col-sm-2">SECTION TEN</label>
+    <div class="col-sm-10 form-section-title">
+      OTHER SOCIAL
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Number of children less 17 or less:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.no_children_17_less}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.no_children_17_less autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row form-section">
+    <label class="col-sm-2">SECTION ELEVEN</label>
+    <div class="col-sm-10 form-section-title">
+      DISPOSITION
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">RTQ DISPOSITION:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.rtq_disposition}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.rtq_disposition autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    {{#if (or session.role_nurse (eq model.form_status "completed"))}}
+      <label class="col-sm-1">&nbsp;</label>
+      <div class="col-md-2 form-group-right-align">
+        <button class="btn btn-primary btn-block" type="submit" autocomplete="off">Next (Page 3)</button>
+      </div>
+    {{else if (not-eq model.form_status "pending")}}
+      <label class="col-sm-1">&nbsp;</label>
+      <div class="col-md-2 form-group-right-align">
+        <button class="btn btn-primary btn-block" type="submit" autocomplete="off">Submit</button>
+      </div>
+    {{/if}}
+
+    <label class="col-sm-1">&nbsp;</label>
+    <div class="col-md-2 form-group-right-align">
+      <button class="btn btn-primary btn-block" autocomplete="off" {{action "previous"}}>Previous (Page 1)</button>
+    </div>
+  </div>
+</form>

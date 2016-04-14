@@ -13,10 +13,12 @@ export default EmberObject.extend({
   samha_assessments: undefined,
 
   all_assessments: computed('samha_assessments.[]', function() {
-    const samha_assessments = this.get('samha_assessments');
-    const assessments       = Ember.A();
+    const samha_assessments     = this.get('samha_assessments');
+    const emergency_assessments = this.get('emergency_assessments');
+    const assessments           = Ember.A();
 
     assessments.addObjects(samha_assessments);
+    assessments.addObjects(emergency_assessments);
 
     return assessments;
   }),

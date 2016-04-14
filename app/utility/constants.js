@@ -283,5 +283,16 @@ export default {
     { id: 'hospital', name: 'Hospital Practice' },
     { id: 'hmo', name: 'HMO' },
     { id: 'other', name: 'Other' },
+  ],
+
+  RTQ_DISPOSITIONS: [
+    'Client Refused Services',
+    'Outise Emergency Referral: WMS',
+    'Outise Emergency Referral: Non WMS',
+    'Referred to Non-Emergency Assessment',
+    'Admit for (WMS) - Detox',
+    'Admit for (MCS) - Med Clearance',
+    'Admit to receiving Unit Bed',
+    'Admit for (Marchman) Emergency Assessment'
   ]
 };

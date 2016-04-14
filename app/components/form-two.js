@@ -65,7 +65,7 @@ export default Component.extend(Api, EmberValidator, {
     this.set_form(this.get('form_model'), Form.create());
   }),
 
-  validations(model) {
+  validations() {
     return {
       three_primary_drug_used: {
         required: "Primary Drug Used is required"
@@ -201,21 +201,22 @@ export default Component.extend(Api, EmberValidator, {
           data.three_last_used_2 = moment(form.get('three_last_used_2_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
           data.three_last_used_3 = moment(form.get('three_last_used_3_formatted'), 'MMM DD YYYY').format('YYYY-MM-DD');
 
-        self.ajax({
-          id: 'assessmentformpost',
-          path: {
-            id: appointment.get('id'),
-            pageNo: 2
-          },
-          data
-        }).then(() => {
-          self.set('appointments.cache', false);
-          self.set('assessments.cache', false);
-          self.set_form(form, self.get('form_model'));
-          if (page) {
-            page(3);
-          }
-        }).catch(Ember.K);
+          self.ajax({
+            id: 'assessmentformpost',
+            path: {
+              id: appointment.get('id'),
+              pageNo: 2
+            },
+            data
+          }).then(() => {
+            self.set('appointments.cache', false);
+            self.set('assessments.cache', false);
+            self.set_form(form, self.get('form_model'));
+            if (page) {
+              page(3);
+            }
+          }).catch(Ember.K);
+        });
       }
     },
 

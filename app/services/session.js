@@ -16,6 +16,7 @@ export default Service.extend({
   loading: false,
   isAuthenticated: false,
   user_role: null,
+  assessor_is_nurse: false,
   role_admin: equal('user_role', 'AAdmin'),
   role_super_admin: equal('user_role', 'ASuperAdmin'),
   role_global_admin: equal('user_role', 'AGlobalAdmin'),
@@ -25,8 +26,14 @@ export default Service.extend({
     return role === 'Doctor' || role === 'ADoctor';
   }),
   role_assessor: computed('user_role', function() {
-    const role = this.get('user_role');
-    return role === 'Assessor' || role === 'AAssessor';
+    const role  = this.get('user_role');
+    const nurse = this.get('assessor_is_nurse');
+    return !nurse && (role === 'Assessor' || role === 'AAssessor');
+  }),
+  role_nurse: computed('user_role', function() {
+    const role  = this.get('user_role');
+    const nurse = this.get('assessor_is_nurse');
+    return nurse && (role === 'Assessor' || role === 'AAssessor');
   }),
   role_coordinator: computed('user_role', function() {
     const role = this.get('user_role');

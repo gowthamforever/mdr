@@ -1,0 +1,484 @@
+<form {{action "next" on="submit"}}>
+  <div class="form-group row form-section">
+    <label class="col-sm-2">SECTION FOUR</label>
+    <div class="col-sm-10 form-section-title">
+      CURRENT DRUG USE
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Primary Drug Used</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.primary_drug_used}}
+      {{#if noneditable}}
+        {{form.primary_drug_used}}
+      {{else}}
+        {{input-select
+          class="form-control"
+          options=form.drugs
+          selected=form.primary_drug_used
+          prompt="Select"
+        }}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Secondary Drug Used</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.secondary_drug_used}}
+      {{#if noneditable}}
+        {{form.secondary_drug_used}}
+      {{else}}
+        {{input-select
+          class="form-control"
+          options=form.drugs
+          selected=form.secondary_drug_used
+          prompt="Select"
+        }}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Teritary Drug Used</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.teritary_drug_used}}
+      {{#if noneditable}}
+        {{form.teritary_drug_used}}
+      {{else}}
+        {{input-select
+          class="form-control"
+          options=form.drugs
+          selected=form.teritary_drug_used
+          prompt="Select"
+        }}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Fourth Drug Used</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.fourth_drug_used}}
+      {{#if noneditable}}
+        {{form.fourth_drug_used}}
+      {{else}}
+        {{input-select
+          class="form-control"
+          options=form.drugs
+          selected=form.fourth_drug_used
+          prompt="Select"
+        }}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Other Drug Used</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.other_drug_used}}
+      {{#if noneditable}}
+        {{form.other_drug_used}}
+      {{else}}
+        {{input-select
+          class="form-control"
+          options=form.drugs
+          selected=form.other_drug_used
+          prompt="Select"
+        }}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row form-section">
+    <label class="col-sm-2">SECTION FIVE</label>
+    <div class="col-sm-10 form-section-title">
+      WITHDRAWAL MANAGEMENT
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Number of Past Detox Admissions:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.no_detox_admissions}}
+      {{#if noneditable}}
+        {{form.no_detox_admissions}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.no_detox_admissions autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Last Detox Admission:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.last_detox_admission_formatted}}
+      {{#if noneditable}}
+        {{date-format form.last_detox_admission "YYYY-MM-DD" "MMM DD YYYY"}}
+      {{else}}
+        {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.last_detox_admission_formatted}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Last Alcohol Withdrawal:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.last_alcohol_withdrawal_formatted}}
+      {{#if noneditable}}
+        {{date-format form.last_alcohol_withdrawal "YYYY-MM-DD" "MMM DD YYYY"}}
+      {{else}}
+        {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.last_alcohol_withdrawal_formatted}}
+      {{/if}}
+    </div>
+
+    <label class="col-sm-2">Last Drug Withdrawal:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.last_drug_withdrawal_formatted}}
+      {{#if noneditable}}
+        {{date-format form.last_drug_withdrawal "YYYY-MM-DD" "MMM DD YYYY"}}
+      {{else}}
+        {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.last_drug_withdrawal_formatted}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Last to any DAF Program:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.last_daf_program_formatted}}
+      {{#if noneditable}}
+        {{date-format form.last_daf_program "YYYY-MM-DD" "MMM DD YYYY"}}
+      {{else}}
+        {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.last_daf_program_formatted}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Last Admit to any SA TX:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.last_admit_sa_tx_formatted}}
+      {{#if noneditable}}
+        {{date-format form.last_admit_sa_tx "YYYY-MM-DD" "MMM DD YYYY"}}
+      {{else}}
+        {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.last_admit_sa_tx_formatted}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row form-section">
+    <label class="col-sm-2">SECTION SIX</label>
+    <div class="col-sm-10 form-section-title">
+      BRIEF BIO-MEDICAL
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Alcohol Berthalyzer Test:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.alcohol_berthalyzer_test}}
+      {{#if noneditable}}
+        {{form.alcohol_berthalyzer_test}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.alcohol_berthalyzer_test autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Drug Test:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.drug_test}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.drug_test value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.drug_test value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Blood Pressure date:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.blood_pressure_date_formatted}}
+      {{#if noneditable}}
+        {{date-format form.blood_pressure_date "YYYY-MM-DD" "MMM DD YYYY"}}
+      {{else}}
+        {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.blood_pressure_date_formatted}}
+      {{/if}}
+    </div>
+
+    <label class="col-sm-2">Time:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.blood_pressure_time}}
+      {{#if noneditable}}
+        {{form.blood_pressure_time}}
+      {{else}}
+        {{input-time-picker class="form-control" placeholder="Click to change" readonly="" value=form.blood_pressure_time}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Systolic:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.systolic}}
+      {{#if noneditable}}
+        {{form.systolic}}
+      {{else}}
+        {{input-select
+          class="form-control"
+          options=form.systolics
+          selected=form.systolic
+          prompt="Select"
+        }}
+      {{/if}}
+    </div>
+
+    <label class="col-sm-2">Diastolic:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.diastolic}}
+      {{#if noneditable}}
+        {{form.diastolic}}
+      {{else}}
+        {{input-select
+          class="form-control"
+          options=form.diastolics
+          selected=form.diastolic
+          prompt="Select"
+        }}
+      {{/if}}
+    </div>
+
+    <div class="col-sm-2">
+      {{#if (and form.systolic form.diastolic)}}
+        {{form.systolic}}/{{form.diastolic}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Temperature:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.temperature}}
+      {{#if noneditable}}
+        {{form.temperature}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.temperature autocomplete="off"}}
+      {{/if}}
+    </div>
+
+    <label class="col-sm-2">Pulse:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.pulse}}
+      {{#if noneditable}}
+        {{form.pulse}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.pulse autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Client is NON-Ambulatory:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.non_ambulatory}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.non_ambulatory value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.non_ambulatory value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Current Medications:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.current_medications}}
+      {{#if noneditable}}
+        {{form.current_medications}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.current_medications autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Currently Pregnant:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.pregnant}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.pregnant value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.pregnant value="No"}} No
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.pregnant value="Male"}} Male
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Current Health Status:</label>
+    <div class="col-sm-4">
+      {{field-error field=form.validationResult.health_status}}
+      {{#if noneditable}}
+        {{form.health_status}}
+      {{else}}
+        {{input-select
+          class="form-control"
+          options=form.systolics
+          selected=form.health_status
+          prompt="Select"
+        }}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Developmentl Disablities:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.developmentl_disablities}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.developmentl_disablities value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.developmentl_disablities value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Physical Disablities:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.physical_disablities}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.physical_disablities value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.physical_disablities value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Visual Disablities:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.visual_disablities}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.visual_disablities value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.visual_disablities value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Hearing Disablities:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.hearing_disablities}}
+      {{else}}
+        <div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.hearing_disablities value="Yes"}} Yes
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              {{input-radio group=form.hearing_disablities value="No"}} No
+            </label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2">Current Medical Complaints:</label>
+    <div class="col-sm-4">
+      {{#if noneditable}}
+        {{form.medical_complaints}}
+      {{else}}
+        {{input type="text" class="form-control" value=form.medical_complaints autocomplete="off"}}
+      {{/if}}
+    </div>
+  </div>
+
+
+  <div class="form-group row form-seperator"></div>
+
+  <div class="form-group row">
+    <label class="col-sm-1">&nbsp;</label>
+    <div class="col-md-2 form-group-right-align">
+      <button class="btn btn-primary btn-block" type="submit" autocomplete="off">Next (Page 3)</button>
+    </div>
+    <label class="col-sm-1">&nbsp;</label>
+    <div class="col-md-2 form-group-right-align">
+      <button class="btn btn-primary btn-block" autocomplete="off" {{action "previous"}}>Previous (Page 1)</button>
+    </div>
+  </div>
+</form>
