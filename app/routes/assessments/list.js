@@ -18,6 +18,18 @@ const {
 export default Route.extend({
   assessments: service(),
 
+  activate() {
+    this._super(...arguments);
+    if (!this.get('session.role_nurse')) {
+      this.get('titlebar').set('right_content', 'create-form');
+    }
+  },
+
+  deactivate() {
+    this._super(...arguments);
+    this.get('titlebar').set('right_content', undefined);
+  },
+
   model() {
     const self = this;
     return new Promise((resolve) => {
