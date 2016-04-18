@@ -417,5 +417,12 @@
         <button class="btn btn-primary btn-block" type="submit" autocomplete="off">Submit</button>
       </div>
     </div>
+  {{else}}
+    <div class="form-group row">
+      <label class="col-sm-1">&nbsp;</label>
+      <div class="col-md-2 form-group-right-align">
+        <button class="btn btn-primary btn-block" autocomplete="off" {{action "previous"}}>Previous (Page 1)</button>
+      </div>
+    </div>
   {{/unless}}
 </form>

@@ -122,6 +122,7 @@ export default Route.extend(Api, {
           nurse_rtq_disposition: response.nd_nrd,
           nurse_disposition: response.psad,
           dob: response.customer.dob,
+          ts_request: response.ts_request,
           rtq_date: moment(response.ra_rpo, 'MM-DD-YYYY HH:mm').format('MMM DD YYYY'),
           rtq_time:moment(response.ra_rpo, 'MM-DD-YYYY HH:mm').format('hh:mm A'),
           client_arrival: moment(response.ra_dtoca, 'MM-DD-YYYY HH:mm').format('MMM DD YYYY'),
@@ -135,11 +136,12 @@ export default Route.extend(Api, {
           last_admit_mental_health: moment(response.mh_latmhc, 'YYYY-MM-DD').format('MMM DD YYYY'),
           blood_pressure_date: moment(response.bbm_bpd, 'MM-DD-YYYY HH:mm').format('MMM DD YYYY'),
           blood_pressure_time: moment(response.bbm_bpd, 'MM-DD-YYYY HH:mm').format('hh:mm A'),
-          last_admit_mental_health_center: moment(response.mh_latmhc, 'YYYY-MM-DD').format('YYYY-MM-DD'),
+          last_admit_mental_health_center: moment(response.mh_latmhc, 'YYYY-MM-DD').format('MMM DD YYYY'),
           nurse_blood_pressure_date: response.ema_bpd ? moment(response.ema_bpd, 'MM-DD-YYYY HH:mm').format('MMM DD YYYY') : undefined,
+          nurse_blood_pressure_time: response.ema_bpd ? moment(response.ema_bpd, 'MM-DD-YYYY HH:mm').format('hh:mm A') : undefined,
           nurse_blood_pressure: response.ema_bpd ? moment(response.ema_bpd, 'MM-DD-YYYY HH:mm').format('hh:mm A') : undefined,
-          nurse_rtq_date: response.rca_rpo ? moment(response.rca_rpo, 'MM-DD-YYYY HH:mm').format('MMM DD YYYY') : undefined,
-          nurse_rtq_time: response.rca_rpo ? moment(response.rca_rpo, 'MM-DD-YYYY HH:mm').format('hh:mm A') : undefined
+          nurse_rtq_date: response.rca_rpo ? moment(response.rca_rpo, 'MM-DD-YYYY HH:mm').format('MMM DD YYYY') : moment().format('MMM DD YYYY'),
+          nurse_rtq_time: response.rca_rpo ? moment(response.rca_rpo, 'MM-DD-YYYY HH:mm').format('hh:mm A') : moment().format('hh:mm A')
         });
       });
     });

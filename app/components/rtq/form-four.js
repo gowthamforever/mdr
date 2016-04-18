@@ -127,6 +127,7 @@ export default Component.extend(EmberValidator, Api, {
           om_cmc: model.get('form.nurse_medical_complaints'),
           nd_nrd: model.get('form.nurse_rtq_disposition'),
           psad: model.get('form.nurse_disposition'),
+          ts_request: model.get('form.ts_request'),
           form_status: 'completed'
         };
 
@@ -134,7 +135,7 @@ export default Component.extend(EmberValidator, Api, {
           id: 'updateemergency',
           data,
           path: {
-            id: model.get('form.id')
+            id: model.get('id')
           },
         }).then(() => {
           model.set('form_status', 'completed');

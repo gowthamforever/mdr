@@ -16,10 +16,10 @@ export default EmberObject.extend({
   @equal('status', Constants.REQUEST_STATUS.ACCEPTED)
   accepted,
 
-  @equal('status', Constants.FORM_STATUS.STARTED)
+  @equal('form_status', Constants.FORM_STATUS.STARTED)
   form_started,
 
-  @equal('status', Constants.FORM_STATUS.COMPLETED)
+  @equal('form_status', Constants.FORM_STATUS.COMPLETED)
   form_completed,
 
   @computed('customer')
