@@ -91,7 +91,7 @@
     <div class="col-sm-4">
       {{field-error field=form.validationResult.nurse_blood_pressure_date_formatted}}
       {{#if noneditable}}
-        {{date-format form.nurse_blood_pressure_date "YYYY-MM-DD" "MMM DD YYYY"}}
+        {{form.nurse_blood_pressure_date}}
       {{else}}
         {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.nurse_blood_pressure_date_formatted}}
       {{/if}}
@@ -179,11 +179,7 @@
     <label class="col-sm-2">RTQ Performed on:</label>
     <div class="col-sm-4">
       {{field-error field=form.validationResult.nurse_rtq_date_formatted}}
-      {{#if noneditable}}
-        {{date-format form.nurse_rtq_date "YYYY-MM-DD" "MMM DD YYYY"}}
-      {{else}}
-        {{form.nurse_rtq_date}}
-      {{/if}}
+      {{form.nurse_rtq_date}}
     </div>
 
     <label class="col-sm-2">Time:</label>

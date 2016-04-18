@@ -11,7 +11,7 @@
     <div class="col-sm-4">
       {{field-error field=form.validationResult.last_suicide_attempt_formatted}}
       {{#if noneditable}}
-        {{date-format form.last_suicide_attempt "YYYY-MM-DD" "MMM DD YYYY"}}
+        {{form.last_suicide_attempt}}
       {{else}}
         {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.last_suicide_attempt_formatted}}
       {{/if}}
@@ -34,7 +34,7 @@
     <div class="col-sm-4">
       {{field-error field=form.validationResult.last_admit_mental_health_center_formatted}}
       {{#if noneditable}}
-        {{date-format form.last_admit_mental_health_center "YYYY-MM-DD" "MMM DD YYYY"}}
+        {{form.last_admit_mental_health_center}}
       {{else}}
         {{input-date-picker class="form-control" placeholder="Click to change" readonly="" value=form.last_admit_mental_health_center_formatted}}
       {{/if}}
@@ -292,7 +292,7 @@
       <div class="col-md-2 form-group-right-align">
         <button class="btn btn-primary btn-block" type="submit" autocomplete="off">Next (Page 3)</button>
       </div>
-    {{else if (not-eq model.form_status "pending")}}
+    {{else if (not-eq model.form_status "started")}}
       <label class="col-sm-1">&nbsp;</label>
       <div class="col-md-2 form-group-right-align">
         <button class="btn btn-primary btn-block" type="submit" autocomplete="off">Submit</button>

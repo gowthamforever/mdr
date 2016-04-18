@@ -1,0 +1,22 @@
+<div class="table-responsive">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        {{#each headings as |heading|}}
+          <th>
+            <div class="th-sort {{if heading.sortable 'sortable both'}} {{if (eq heading.property sortProperty) (if ascending 'asc' 'desc')}}">
+              <a href="#" {{action "doSort" heading}}>{{heading.name}}</a>
+            </div>
+          </th>
+        {{/each}}
+      </tr>
+    </thead>
+    <tbody>
+      {{#each (sort-by (concat sortProperty sortOrder) items) as |item|}}
+        <tr>
+          {{yield (hash row=true item=item)}}
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>

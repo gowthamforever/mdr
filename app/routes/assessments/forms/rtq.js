@@ -30,25 +30,28 @@ export default Route.extend(Api, {
     });
   },
 
-  getRtq() {
+  getRtq(model) {
     return new Promise((resolve) => {
       this.ajax({
-        id: 'getemergency'
+        id: 'getemergency',
+        path: {
+          id: model.get('id')
+        },
       }).then((response) => {
         resolve({
           customer_id: response.customer_id,
           agency_staff_id: response.agency_staff_id,
           assessor_id: response.assessor_id,
           agency_admin_id: response.agency_admin_id,
-          first_name: response.ca_fn,
-          last_name: response.ca_ln,
+          first_name: response.customer.first_name,
+          last_name: response.customer.last_name,
           address: response.ca_a,
           city: response.ca_c,
           zip: response.ca_z,
           phone1: response.ca_ppn,
           phone2: response.ca_spn,
-          gender: response.d_g,
-          race: response.d_r,
+          gender: response.customer.gender,
+          race: response.customer.race,
           state: response.ca_s,
           ethnicity: response.d_e,
           ssn: response.d_ssn,
@@ -118,7 +121,7 @@ export default Route.extend(Api, {
           nurse_medical_complaints: response.om_cmc,
           nurse_rtq_disposition: response.nd_nrd,
           nurse_disposition: response.psad,
-          dob: moment(response.d_dob, 'YYYY-MM-DD').format('MMM DD YYYY'),
+          dob: response.customer.dob,
           rtq_date: moment(response.ra_rpo, 'MM-DD-YYYY HH:mm').format('MMM DD YYYY'),
           rtq_time:moment(response.ra_rpo, 'MM-DD-YYYY HH:mm').format('hh:mm A'),
           client_arrival: moment(response.ra_dtoca, 'MM-DD-YYYY HH:mm').format('MMM DD YYYY'),
@@ -132,6 +135,7 @@ export default Route.extend(Api, {
           last_admit_mental_health: moment(response.mh_latmhc, 'YYYY-MM-DD').format('MMM DD YYYY'),
           blood_pressure_date: moment(response.bbm_bpd, 'MM-DD-YYYY HH:mm').format('MMM DD YYYY'),
           blood_pressure_time: moment(response.bbm_bpd, 'MM-DD-YYYY HH:mm').format('hh:mm A'),
+          last_admit_mental_health_center: moment(response.mh_latmhc, 'YYYY-MM-DD').format('YYYY-MM-DD'),
           nurse_blood_pressure_date: response.ema_bpd ? moment(response.ema_bpd, 'MM-DD-YYYY HH:mm').format('MMM DD YYYY') : undefined,
           nurse_blood_pressure: response.ema_bpd ? moment(response.ema_bpd, 'MM-DD-YYYY HH:mm').format('hh:mm A') : undefined,
           nurse_rtq_date: response.rca_rpo ? moment(response.rca_rpo, 'MM-DD-YYYY HH:mm').format('MMM DD YYYY') : undefined,
@@ -147,7 +151,7 @@ export default Route.extend(Api, {
     };
 
     if (model.get('id') !== 'new') {
-      promises.form = this.getRtq();
+      promises.form = this.getRtq(model);
     }
 
     model.set('form', RtqForm.create());
@@ -156,7 +160,7 @@ export default Route.extend(Api, {
       hash(promises).then((promises) => {
         const { contact, form } = promises;
 
-        if (model.get('form_status') !== 'pending' && model.get('form_status') !== 'completed') {
+        if (model.get('form_status') !== 'started' && model.get('form_status') !== 'completed') {
           if (this.get('session.role_staff')) {
             model.set('form.staff', this.get('contact').createStaff(contact));
           } else if (this.get('session.role_admin') || this.get('session.role_super_admin') || this.get('session.role_global_admin') || this.get('session.role_regional_admin')) {
@@ -164,7 +168,7 @@ export default Route.extend(Api, {
           }
         }
 
-        if (model.get('form_status') === 'pending') {
+        if (model.get('form_status') === 'started') {
           if (this.get('session.role_nurse')) {
             model.set('form.nurse', this.get('contact').createAssessor(contact));
           }

@@ -63,7 +63,7 @@
           options=form.states
           labelPath="name"
           valuePath="id"
-          selected=model.selected_state
+          selected=form.selected_state
           prompt="Select"
         }}
       {{/if}}
@@ -162,7 +162,7 @@
     <div class="col-sm-4">
       {{field-error field=form.validationResult.dob_formatted}}
       {{#if noneditable}}
-        {{date-format form.dob "YYYY-MM-DD" "MMM DD YYYY"}}
+        {{form.dob_formatted}}
       {{else}}
         {{input-date-picker class="form-control" name="dob" placeholder="Click to change" readonly="" value=form.dob_formatted}}
       {{/if}}
@@ -217,11 +217,7 @@
     <label class="col-sm-2">RTQ Performed on:</label>
     <div class="col-sm-4">
       {{field-error field=form.validationResult.rtq_date_formatted}}
-      {{#if noneditable}}
-        {{date-format form.rtq_date "YYYY-MM-DD" "MMM DD YYYY"}}
-      {{else}}
-        {{form.rtq_date}}
-      {{/if}}
+      {{form.rtq_date}}
     </div>
 
     <label class="col-sm-2">Time:</label>
@@ -324,7 +320,7 @@
     <label class="col-sm-2">Client signed sign-in log:</label>
     <div class="col-sm-4">
       {{#if noneditable}}
-        {{form.cssl}}
+        {{form.client_signed}}
       {{else}}
         <div>
           <div class="radio-inline">
@@ -346,11 +342,7 @@
     <label class="col-sm-2">Date of Client Arrival:</label>
     <div class="col-sm-4">
       {{field-error field=form.validationResult.client_arrival}}
-      {{#if noneditable}}
-        {{date-format form.client_arrival "YYYY-MM-DD" "MMM DD YYYY"}}
-      {{else}}
-        {{form.client_arrival}}
-      {{/if}}
+      {{form.client_arrival}}
     </div>
 
     <label class="col-sm-2">Time of Client Arrival:</label>

@@ -9,6 +9,10 @@ module.exports = function(defaults) {
     // Add options here
     emberCliFontAwesome: {
       useScss: true
+    },
+    
+    babel: {
+      optional: ['es7.decorators']
     }
   });
 

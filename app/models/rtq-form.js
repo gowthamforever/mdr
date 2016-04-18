@@ -43,10 +43,12 @@ export default EmberObject.extend({
       return moment(dob, 'YYYY-MM-DD', true).format('MMM DD YYYY');
     }
   }),
-  age: computed('dob', function() {
-    const dob   = moment(this.get('dob'), 'YYYY-MM-DD');
+  age: computed('dob_formatted', function() {
+    const dob   = moment(this.get('dob_formatted'), 'MMM DD YYYY');
     const today = moment();
-    return ageCalculator(dob, today);
+    if (dob) {
+      return ageCalculator(dob, today);
+    }
   }),
   ethnicity: undefined,
   ssn: undefined,

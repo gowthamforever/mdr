@@ -5,13 +5,20 @@ import { formatToServer } from 'mdr/utility/utils';
 
 const {
   Component,
-  computed
+  computed,
+  inject
 } = Ember;
 
+const {
+  service
+} = inject;
+
 export default Component.extend(EmberValidator, Api, {
+  assessments: service(),
+
   noneditable: computed('model.form_status', function() {
     const form_status = this.get('model.form_status');
-    return form_status === 'pending' || form_status === 'completed';
+    return form_status === 'started' || form_status === 'completed';
   }),
 
   actions: {
@@ -27,7 +34,7 @@ export default Component.extend(EmberValidator, Api, {
       const model = this.get('model');
       let data;
 
-      if (model.get('form_status') !== 'pending') {
+      if (model.get('form_status') !== 'started') {
         data = {
           ca_fn: model.get('form.first_name'),
           ca_ln: model.get('form.last_name'),
@@ -104,27 +111,7 @@ export default Component.extend(EmberValidator, Api, {
           os_oca17ol: model.get('form.no_children_17_less'),
           d_rtqd: model.get('form.rtq_disposition'),
 
-          rdus_rdus: model.get('form.nurse_drug_use_status'),
-          rdus_atr: model.get('form.nurse_alcohol_test'),
-          rdus_dcdf: model.get('form.nurse_drug_detoxing_from'),
-          ema_ss: model.get('form.nurse_systolic'),
-          ema_ds: model.get('form.nurse_diastolic'),
-          ema_t: model.get('form.nurse_temperature'),
-          ema_p: model.get('form.nurse_pulse'),
-          rca_scr: `${model.get('form.nurse.first_name')} ${model.get('form.nurse.last_name')}`,
-          rca_cs: model.get('form.nurse_ciwa_score'),
-
-          om_ica: model.get('form.nurse_non_ambulatory'),
-          om_aow: model.get('form.nurse_open_wounds'),
-          om_cm: model.get('form.nurse_current_medications'),
-          om_cp: model.get('form.nurse_pregnant'),
-          om_chs: model.get('form.nurse_health_status'),
-          om_dd: model.get('form.nurse_developmentl_disablities'),
-          om_pd: model.get('form.nurse_physical_disablities'),
-          om_cmc: model.get('form.nurse_medical_complaints'),
-          nd_nrd: model.get('form.nurse_rtq_disposition'),
-          psad: model.get('form.nurse_disposition'),
-          form_status: 'pending'
+          form_status: 'started'
         };
 
         this.ajax({
@@ -133,6 +120,8 @@ export default Component.extend(EmberValidator, Api, {
         }).then((response) => {
           model.set('form.id', response.id);
           model.set('form_status', 'pending');
+
+          this.set('assessments.cache', false);
         }).catch(Ember.K);
       }
     },

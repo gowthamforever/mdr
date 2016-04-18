@@ -5,10 +5,17 @@ import { formatToServer } from 'mdr/utility/utils';
 
 const {
   Component,
-  computed
+  computed,
+  inject
 } = Ember;
 
+const {
+  service
+} = inject;
+
 export default Component.extend(EmberValidator, Api, {
+  assessments: service(),
+
   noneditable: computed('model.form_status', function() {
     const form_status = this.get('model.form_status');
     return form_status === 'completed';
@@ -131,6 +138,7 @@ export default Component.extend(EmberValidator, Api, {
           },
         }).then(() => {
           model.set('form_status', 'completed');
+          this.set('assessments.cache', false);
         }).catch(Ember.K);
       }
     },

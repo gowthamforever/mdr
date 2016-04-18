@@ -1,32 +1,49 @@
 import Ember from 'ember';
 import Constants from 'mdr/utility/constants';
+import computed, { equal } from 'ember-computed-decorators';
 
 const {
-  computed
+  Object: EmberObject
 } = Ember;
 
-const {
-  equal
-} = computed;
-
-export default Ember.Object.extend({
+export default EmberObject.extend({
+  customer: undefined,
   form_status: undefined,
-  accepted: equal('status', Constants.REQUEST_STATUS.ACCEPTED),
-
   ts_request: undefined,
-  ts_request_moment: computed('ts_request', function() {
-    return moment(this.get('ts_request'), 'MM-DD-YYYY HH:mm');
-  }),
   ts_request_endtime: undefined,
-  ts_request_endtime_moment: computed('ts_request_endtime', function() {
-    return moment(this.get('ts_request_endtime'), 'MM-DD-YYYY HH:mm');
-  }),
+  last_updated_page: undefined,
 
-  form_notstarted: computed('form_status', 'accepted', function() {
-    const form_status = this.getWithDefault('form_status', Constants.FORM_STATUS.NOT_STARTED);
-    return form_status === Constants.FORM_STATUS.NOT_STARTED && this.get('accepted');
-  }),
-  form_started: equal('form_status', Constants.FORM_STATUS.STARTED),
-  form_completed: equal('form_status', Constants.FORM_STATUS.COMPLETED),
-  last_updated_page: undefined
+  @equal('status', Constants.REQUEST_STATUS.ACCEPTED)
+  accepted,
+
+  @equal('status', Constants.FORM_STATUS.STARTED)
+  form_started,
+
+  @equal('status', Constants.FORM_STATUS.COMPLETED)
+  form_completed,
+
+  @computed('customer')
+  customer_name(customer) {
+    return `${customer.first_name} ${customer.last_name}`;
+  },
+
+  @computed('ts_request')
+  ts_request_moment(ts_request) {
+    return moment(ts_request, 'MM-DD-YYYY HH:mm');
+  },
+
+  @computed('ts_request_moment')
+  ts_request_date(ts_request_moment) {
+    return ts_request_moment.toDate();
+  },
+
+  @computed('ts_request_endtime')
+  ts_request_endtime_moment(ts_request_endtime) {
+    return moment(ts_request_endtime, 'MM-DD-YYYY HH:mm');
+  },
+
+  @computed('form_status', 'accepted')
+  form_notstarted(form_status, accepted) {
+    return (form_status || Constants.FORM_STATUS.NOT_STARTED) === Constants.FORM_STATUS.NOT_STARTED && accepted;
+  }
 });

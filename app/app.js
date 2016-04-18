@@ -47,9 +47,7 @@ Route.reopen({
       'admin-tasks.assessors': { title: 'Assessors Requests' },
       'chats.list': { title: 'Consulations' },
       'chats.chat': { title: 'Consulation' },
-      'assessments.status.not-started': { title: 'Assessments' },
-      'assessments.status.started': { title: 'Assessments' },
-      'assessments.status.completed': { title: 'Assessments' },
+      'assessments.list': { title: 'Assessments' },
       'assessments.samha-form': { title: 'SAMHA Form' },
       'assessments.forms.list': { title: 'Forms' },
       'assessments.forms.rtq': { title: 'RTQ Form' }

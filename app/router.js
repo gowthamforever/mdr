@@ -10,7 +10,7 @@ Router.map(function() {
   this.route('forget-password');
   this.route('request-account');
 
-  this.resource('enrollment', function() {
+  this.route('enrollment', { resetNamespace: true }, function() {
     this.route('register', { path: '/' });
     this.route('agent');
     this.route('doctor');
@@ -19,19 +19,19 @@ Router.map(function() {
 
   this.route('enrollment-confirmation');
 
-  this.resource('authenticated', { path: '/' }, function() {
-    this.resource('home');
-    this.resource('admin-tasks', function() {
+  this.route('authenticated', { resetNamespace: true, path: '/' }, function() {
+    this.route('home', { resetNamespace: true });
+    this.route('admin-tasks', { resetNamespace: true }, function() {
       this.route('staffs', { path: '/' });
       this.route('doctors');
       this.route('assessors');
     });
-    this.resource('profile');
-    this.resource('settings');
-    this.resource('chat');
-    this.resource('logout');
+    this.route('profile', { resetNamespace: true });
+    this.route('settings', { resetNamespace: true });
+    this.route('chat', { resetNamespace: true });
+    this.route('logout', { resetNamespace: true });
 
-    this.resource('clients', function() {
+    this.route('clients', { resetNamespace: true }, function() {
       this.route('list', { path: '/' });
       this.route('add');
       this.route('client', { path: '/:customer_id' }, function() {
@@ -39,13 +39,13 @@ Router.map(function() {
       });
     });
 
-    this.resource('staffs', function() {
+    this.route('staffs', { resetNamespace: true }, function() {
       this.route('staff', { path: '/:agency_staff_id' }, function() {
         this.route('profile');
       });
     });
 
-    this.resource('assessors', function() {
+    this.route('assessors', { resetNamespace: true }, function() {
       this.route('list', { path: '/' });
       this.route('add');
       this.route('assessor', { path: '/:assessor_id' }, function() {
@@ -53,7 +53,7 @@ Router.map(function() {
       });
     });
 
-    this.resource('doctors', function() {
+    this.route('doctors', { resetNamespace: true }, function() {
       this.route('list', { path: '/' });
       this.route('add');
       this.route('doctor', { path: '/:doctor_id' }, function() {
@@ -61,7 +61,7 @@ Router.map(function() {
       });
     });
 
-    this.resource('appointments', function() {
+    this.route('appointments', { resetNamespace: true }, function() {
       this.route('index',  { path: '/' });
       this.route('calendar');
       this.route('day', { path: '/day/:date' });
@@ -77,16 +77,13 @@ Router.map(function() {
       this.route('create', { path: '/create/:customer_id' });
     });
 
-    this.resource('chats', function() {
+    this.route('chats', { resetNamespace: true }, function() {
       this.route('list', { path: '/' });
       this.route('chat', { path: '/:id' });
     });
 
-    this.resource('assessments', function() {
-      this.route('status', { path: '/' }, function() {
-        this.route('started', { path: '/' });
-        this.route('completed');
-      });
+    this.route('assessments', { resetNamespace: true }, function() {
+      this.route('list', { path: '/' });
 
       this.route('forms', function() {
         this.route('list', { path: '/' });

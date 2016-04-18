@@ -1,0 +1,20 @@
+<section class="assessments-request-block">
+  {{#table-sort headings=headings items=model.all_assessments as |obj|}}
+    {{#if obj.row}}
+      <td>
+        {{#if (eq obj.item.form_name "EMERGENCY")}}
+          {{#link-to 'assessments.forms.rtq' obj.item}}
+            {{obj.item.form_name}}
+          {{/link-to}}
+        {{else if (eq obj.item.form_name "SAMHA")}}
+          {{#link-to 'assessments.samha-form' obj.item}}
+            {{obj.item.form_name}}
+          {{/link-to}}
+        {{/if}}
+      </td>
+      <td>{{obj.item.customer_name}}</td>
+      <td>{{obj.item.form_status}}</td>
+      <td>{{date-format obj.item.ts_request "MM-DD-YYYY HH:mm" "dddd, MMM DD YYYY hh:mm A"}}</td>
+    {{/if}}
+  {{/table-sort}}
+</section>
