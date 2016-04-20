@@ -40,26 +40,35 @@
   }
 }
 
-.dashboard-nav .list-group-item {
-  border-radius: 0;
-  border: none;
-  background-color: #fff;
-  padding-left: 20px;
-  color: #000;
-  &.active, &:hover {
-    background-color: whitesmoke;
-    color: $primary-color;
+.dashboard-nav {
+  .list-group-item {
+    border-radius: 0;
+    border: none;
+    background-color: #fff;
+    padding-left: 20px;
+    color: #000;
+    &.active, &:hover {
+      background-color: whitesmoke;
+      color: $primary-color;
+    }
+    &.active {
+      border-bottom: none;
+      border-left: 3px solid $primary-color;
+      padding-left: 17px;
+    }
+    span {
+      padding-left: 10px;
+      font-size: 1.2em;
+    }
   }
-  &.active {
-    border-bottom: none;
-    border-left: 3px solid $primary-color;
+  .fa {
+    width: 25px;
+    text-align: center;
   }
 }
 
-.dashboard-nav .list-group-item span {
-  padding-left: 10px;
-  font-size: 1.2em;
-}
+
+.dashboard-nav .list-group-item
 
 .dashboard-avatar {
   padding: 20px 0;
